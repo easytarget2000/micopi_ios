@@ -1,0 +1,293 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D0CA32B21C7BA87B007E7B0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CA32B11C7BA87B007E7B0F /* AppDelegate.swift */; };
+		D0CA32B41C7BA87B007E7B0F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CA32B31C7BA87B007E7B0F /* ViewController.swift */; };
+		D0CA32B71C7BA87B007E7B0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0CA32B51C7BA87B007E7B0F /* Main.storyboard */; };
+		D0CA32B91C7BA87B007E7B0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0CA32B81C7BA87B007E7B0F /* Assets.xcassets */; };
+		D0CA32BC1C7BA87B007E7B0F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0CA32BA1C7BA87B007E7B0F /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		D0CA32AE1C7BA87B007E7B0F /* micopi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = micopi.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0CA32B11C7BA87B007E7B0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D0CA32B31C7BA87B007E7B0F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D0CA32B61C7BA87B007E7B0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D0CA32B81C7BA87B007E7B0F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D0CA32BB1C7BA87B007E7B0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D0CA32BD1C7BA87B007E7B0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D0CA32AB1C7BA87B007E7B0F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D0CA32A51C7BA87B007E7B0F = {
+			isa = PBXGroup;
+			children = (
+				D0CA32B01C7BA87B007E7B0F /* micopi */,
+				D0CA32AF1C7BA87B007E7B0F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D0CA32AF1C7BA87B007E7B0F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D0CA32AE1C7BA87B007E7B0F /* micopi.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D0CA32B01C7BA87B007E7B0F /* micopi */ = {
+			isa = PBXGroup;
+			children = (
+				D0CA32B11C7BA87B007E7B0F /* AppDelegate.swift */,
+				D0CA32B31C7BA87B007E7B0F /* ViewController.swift */,
+				D0CA32B51C7BA87B007E7B0F /* Main.storyboard */,
+				D0CA32B81C7BA87B007E7B0F /* Assets.xcassets */,
+				D0CA32BA1C7BA87B007E7B0F /* LaunchScreen.storyboard */,
+				D0CA32BD1C7BA87B007E7B0F /* Info.plist */,
+			);
+			path = micopi;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D0CA32AD1C7BA87B007E7B0F /* micopi */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D0CA32C01C7BA87B007E7B0F /* Build configuration list for PBXNativeTarget "micopi" */;
+			buildPhases = (
+				D0CA32AA1C7BA87B007E7B0F /* Sources */,
+				D0CA32AB1C7BA87B007E7B0F /* Frameworks */,
+				D0CA32AC1C7BA87B007E7B0F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = micopi;
+			productName = micopi;
+			productReference = D0CA32AE1C7BA87B007E7B0F /* micopi.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D0CA32A61C7BA87B007E7B0F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Easy Target";
+				TargetAttributes = {
+					D0CA32AD1C7BA87B007E7B0F = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+				};
+			};
+			buildConfigurationList = D0CA32A91C7BA87B007E7B0F /* Build configuration list for PBXProject "micopi" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D0CA32A51C7BA87B007E7B0F;
+			productRefGroup = D0CA32AF1C7BA87B007E7B0F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D0CA32AD1C7BA87B007E7B0F /* micopi */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D0CA32AC1C7BA87B007E7B0F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0CA32BC1C7BA87B007E7B0F /* LaunchScreen.storyboard in Resources */,
+				D0CA32B91C7BA87B007E7B0F /* Assets.xcassets in Resources */,
+				D0CA32B71C7BA87B007E7B0F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D0CA32AA1C7BA87B007E7B0F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0CA32B41C7BA87B007E7B0F /* ViewController.swift in Sources */,
+				D0CA32B21C7BA87B007E7B0F /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		D0CA32B51C7BA87B007E7B0F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D0CA32B61C7BA87B007E7B0F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D0CA32BA1C7BA87B007E7B0F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D0CA32BB1C7BA87B007E7B0F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D0CA32BE1C7BA87B007E7B0F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D0CA32BF1C7BA87B007E7B0F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D0CA32C11C7BA87B007E7B0F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = micopi/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.eztarget.micopi;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		D0CA32C21C7BA87B007E7B0F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = micopi/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.eztarget.micopi;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D0CA32A91C7BA87B007E7B0F /* Build configuration list for PBXProject "micopi" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D0CA32BE1C7BA87B007E7B0F /* Debug */,
+				D0CA32BF1C7BA87B007E7B0F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D0CA32C01C7BA87B007E7B0F /* Build configuration list for PBXNativeTarget "micopi" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D0CA32C11C7BA87B007E7B0F /* Debug */,
+				D0CA32C21C7BA87B007E7B0F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D0CA32A61C7BA87B007E7B0F /* Project object */;
+}
