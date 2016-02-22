@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Welcome View Controller-->
@@ -54,7 +55,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="wOV-UM-ar9"/>
                     <connections>
-                        <segue destination="D0v-49-fFy" kind="show" id="fvH-Hv-7t8"/>
+                        <segue destination="D0v-49-fFy" kind="show" identifier="welcomeToContactSegue" id="fvH-Hv-7t8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -77,10 +78,10 @@
             </objects>
             <point key="canvasLocation" x="-64" y="657"/>
         </scene>
-        <!--View Controller-->
+        <!--Contact View Controller-->
         <scene sceneID="uKb-WP-xsp">
             <objects>
-                <viewController id="D0v-49-fFy" sceneMemberID="viewController">
+                <viewController id="D0v-49-fFy" customClass="ContactViewController" customModule="micopi" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Imb-oQ-vef"/>
                         <viewControllerLayoutGuide type="bottom" id="N5D-9S-TtT"/>
@@ -89,26 +90,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Generated Contact Picture" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nwj-aR-fug">
+                                <rect key="frame" x="20" y="665" width="560" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.20392156859999999" green="0.66666666669999997" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No contact selected" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DE8-bc-utL">
+                                <rect key="frame" x="20" y="694" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" red="0.20392156859999999" green="0.66666666669999997" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xhI-tg-PzG">
                                 <rect key="frame" x="0.0" y="57" width="600" height="600"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="xhI-tg-PzG" secondAttribute="height" multiplier="1:1" id="Trp-kz-rjA"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Generated Contact Picture" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nwj-aR-fug">
-                                <rect key="frame" x="0.0" y="665" width="600" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="Nwj-aR-fug" secondAttribute="trailing" id="0aU-ii-gNl"/>
                             <constraint firstItem="xhI-tg-PzG" firstAttribute="top" secondItem="Imb-oQ-vef" secondAttribute="bottom" constant="-7" id="4UV-pj-b15"/>
-                            <constraint firstItem="Nwj-aR-fug" firstAttribute="width" secondItem="b96-V1-qXf" secondAttribute="width" id="755-6m-l0D"/>
-                            <constraint firstItem="Nwj-aR-fug" firstAttribute="centerX" secondItem="b96-V1-qXf" secondAttribute="centerX" id="J3M-WF-aoC"/>
+                            <constraint firstItem="DE8-bc-utL" firstAttribute="leading" secondItem="Nwj-aR-fug" secondAttribute="leading" id="DrP-tw-Fv6"/>
+                            <constraint firstItem="DE8-bc-utL" firstAttribute="top" secondItem="Nwj-aR-fug" secondAttribute="bottom" constant="8" id="Ht6-O1-Htk"/>
+                            <constraint firstItem="Nwj-aR-fug" firstAttribute="leading" secondItem="b96-V1-qXf" secondAttribute="leadingMargin" id="Wgt-Eq-CUb"/>
                             <constraint firstItem="xhI-tg-PzG" firstAttribute="width" secondItem="b96-V1-qXf" secondAttribute="width" id="cdy-Hw-oyq"/>
                             <constraint firstItem="xhI-tg-PzG" firstAttribute="centerX" secondItem="b96-V1-qXf" secondAttribute="centerX" id="jji-R5-Fzg"/>
+                            <constraint firstItem="DE8-bc-utL" firstAttribute="trailing" secondItem="Nwj-aR-fug" secondAttribute="trailing" id="kG2-BE-M6R"/>
                             <constraint firstItem="Nwj-aR-fug" firstAttribute="top" secondItem="xhI-tg-PzG" secondAttribute="bottom" constant="8" id="lPs-TU-e3O"/>
                         </constraints>
                     </view>

@@ -12,5 +12,15 @@ class ContactViewController: UIViewController {
     
     var contact: Contact?
 
-
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        generateImage()
+    }
+    
+    private func generateImage() {
+        if let c = contact {
+            let image = ImageFactory.init(contact: c).generateImage()
+            NSLog("\(image)")
+        }
+    }
 }

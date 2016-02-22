@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D0B1389E1C7BB93C00E58407 /* ImageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B1389D1C7BB93C00E58407 /* ImageFactory.swift */; };
 		D0CA32B21C7BA87B007E7B0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CA32B11C7BA87B007E7B0F /* AppDelegate.swift */; };
 		D0CA32B71C7BA87B007E7B0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0CA32B51C7BA87B007E7B0F /* Main.storyboard */; };
 		D0CA32B91C7BA87B007E7B0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0CA32B81C7BA87B007E7B0F /* Assets.xcassets */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D0B1389D1C7BB93C00E58407 /* ImageFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageFactory.swift; path = Engine/ImageFactory.swift; sourceTree = "<group>"; };
 		D0CA32AE1C7BA87B007E7B0F /* micopi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = micopi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0CA32B11C7BA87B007E7B0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0CA32B61C7BA87B007E7B0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 		D0CA32CA1C7BAD99007E7B0F /* Engine */ = {
 			isa = PBXGroup;
 			children = (
+				D0B1389D1C7BB93C00E58407 /* ImageFactory.swift */,
 			);
 			name = Engine;
 			sourceTree = "<group>";
@@ -175,6 +178,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0B1389E1C7BB93C00E58407 /* ImageFactory.swift in Sources */,
 				D0CA32D01C7BB071007E7B0F /* WelcomeViewController.swift in Sources */,
 				D0CA32D21C7BB1F5007E7B0F /* ContactViewController.swift in Sources */,
 				D0CA32C51C7BAA82007E7B0F /* Contact.swift in Sources */,

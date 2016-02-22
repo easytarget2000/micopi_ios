@@ -17,7 +17,7 @@ class WelcomeViewController: UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if WelcomeViewController.toContactViewSegue == segue,
+        if WelcomeViewController.toContactViewSegue == segue.identifier,
             let viewController = segue.destinationViewController as? ContactViewController {
                 
                 let contact = Contact()
