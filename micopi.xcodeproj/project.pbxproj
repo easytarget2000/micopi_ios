@@ -8,20 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		D0CA32B21C7BA87B007E7B0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CA32B11C7BA87B007E7B0F /* AppDelegate.swift */; };
-		D0CA32B41C7BA87B007E7B0F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CA32B31C7BA87B007E7B0F /* ViewController.swift */; };
 		D0CA32B71C7BA87B007E7B0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0CA32B51C7BA87B007E7B0F /* Main.storyboard */; };
 		D0CA32B91C7BA87B007E7B0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0CA32B81C7BA87B007E7B0F /* Assets.xcassets */; };
 		D0CA32BC1C7BA87B007E7B0F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0CA32BA1C7BA87B007E7B0F /* LaunchScreen.storyboard */; };
+		D0CA32C51C7BAA82007E7B0F /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CA32C41C7BAA82007E7B0F /* Contact.swift */; };
+		D0CA32D01C7BB071007E7B0F /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CA32CF1C7BB071007E7B0F /* WelcomeViewController.swift */; };
+		D0CA32D21C7BB1F5007E7B0F /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CA32D11C7BB1F5007E7B0F /* ContactViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D0CA32AE1C7BA87B007E7B0F /* micopi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = micopi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0CA32B11C7BA87B007E7B0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D0CA32B31C7BA87B007E7B0F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D0CA32B61C7BA87B007E7B0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D0CA32B81C7BA87B007E7B0F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D0CA32BB1C7BA87B007E7B0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D0CA32BD1C7BA87B007E7B0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D0CA32C41C7BAA82007E7B0F /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Contact.swift; path = Data/Contact.swift; sourceTree = "<group>"; };
+		D0CA32C61C7BAB58007E7B0F /* micopi-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "micopi-Bridging-Header.h"; sourceTree = "<group>"; };
+		D0CA32CF1C7BB071007E7B0F /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WelcomeViewController.swift; path = Views/ViewController/WelcomeViewController.swift; sourceTree = "<group>"; };
+		D0CA32D11C7BB1F5007E7B0F /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactViewController.swift; path = Views/ViewController/ContactViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +45,7 @@
 			children = (
 				D0CA32B01C7BA87B007E7B0F /* micopi */,
 				D0CA32AF1C7BA87B007E7B0F /* Products */,
+				D0CA32C61C7BAB58007E7B0F /* micopi-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +60,48 @@
 		D0CA32B01C7BA87B007E7B0F /* micopi */ = {
 			isa = PBXGroup;
 			children = (
+				D0CA32CB1C7BB01D007E7B0F /* Views */,
+				D0CA32CA1C7BAD99007E7B0F /* Engine */,
+				D0CA32C31C7BAA57007E7B0F /* Data */,
 				D0CA32B11C7BA87B007E7B0F /* AppDelegate.swift */,
-				D0CA32B31C7BA87B007E7B0F /* ViewController.swift */,
 				D0CA32B51C7BA87B007E7B0F /* Main.storyboard */,
 				D0CA32B81C7BA87B007E7B0F /* Assets.xcassets */,
 				D0CA32BA1C7BA87B007E7B0F /* LaunchScreen.storyboard */,
 				D0CA32BD1C7BA87B007E7B0F /* Info.plist */,
 			);
 			path = micopi;
+			sourceTree = "<group>";
+		};
+		D0CA32C31C7BAA57007E7B0F /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				D0CA32C41C7BAA82007E7B0F /* Contact.swift */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		D0CA32CA1C7BAD99007E7B0F /* Engine */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Engine;
+			sourceTree = "<group>";
+		};
+		D0CA32CB1C7BB01D007E7B0F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D0CA32CC1C7BB026007E7B0F /* ViewController */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		D0CA32CC1C7BB026007E7B0F /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D0CA32CF1C7BB071007E7B0F /* WelcomeViewController.swift */,
+				D0CA32D11C7BB1F5007E7B0F /* ContactViewController.swift */,
+			);
+			name = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,7 +175,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0CA32B41C7BA87B007E7B0F /* ViewController.swift in Sources */,
+				D0CA32D01C7BB071007E7B0F /* WelcomeViewController.swift in Sources */,
+				D0CA32D21C7BB1F5007E7B0F /* ContactViewController.swift in Sources */,
+				D0CA32C51C7BAA82007E7B0F /* Contact.swift in Sources */,
 				D0CA32B21C7BA87B007E7B0F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -249,10 +291,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = micopi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.eztarget.micopi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "micopi-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -260,10 +305,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = micopi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.eztarget.micopi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "micopi-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -286,6 +333,7 @@
 				D0CA32C21C7BA87B007E7B0F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
