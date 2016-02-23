@@ -50,8 +50,8 @@ class ColorCollection {
 //        return palette[i % (palette.count - 1)]
 //    }
     
-    static func color(i: Int) -> CGColor {
-        return palette[i % (palette.count - 1)].CGColor
+    static func color(i: Int) -> UIColor {
+        return palette[i % (palette.count - 1)]
     }
     
 }

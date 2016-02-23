@@ -21,8 +21,8 @@ class ContactViewController: UIViewController {
     
     private func generateImage() {
         if let c = contact {
-            let image = ImageFactory.init(contact: c).generateImage()
-            previewImageView.image = image
+            let factory = ImageFactory.init(contact: c, imageSize: ImageFactory.recommendedImageSize)
+            previewImageView.image = factory.generateImage()
         }
     }
 }
