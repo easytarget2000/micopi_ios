@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D0CA32AD1C7BA87B007E7B0F"
-               BuildableName = "micopi.app"
+               BuildableName = "Micopi.temp_caseinsensitive_rename.app"
                BlueprintName = "micopi"
-               ReferencedContainer = "container:micopi.xcodeproj">
+               ReferencedContainer = "container:Micopi.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D0CA32AD1C7BA87B007E7B0F"
-            BuildableName = "micopi.app"
+            BuildableName = "Micopi.temp_caseinsensitive_rename.app"
             BlueprintName = "micopi"
-            ReferencedContainer = "container:micopi.xcodeproj">
+            ReferencedContainer = "container:Micopi.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D0CA32AD1C7BA87B007E7B0F"
-            BuildableName = "micopi.app"
+            BuildableName = "Micopi.temp_caseinsensitive_rename.app"
             BlueprintName = "micopi"
-            ReferencedContainer = "container:micopi.xcodeproj">
+            ReferencedContainer = "container:Micopi.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D0CA32AD1C7BA87B007E7B0F"
-            BuildableName = "micopi.app"
+            BuildableName = "Micopi.temp_caseinsensitive_rename.app"
             BlueprintName = "micopi"
-            ReferencedContainer = "container:micopi.xcodeproj">
+            ReferencedContainer = "container:Micopi.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

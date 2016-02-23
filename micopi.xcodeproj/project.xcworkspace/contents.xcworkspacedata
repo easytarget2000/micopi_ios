@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:micopi.xcodeproj">
+      location = "self:/Users/michel/Projekte/Micopi/micopi_ios/Micopi.xcodeproj">
    </FileRef>
 </Workspace>

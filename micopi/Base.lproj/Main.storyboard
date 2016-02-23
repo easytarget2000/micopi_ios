@@ -10,7 +10,7 @@
         <!--Welcome View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="WelcomeViewController" customModule="micopi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="WelcomeViewController" customModule="Micopi_temp_caseinsensitive_rename" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -20,22 +20,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="micopi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NVh-rl-Gef">
-                                <rect key="frame" x="260" y="84" width="81" height="33"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <rect key="frame" x="236" y="128" width="130" height="53"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="44"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fe5-YY-3pf">
-                                <rect key="frame" x="243" y="285" width="114" height="30"/>
+                                <rect key="frame" x="201" y="278" width="198" height="45"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                 <state key="normal" title="Select a Contact">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="onSelectContactTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2Zj-ss-g4v"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="41B-tj-dfh">
-                                <rect key="frame" x="51" y="323" width="498" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="41B-tj-dfh">
+                                <rect key="frame" x="28" y="331" width="544" height="41"/>
                                 <string key="text">After selecting a contact, the generated picture will be previewed
         before assigning it to that person.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -46,11 +48,12 @@
                         <color key="backgroundColor" red="0.20392156862745098" green="0.66666666666666663" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Fe5-YY-3pf" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="3sn-aL-Cje"/>
-                            <constraint firstItem="41B-tj-dfh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7EV-vk-BA5"/>
                             <constraint firstItem="Fe5-YY-3pf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="97q-jw-Tf5"/>
                             <constraint firstItem="41B-tj-dfh" firstAttribute="top" secondItem="Fe5-YY-3pf" secondAttribute="bottom" constant="8" id="C1Y-Wd-KdJ"/>
                             <constraint firstItem="NVh-rl-Gef" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Klf-8M-FMd"/>
+                            <constraint firstItem="41B-tj-dfh" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="8" id="eDk-NC-XaH"/>
                             <constraint firstItem="NVh-rl-Gef" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="64" id="sYC-cx-iYn"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="41B-tj-dfh" secondAttribute="trailing" constant="8" id="xZ2-6z-i3w"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="wOV-UM-ar9"/>
@@ -81,7 +84,7 @@
         <!--Contact View Controller-->
         <scene sceneID="uKb-WP-xsp">
             <objects>
-                <viewController id="D0v-49-fFy" customClass="ContactViewController" customModule="micopi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="D0v-49-fFy" customClass="ContactViewController" customModule="Micopi_temp_caseinsensitive_rename" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Imb-oQ-vef"/>
                         <viewControllerLayoutGuide type="bottom" id="N5D-9S-TtT"/>
@@ -96,7 +99,7 @@
                                 <color key="textColor" red="0.20392156859999999" green="0.66666666669999997" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No contact selected" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DE8-bc-utL">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No contact selected" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DE8-bc-utL" userLabel="ContactNameView">
                                 <rect key="frame" x="20" y="694" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" red="0.20392156859999999" green="0.66666666669999997" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -124,6 +127,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="contactNameLabel" destination="DE8-bc-utL" id="VWw-kg-xV0"/>
                         <outlet property="previewImageView" destination="xhI-tg-PzG" id="eEE-HH-KVc"/>
                     </connections>
                 </viewController>

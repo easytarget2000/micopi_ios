@@ -57,7 +57,7 @@ class ImageFactory {
     
     private func paintPixeMatrix() {
         
-        let color1 = ColorCollection.color(contact.md5[0])
+//        let color1 = ColorCollection.color(contact.md5[0])
         let color2 = ColorCollection.color(contact.md5[1])
         let color3 = ColorCollection.color(contact.md5[2])
         
@@ -92,7 +92,7 @@ class ImageFactory {
                             sideLength: sideLength
                         )
                     }
-                    if x % 2 == 1 {
+                    if x % 2 == 0 {
                         paintPixelSquare(
                             color3,
                             alpha: 155 - contact.md5[md5Index] % 100,
@@ -132,7 +132,6 @@ class ImageFactory {
         
         if (alpha > 0 && alpha < 255) {
             let percentageAlpha = CGFloat(alpha) / 255
-            NSLog("DEBUG: paintPixelSquare: \(x), \(y), alpha: \(percentageAlpha)")
             CGContextSetFillColorWithColor(
                 context,
                 color.colorWithAlphaComponent(percentageAlpha).CGColor
@@ -146,22 +145,42 @@ class ImageFactory {
     
     private func paintInitialsCircle(initials: String) {
         if let firstChar = initials.characters.first {
-            // Use Palette colour based on first character - 11,
+            // Use Palette colour based on first character minus specific values,
             // so that background and circle colour are based on the initials but not the same.
             
-            
             let radius = imageSize * 0.4
-            let circlePosition = (imageSize - radius) / 2
+
+            if contact.md5[7] % 3 == 0 {
+                let diameter = radius * 2
+                let circlePosition = (imageSize - diameter) / 2
+                CGContextSetFillColorWithColor(
+                    context,
+                    ColorCollection.color(firstChar.hashValue - 11).colorWithAlphaComponent(0.3).CGColor
+                );
+                
+                CGContextFillEllipseInRect(
+                    context,
+                    CGRectMake(
+                        circlePosition,
+                        circlePosition,
+                        diameter,
+                        diameter
+                    )
+                )
+            }
             
             let thickness = CGFloat(imageSize) / 50
+            
+            let startAngleOffset = Double(contact.md5[5] % 3)
+            let endAngleOffset = Double(contact.md5[6] % 4) - 7.0
             
             CGContextAddArc(
                 context,
                 imageSize / 2,
                 imageSize / 2,
                 radius,
-                CGFloat(-M_PI / 4.0),
-                CGFloat(-7.0 * M_PI / 4.0),
+                CGFloat(-M_PI / (4.0 + startAngleOffset)),
+                CGFloat(-7.0 * M_PI / (4.0 + endAngleOffset)),
                 1
             );
             
@@ -201,22 +220,6 @@ class ImageFactory {
             CGContextDrawLinearGradient(context, gradient, start, end, CGGradientDrawingOptions(rawValue: 0))
             
             CGContextEndTransparencyLayer(context)
-            
-            
-//            CGContextSetFillColorWithColor(
-//                context,
-//                ColorCollection.color(firstChar.hashValue - 11).CGColor
-//            );
-
-//            CGContextFillEllipseInRect(
-//                context,
-//                CGRectMake(
-//                    circlePosition,
-//                    circlePosition,
-//                    radius,
-//                    radius
-//                )
-//            )
             
             let string = "\(firstChar)" as NSString
             
