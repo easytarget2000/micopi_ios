@@ -171,7 +171,7 @@ class ImageFactory {
             
             let thickness = CGFloat(imageSize) / 50
             
-            let startAngleOffset = Double(contact.md5[5] % 3)
+            let startAngleOffset = Double(contact.md5[5] % 5)
             let endAngleOffset = Double(contact.md5[6] % 4) - 7.0
             
             CGContextAddArc(
@@ -180,7 +180,7 @@ class ImageFactory {
                 imageSize / 2,
                 radius,
                 CGFloat(-M_PI / (4.0 + startAngleOffset)),
-                CGFloat(-7.0 * M_PI / (4.0 + endAngleOffset)),
+                CGFloat(-11.0 * M_PI / (4.0 + endAngleOffset)),
                 1
             );
             

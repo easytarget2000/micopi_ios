@@ -21,6 +21,7 @@ class ColorCollection {
         UIColor(netHex:0xD32F2F),
         UIColor(netHex:0x29B6F6),
         UIColor(netHex:0xFFF59D),
+        UIColor(netHex:0x34AADC),
         UIColor(netHex:0xFFC107),
         UIColor(netHex:0x7C4DFF),
         UIColor(netHex:0xF44336),
@@ -41,11 +42,17 @@ class ColorCollection {
         UIColor(netHex:0x00796B),
         UIColor(netHex:0x009688),
         UIColor(netHex:0xBBDEFB),
+        UIColor(netHex:0x55EFCB),
         UIColor(netHex:0x80CBC4),
         UIColor(netHex:0xFF5252),
         UIColor(netHex:0x1976D2)
     ]
-        
+    
+    static let backgroundGradientColors = [
+        UIColor(netHex:0x55EFCB).CGColor,
+        UIColor(netHex:0x34AADC).CGColor
+    ]
+    
 //    static func color(i: Int) -> UIColor {
 //        return palette[i % (palette.count - 1)]
 //    }

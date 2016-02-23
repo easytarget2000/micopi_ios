@@ -6,7 +6,7 @@
 //  Copyright © 2016 Easy Target. All rights reserved.
 //
 
-import Foundation
+import Contacts
 
 class Contact {
     
@@ -16,8 +16,38 @@ class Contact {
     
     var phoneNumber: String?
     
+    var birthday: String?
+    
     private var modification = 0
     
+    init(c: CNContact) {
+        if c.nickname.isEmpty {
+            var constructedName = ""
+            if !c.givenName.isEmpty {
+                constructedName = c.givenName + " "
+            }
+            
+            if !c.middleName.isEmpty {
+                constructedName += c.middleName + " "
+            }
+            
+            if !c.familyName.isEmpty {
+                constructedName += c.familyName
+            }
+            
+            displayName = constructedName
+        } else {
+            displayName = c.nickname
+        }
+        
+        if let cnPhoneNumber = c.phoneNumbers[0].value as? CNPhoneNumber {
+            phoneNumber = cnPhoneNumber.stringValue
+        }
+        
+        if let name = displayName where name.isEmpty {
+            displayName = phoneNumber
+        }
+    }
     
     var md5: [Int] {
         get {

@@ -21,6 +21,10 @@ class ContactViewController: UIViewController {
         generateImage()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        navigationController?.navigationBarHidden = false
+    }
+    
     private func generateImage() {
         guard let c = contact else {
             NSLog("FAILURE: ContactViewController: Without Contact.")

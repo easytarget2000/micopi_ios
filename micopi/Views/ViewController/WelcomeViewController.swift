@@ -7,26 +7,50 @@
 //
 
 import UIKit
+import ContactsUI
 
-class WelcomeViewController: UIViewController {
+class WelcomeViewController: UIViewController, CNContactPickerDelegate {
     
     private static let toContactViewSegue = "welcomeToContactSegue"
+    
+    // MARK: - UIViewController Overrides
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let gradient: CAGradientLayer = CAGradientLayer()
+        gradient.frame = view.bounds
+        gradient.colors = ColorCollection.backgroundGradientColors
+        view.layer.insertSublayer(gradient, atIndex: 0)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBarHidden = true
+    }
+    
+    // MARK: Navigation
 
     @IBAction func onSelectContactTouched(sender: AnyObject) {
-        performSegueWithIdentifier(WelcomeViewController.toContactViewSegue, sender: nil)
+        
+        let contactPicker = CNContactPickerViewController()
+        contactPicker.delegate = self
+        presentViewController(contactPicker, animated: true, completion: nil)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if WelcomeViewController.toContactViewSegue == segue.identifier,
-            let viewController = segue.destinationViewController as? ContactViewController {
+            let viewController = segue.destinationViewController as? ContactViewController,
+            let contact = sender as? Contact {
                 
-                let contact = Contact()
-                contact.displayName = "T¨st Us¬r"
-                contact.emailAddress = "¥ssnn@å˙©.com"
-                contact.phoneNumber = "+65996484"
-                
-                viewController.contact = contact
+            viewController.contact = contact
         }
     }
     
+    func contactPicker(picker: CNContactPickerViewController, didSelectContact contact: CNContact) {
+        performSegueWithIdentifier(
+            WelcomeViewController.toContactViewSegue,
+            sender: Contact(c: contact)
+        )
+    }
 }
