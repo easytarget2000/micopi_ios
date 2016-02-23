@@ -10,6 +10,8 @@ import UIKit
 
 class ContactViewController: UIViewController {
     
+    @IBOutlet weak var previewImageView: UIImageView!
+    
     var contact: Contact?
 
     override func viewDidLoad() {
@@ -20,7 +22,7 @@ class ContactViewController: UIViewController {
     private func generateImage() {
         if let c = contact {
             let image = ImageFactory.init(contact: c).generateImage()
-            NSLog("\(image)")
+            previewImageView.image = image
         }
     }
 }

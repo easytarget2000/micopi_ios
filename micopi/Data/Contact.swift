@@ -19,8 +19,7 @@ class Contact {
     private var modification = 0
     
     
-    
-    var md5: String {
+    var md5: [Int] {
         get {
             var digest = [UInt8](count: Int(CC_MD5_DIGEST_LENGTH), repeatedValue: 0)
             
@@ -30,12 +29,14 @@ class Contact {
                 CC_MD5(data.bytes, CC_LONG(data.length), &digest)
             }
             
-            var digestHex = ""
-            for index in 0..<Int(CC_MD5_DIGEST_LENGTH) {
-                digestHex += String(format: "%02x", digest[index])
-            }
+            return digest.map { Int($0) }
             
-            return digestHex
+//            var digestHex = ""
+//            for index in 0..<Int(CC_MD5_DIGEST_LENGTH) {
+//                digestHex += String(format: "%02x", digest[index])
+//            }
+//            
+//            return digestHex.characters.map { $0.hashValue }
         }
         
     }

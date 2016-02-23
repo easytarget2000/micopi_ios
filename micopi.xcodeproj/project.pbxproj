@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D023E1411C7C7E1F00D465B4 /* CollorCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D023E1401C7C7E1F00D465B4 /* CollorCollection.swift */; };
 		D0B1389E1C7BB93C00E58407 /* ImageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B1389D1C7BB93C00E58407 /* ImageFactory.swift */; };
 		D0CA32B21C7BA87B007E7B0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CA32B11C7BA87B007E7B0F /* AppDelegate.swift */; };
 		D0CA32B71C7BA87B007E7B0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0CA32B51C7BA87B007E7B0F /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D023E1401C7C7E1F00D465B4 /* CollorCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollorCollection.swift; path = Engine/CollorCollection.swift; sourceTree = "<group>"; };
 		D0B1389D1C7BB93C00E58407 /* ImageFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageFactory.swift; path = Engine/ImageFactory.swift; sourceTree = "<group>"; };
 		D0CA32AE1C7BA87B007E7B0F /* micopi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = micopi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0CA32B11C7BA87B007E7B0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				D0B1389D1C7BB93C00E58407 /* ImageFactory.swift */,
+				D023E1401C7C7E1F00D465B4 /* CollorCollection.swift */,
 			);
 			name = Engine;
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 			files = (
 				D0B1389E1C7BB93C00E58407 /* ImageFactory.swift in Sources */,
 				D0CA32D01C7BB071007E7B0F /* WelcomeViewController.swift in Sources */,
+				D023E1411C7C7E1F00D465B4 /* CollorCollection.swift in Sources */,
 				D0CA32D21C7BB1F5007E7B0F /* ContactViewController.swift in Sources */,
 				D0CA32C51C7BAA82007E7B0F /* Contact.swift in Sources */,
 				D0CA32B21C7BA87B007E7B0F /* AppDelegate.swift in Sources */,
