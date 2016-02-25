@@ -61,6 +61,10 @@ class ColorCollection {
         return palette[i % (palette.count - 1)]
     }
     
+    static func color(i: Int, alpha: CGFloat) -> UIColor {
+        return palette[i % (palette.count - 1)].colorWithAlphaComponent(alpha)
+    }
+    
 }
 
 extension UIColor {

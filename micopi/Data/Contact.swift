@@ -10,7 +10,37 @@ import Contacts
 
 class Contact {
     
-    var displayName: String?
+    var nickname: String?
+    
+    var givenName: String?
+    
+    var middleName: String?
+    
+    var familyName: String?
+    
+    lazy var displayName: String? = {
+        if let nick = self.nickname where !nick.isEmpty {
+            return nick
+        }
+        
+        var constructedName = ""
+        
+        if let given = self.givenName where !given.isEmpty {
+            constructedName = given + " "
+        }
+        
+        if let middle = self.middleName where !middle.isEmpty {
+            constructedName += middle + " "
+        }
+        
+        if let family = self.familyName where !family.isEmpty {
+            constructedName += family
+        }
+        
+        return constructedName.stringByTrimmingCharactersInSet(
+            NSCharacterSet.whitespaceAndNewlineCharacterSet()
+        )
+    }()
     
     var emailAddress: String?
     
@@ -21,24 +51,11 @@ class Contact {
     private var modification = 0
     
     init(c: CNContact) {
-        if c.nickname.isEmpty {
-            var constructedName = ""
-            if !c.givenName.isEmpty {
-                constructedName = c.givenName + " "
-            }
-            
-            if !c.middleName.isEmpty {
-                constructedName += c.middleName + " "
-            }
-            
-            if !c.familyName.isEmpty {
-                constructedName += c.familyName
-            }
-            
-            displayName = constructedName
-        } else {
-            displayName = c.nickname
-        }
+        
+        nickname = c.nickname
+        givenName = c.givenName
+        middleName = c.middleName
+        familyName = c.familyName
         
         if let cnPhoneNumber = c.phoneNumbers[0].value as? CNPhoneNumber {
             phoneNumber = cnPhoneNumber.stringValue

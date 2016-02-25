@@ -143,6 +143,132 @@ class ImageFactory {
         CGContextFillRect(context, CGRectMake(offsetX, offsetY, sideLength, sideLength));
     }
     
+    // MARK: - Plates
+    
+    private func paintPlates() {
+        var angleOffset = CGFloat(0)
+        
+        var width = (CGFloat(contact.md5[7] * contact.md5[8]) / imageSize) * (imageSize * 1.2)
+        
+        let smallestWidth = CGFloat(imageSize / 300) * CGFloat(contact.md5[9])
+
+        var numberOfShapes = 3
+        if let displayName = contact.displayName {
+            numberOfShapes = displayName.characters.count
+            if numberOfShapes < 3 {
+                numberOfShapes = 3
+            } else if numberOfShapes > 9 {
+                numberOfShapes = 10
+            }
+        }
+        
+        let paintPolygon: Bool
+        var numberOfEdges = 0
+        
+        if (contact.md5[10] % 4) > 0 {
+            paintPolygon = true
+            if let firstWord = contact.givenName {
+                numberOfEdges = firstWord.characters.count
+            } else if let nick = contact.nickname {
+                numberOfEdges = nick.characters.count
+            }
+            
+            if numberOfEdges < 3 {
+                numberOfEdges = 3
+            } else if numberOfEdges > 10 {
+                numberOfEdges = 10
+            }
+        } else {
+            paintPolygon = false
+        }
+        
+        let extraDividend = CGFloat(contact.md5[11])
+        
+        var x = CGFloat(imageSize / 2)
+        var y = x
+        var md5Index = 0
+        var movement: Int
+        var floatMovement: CGFloat
+        
+        let alpha = CGFloat(0.7)
+        
+        for i in 0 ..< numberOfShapes{
+            if ++md5Index > 15 {
+                md5Index = 0
+            }
+            
+            movement = contact.md5[md5Index] + i * 3
+            floatMovement = CGFloat(movement)
+            
+            switch movement % 6 {
+            case 0:
+                x += floatMovement
+                y -= floatMovement * 2
+            case 1:
+                x -= floatMovement * 2
+                y += floatMovement
+            case 2:
+                x += floatMovement * 2
+            case 3:
+                y += floatMovement * 3
+            case 4:
+                x -= floatMovement * 2
+                y -= floatMovement
+            default:
+                x -= floatMovement
+                y -= floatMovement * 2
+            }
+            
+            if paintPolygon {
+                if numberOfEdges == 4 && movement % 3 == 0 {
+                    paintRoundedSquare(
+                        ColorCollection.color(contact.md5[md5Index], alpha: alpha).CGColor,
+                        x: x,
+                        y: y,
+                        width: width
+                    )
+                } else {
+                    angleOffset += extraDividend / floatMovement
+                    
+                    self.paintPolygon(
+                        ColorCollection.color(contact.md5[md5Index], alpha: alpha).CGColor,
+                        angleOffset: angleOffset,
+                        numberOfEdges: numberOfEdges,
+                        x: x,
+                        y: y,
+                        width: width
+                    )
+                }
+            } else {
+                paintCircle(
+                    ColorCollection.color(contact.md5[md5Index], alpha: alpha).CGColor,
+                    x: x,
+                    y: y,
+                    radius: width
+                )
+            }
+            
+            if width < smallestWidth {
+                width *= 1.3
+            } else {
+                width *= 0.6
+            }
+        }
+    }
+    
+    private func paintRoundedSquare(color: CGColor, x: CGFloat, y: CGFloat, width: CGFloat) {
+        
+    }
+    
+    private func paintPolygon(color: CGColor, angleOffset: CGFloat, numberOfEdges: Int, x: CGFloat, y: CGFloat, width: CGFloat) {
+        
+    }
+    
+    private func paintCircle(color: CGColor, x: CGFloat, y: CGFloat, radius: CGFloat) {
+        
+    }
+    // MARK: - Initials Circle
+    
     private func paintInitialsCircle(initials: String) {
         if let firstChar = initials.characters.first {
             // Use Palette colour based on first character minus specific values,
