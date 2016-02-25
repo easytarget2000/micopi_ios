@@ -8,20 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		D023E1411C7C7E1F00D465B4 /* CollorCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D023E1401C7C7E1F00D465B4 /* CollorCollection.swift */; };
-		D023E1511C7CEC7E00D465B4 /* ContactStoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D023E1501C7CEC7E00D465B4 /* ContactStoreViewController.swift */; };
+		D069FFB91C7F9CB70069B3F4 /* ContactPictureWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D069FFB81C7F9CB70069B3F4 /* ContactPictureWriter.swift */; };
+		D069FFBB1C7FB02D0069B3F4 /* ContactAccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D069FFBA1C7FB02D0069B3F4 /* ContactAccessViewController.swift */; };
 		D0B1389E1C7BB93C00E58407 /* ImageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B1389D1C7BB93C00E58407 /* ImageFactory.swift */; };
 		D0CA32B21C7BA87B007E7B0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CA32B11C7BA87B007E7B0F /* AppDelegate.swift */; };
 		D0CA32B71C7BA87B007E7B0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0CA32B51C7BA87B007E7B0F /* Main.storyboard */; };
 		D0CA32B91C7BA87B007E7B0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0CA32B81C7BA87B007E7B0F /* Assets.xcassets */; };
 		D0CA32BC1C7BA87B007E7B0F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0CA32BA1C7BA87B007E7B0F /* LaunchScreen.storyboard */; };
-		D0CA32C51C7BAA82007E7B0F /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CA32C41C7BAA82007E7B0F /* Contact.swift */; };
+		D0CA32C51C7BAA82007E7B0F /* MiContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CA32C41C7BAA82007E7B0F /* MiContact.swift */; };
 		D0CA32D01C7BB071007E7B0F /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CA32CF1C7BB071007E7B0F /* WelcomeViewController.swift */; };
-		D0CA32D21C7BB1F5007E7B0F /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CA32D11C7BB1F5007E7B0F /* ContactViewController.swift */; };
+		D0CA32D21C7BB1F5007E7B0F /* SingleContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CA32D11C7BB1F5007E7B0F /* SingleContactViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D023E1401C7C7E1F00D465B4 /* CollorCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollorCollection.swift; path = Engine/CollorCollection.swift; sourceTree = "<group>"; };
-		D023E1501C7CEC7E00D465B4 /* ContactStoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactStoreViewController.swift; sourceTree = "<group>"; };
+		D069FFB81C7F9CB70069B3F4 /* ContactPictureWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactPictureWriter.swift; path = Engine/ContactPictureWriter.swift; sourceTree = "<group>"; };
+		D069FFBA1C7FB02D0069B3F4 /* ContactAccessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactAccessViewController.swift; path = Views/ViewController/ContactAccessViewController.swift; sourceTree = "<group>"; };
 		D0B1389D1C7BB93C00E58407 /* ImageFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageFactory.swift; path = Engine/ImageFactory.swift; sourceTree = "<group>"; };
 		D0CA32AE1C7BA87B007E7B0F /* Micopi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Micopi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0CA32B11C7BA87B007E7B0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -29,10 +31,10 @@
 		D0CA32B81C7BA87B007E7B0F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D0CA32BB1C7BA87B007E7B0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D0CA32BD1C7BA87B007E7B0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D0CA32C41C7BAA82007E7B0F /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Contact.swift; path = Data/Contact.swift; sourceTree = "<group>"; };
+		D0CA32C41C7BAA82007E7B0F /* MiContact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MiContact.swift; path = Data/MiContact.swift; sourceTree = "<group>"; };
 		D0CA32C61C7BAB58007E7B0F /* micopi-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "micopi-Bridging-Header.h"; sourceTree = "<group>"; };
 		D0CA32CF1C7BB071007E7B0F /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WelcomeViewController.swift; path = Views/ViewController/WelcomeViewController.swift; sourceTree = "<group>"; };
-		D0CA32D11C7BB1F5007E7B0F /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactViewController.swift; path = Views/ViewController/ContactViewController.swift; sourceTree = "<group>"; };
+		D0CA32D11C7BB1F5007E7B0F /* SingleContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SingleContactViewController.swift; path = Views/ViewController/SingleContactViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,7 +83,8 @@
 		D0CA32C31C7BAA57007E7B0F /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				D0CA32C41C7BAA82007E7B0F /* Contact.swift */,
+				D0CA32C41C7BAA82007E7B0F /* MiContact.swift */,
+				D069FFB81C7F9CB70069B3F4 /* ContactPictureWriter.swift */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -106,9 +109,9 @@
 		D0CA32CC1C7BB026007E7B0F /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				D023E1501C7CEC7E00D465B4 /* ContactStoreViewController.swift */,
 				D0CA32CF1C7BB071007E7B0F /* WelcomeViewController.swift */,
-				D0CA32D11C7BB1F5007E7B0F /* ContactViewController.swift */,
+				D0CA32D11C7BB1F5007E7B0F /* SingleContactViewController.swift */,
+				D069FFBA1C7FB02D0069B3F4 /* ContactAccessViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -186,10 +189,11 @@
 			files = (
 				D0B1389E1C7BB93C00E58407 /* ImageFactory.swift in Sources */,
 				D0CA32D01C7BB071007E7B0F /* WelcomeViewController.swift in Sources */,
-				D023E1511C7CEC7E00D465B4 /* ContactStoreViewController.swift in Sources */,
+				D069FFB91C7F9CB70069B3F4 /* ContactPictureWriter.swift in Sources */,
+				D069FFBB1C7FB02D0069B3F4 /* ContactAccessViewController.swift in Sources */,
 				D023E1411C7C7E1F00D465B4 /* CollorCollection.swift in Sources */,
-				D0CA32D21C7BB1F5007E7B0F /* ContactViewController.swift in Sources */,
-				D0CA32C51C7BAA82007E7B0F /* Contact.swift in Sources */,
+				D0CA32D21C7BB1F5007E7B0F /* SingleContactViewController.swift in Sources */,
+				D0CA32C51C7BAA82007E7B0F /* MiContact.swift in Sources */,
 				D0CA32B21C7BA87B007E7B0F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

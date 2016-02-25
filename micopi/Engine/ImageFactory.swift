@@ -12,11 +12,11 @@ class ImageFactory {
     
     static let recommendedImageSize: CGFloat = 1600
     
-    let contact: Contact
+    let contact: MiContact
     
     let imageSize: CGFloat
     
-    init(contact: Contact, imageSize: CGFloat) {
+    init(contact: MiContact, imageSize: CGFloat) {
         self.contact = contact
         self.imageSize = imageSize
     }
@@ -32,17 +32,14 @@ class ImageFactory {
         // The background colour is based on the initial character of the Display Name.
         var displayedInitials = ""
         if let characters = contact.displayName?.characters, let firstChar = characters.first {
-//            CGContextSetFillColorWithColor(context, ColorCollection.color(firstChar.hashValue).CGColor);
             displayedInitials = String(firstChar)
-        } else {
-//            CGContextSetFillColorWithColor(context, UIColor.whiteColor().CGColor);
         }
         
         CGContextSetFillColorWithColor(context, UIColor.whiteColor().CGColor);
 
         CGContextFillRect(context, CGRectMake(0, 0, imageSize, imageSize));
         
-        paintPixeMatrix()
+        paintPlates()
         
         paintInitialsCircle(displayedInitials)
         
@@ -54,6 +51,8 @@ class ImageFactory {
         
         return newImage
     }
+    
+    // MARK: - Pixel Matrix
     
     private func paintPixeMatrix() {
         
@@ -148,7 +147,7 @@ class ImageFactory {
     private func paintPlates() {
         var angleOffset = CGFloat(0)
         
-        var width = (CGFloat(contact.md5[7] * contact.md5[8]) / imageSize) * (imageSize * 1.2)
+        var width = (CGFloat(contact.md5[7] * contact.md5[8]) / imageSize) * (imageSize * 1.7)
         
         let smallestWidth = CGFloat(imageSize / 300) * CGFloat(contact.md5[9])
 
@@ -167,10 +166,10 @@ class ImageFactory {
         
         if (contact.md5[10] % 4) > 0 {
             paintPolygon = true
-            if let firstWord = contact.givenName {
-                numberOfEdges = firstWord.characters.count
-            } else if let nick = contact.nickname {
-                numberOfEdges = nick.characters.count
+            if !contact.cn.nickname.isEmpty {
+                numberOfEdges = contact.cn.nickname.characters.count
+            } else if !contact.cn.givenName.isEmpty {
+                numberOfEdges = contact.cn.givenName.characters.count
             }
             
             if numberOfEdges < 3 {
@@ -184,13 +183,15 @@ class ImageFactory {
         
         let extraDividend = CGFloat(contact.md5[11])
         
-        var x = CGFloat(imageSize / 2)
+        var x = CGFloat(imageSize / 3)
         var y = x
         var md5Index = 0
         var movement: Int
         var floatMovement: CGFloat
         
         let alpha = CGFloat(0.7)
+        
+        enableShadows()
         
         for i in 0 ..< numberOfShapes{
             if ++md5Index > 15 {
@@ -234,8 +235,8 @@ class ImageFactory {
                         ColorCollection.color(contact.md5[md5Index], alpha: alpha).CGColor,
                         angleOffset: angleOffset,
                         numberOfEdges: numberOfEdges,
-                        x: x,
-                        y: y,
+                        centerX: x,
+                        centerY: y,
                         width: width
                     )
                 }
@@ -244,7 +245,7 @@ class ImageFactory {
                     ColorCollection.color(contact.md5[md5Index], alpha: alpha).CGColor,
                     x: x,
                     y: y,
-                    radius: width
+                    diameter: width * 1.5
                 )
             }
             
@@ -257,16 +258,49 @@ class ImageFactory {
     }
     
     private func paintRoundedSquare(color: CGColor, x: CGFloat, y: CGFloat, width: CGFloat) {
+        let path = UIBezierPath(
+            roundedRect: CGRectMake(x, y, width, width),
+            cornerRadius: imageSize / 50
+        )
         
+        CGContextAddPath(context, path.CGPath)
+        CGContextSetFillColorWithColor(context, color);
+        CGContextFillPath(context)
     }
     
-    private func paintPolygon(color: CGColor, angleOffset: CGFloat, numberOfEdges: Int, x: CGFloat, y: CGFloat, width: CGFloat) {
+    let floatingDoublePi = CGFloat(M_PI_2)
+    
+    private func paintPolygon(
+        color: CGColor,
+        angleOffset: CGFloat,
+        numberOfEdges: Int,
+        centerX: CGFloat,
+        centerY: CGFloat,
+        width: CGFloat
+    ) {
         
+        var angle: CGFloat
+        var x: CGFloat
+        var y: CGFloat
+        
+        var path = CGPathCreateMutable()
+        
+        for edge in 0 ..< numberOfEdges {
+            angle = floatingDoublePi * CGFloat(edge / numberOfEdges)
+            x = centerX + width * cos(angle + angleOffset)
+            y = centerY + width * sin(angle + angleOffset)
+            if edge == 0 {
+                CGPathMoveToPoint(path, nil, x, y)
+            } else {
+                CGPathAddLineToPoint(path, nil, x, y)
+            }
+        }
+        
+        CGContextAddPath(context, path)
+        CGContextSetFillColorWithColor(context, color);
+        CGContextFillPath(context)
     }
     
-    private func paintCircle(color: CGColor, x: CGFloat, y: CGFloat, radius: CGFloat) {
-        
-    }
     // MARK: - Initials Circle
     
     private func paintInitialsCircle(initials: String) {
@@ -279,19 +313,11 @@ class ImageFactory {
             if contact.md5[7] % 3 == 0 {
                 let diameter = radius * 2
                 let circlePosition = (imageSize - diameter) / 2
-                CGContextSetFillColorWithColor(
-                    context,
-                    ColorCollection.color(firstChar.hashValue - 11).colorWithAlphaComponent(0.3).CGColor
-                );
-                
-                CGContextFillEllipseInRect(
-                    context,
-                    CGRectMake(
-                        circlePosition,
-                        circlePosition,
-                        diameter,
-                        diameter
-                    )
+                paintCircle(
+                    ColorCollection.color(firstChar.hashValue - 11).colorWithAlphaComponent(0.3).CGColor,
+                    x: circlePosition,
+                    y: circlePosition,
+                    diameter: diameter
                 )
             }
             
@@ -315,12 +341,7 @@ class ImageFactory {
             // Then we can ask Core Graphics to replace the path with a stroked version:
             CGContextReplacePathWithStrokedPath(context);
             
-            CGContextSetShadowWithColor(
-                context,
-                CGSizeMake(0, thickness / 2),
-                thickness / 2,
-                UIColor.blackColor().colorWithAlphaComponent(0.3).CGColor
-            )
+            enableShadows()
             
             CGContextBeginTransparencyLayer(context, nil)
             
@@ -365,6 +386,40 @@ class ImageFactory {
                 ),
                 withAttributes: attributes
             )
+        }
+    }
+    
+    // MARK: - Frequently Used Shapes
+    
+    private func paintCircle(color: CGColor, x: CGFloat, y: CGFloat, diameter: CGFloat) {
+        CGContextSetFillColorWithColor(context, color);
+        
+        CGContextFillEllipseInRect(
+            context,
+            CGRectMake(
+                x,
+                y,
+                diameter,
+                diameter
+            )
+        )
+    }
+    
+    // MARK: - Shadow Settings
+    
+    var enabledShadows = false
+    
+    private func enableShadows() {
+        if !enabledShadows {
+            let thickness = CGFloat(imageSize) / 50
+            CGContextSetShadowWithColor(
+                context,
+                CGSizeMake(0, thickness / 2),
+                thickness / 2,
+                UIColor.blackColor().colorWithAlphaComponent(0.3).CGColor
+            )
+            
+            enabledShadows = true
         }
     }
     

@@ -6,10 +6,9 @@
 //  Copyright © 2016 Easy Target. All rights reserved.
 //
 
-import UIKit
 import ContactsUI
 
-class WelcomeViewController: UIViewController, CNContactPickerDelegate {
+class WelcomeViewController: ContactAccessViewController {
     
     private static let toContactViewSegue = "welcomeToContactSegue"
     
@@ -29,28 +28,37 @@ class WelcomeViewController: UIViewController, CNContactPickerDelegate {
         navigationController?.navigationBarHidden = true
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBarHidden = false
+    }
+    
     // MARK: Navigation
 
     @IBAction func onSelectContactTouched(sender: AnyObject) {
-        
-        let contactPicker = CNContactPickerViewController()
-        contactPicker.delegate = self
-        presentViewController(contactPicker, animated: true, completion: nil)
+        AppDelegate.getAppDelegate().requestForAccess {
+            () -> Void in
+            let contactPicker = CNContactPickerViewController()
+            contactPicker.delegate = self
+            self.presentViewController(contactPicker, animated: true, completion: nil)
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if WelcomeViewController.toContactViewSegue == segue.identifier,
-            let viewController = segue.destinationViewController as? ContactViewController,
-            let contact = sender as? Contact {
+            let viewController = segue.destinationViewController as? SingleContactViewController,
+            let contact = sender as? MiContact {
                 
             viewController.contact = contact
         }
     }
     
+    // MARK: - CNContactPickerDelegate
+    
     func contactPicker(picker: CNContactPickerViewController, didSelectContact contact: CNContact) {
         performSegueWithIdentifier(
             WelcomeViewController.toContactViewSegue,
-            sender: Contact(c: contact)
+            sender: MiContact(cn: contact)
         )
     }
 }
