@@ -18,12 +18,11 @@ class ContactPictureWriter {
         let newImageData = UIImagePNGRepresentation(factory.generateImage())
         
         mutant.imageData = newImageData
-        mutant.givenName += "1"
         
         do {
             let saveRequest = CNSaveRequest()
             
-            saveRequest.addContact(mutant, toContainerWithIdentifier: nil)
+            saveRequest.updateContact(mutant)
             try AppDelegate.getAppDelegate().contactStore.executeSaveRequest(saveRequest)
             
             return true
