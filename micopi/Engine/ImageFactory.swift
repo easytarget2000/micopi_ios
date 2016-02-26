@@ -32,9 +32,12 @@ class ImageFactory {
         context = UIGraphicsGetCurrentContext()
         CGContextFillRect(context, CGRectMake(0, 0, imageSize, imageSize))
         
+        
         // The background colour is based on the initial character of the Display Name.
+        let displayedInitials: String
+        let secondColor = ColorCollection.color(contact.md5[15]).CGColor
+
         if let firstChars = contact.displayName?.characters, let firstChar = firstChars.first {
-            let displayedInitials: String
             
             if let secondChar = contact.cn.familyName.characters.first {
                 displayedInitials = String(firstChar) + String(secondChar)
@@ -44,9 +47,8 @@ class ImageFactory {
                 displayedInitials = String(firstChar)
             }
             
-            let secondColor = ColorCollection.color(contact.md5[15]).CGColor
             let gradientColors = [
-                ColorCollection.color(firstChar.hashValue).CGColor,
+                ColorCollection.color(firstChar.intValue()).CGColor,
                 secondColor
             ]
             let backgroundGradient = CGGradientCreateWithColors(
@@ -62,9 +64,20 @@ class ImageFactory {
                 CGPoint(x: imageSize / 2, y: imageSize),
                 CGGradientDrawingOptions(rawValue: 0)
             )
-            paintInitialsCircle(displayedInitials, fillColor: secondColor)
+            
+            
+        } else {
+            displayedInitials = ""
         }
         
+        if contact.md5[0] % 3 == 0 {
+            paintPixelMatrix()
+        }
+        
+        paintTinyPolka()
+        
+        paintInitialsCircle(displayedInitials, fillColor: secondColor)
+
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         
         UIGraphicsEndImageContext()
@@ -72,6 +85,37 @@ class ImageFactory {
         context = nil
         
         return newImage
+    }
+    
+    // MARK: - Tiny Polka
+    
+    private func paintTinyPolka() {
+        
+        let numberOfRows = 30 + contact.md5[12] % 20
+        
+        let distanceToCellCenter = imageSize / CGFloat(numberOfRows)
+        let diameter = distanceToCellCenter * 0.66
+        let alpha = (CGFloat(contact.md5[13] % 5) / 10) + 0.5
+        let color = UIColor.whiteColor().colorWithAlphaComponent(alpha).CGColor
+                
+        var yOffset = CGFloat(0)
+        
+        for x in 0 ..< numberOfRows {
+            for y in 0 ..< numberOfRows {
+                paintCircle(
+                    color,
+                    x: CGFloat(x) * distanceToCellCenter,
+                    y: CGFloat(y) * distanceToCellCenter + yOffset,
+                    diameter: diameter
+                )
+            }
+            if x % 2 == 0 {
+                yOffset = distanceToCellCenter / 2
+            } else {
+                yOffset = 0
+            }
+        }
+        
     }
     
     // MARK: - Pixel Matrix
@@ -82,8 +126,8 @@ class ImageFactory {
         let color2 = ColorCollection.color(contact.md5[1])
         let color3 = ColorCollection.color(contact.md5[2])
         
-//        let numberOfSquares = (contact.md5[2] % 6) + 4
-        let numberOfSquares = 9
+        let numberOfSquares = (contact.md5[2] % 6) + 7
+//        let numberOfSquares = 9
         
         let sideLength = imageSize / CGFloat(numberOfSquares)
         
@@ -104,24 +148,24 @@ class ImageFactory {
 //                        sideLength: sideLength
 //                    )
                     
-                    if x % 3 == 0 {
-                        paintPixelSquare(
-                            color2,
-                            alpha: 155 - contact.md5[md5Index] % 100,
-                            x: 4,
-                            y: y,
-                            sideLength: sideLength
-                        )
-                    }
-                    if x % 2 == 0 {
+//                    if x == 0 && y > 0{
+//                        paintPixelSquare(
+//                            color2,
+//                            alpha: 255 - contact.md5[md5Index] % 100,
+//                            x: contact.md5[md5Index] % y,
+//                            y: y,
+//                            sideLength: sideLength
+//                        )
+//                    }
+//                    if x % 2 == 1 {
                         paintPixelSquare(
                             color3,
-                            alpha: 155 - contact.md5[md5Index] % 100,
-                            x: 3,
-                            y: y,
+                            alpha: 255 - contact.md5[md5Index] % 100,
+                            x: (y > 0) ? (contact.md5[md5Index] % y) : 0,
+                            y: (x > 0) ? (contact.md5[md5Index] % x) : 0,
                             sideLength: sideLength
                         )
-                    }
+//                    }
                 }
             }
         }
@@ -325,6 +369,9 @@ class ImageFactory {
     
     // MARK: - Initials Circle
     
+    let paintFilledCircle = false
+    let paintArc = true
+    
     private func paintInitialsCircle(initials: String, fillColor: CGColor) {
         
         // Use Palette colour based on first character minus specific values,
@@ -332,16 +379,20 @@ class ImageFactory {
         
         let radius = imageSize * 0.4
         
-        let diameter = radius * 2
-        let circlePosition = (imageSize - diameter) / 2
-        paintCircle(
-            fillColor,
-            x: circlePosition,
-            y: circlePosition,
-            diameter: diameter
-        )
-        
-//        paintInitialsArc(radius)
+        if paintFilledCircle {
+            let diameter = radius * 2
+            let circlePosition = (imageSize - diameter) / 2
+            paintCircle(
+                fillColor,
+                x: circlePosition,
+                y: circlePosition,
+                diameter: diameter
+            )
+        }
+
+        if paintArc {
+            paintInitialsArc(radius)
+        }
         
         let attributes = [
             NSFontAttributeName : UIFont.systemFontOfSize(imageSize * pow(0.66, CGFloat(initials.characters.count))),
@@ -443,4 +494,14 @@ class ImageFactory {
         }
     }
     
+}
+
+extension Character {
+    
+    func intValue() -> Int {
+        for s in String(self).unicodeScalars {
+            return Int(s.value)
+        }
+        return 0
+    }
 }

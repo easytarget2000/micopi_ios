@@ -27,8 +27,8 @@ class MiContact {
             constructedName = self.cn.givenName + " "
         }
         
-        if !self.cn.givenName.isEmpty {
-            constructedName += self.cn.givenName + " "
+        if !self.cn.middleName.isEmpty {
+            constructedName += self.cn.middleName + " "
         }
         
         if !self.cn.familyName.isEmpty {
