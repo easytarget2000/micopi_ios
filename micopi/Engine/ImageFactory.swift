@@ -23,25 +23,47 @@ class ImageFactory {
     
     weak var context: CGContext?
     
+    var rgb = CGColorSpaceCreateDeviceRGB()
+    
     func generateImage() -> UIImage {
         
         UIGraphicsBeginImageContext(CGSize.init(width: imageSize, height: imageSize))
         
         context = UIGraphicsGetCurrentContext()
+        CGContextFillRect(context, CGRectMake(0, 0, imageSize, imageSize))
         
         // The background colour is based on the initial character of the Display Name.
-        var displayedInitials = ""
-        if let characters = contact.displayName?.characters, let firstChar = characters.first {
-            displayedInitials = String(firstChar)
+        if let firstChars = contact.displayName?.characters, let firstChar = firstChars.first {
+            let displayedInitials: String
+            
+            if let secondChar = contact.cn.familyName.characters.first {
+                displayedInitials = String(firstChar) + String(secondChar)
+            } else if let secondChar = contact.cn.middleName.characters.first {
+                displayedInitials = String(firstChar) + String(secondChar)
+            } else {
+                displayedInitials = String(firstChar)
+            }
+            
+            let secondColor = ColorCollection.color(contact.md5[15]).CGColor
+            let gradientColors = [
+                ColorCollection.color(firstChar.hashValue).CGColor,
+                secondColor
+            ]
+            let backgroundGradient = CGGradientCreateWithColors(
+                rgb,
+                gradientColors,
+                [0.0, 0.66]
+            )
+            
+            CGContextDrawLinearGradient(
+                context,
+                backgroundGradient,
+                CGPoint(x: imageSize / 2, y: 0),
+                CGPoint(x: imageSize / 2, y: imageSize),
+                CGGradientDrawingOptions(rawValue: 0)
+            )
+            paintInitialsCircle(displayedInitials, fillColor: secondColor)
         }
-        
-        CGContextSetFillColorWithColor(context, UIColor.whiteColor().CGColor);
-
-        CGContextFillRect(context, CGRectMake(0, 0, imageSize, imageSize));
-        
-        paintPlates()
-        
-        paintInitialsCircle(displayedInitials)
         
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         
@@ -54,7 +76,7 @@ class ImageFactory {
     
     // MARK: - Pixel Matrix
     
-    private func paintPixeMatrix() {
+    private func paintPixelMatrix() {
         
 //        let color1 = ColorCollection.color(contact.md5[0])
         let color2 = ColorCollection.color(contact.md5[1])
@@ -303,90 +325,88 @@ class ImageFactory {
     
     // MARK: - Initials Circle
     
-    private func paintInitialsCircle(initials: String) {
-        if let firstChar = initials.characters.first {
-            // Use Palette colour based on first character minus specific values,
-            // so that background and circle colour are based on the initials but not the same.
-            
-            let radius = imageSize * 0.4
-
-            if contact.md5[7] % 3 == 0 {
-                let diameter = radius * 2
-                let circlePosition = (imageSize - diameter) / 2
-                paintCircle(
-                    ColorCollection.color(firstChar.hashValue - 11).colorWithAlphaComponent(0.3).CGColor,
-                    x: circlePosition,
-                    y: circlePosition,
-                    diameter: diameter
-                )
-            }
-            
-            let thickness = CGFloat(imageSize) / 50
-            
-            let startAngleOffset = Double(contact.md5[5] % 5)
-            let endAngleOffset = Double(contact.md5[6] % 4) - 7.0
-            
-            CGContextAddArc(
-                context,
-                imageSize / 2,
-                imageSize / 2,
-                radius,
-                CGFloat(-M_PI / (4.0 + startAngleOffset)),
-                CGFloat(-11.0 * M_PI / (4.0 + endAngleOffset)),
-                1
-            );
-            
-            CGContextSetLineWidth(context, thickness);
-            CGContextSetLineCap(context, CGLineCap.Round);
-            // Then we can ask Core Graphics to replace the path with a stroked version:
-            CGContextReplacePathWithStrokedPath(context);
-            
-            enableShadows()
-            
-            CGContextBeginTransparencyLayer(context, nil)
-            
-            let rgb = CGColorSpaceCreateDeviceRGB()
-            let gradientColors = [
-                ColorCollection.color(firstChar.hashValue - 4).CGColor,
-                ColorCollection.color(contact.md5[4]).colorWithAlphaComponent(0.2).CGColor
-            ]
-            let gradient = CGGradientCreateWithColors(
-                rgb,
-                gradientColors,
-                [0.0, 1.0]
-            )
-            
-            // We also need to figure out a start point and an end point for the gradient.
-            // We'll use the path bounding box:
-            let bbox = CGContextGetPathBoundingBox(context);
-            let start = bbox.origin;
-            let end = CGPointMake(CGRectGetMaxX(bbox), CGRectGetMaxY(bbox));
-            
-            CGContextClip(context)
-            
-            CGContextDrawLinearGradient(context, gradient, start, end, CGGradientDrawingOptions(rawValue: 0))
-            
-            CGContextEndTransparencyLayer(context)
-            
-            let string = "\(firstChar)" as NSString
-            
-            let attributes = [
-                NSFontAttributeName : UIFont.systemFontOfSize(imageSize * 0.75),
-                NSForegroundColorAttributeName : UIColor.whiteColor()
-            ]
-            
-            let stringSize = string.sizeWithAttributes(attributes)
-            
-            string.drawInRect(
-                CGRectMake(
-                    (imageSize - stringSize.width) / 2,
-                    (imageSize - stringSize.height) / 2,
-                    stringSize.width,
-                    stringSize.height
-                ),
-                withAttributes: attributes
-            )
-        }
+    private func paintInitialsCircle(initials: String, fillColor: CGColor) {
+        
+        // Use Palette colour based on first character minus specific values,
+        // so that background and circle colour are based on the initials but not the same.
+        
+        let radius = imageSize * 0.4
+        
+        let diameter = radius * 2
+        let circlePosition = (imageSize - diameter) / 2
+        paintCircle(
+            fillColor,
+            x: circlePosition,
+            y: circlePosition,
+            diameter: diameter
+        )
+        
+//        paintInitialsArc(radius)
+        
+        let attributes = [
+            NSFontAttributeName : UIFont.systemFontOfSize(imageSize * pow(0.66, CGFloat(initials.characters.count))),
+            NSForegroundColorAttributeName : UIColor.whiteColor()
+        ]
+        
+        let stringSize = initials.sizeWithAttributes(attributes)
+        
+        initials.drawInRect(
+            CGRectMake(
+                (imageSize - stringSize.width) / 2,
+                (imageSize - stringSize.height) / 2,
+                stringSize.width,
+                stringSize.height
+            ),
+            withAttributes: attributes
+        )
+    }
+    
+    private func paintInitialsArc(radius: CGFloat) {
+        let thickness = CGFloat(imageSize) / 50
+        
+        let startAngleOffset = Double(contact.md5[5] % 5)
+        let endAngleOffset = Double(contact.md5[6] % 4) - 7.0
+        
+        CGContextAddArc(
+            context,
+            imageSize / 2,
+            imageSize / 2,
+            radius,
+            CGFloat(-M_PI / (4.0 + startAngleOffset)),
+            CGFloat(-11.0 * M_PI / (4.0 + endAngleOffset)),
+            1
+        );
+        
+        CGContextSetLineWidth(context, thickness);
+        CGContextSetLineCap(context, CGLineCap.Round);
+        // Then we can ask Core Graphics to replace the path with a stroked version:
+        CGContextReplacePathWithStrokedPath(context);
+        
+//        enableShadows()
+        
+        CGContextBeginTransparencyLayer(context, nil)
+        
+        let gradientColors = [
+            ColorCollection.color(contact.md5[15]).CGColor,
+            ColorCollection.color(contact.md5[4]).colorWithAlphaComponent(0.2).CGColor
+        ]
+        let gradient = CGGradientCreateWithColors(
+            rgb,
+            gradientColors,
+            [0.0, 1.0]
+        )
+        
+        // We also need to figure out a start point and an end point for the gradient.
+        // We'll use the path bounding box:
+        let bbox = CGContextGetPathBoundingBox(context);
+        let start = bbox.origin;
+        let end = CGPointMake(CGRectGetMaxX(bbox), CGRectGetMaxY(bbox));
+        
+        CGContextClip(context)
+        
+        CGContextDrawLinearGradient(context, gradient, start, end, CGGradientDrawingOptions(rawValue: 0))
+        
+        CGContextEndTransparencyLayer(context)
     }
     
     // MARK: - Frequently Used Shapes
