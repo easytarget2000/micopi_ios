@@ -35,7 +35,7 @@ class ImageFactory {
         
         // The background colour is based on the initial character of the Display Name.
         let displayedInitials: String
-        let secondColor = ColorCollection.color(contact.md5[15]).CGColor
+        let secondColor = ColorCollection.color(contact.md5[15])
 
         if let firstChars = contact.displayName?.characters, let firstChar = firstChars.first {
             
@@ -49,7 +49,7 @@ class ImageFactory {
             
             let gradientColors = [
                 ColorCollection.color(firstChar.intValue()).CGColor,
-                secondColor
+                secondColor.CGColor
             ]
             let backgroundGradient = CGGradientCreateWithColors(
                 rgb,
@@ -70,11 +70,9 @@ class ImageFactory {
             displayedInitials = ""
         }
         
-        if contact.md5[0] % 3 == 0 {
-            paintPixelMatrix()
-        }
+//        paintPixelMatrix()
         
-        paintTinyPolka()
+        paintPolkaDots()
         
         paintInitialsCircle(displayedInitials, fillColor: secondColor)
 
@@ -89,13 +87,13 @@ class ImageFactory {
     
     // MARK: - Tiny Polka
     
-    private func paintTinyPolka() {
+    private func paintPolkaDots() {
         
         let numberOfRows = 30 + contact.md5[12] % 20
         
         let distanceToCellCenter = imageSize / CGFloat(numberOfRows)
         let diameter = distanceToCellCenter * 0.66
-        let alpha = (CGFloat(contact.md5[13] % 5) / 10) + 0.5
+        let alpha = (CGFloat(contact.md5[13] % 9) / 10) + 0.1
         let color = UIColor.whiteColor().colorWithAlphaComponent(alpha).CGColor
                 
         var yOffset = CGFloat(0)
@@ -122,50 +120,43 @@ class ImageFactory {
     
     private func paintPixelMatrix() {
         
-//        let color1 = ColorCollection.color(contact.md5[0])
+        let color1 = ColorCollection.color(contact.md5[0])
         let color2 = ColorCollection.color(contact.md5[1])
-        let color3 = ColorCollection.color(contact.md5[2])
         
-        let numberOfSquares = (contact.md5[2] % 6) + 7
-//        let numberOfSquares = 9
+        let numberOfSquares = (contact.md5[2] % 10) + 15
         
         let sideLength = imageSize / CGFloat(numberOfSquares)
         
-        var md5Index = 2
-        for y in 0 ..< numberOfSquares {
-            for x in 0 ..< numberOfSquares {
+        let leftAligned = (contact.md5[2] % 2) == 0
+        let topAligned = (contact.md5[3] % 2) == 0
+        
+        var md5Index = 3
+        var md5Value : Int
+        
+        for y in 1 ..< numberOfSquares {
+            for x in 1 ..< numberOfSquares {
                 
                 if ++md5Index >= 15 {
                     md5Index = 0
                 }
+                md5Value = contact.md5[md5Index]
                 
                 if ImageFactory.isOddParity(contact.md5[md5Index]) {
-//                    paintPixelSquare(
-//                        color1,
-//                        alpha: 50,
-//                        x: x,
-//                        y: y,
-//                        sideLength: sideLength
-//                    )
-                    
-//                    if x == 0 && y > 0{
-//                        paintPixelSquare(
-//                            color2,
-//                            alpha: 255 - contact.md5[md5Index] % 100,
-//                            x: contact.md5[md5Index] % y,
-//                            y: y,
-//                            sideLength: sideLength
-//                        )
-//                    }
-//                    if x % 2 == 1 {
                         paintPixelSquare(
-                            color3,
-                            alpha: 255 - contact.md5[md5Index] % 100,
-                            x: (y > 0) ? (contact.md5[md5Index] % y) : 0,
-                            y: (x > 0) ? (contact.md5[md5Index] % x) : 0,
+                            color1,
+                            alpha: 255 - (md5Value % 100),
+                            x: leftAligned ? (md5Value % y) : (numberOfSquares - (md5Value % y)),
+                            y: topAligned ? (md5Value % x) : (numberOfSquares - (md5Value % x)),
                             sideLength: sideLength
                         )
-//                    }
+                } else if (x % 2 == 0) {
+                    paintPixelSquare(
+                        color2,
+                        alpha: 255 - (md5Value % 100),
+                        x: leftAligned ? (md5Value % x) : (numberOfSquares - (md5Value % x)),
+                        y: topAligned ? (md5Value % y) : (numberOfSquares - (md5Value % y)),
+                        sideLength: sideLength
+                    )
                 }
             }
         }
@@ -213,9 +204,9 @@ class ImageFactory {
     private func paintPlates() {
         var angleOffset = CGFloat(0)
         
-        var width = (CGFloat(contact.md5[7] * contact.md5[8]) / imageSize) * (imageSize * 1.7)
+        var width = (CGFloat(contact.md5[0] * contact.md5[1]) / imageSize) * (imageSize * 1.7)
         
-        let smallestWidth = CGFloat(imageSize / 300) * CGFloat(contact.md5[9])
+        let smallestWidth = CGFloat(imageSize / 300) * CGFloat(contact.md5[2])
 
         var numberOfShapes = 3
         if let displayName = contact.displayName {
@@ -369,26 +360,37 @@ class ImageFactory {
     
     // MARK: - Initials Circle
     
-    let paintFilledCircle = false
     let paintArc = true
     
-    private func paintInitialsCircle(initials: String, fillColor: CGColor) {
+    private func paintInitialsCircle(initials: String, fillColor: UIColor) {
         
         // Use Palette colour based on first character minus specific values,
         // so that background and circle colour are based on the initials but not the same.
         
         let radius = imageSize * 0.4
         
-        if paintFilledCircle {
+        let filledCircleMode = contact.md5[8] % 3
+        if filledCircleMode != 0 {
+            
+            let adjustedFillColor: CGColor
+            if (filledCircleMode == 1) {
+                adjustedFillColor = fillColor.colorWithAlphaComponent(
+                    (CGFloat(contact.md5[9] % 8) / CGFloat(10)) + 0.1
+                ).CGColor
+            } else {
+                adjustedFillColor = fillColor.CGColor
+            }
+            
             let diameter = radius * 2
             let circlePosition = (imageSize - diameter) / 2
             paintCircle(
-                fillColor,
+                adjustedFillColor,
                 x: circlePosition,
                 y: circlePosition,
                 diameter: diameter
             )
         }
+
 
         if paintArc {
             paintInitialsArc(radius)
@@ -415,7 +417,7 @@ class ImageFactory {
     private func paintInitialsArc(radius: CGFloat) {
         let thickness = CGFloat(imageSize) / 50
         
-        let startAngleOffset = Double(contact.md5[5] % 5)
+        let startAngleOffset = Double(contact.md5[7] % 5)
         let endAngleOffset = Double(contact.md5[6] % 4) - 7.0
         
         CGContextAddArc(
@@ -423,8 +425,8 @@ class ImageFactory {
             imageSize / 2,
             imageSize / 2,
             radius,
-            CGFloat(-M_PI / (4.0 + startAngleOffset)),
-            CGFloat(-11.0 * M_PI / (4.0 + endAngleOffset)),
+            CGFloat(-M_PI / 4.0),
+            CGFloat(-11.0 * M_PI / 4.0 ),
             1
         );
         
