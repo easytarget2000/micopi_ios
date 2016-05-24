@@ -68,10 +68,10 @@ class MiContact {
     }
     
     func increaseModification() {
-        ++modification
+        modification += 1
     }
     
     func decreaseModification() {
-        --modification
+        modification -= 1
     }
 }

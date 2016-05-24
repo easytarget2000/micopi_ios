@@ -74,7 +74,11 @@ class ImageFactory {
         
         paintPolkaDots()
         
-        paintInitialsCircle(displayedInitials, fillColor: secondColor)
+        paintPlates()
+        
+        paintInitials(displayedInitials)
+        
+//        paintInitialsCircle(displayedInitials, fillColor: secondColor)
 
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         
@@ -89,7 +93,7 @@ class ImageFactory {
     
     private func paintPolkaDots() {
         
-        let numberOfRows = 30 + contact.md5[12] % 20
+        let numberOfRows = 20 + contact.md5[12] % 40
         
         let distanceToCellCenter = imageSize / CGFloat(numberOfRows)
         let diameter = distanceToCellCenter * 0.66
@@ -136,9 +140,12 @@ class ImageFactory {
         for y in 1 ..< numberOfSquares {
             for x in 1 ..< numberOfSquares {
                 
-                if ++md5Index >= 15 {
+                if md5Index > 15 {
                     md5Index = 0
+                } else {
+                    md5Index += 1
                 }
+                
                 md5Value = contact.md5[md5Index]
                 
                 if ImageFactory.isOddParity(contact.md5[md5Index]) {
@@ -168,7 +175,7 @@ class ImageFactory {
         
         for _ in 0 ..< 16 {
             if (bb & 1) != 0 {
-                bitCount++
+                bitCount += 1
             }
             bb >>= 1
         }
@@ -204,38 +211,22 @@ class ImageFactory {
     private func paintPlates() {
         var angleOffset = CGFloat(0)
         
-        var width = (CGFloat(contact.md5[0] * contact.md5[1]) / imageSize) * (imageSize * 1.7)
-        
-        let smallestWidth = CGFloat(imageSize / 300) * CGFloat(contact.md5[2])
+        var width = CGFloat(contact.md5[0] + contact.md5[1]) + (imageSize * 0.37)
+        let smallestWidth = width * 0.37
 
-        var numberOfShapes = 3
-        if let displayName = contact.displayName {
-            numberOfShapes = displayName.characters.count
-            if numberOfShapes < 3 {
-                numberOfShapes = 3
-            } else if numberOfShapes > 9 {
-                numberOfShapes = 10
-            }
+        let numberOfShapes = (contact.md5[1] % 2) + 2
+        
+        var numberOfEdges = 3
+        if !contact.cn.nickname.isEmpty {
+            numberOfEdges = contact.cn.nickname.characters.count
+        } else if !contact.cn.givenName.isEmpty {
+            numberOfEdges = contact.cn.givenName.characters.count
         }
         
-        let paintPolygon: Bool
-        var numberOfEdges = 0
-        
-        if (contact.md5[10] % 4) > 0 {
-            paintPolygon = true
-            if !contact.cn.nickname.isEmpty {
-                numberOfEdges = contact.cn.nickname.characters.count
-            } else if !contact.cn.givenName.isEmpty {
-                numberOfEdges = contact.cn.givenName.characters.count
-            }
-            
-            if numberOfEdges < 3 {
-                numberOfEdges = 3
-            } else if numberOfEdges > 10 {
-                numberOfEdges = 10
-            }
-        } else {
-            paintPolygon = false
+        if numberOfEdges < 3 {
+            numberOfEdges = 3
+        } else if numberOfEdges > 10 {
+            numberOfEdges = 10
         }
         
         let extraDividend = CGFloat(contact.md5[11])
@@ -243,20 +234,27 @@ class ImageFactory {
         var x = CGFloat(imageSize / 3)
         var y = x
         var md5Index = 0
-        var movement: Int
-        var floatMovement: CGFloat
+//        var movement: Int
+//        var floatMovement: CGFloat
         
-        let alpha = CGFloat(0.7)
+        let alpha: CGFloat
+        if contact.md5[7] % 3 == 0 {
+            alpha = 1.0
+        } else {
+            alpha = 0.5 + (CGFloat(contact.md5[8] % 10) / 5)
+        }
         
         enableShadows()
         
-        for i in 0 ..< numberOfShapes{
-            if ++md5Index > 15 {
+        for i in 0 ..< numberOfShapes {
+            if md5Index > 15 {
                 md5Index = 0
+            } else {
+                md5Index += 1
             }
             
-            movement = contact.md5[md5Index] + i * 3
-            floatMovement = CGFloat(movement)
+            let movement = contact.md5[md5Index] + i * 3
+            let floatMovement = CGFloat(movement)
             
             switch movement % 6 {
             case 0:
@@ -277,7 +275,7 @@ class ImageFactory {
                 y -= floatMovement * 2
             }
             
-            if paintPolygon {
+            if contact.md5[md5Index] % 4 != 0 {
                 if numberOfEdges == 4 && movement % 3 == 0 {
                     paintRoundedSquare(
                         ColorCollection.color(contact.md5[md5Index], alpha: alpha).CGColor,
@@ -288,7 +286,7 @@ class ImageFactory {
                 } else {
                     angleOffset += extraDividend / floatMovement
                     
-                    self.paintPolygon(
+                    paintPolygon(
                         ColorCollection.color(contact.md5[md5Index], alpha: alpha).CGColor,
                         angleOffset: angleOffset,
                         numberOfEdges: numberOfEdges,
@@ -302,14 +300,14 @@ class ImageFactory {
                     ColorCollection.color(contact.md5[md5Index], alpha: alpha).CGColor,
                     x: x,
                     y: y,
-                    diameter: width * 1.5
+                    diameter: width
                 )
             }
             
             if width < smallestWidth {
-                width *= 1.3
+                width *= 2
             } else {
-                width *= 0.6
+                width *= 0.66
             }
         }
     }
@@ -325,7 +323,7 @@ class ImageFactory {
         CGContextFillPath(context)
     }
     
-    let floatingDoublePi = CGFloat(M_PI_2)
+    let floatingDoublePi = CGFloat(M_PI * 2)
     
     private func paintPolygon(
         color: CGColor,
@@ -336,36 +334,52 @@ class ImageFactory {
         width: CGFloat
     ) {
         
-        var angle: CGFloat
-        var x: CGFloat
-        var y: CGFloat
+        let floatingNumberOfEdges = CGFloat(numberOfEdges)
         
-        var path = CGPathCreateMutable()
-        
+        let path = CGPathCreateMutable()
         for edge in 0 ..< numberOfEdges {
-            angle = floatingDoublePi * CGFloat(edge / numberOfEdges)
-            x = centerX + width * cos(angle + angleOffset)
-            y = centerY + width * sin(angle + angleOffset)
+            let angle = floatingDoublePi * CGFloat(edge) / floatingNumberOfEdges
+            
+            let x = centerX + width * cos(angle + angleOffset)
+            let y = centerY + width * sin(angle + angleOffset)
             if edge == 0 {
                 CGPathMoveToPoint(path, nil, x, y)
             } else {
                 CGPathAddLineToPoint(path, nil, x, y)
             }
         }
+        CGPathCloseSubpath(path)
         
         CGContextAddPath(context, path)
         CGContextSetFillColorWithColor(context, color);
         CGContextFillPath(context)
     }
-    
+
     // MARK: - Initials Circle
+    
+    private func paintInitials(initials: String) {
+        
+        let attributes = [
+            NSFontAttributeName : UIFont.systemFontOfSize(imageSize * pow(0.66, CGFloat(initials.characters.count))),
+            NSForegroundColorAttributeName : UIColor.whiteColor()
+        ]
+        
+        let stringSize = initials.sizeWithAttributes(attributes)
+        
+        initials.drawInRect(
+            CGRectMake(
+                (imageSize - stringSize.width) / 2,
+                (imageSize - stringSize.height) / 2,
+                stringSize.width,
+                stringSize.height
+            ),
+            withAttributes: attributes
+        )
+    }
     
     let paintArc = true
     
-    private func paintInitialsCircle(initials: String, fillColor: UIColor) {
-        
-        // Use Palette colour based on first character minus specific values,
-        // so that background and circle colour are based on the initials but not the same.
+    private func paintInitialsCircle(fillColor: UIColor) {
         
         let radius = imageSize * 0.4
         
@@ -391,27 +405,10 @@ class ImageFactory {
             )
         }
 
-
         if paintArc {
             paintInitialsArc(radius)
         }
-        
-        let attributes = [
-            NSFontAttributeName : UIFont.systemFontOfSize(imageSize * pow(0.66, CGFloat(initials.characters.count))),
-            NSForegroundColorAttributeName : UIColor.whiteColor()
-        ]
-        
-        let stringSize = initials.sizeWithAttributes(attributes)
-        
-        initials.drawInRect(
-            CGRectMake(
-                (imageSize - stringSize.width) / 2,
-                (imageSize - stringSize.height) / 2,
-                stringSize.width,
-                stringSize.height
-            ),
-            withAttributes: attributes
-        )
+
     }
     
     private func paintInitialsArc(radius: CGFloat) {
