@@ -10,6 +10,8 @@ import ContactsUI
 
 class WelcomeViewController: ContactAccessViewController {
     
+    @IBOutlet weak var pickerButton: UIButton!
+    
     private static let toContactViewSegue = "welcomeToContactSegue"
     
     // MARK: - UIViewController Overrides
@@ -21,6 +23,12 @@ class WelcomeViewController: ContactAccessViewController {
         gradient.frame = view.bounds
         gradient.colors = ColorCollection.backgroundGradientColors
         view.layer.insertSublayer(gradient, atIndex: 0)
+        
+        pickerButton.layer.cornerRadius = 4
+        pickerButton.layer.borderColor = UIColor.whiteColor().CGColor
+        pickerButton.layer.borderWidth = 1
+        pickerButton.layer.masksToBounds = true
+        
     }
     
     override func viewWillAppear(animated: Bool) {
