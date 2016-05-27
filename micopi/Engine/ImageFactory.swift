@@ -65,21 +65,24 @@ class ImageFactory {
                 CGGradientDrawingOptions(rawValue: 0)
             )
             
-            
         } else {
             displayedInitials = ""
         }
         
-//        paintPixelMatrix()
+        if contact.md5[14] % 2 == 0 {
+            paintPixelMatrix()
+        }
         
-        paintPolkaDots()
+        if contact.md5[13] % 2 == 0 {
+            paintPolkaDots()
+        }
         
-        paintPlates()
+        if contact.md5[12] % 2 == 0 {
+            paintPlates()
+        }
         
         paintInitials(displayedInitials)
         
-//        paintInitialsCircle(displayedInitials, fillColor: secondColor)
-
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         
         UIGraphicsEndImageContext()

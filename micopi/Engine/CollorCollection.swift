@@ -11,48 +11,59 @@ import UIKit
 class ColorCollection {
     
     static let palette = [
-        UIColor(netHex:0x00E676),
-        UIColor(netHex:0xFF9800),
-        UIColor(netHex:0xCDDC39),
-        UIColor(netHex:0xFFA000),
-        UIColor(netHex:0xFFAB40),
-        UIColor(netHex:0x7C4DFF),
-        UIColor(netHex:0x0288D1),
-        UIColor(netHex:0xD32F2F),
-        UIColor(netHex:0x29B6F6),
-        UIColor(netHex:0xFFF59D),
-        UIColor(netHex:0x34AADC),
-        UIColor(netHex:0xFFC107),
-        UIColor(netHex:0x7C4DFF),
-        UIColor(netHex:0xF44336),
-        UIColor(netHex:0xFFEB3B),
-        UIColor(netHex:0x2196F3),
-        UIColor(netHex:0xFF4081),
-        UIColor(netHex:0x536DFE),
-        UIColor(netHex:0xC2185B),
-        UIColor(netHex:0xF57C00),
-        UIColor(netHex:0x4CAF50),
-        UIColor(netHex:0x303F9F),
-        UIColor(netHex:0x3F51B5),
-        UIColor(netHex:0x03A9F4),
-        UIColor(netHex:0xAD1457),
-        UIColor(netHex:0xE64A19),
-        UIColor(netHex:0xFFF9C4),
-        UIColor(netHex:0xFF5722),
-        UIColor(netHex:0x00796B),
-        UIColor(netHex:0x009688),
-        UIColor(netHex:0xBBDEFB),
-        UIColor(netHex:0x55EFCB),
-        UIColor(netHex:0x80CBC4),
-        UIColor(netHex:0xFF5252),
-        UIColor(netHex:0x1976D2)
+        UIColor(netHex:0xFF00E676),
+        UIColor(netHex:0xFFFF9800),
+        UIColor(netHex:0xFFe6c484),
+        UIColor(netHex:0xFFCDDC39),
+        UIColor(netHex:0xFFf4c4ba),
+        UIColor(netHex:0xFFFFA000),
+        UIColor(netHex:0xFFFFAB40),
+        UIColor(netHex:0xFF9F9F9F),
+        UIColor(netHex:0xFF555555),
+        UIColor(netHex:0xFF7C4DFF),
+        UIColor(netHex:0xFF3f3c37),
+        UIColor(netHex:0xFF0288D1),
+        UIColor(netHex:0xFFD32F2F),
+        UIColor(netHex:0xFF29B6F6),
+        UIColor(netHex:0xFFFFF59D),
+        UIColor(netHex:0xFFFFC107),
+        UIColor(netHex:0xFF7C4DFF),
+        UIColor(netHex:0xFFF44336),
+        UIColor(netHex:0xFFe6c484),
+        UIColor(netHex:0xFF141414),
+        UIColor(netHex:0xFFFFEB3B),
+        UIColor(netHex:0xFF2196F3),
+        UIColor(netHex:0xFF777777),
+        UIColor(netHex:0xFFFF4081),
+        UIColor(netHex:0xFF536DFE),
+        UIColor(netHex:0xFFC2185B),
+        UIColor(netHex:0xFFF57C00),
+        UIColor(netHex:0xFF4CAF50),
+        UIColor(netHex:0xFFD3D3D3),
+        UIColor(netHex:0xFF303F9F),
+        UIColor(netHex:0xFFf0ebe5),
+        UIColor(netHex:0xFF3F51B5),
+        UIColor(netHex:0xFF03A9F4),
+        UIColor(netHex:0xFFAD1457),
+        UIColor(netHex:0xFFE64A19),
+        UIColor(netHex:0xFFFFF9C4),
+        UIColor(netHex:0xFFFF5722),
+        UIColor(netHex:0xFF00796B),
+        UIColor(netHex:0xFF009688),
+        UIColor(netHex:0xFFBBDEFB),
+        UIColor(netHex:0xFF80CBC4),
+        UIColor(netHex:0xFF524942),
+        UIColor(netHex:0xFF437478),
+        UIColor(netHex:0xFF009688),
+        UIColor(netHex:0xFFFF5252),
+        UIColor(netHex:0xFF1976D2)
     ]
-    
+
     static let backgroundGradientColors = [
         UIColor(netHex:0x55EFCB).CGColor,
         UIColor(netHex:0x34AADC).CGColor
     ]
-    
+
 //    static func color(i: Int) -> UIColor {
 //        return palette[i % (palette.count - 1)]
 //    }
@@ -77,7 +88,7 @@ extension UIColor {
         )
     }
     
-    convenience init(netHex:Int) {
+    convenience init(netHex: Int) {
         self.init(
             red:(netHex >> 16) & 0xff,
             green:(netHex >> 8) & 0xff,
