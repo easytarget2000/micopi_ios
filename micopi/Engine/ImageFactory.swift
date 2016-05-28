@@ -362,8 +362,8 @@ class ImageFactory {
     private func paintInitials(initials: String!) {
         
         let attributes = [
-//            NSFontAttributeName : UIFont.systemFontOfSize(imageSize * pow(0.66, CGFloat(initials.characters.count))),
-            NSFontAttributeName : UIFont.systemFontOfSize(12.0),
+            NSFontAttributeName : UIFont.systemFontOfSize(imageSize * pow(0.66, CGFloat(initials.characters.count))),
+//            NSFontAttributeName : UIFont.systemFontOfSize(12.0),
             NSForegroundColorAttributeName : UIColor.whiteColor()
         ]
         

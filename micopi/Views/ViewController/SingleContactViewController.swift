@@ -23,7 +23,7 @@ class SingleContactViewController: ContactAccessViewController {
             title: NSLocalizedString("Search", comment: "Select Contact"),
             style: UIBarButtonItemStyle.Plain,
             target: self,
-            action: "searchButtonTouched"
+            action: #selector(SingleContactViewController.searchButtonTouched)
         )
         
         generateImage()
@@ -46,7 +46,13 @@ class SingleContactViewController: ContactAccessViewController {
     private func generateImage() {
         contactNameLabel.text = contact!.displayName
         
-        let factory = ImageFactory.init(contact: contact!, imageSize: previewImageView.frame.size.width)
+        let viewWidth = previewImageView.frame.size.width
+        
+        let factory = ImageFactory.init(
+            contact: contact!,
+            imageSize: viewWidth > 600 ? viewWidth : 600
+        )
+        
         previewImageView.image = factory.generateImage()
     }
     

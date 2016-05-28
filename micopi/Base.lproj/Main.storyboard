@@ -140,7 +140,7 @@
                                 <action selector="previousButtonTouched:" destination="D0v-49-fFy" id="UOe-lw-TQK"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem width="64" style="plain" systemItem="fixedSpace" id="h5l-77-IEW"/>
+                        <barButtonItem width="32" style="plain" systemItem="fixedSpace" id="h5l-77-IEW"/>
                         <barButtonItem title="&gt;" id="mRI-5H-UJo">
                             <connections>
                                 <action selector="nextImageButtonTouched:" destination="D0v-49-fFy" id="gdt-Wr-rVg"/>

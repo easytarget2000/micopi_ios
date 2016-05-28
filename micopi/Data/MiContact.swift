@@ -67,16 +67,18 @@ class MiContact {
                 return ""
             }
             
-            let firstChars = displayName.characters
-            let firstChar = firstChars.first
-            
-            if let secondChar = self.cn.familyName.characters.first {
-                return String(firstChar) + String(secondChar)
-            } else if let secondChar = self.cn.middleName.characters.first {
-                return String(firstChar) + String(secondChar)
+            if let firstChar = displayName.characters.first {
+                if let secondChar = self.cn.familyName.characters.first {
+                    return String(firstChar) + String(secondChar)
+                } else if let secondChar = self.cn.middleName.characters.first {
+                    return String(firstChar) + String(secondChar)
+                } else {
+                    return String(firstChar)
+                }
             } else {
-                return String(firstChar)
+                return ""
             }
+            
         }
     }
     
