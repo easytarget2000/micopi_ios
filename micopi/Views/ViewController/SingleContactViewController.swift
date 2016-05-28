@@ -39,26 +39,14 @@ class SingleContactViewController: ContactAccessViewController {
         navigationController?.toolbarHidden = true
     }
     
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.Default
+    }
+    
     private func generateImage() {
-        guard let c = contact else {
-            NSLog("FAILURE: ContactViewController: Without Contact.")
-            navigationController?.popToRootViewControllerAnimated(true)
-            return
-        }
+        contactNameLabel.text = contact!.displayName
         
-        if let displayName = c.displayName {
-            contactNameLabel.text = displayName
-        } else if let email = c.emailAddress {
-            contactNameLabel.text = email
-        } else if let phoneNumber = c.phoneNumber {
-            contactNameLabel.text = phoneNumber
-        } else {
-            NSLog("FAILURE: ContactViewController: \(c) without data.")
-            navigationController?.popToRootViewControllerAnimated(true)
-            return
-        }
-        
-        let factory = ImageFactory.init(contact: c, imageSize: previewImageView.frame.size.width)
+        let factory = ImageFactory.init(contact: contact!, imageSize: previewImageView.frame.size.width)
         previewImageView.image = factory.generateImage()
     }
     

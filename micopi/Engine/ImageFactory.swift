@@ -32,25 +32,17 @@ class ImageFactory {
         context = UIGraphicsGetCurrentContext()
         CGContextFillRect(context, CGRectMake(0, 0, imageSize, imageSize))
         
-        
         // The background colour is based on the initial character of the Display Name.
-        let displayedInitials: String
+        let displayedInitials = contact.initials
         let secondColor = ColorCollection.color(contact.md5[15])
-
-        if let firstChars = contact.displayName?.characters, let firstChar = firstChars.first {
-            
-            if let secondChar = contact.cn.familyName.characters.first {
-                displayedInitials = String(firstChar) + String(secondChar)
-            } else if let secondChar = contact.cn.middleName.characters.first {
-                displayedInitials = String(firstChar) + String(secondChar)
-            } else {
-                displayedInitials = String(firstChar)
-            }
+//
+        if !displayedInitials.isEmpty, let firstChar = displayedInitials.characters.first {
             
             let gradientColors = [
                 ColorCollection.color(firstChar.intValue()).CGColor,
                 secondColor.CGColor
             ]
+            
             let backgroundGradient = CGGradientCreateWithColors(
                 rgb,
                 gradientColors,
@@ -64,24 +56,23 @@ class ImageFactory {
                 CGPoint(x: imageSize / 2, y: imageSize),
                 CGGradientDrawingOptions(rawValue: 0)
             )
-            
-        } else {
-            displayedInitials = ""
         }
         
         if contact.md5[14] % 2 == 0 {
             paintPixelMatrix()
         }
         
-        if contact.md5[13] % 2 == 0 {
-            paintPolkaDots()
-        }
-        
         if contact.md5[12] % 2 == 0 {
             paintPlates()
         }
         
-        paintInitials(displayedInitials)
+        if contact.md5[13] % 2 == 0 {
+            paintPolkaDots()
+        }
+        
+        if !displayedInitials.isEmpty {
+            paintInitials(displayedInitials)
+        }
         
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         
@@ -143,7 +134,7 @@ class ImageFactory {
         for y in 1 ..< numberOfSquares {
             for x in 1 ..< numberOfSquares {
                 
-                if md5Index > 15 {
+                if md5Index > 14 {
                     md5Index = 0
                 } else {
                     md5Index += 1
@@ -154,7 +145,7 @@ class ImageFactory {
                 if ImageFactory.isOddParity(contact.md5[md5Index]) {
                         paintPixelSquare(
                             color1,
-                            alpha: 255 - (md5Value % 100),
+                            alpha: 150 - (md5Value % 100),
                             x: leftAligned ? (md5Value % y) : (numberOfSquares - (md5Value % y)),
                             y: topAligned ? (md5Value % x) : (numberOfSquares - (md5Value % x)),
                             sideLength: sideLength
@@ -162,7 +153,7 @@ class ImageFactory {
                 } else if (x % 2 == 0) {
                     paintPixelSquare(
                         color2,
-                        alpha: 255 - (md5Value % 100),
+                        alpha: 150 - (md5Value % 100),
                         x: leftAligned ? (md5Value % x) : (numberOfSquares - (md5Value % x)),
                         y: topAligned ? (md5Value % y) : (numberOfSquares - (md5Value % y)),
                         sideLength: sideLength
@@ -237,15 +228,8 @@ class ImageFactory {
         var x = CGFloat(imageSize / 3)
         var y = x
         var md5Index = 0
-//        var movement: Int
-//        var floatMovement: CGFloat
         
-        let alpha: CGFloat
-        if contact.md5[7] % 3 == 0 {
-            alpha = 1.0
-        } else {
-            alpha = 0.5 + (CGFloat(contact.md5[8] % 10) / 5)
-        }
+        let alpha = 0.1 + (CGFloat(contact.md5[8] % 10) / 8)
         
         enableShadows()
         
@@ -293,6 +277,7 @@ class ImageFactory {
                         ColorCollection.color(contact.md5[md5Index], alpha: alpha).CGColor,
                         angleOffset: angleOffset,
                         numberOfEdges: numberOfEdges,
+                        drawBezierEdge: contact.md5[md5Index] % 2 == 0,
                         centerX: x,
                         centerY: y,
                         width: width
@@ -332,6 +317,7 @@ class ImageFactory {
         color: CGColor,
         angleOffset: CGFloat,
         numberOfEdges: Int,
+        drawBezierEdge: Bool,
         centerX: CGFloat,
         centerY: CGFloat,
         width: CGFloat
@@ -340,6 +326,8 @@ class ImageFactory {
         let floatingNumberOfEdges = CGFloat(numberOfEdges)
         
         let path = CGPathCreateMutable()
+        var lastX = CGFloat(0)
+        var lastY = CGFloat(0)
         for edge in 0 ..< numberOfEdges {
             let angle = floatingDoublePi * CGFloat(edge) / floatingNumberOfEdges
             
@@ -347,10 +335,21 @@ class ImageFactory {
             let y = centerY + width * sin(angle + angleOffset)
             if edge == 0 {
                 CGPathMoveToPoint(path, nil, x, y)
+            } else if drawBezierEdge {
+                if edge == 2 {
+                    let controlPointX = (x + centerX + lastX) / 3
+                    let controlPointY = (y + centerY + lastY) / 3
+                    CGPathAddQuadCurveToPoint(path, nil, controlPointX, controlPointY, x, y)
+                } else {
+                    CGPathAddLineToPoint(path, nil, x, y)
+                    lastX = x
+                    lastY = y
+                }
             } else {
                 CGPathAddLineToPoint(path, nil, x, y)
             }
         }
+        
         CGPathCloseSubpath(path)
         
         CGContextAddPath(context, path)
@@ -360,10 +359,11 @@ class ImageFactory {
 
     // MARK: - Initials Circle
     
-    private func paintInitials(initials: String) {
+    private func paintInitials(initials: String!) {
         
         let attributes = [
-            NSFontAttributeName : UIFont.systemFontOfSize(imageSize * pow(0.66, CGFloat(initials.characters.count))),
+//            NSFontAttributeName : UIFont.systemFontOfSize(imageSize * pow(0.66, CGFloat(initials.characters.count))),
+            NSFontAttributeName : UIFont.systemFontOfSize(12.0),
             NSForegroundColorAttributeName : UIColor.whiteColor()
         ]
         

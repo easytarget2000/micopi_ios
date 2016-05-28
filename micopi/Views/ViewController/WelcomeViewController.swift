@@ -41,6 +41,10 @@ class WelcomeViewController: ContactAccessViewController {
         navigationController?.navigationBarHidden = false
     }
     
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
+    
     // MARK: Navigation
 
     @IBAction func onSelectContactTouched(sender: AnyObject) {

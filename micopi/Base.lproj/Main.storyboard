@@ -19,17 +19,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="micopi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NVh-rl-Gef">
-                                <rect key="frame" x="236" y="128" width="130" height="53"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="micopi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NVh-rl-Gef">
+                                <rect key="frame" x="235" y="128" width="130" height="53"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="44"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fe5-YY-3pf">
-                                <rect key="frame" x="100" y="256" width="400" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="400" id="n84-Ky-kTf"/>
-                                </constraints>
+                                <rect key="frame" x="80" y="256" width="440" height="45"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                 <state key="normal" title="Select a Contact">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -40,23 +37,29 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="After selecting a contact, the generated picture will be previewed before assigning it to that person." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="41B-tj-dfh">
-                                <rect key="frame" x="28" y="309" width="544" height="41"/>
+                                <rect key="frame" x="80" y="309" width="440" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="28" y="409" width="344" height="61"/>
+                                </variation>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.20392156862745098" green="0.66666666666666663" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="Fe5-YY-3pf" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="22K-jJ-RiD"/>
+                            <constraint firstItem="Fe5-YY-3pf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="60" id="22K-jJ-RiD">
+                                <variation key="heightClass=regular-widthClass=compact" constant="8"/>
+                            </constraint>
                             <constraint firstItem="Fe5-YY-3pf" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="3sn-aL-Cje"/>
-                            <constraint firstItem="Fe5-YY-3pf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="97q-jw-Tf5"/>
-                            <constraint firstItem="41B-tj-dfh" firstAttribute="top" secondItem="Fe5-YY-3pf" secondAttribute="bottom" constant="8" id="C1Y-Wd-KdJ"/>
+                            <constraint firstItem="41B-tj-dfh" firstAttribute="top" secondItem="Fe5-YY-3pf" secondAttribute="bottom" constant="8" id="AqW-gJ-kJJ"/>
                             <constraint firstItem="NVh-rl-Gef" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Klf-8M-FMd"/>
-                            <constraint firstItem="41B-tj-dfh" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="8" id="eDk-NC-XaH"/>
-                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="Fe5-YY-3pf" secondAttribute="trailing" id="oHR-wD-TuT"/>
+                            <constraint firstItem="41B-tj-dfh" firstAttribute="trailing" secondItem="Fe5-YY-3pf" secondAttribute="trailing" id="TMK-hC-V01"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Fe5-YY-3pf" secondAttribute="trailing" constant="60" id="oHR-wD-TuT">
+                                <variation key="heightClass=regular-widthClass=compact" constant="8"/>
+                            </constraint>
                             <constraint firstItem="NVh-rl-Gef" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="64" id="sYC-cx-iYn"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="41B-tj-dfh" secondAttribute="trailing" constant="8" id="xZ2-6z-i3w"/>
+                            <constraint firstItem="41B-tj-dfh" firstAttribute="leading" secondItem="Fe5-YY-3pf" secondAttribute="leading" id="xWT-Ho-Lw8"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="wOV-UM-ar9"/>
@@ -137,6 +140,7 @@
                                 <action selector="previousButtonTouched:" destination="D0v-49-fFy" id="UOe-lw-TQK"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem width="64" style="plain" systemItem="fixedSpace" id="h5l-77-IEW"/>
                         <barButtonItem title="&gt;" id="mRI-5H-UJo">
                             <connections>
                                 <action selector="nextImageButtonTouched:" destination="D0v-49-fFy" id="gdt-Wr-rVg"/>
