@@ -21,7 +21,7 @@ class SingleContactViewController: ContactAccessViewController {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             title: NSLocalizedString("Search", comment: "Select Contact"),
-            style: UIBarButtonItemStyle.Plain,
+            style: UIBarButtonItemStyle.plain,
             target: self,
             action: #selector(SingleContactViewController.searchButtonTouched)
         )
@@ -29,21 +29,21 @@ class SingleContactViewController: ContactAccessViewController {
         generateImage()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.toolbarHidden = false
+        navigationController?.isToolbarHidden = false
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        navigationController?.toolbarHidden = true
+        navigationController?.isToolbarHidden = true
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.Default
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return UIStatusBarStyle.default
     }
     
-    private func generateImage() {
+    fileprivate func generateImage() {
         contactNameLabel.text = contact!.displayName
         
         let viewWidth = previewImageView.frame.size.width
@@ -58,21 +58,21 @@ class SingleContactViewController: ContactAccessViewController {
     
     // MARK: - Toolbar
     
-    @IBAction func previousButtonTouched(sender: AnyObject) {
+    @IBAction func previousButtonTouched(_ sender: AnyObject) {
         if let c = contact {
             c.decreaseModification()
             generateImage()
         }
     }
     
-    @IBAction func nextImageButtonTouched(sender: AnyObject) {
+    @IBAction func nextImageButtonTouched(_ sender: AnyObject) {
         if let c = contact {
             c.increaseModification()
             generateImage()
         }
     }
     
-    @IBAction func assignButtonTouched(sender: AnyObject) {
+    @IBAction func assignButtonTouched(_ sender: AnyObject) {
         AppDelegate.getAppDelegate().requestForAccess({
             () -> Void in
                 ContactPictureWriter.assign(self.contact!)
@@ -87,11 +87,11 @@ class SingleContactViewController: ContactAccessViewController {
             () -> Void in
             let contactPicker = CNContactPickerViewController()
             contactPicker.delegate = self
-            self.presentViewController(contactPicker, animated: true, completion: nil)
+            self.present(contactPicker, animated: true, completion: nil)
         }
     }
     
-    func contactPicker(picker: CNContactPickerViewController, didSelectContact contact: CNContact) {
+    func contactPicker(_ picker: CNContactPickerViewController, didSelectContact contact: CNContact) {
         self.contact = MiContact(cn: contact)
         generateImage()
     }

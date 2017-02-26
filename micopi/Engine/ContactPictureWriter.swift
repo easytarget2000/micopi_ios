@@ -10,7 +10,7 @@ import ContactsUI
 
 class ContactPictureWriter {
     
-    static func assign(contact: MiContact) -> Bool {
+    static func assign(_ contact: MiContact) -> Bool {
         let mutant = contact.cn.mutableCopy() as! CNMutableContact
         
         let factory = ImageFactory.init(contact: contact, imageSize: ImageFactory.recommendedImageSize)
@@ -22,8 +22,8 @@ class ContactPictureWriter {
         do {
             let saveRequest = CNSaveRequest()
             
-            saveRequest.updateContact(mutant)
-            try AppDelegate.getAppDelegate().contactStore.executeSaveRequest(saveRequest)
+            saveRequest.update(mutant)
+            try AppDelegate.getAppDelegate().contactStore.execute(saveRequest)
             
             return true
         }

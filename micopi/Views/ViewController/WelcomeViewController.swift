@@ -12,7 +12,7 @@ class WelcomeViewController: ContactAccessViewController {
     
     @IBOutlet weak var pickerButton: UIButton!
     
-    private static let toContactViewSegue = "welcomeToContactSegue"
+    fileprivate static let toContactViewSegue = "welcomeToContactSegue"
     
     // MARK: - UIViewController Overrides
     
@@ -22,43 +22,43 @@ class WelcomeViewController: ContactAccessViewController {
         let gradient: CAGradientLayer = CAGradientLayer()
         gradient.frame = view.bounds
         gradient.colors = ColorCollection.backgroundGradientColors
-        view.layer.insertSublayer(gradient, atIndex: 0)
+        view.layer.insertSublayer(gradient, at: 0)
         
         pickerButton.layer.cornerRadius = 4
-        pickerButton.layer.borderColor = UIColor.whiteColor().CGColor
+        pickerButton.layer.borderColor = UIColor.white.cgColor
         pickerButton.layer.borderWidth = 1
         pickerButton.layer.masksToBounds = true
         
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBarHidden = true
+        navigationController?.isNavigationBarHidden = true
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        navigationController?.navigationBarHidden = false
+        navigationController?.isNavigationBarHidden = false
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return UIStatusBarStyle.lightContent
     }
     
     // MARK: Navigation
 
-    @IBAction func onSelectContactTouched(sender: AnyObject) {
+    @IBAction func onSelectContactTouched(_ sender: AnyObject) {
         AppDelegate.getAppDelegate().requestForAccess {
             () -> Void in
             let contactPicker = CNContactPickerViewController()
             contactPicker.delegate = self
-            self.presentViewController(contactPicker, animated: true, completion: nil)
+            self.present(contactPicker, animated: true, completion: nil)
         }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if WelcomeViewController.toContactViewSegue == segue.identifier,
-            let viewController = segue.destinationViewController as? SingleContactViewController,
+            let viewController = segue.destination as? SingleContactViewController,
             let contact = sender as? MiContact {
                 
             viewController.contact = contact
@@ -67,9 +67,9 @@ class WelcomeViewController: ContactAccessViewController {
     
     // MARK: - CNContactPickerDelegate
     
-    func contactPicker(picker: CNContactPickerViewController, didSelectContact contact: CNContact) {
-        performSegueWithIdentifier(
-            WelcomeViewController.toContactViewSegue,
+    func contactPicker(_ picker: CNContactPickerViewController, didSelectContact contact: CNContact) {
+        performSegue(
+            withIdentifier: WelcomeViewController.toContactViewSegue,
             sender: MiContact(cn: contact)
         )
     }

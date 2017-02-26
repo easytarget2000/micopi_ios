@@ -36,16 +36,16 @@ class MiContact {
         }
         
         if constructedName.isEmpty {
-            if let email = self.emailAddress where !email.isEmpty {
+            if let email = self.emailAddress, !email.isEmpty {
                 return email
-            } else if let phone = self.phoneNumber where !phone.isEmpty {
+            } else if let phone = self.phoneNumber, !phone.isEmpty {
                 return phone
             } else {
                 return ""
             }
         } else {
-            return constructedName.stringByTrimmingCharactersInSet(
-                NSCharacterSet.whitespaceAndNewlineCharacterSet()
+            return constructedName.trimmingCharacters(
+                in: CharacterSet.whitespacesAndNewlines
             )
         }
         
@@ -82,16 +82,16 @@ class MiContact {
         }
     }
     
-    private var modification = 0
+    fileprivate var modification = 0
     
     var md5: [Int] {
         get {
             let info = "\(displayName)___\(emailAddress)___\(phoneNumber)___\(modification)"
-            let data = info.dataUsingEncoding(NSUTF8StringEncoding)!
+            let data = info.data(using: String.Encoding.utf8)!
             
-            var digest = [UInt8](count: Int(CC_MD5_DIGEST_LENGTH), repeatedValue: 0)
+            var digest = [UInt8](repeating: 0, count: Int(CC_MD5_DIGEST_LENGTH))
 
-            CC_MD5(data.bytes, CC_LONG(data.length), &digest)
+            CC_MD5((data as NSData).bytes, CC_LONG(data.count), &digest)
             
             return digest.map { Int($0) }
         }
