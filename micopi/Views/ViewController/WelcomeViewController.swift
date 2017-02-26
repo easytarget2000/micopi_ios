@@ -19,10 +19,10 @@ class WelcomeViewController: ContactAccessViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let gradient: CAGradientLayer = CAGradientLayer()
-        gradient.frame = view.bounds
-        gradient.colors = ColorCollection.backgroundGradientColors
-        view.layer.insertSublayer(gradient, at: 0)
+//        let gradient: CAGradientLayer = CAGradientLayer()
+//        gradient.frame = view.bounds
+//        gradient.colors = ColorCollection.backgroundGradientColors
+//        view.layer.insertSublayer(gradient, at: 0)
         
         pickerButton.layer.cornerRadius = 4
         pickerButton.layer.borderColor = UIColor.white.cgColor

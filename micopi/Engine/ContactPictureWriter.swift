@@ -13,7 +13,7 @@ class ContactPictureWriter {
     static func assign(_ contact: MiContact) -> Bool {
         let mutant = contact.cn.mutableCopy() as! CNMutableContact
         
-        let factory = ImageFactory.init(contact: contact, imageSize: ImageFactory.recommendedImageSize)
+        let factory = ImageFactory.init(contact: contact)
         
         let newImageData = UIImagePNGRepresentation(factory.generateImage())
         

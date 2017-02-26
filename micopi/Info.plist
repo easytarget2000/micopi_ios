@@ -43,5 +43,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+    <key>NSContactsUsageDescription</key>
+    <string>Please allow Micopi access to your contacts to select an entry and preview the image.</string>
 </dict>
 </plist>
