@@ -61,8 +61,11 @@ class ImageFactory {
         let foliage = Foliage.init(imageSize: Float(imageSize), mirroredMode: mirrored)
         foliage.start(inCircleAtX: imageSizeHalf, atY: imageSizeHalf)
         
-        let color1 = UIColor.black.withAlphaComponent(0.2).cgColor
-        let color2 = ColorPalette.randomColor(withAlpha: 0.2).cgColor
+//        let color1 = UIColor.black.withAlphaComponent(0.2).cgColor
+        let alpha: CGFloat = mirrored ? 0.4 : 0.2
+        
+        let color1 = ColorPalette.randomColor(withAlpha: alpha).cgColor
+        let color2 = ColorPalette.randomColor(withAlpha: alpha).cgColor
         
         while foliage.updateAndDraw(
             inContext: context,

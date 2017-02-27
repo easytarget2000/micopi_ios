@@ -11,7 +11,7 @@ import UIKit
 
 class Foliage {
     
-    fileprivate static let numberOfInitialNodes = 40
+    fileprivate static let numberOfInitialNodes = Int(drand48() * 24) + 24
     
     fileprivate static let maxAge = 48
     
@@ -81,7 +81,7 @@ class Foliage {
     }
     
     func start(inCircleAtX x: Float, atY y: Float) {
-        let initialRadius = imageSize * 0.1
+        let initialRadius = imageSize * (Float(drand48() * 0.01) + 0.01)
 
         var lastNode: Node!
         for i in 0 ..< Foliage.numberOfInitialNodes {
