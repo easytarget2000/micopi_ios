@@ -46,8 +46,8 @@ class ImageFactory {
         let foliage = Foliage.init(imageSize: Float(imageSize), mirroredMode: false)
         foliage.start(inCircleAtX: imageSizeHalf, atY: imageSizeHalf)
         
-        let color1 = randomColor(withAlpha: 0.1)
-        let color2 = randomColor(withAlpha: 0.1)
+        let color1 = randomColor(withAlpha: 1)
+        let color2 = randomColor(withAlpha: 1)
         
         while foliage.updateAndDraw(inContext: context, withColor1: color1.cgColor, color2: color2.cgColor) {
             
@@ -60,7 +60,7 @@ class ImageFactory {
             
 //            context.setBlendMode(.clear)
             
-            paintInitials(displayedInitials)
+//            paintInitials(displayedInitials)
 //            context.setBlendMode(.normal)
         }
         

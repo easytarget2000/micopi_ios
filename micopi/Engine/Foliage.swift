@@ -11,11 +11,11 @@ import UIKit
 
 class Foliage {
     
-    fileprivate static let numberOfInitialNodes = 20
+    fileprivate static let numberOfInitialNodes = 40
     
     fileprivate static let maxAge = 64
     
-    fileprivate static let maxNewNodes = 0
+    fileprivate static let maxNewNodes = 32
     
     fileprivate static let pushForce = Float(2)
     
@@ -63,14 +63,21 @@ class Foliage {
     
     fileprivate var age = 0
     
-    fileprivate var density = 16
+    fileprivate lazy var density: Int = {
+       return Foliage.maxNewNodes / (Int(drand48() * 8.0) + 6)
+    }()
     
     fileprivate var firstNode: Node!
     
     init(imageSize: Float, mirroredMode: Bool) {
         self.imageSize = imageSize
         self.mirrored = mirroredMode
-        self.drawRects = !mirroredMode && false //
+        self.drawRects = !mirroredMode && false
+        
+        #if DEBUG
+            NSLog("Foliage: DEBUG: Image size: \(imageSize)")
+            NSLog("Foliage: DEBUG: Density: \(density)")
+        #endif
     }
     
     func start(inCircleAtX x: Float, atY y: Float) {
@@ -94,10 +101,6 @@ class Foliage {
             } else {
                 lastNode.next = node
                 lastNode = node
-                
-                
-                let testAngle = node.angle(toOtherNode: Node(x: x, y: y))
-                NSLog("Expected angle: \(angleOfNode), Calculated: \(testAngle)")
             }
             
         }
@@ -111,17 +114,18 @@ class Foliage {
         
         context.setLineWidth(1)
         context.setFillColor(color1)
-        context.beginPath()
-        context.move(to: firstNode.point())
+//        context.beginPath()
+//        context.move(to: firstNode.point())
         
 //        let path = UIBezierPath()
 //        path.move(to: firstNode.point())
         
         var currentNode = firstNode!
+        var numberOfNewNodes = 0
         repeat {
             
-            context.beginPath()
-            context.move(to: currentNode.point())
+//            context.beginPath()
+//            context.move(to: currentNode.point())
             
             guard let nextNode = currentNode.next else {
                 break
@@ -130,19 +134,20 @@ class Foliage {
             currentNode = nextNode
             nodeCounter += 1
 
-            context.addLine(to: currentNode.point())
+//            context.addLine(to: currentNode.point())
             
-            context.setStrokeColor(color2)
-            context.closePath()
-            context.drawPath(using: CGPathDrawingMode.stroke)
+//            context.setStrokeColor(color2)
+//            context.closePath()
+//            context.drawPath(using: CGPathDrawingMode.stroke)
 //            path.addLine(to: currentNode.point())
-//            context.fill(currentNode.rect())
-//            currentNode.draw(mirroredInContext: context, withSize: cgImageSize)
+//            context.fill(CGRect(x: currentNode.cgX(), y: currentNode.cgY(), width: 1, height: 1))
+            currentNode.draw(mirroredInContext: context, withSize: cgImageSize)
             
             // Update:
             
-            if nodeCounter < Foliage.maxNewNodes && nodeCounter % density == 0 {
+            if numberOfNewNodes < Foliage.maxNewNodes && nodeCounter % density == 0 {
                 add(nodeNextTo: currentNode)
+                numberOfNewNodes += 1
             }
             
             update(node: currentNode)
@@ -198,9 +203,9 @@ class Foliage {
             let force: Float
             if otherNode === currentNode.next {
                 if distance > preferredNeighborDistance {
-                    force = preferredNeighborDistanceHalf
+                    force = -preferredNeighborDistanceHalf
                 } else {
-                    force = -neighborGravity
+                    force = neighborGravity
                 }
             } else {
                 
