@@ -153,9 +153,11 @@ class Foliage {
                 break
             }
             
-            context.addLine(to: nextNode.point())
-            context.closePath()
-            context.drawPath(using: CGPathDrawingMode.stroke)
+            if !mirrored {
+                context.addLine(to: nextNode.point())
+                context.closePath()
+                context.drawPath(using: CGPathDrawingMode.stroke)
+            }
             
             // Update:
             
