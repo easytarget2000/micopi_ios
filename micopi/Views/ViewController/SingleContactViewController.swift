@@ -14,7 +14,11 @@ class SingleContactViewController: ContactAccessViewController {
     
     @IBOutlet weak var contactNameLabel: UILabel!
     
-    var contact: MiContact?
+    @IBOutlet weak var loadingOverlay: UIView!
+    
+    @IBOutlet weak var messageLabel: UILabel!
+    
+    var contact: MiContact!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +48,8 @@ class SingleContactViewController: ContactAccessViewController {
     }
     
     fileprivate func generateImage() {
+        showLoadingOverlay()
+        
         contactNameLabel.text = contact!.displayName
         
         let viewWidth = previewImageView.frame.size.width
@@ -53,7 +59,67 @@ class SingleContactViewController: ContactAccessViewController {
             imageSize: viewWidth > 600 ? viewWidth : 600
         )
         
-        previewImageView.image = factory.generateImage()
+        factory.generateImage {
+            (generatedImage) in
+            
+            self.previewImageView.image = generatedImage
+            self.hideLoadingOverlay()
+        }
+        
+    }
+    
+    fileprivate func showLoadingOverlay() {
+        showLoadingOverlay(
+            withMessage: NSLocalizedString("general_wait_msg", comment: "Please wait...")
+        )
+    }
+    
+    fileprivate func showLoadingOverlay(withMessage message: String) {
+//        loadingOverlay.backgroundColor = ColorPalette.randomColor(withAlpha: 1)
+        
+        self.view.isUserInteractionEnabled = false
+        
+        let gradient: CAGradientLayer = CAGradientLayer()
+        gradient.frame = self.view.bounds
+        gradient.colors = ColorPalette.backgroundGradient
+        loadingOverlay.layer.insertSublayer(gradient, at: 0)
+        
+        loadingOverlay.alpha = 1
+        loadingOverlay.isHidden = false
+        
+        messageLabel.text = message
+    }
+    
+    fileprivate func hideLoadingOverlay() {
+        UIView.animate(
+            withDuration: 1,
+            animations: {
+                self.loadingOverlay.alpha = 0
+            },
+            completion: {
+                (_) in
+                self.setLoadingOverlayHidden()
+            }
+        )
+    }
+    
+    fileprivate func hideLoadingOverlayDelayed() {
+        UIView.animate(
+            withDuration: 2,
+            delay: 2,
+            animations: {
+                self.loadingOverlay.alpha = 0
+            },
+            completion: {
+                (_) in
+                self.setLoadingOverlayHidden()
+            }
+        )
+    }
+    
+    fileprivate func setLoadingOverlayHidden() {
+        self.loadingOverlay.isHidden = true
+        self.view.isUserInteractionEnabled = true
     }
     
     // MARK: - Toolbar
@@ -75,9 +141,31 @@ class SingleContactViewController: ContactAccessViewController {
     @IBAction func assignButtonTouched(_ sender: AnyObject) {
         AppDelegate.getAppDelegate().requestForAccess({
             () -> Void in
-                ContactPictureWriter.assign(self.contact!)
-            }
+            self.assignImage()
+        })
+    }
+    
+    fileprivate func assignImage() {
+        let didAssign = ContactPictureWriter.assign(
+            self.previewImageView.image!,
+            toContact: self.contact!
         )
+        
+        let message: String
+        if didAssign {
+            message = String(
+                format: NSLocalizedString("single_did_assign", comment: "Did assign to %s"),
+                contact.displayName
+            )
+        } else {
+            message = String(
+                format: NSLocalizedString("single_error_assign", comment: "Did not assign to %s"),
+                contact.displayName
+            )
+        }
+        
+        showLoadingOverlay(withMessage: message)
+        hideLoadingOverlayDelayed()
     }
     
     // MARK: - Contact Picker

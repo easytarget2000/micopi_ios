@@ -10,12 +10,12 @@ import ContactsUI
 
 class ContactPictureWriter {
     
-    static func assign(_ contact: MiContact) -> Bool {
+    static func assign(_ image: UIImage, toContact contact: MiContact) -> Bool {
         let mutant = contact.cn.mutableCopy() as! CNMutableContact
         
-        let factory = ImageFactory.init(contact: contact)
+//        let factory = ImageFactory.init(contact: contact)
         
-        let newImageData = UIImagePNGRepresentation(factory.generateImage())
+        let newImageData = UIImagePNGRepresentation(image)
         
         mutant.imageData = newImageData
         

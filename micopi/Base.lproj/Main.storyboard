@@ -121,18 +121,38 @@
                                     <constraint firstAttribute="width" secondItem="xhI-tg-PzG" secondAttribute="height" multiplier="1:1" id="Trp-kz-rjA"/>
                                 </constraints>
                             </imageView>
+                            <view hidden="YES" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f4c-fL-5Hn" userLabel="LoadingOverlay">
+                                <rect key="frame" x="-0.5" y="-0.5" width="375" height="623"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please wait..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d3v-4e-taS" userLabel="MessageLabel">
+                                        <rect key="frame" x="137.5" y="300.5" width="100" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.20392156859999999" green="0.66666666669999997" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="d3v-4e-taS" firstAttribute="centerY" secondItem="f4c-fL-5Hn" secondAttribute="centerY" id="FND-zL-fj7"/>
+                                    <constraint firstItem="d3v-4e-taS" firstAttribute="centerX" secondItem="f4c-fL-5Hn" secondAttribute="centerX" id="ivU-sx-SsQ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="Nwj-aR-fug" secondAttribute="trailing" id="0aU-ii-gNl"/>
                             <constraint firstItem="xhI-tg-PzG" firstAttribute="top" secondItem="Imb-oQ-vef" secondAttribute="bottom" constant="-7" id="4UV-pj-b15"/>
+                            <constraint firstItem="f4c-fL-5Hn" firstAttribute="centerX" secondItem="b96-V1-qXf" secondAttribute="centerX" id="Df1-Lm-PeT"/>
+                            <constraint firstItem="f4c-fL-5Hn" firstAttribute="height" secondItem="b96-V1-qXf" secondAttribute="height" id="Dql-7X-l0z"/>
                             <constraint firstItem="DE8-bc-utL" firstAttribute="leading" secondItem="Nwj-aR-fug" secondAttribute="leading" id="DrP-tw-Fv6"/>
                             <constraint firstItem="DE8-bc-utL" firstAttribute="top" secondItem="Nwj-aR-fug" secondAttribute="bottom" constant="8" id="Ht6-O1-Htk"/>
+                            <constraint firstItem="f4c-fL-5Hn" firstAttribute="centerY" secondItem="b96-V1-qXf" secondAttribute="centerY" id="LnL-bJ-7sp"/>
                             <constraint firstItem="Nwj-aR-fug" firstAttribute="leading" secondItem="b96-V1-qXf" secondAttribute="leadingMargin" id="Wgt-Eq-CUb"/>
                             <constraint firstItem="xhI-tg-PzG" firstAttribute="width" secondItem="b96-V1-qXf" secondAttribute="width" id="cdy-Hw-oyq"/>
                             <constraint firstItem="xhI-tg-PzG" firstAttribute="centerX" secondItem="b96-V1-qXf" secondAttribute="centerX" id="jji-R5-Fzg"/>
                             <constraint firstItem="DE8-bc-utL" firstAttribute="trailing" secondItem="Nwj-aR-fug" secondAttribute="trailing" id="kG2-BE-M6R"/>
                             <constraint firstItem="Nwj-aR-fug" firstAttribute="top" secondItem="xhI-tg-PzG" secondAttribute="bottom" id="lPs-TU-e3O"/>
+                            <constraint firstItem="f4c-fL-5Hn" firstAttribute="width" secondItem="b96-V1-qXf" secondAttribute="width" id="o9p-dI-R8i"/>
                         </constraints>
                     </view>
                     <toolbarItems>
@@ -150,6 +170,8 @@
                     </toolbarItems>
                     <connections>
                         <outlet property="contactNameLabel" destination="DE8-bc-utL" id="VWw-kg-xV0"/>
+                        <outlet property="loadingOverlay" destination="f4c-fL-5Hn" id="H1K-hS-xcc"/>
+                        <outlet property="messageLabel" destination="d3v-4e-taS" id="yVU-wA-kYe"/>
                         <outlet property="previewImageView" destination="xhI-tg-PzG" id="eEE-HH-KVc"/>
                     </connections>
                 </viewController>

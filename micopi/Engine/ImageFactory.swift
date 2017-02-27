@@ -29,8 +29,21 @@ class ImageFactory {
     
     var rgb = CGColorSpaceCreateDeviceRGB()
     
-    func generateImage() -> UIImage {
+    func generateImage(_ completionHandler: @escaping (UIImage) -> ()) {
         
+        DispatchQueue.global().async {
+            // Background thread
+            
+            let generatedImage = self.generateInThread()
+            
+            DispatchQueue.main.async(execute: {
+                completionHandler(generatedImage)
+            })
+        }
+        
+    }
+    
+    fileprivate func generateInThread() -> UIImage {
         let contextSize = CGSize(width: CGFloat(imageSize), height: CGFloat(imageSize))
         UIGraphicsBeginImageContext(contextSize)
         
@@ -46,8 +59,8 @@ class ImageFactory {
         let foliage = Foliage.init(imageSize: Float(imageSize), mirroredMode: false)
         foliage.start(inCircleAtX: imageSizeHalf, atY: imageSizeHalf)
         
-        let color1 = randomColor(withAlpha: 1)
-        let color2 = randomColor(withAlpha: 1)
+        let color1 = ColorPalette.randomColor(withAlpha: 0.5)
+        let color2 = ColorPalette.randomColor(withAlpha: 0.5)
         
         while foliage.updateAndDraw(inContext: context, withColor1: color1.cgColor, color2: color2.cgColor) {
             
@@ -58,21 +71,19 @@ class ImageFactory {
             //            [myLayer renderInContext:context];
             //            CGContextRestoreGState(context);
             
-//            context.setBlendMode(.clear)
+            //            context.setBlendMode(.clear)
             
-//            paintInitials(displayedInitials)
-//            context.setBlendMode(.normal)
+            paintInitials(displayedInitials)
+            //            context.setBlendMode(.normal)
         }
         
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()!
         
         UIGraphicsEndImageContext()
         
-//        context = nil
-        
-        return newImage!
+        return newImage
     }
-   
+    
     // MARK: - Initials Circle
     
     fileprivate func paintInitials(_ initials: String!) {
@@ -96,13 +107,7 @@ class ImageFactory {
         )
     }
     
-    fileprivate func randomColor(withAlpha alpha: CGFloat) -> UIColor {
-        let randomRed = (0.5 * CGFloat(drand48()))
-        let randomGreen = (0.5 * CGFloat(drand48()))
-        let randomBlue = (0.5 * CGFloat(drand48()))
-        
-        return UIColor(red: randomRed, green: randomGreen, blue: randomBlue, alpha: alpha)
-    }
+    
     
 }
 
