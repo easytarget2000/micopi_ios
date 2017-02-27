@@ -13,7 +13,7 @@ class Foliage {
     
     fileprivate static let numberOfInitialNodes = 40
     
-    fileprivate static let maxAge = 64
+    fileprivate static let maxAge = 48
     
     fileprivate static let maxNewNodes = 32
     
@@ -113,9 +113,7 @@ class Foliage {
         var nodeCounter = 0
         
         context.setLineWidth(1)
-        context.setFillColor(color1)
-//        context.beginPath()
-//        context.move(to: firstNode.point())
+        context.setStrokeColor(color1)
         
 //        let path = UIBezierPath()
 //        path.move(to: firstNode.point())
@@ -124,24 +122,40 @@ class Foliage {
         var numberOfNewNodes = 0
         repeat {
             
-//            context.beginPath()
-//            context.move(to: currentNode.point())
+            nodeCounter += 1
+            
+            context.setFillColor(color2)
+            context.fill(
+                CGRect(
+                    x: currentNode.cgX(),
+                    y: currentNode.cgY(),
+                    width: 1,
+                    height: 1
+                )
+            )
+            
+            if mirrored {
+                context.setFillColor(color1)
+                context.fill(
+                    CGRect(
+                        x: cgImageSize - currentNode.cgX(),
+                        y: currentNode.cgY(),
+                        width: 1,
+                        height: 1
+                    )
+                )
+            } else {
+                context.beginPath()
+                context.move(to: currentNode.point())
+            }
             
             guard let nextNode = currentNode.next else {
                 break
             }
             
-            currentNode = nextNode
-            nodeCounter += 1
-
-//            context.addLine(to: currentNode.point())
-            
-//            context.setStrokeColor(color2)
-//            context.closePath()
-//            context.drawPath(using: CGPathDrawingMode.stroke)
-//            path.addLine(to: currentNode.point())
-//            context.fill(CGRect(x: currentNode.cgX(), y: currentNode.cgY(), width: 1, height: 1))
-            currentNode.draw(mirroredInContext: context, withSize: cgImageSize)
+            context.addLine(to: nextNode.point())
+            context.closePath()
+            context.drawPath(using: CGPathDrawingMode.stroke)
             
             // Update:
             
@@ -152,14 +166,9 @@ class Foliage {
             
             update(node: currentNode)
             
+            currentNode = nextNode
         } while !stopped && currentNode !== firstNode
         
-//        context.setStrokeColor(color2)
-//        context.closePath()
-//        context.drawPath(using: CGPathDrawingMode.stroke)
-        
-//        path.stroke()
-
         return age < Foliage.maxAge
     }
     
@@ -257,10 +266,7 @@ class Foliage {
             return atan2f(otherNode.y - y, otherNode.x - x) + Foliage.pi
         }
         
-        fileprivate func draw(mirroredInContext context: CGContext, withSize imageSize: CGFloat) {
-            context.fill(CGRect(x: cgX(), y: cgY(), width: 1, height: 1))
-            context.fill(CGRect(x: imageSize - cgX(), y: cgY(), width: 1, height: 1))
-        }
+
     }
     
 }

@@ -56,15 +56,19 @@ class ImageFactory {
         
         let imageSizeHalf = Float(imageSize * 0.5)
         
-        let foliage = Foliage.init(imageSize: Float(imageSize), mirroredMode: false)
+        let mirrored = (Int(drand48() * 2) % 2) == 0
+        
+        let foliage = Foliage.init(imageSize: Float(imageSize), mirroredMode: mirrored)
         foliage.start(inCircleAtX: imageSizeHalf, atY: imageSizeHalf)
         
-        let color1 = ColorPalette.randomColor(withAlpha: 0.5)
-        let color2 = ColorPalette.randomColor(withAlpha: 0.5)
+        let color1 = UIColor.black.withAlphaComponent(0.2).cgColor
+        let color2 = ColorPalette.randomColor(withAlpha: 0.2).cgColor
         
-        while foliage.updateAndDraw(inContext: context, withColor1: color1.cgColor, color2: color2.cgColor) {
-            
-        }
+        while foliage.updateAndDraw(
+            inContext: context,
+            withColor1: color1,
+            color2: color2
+        ) {}
         
         if !displayedInitials.isEmpty {
             //            CGContextSaveGState(context);

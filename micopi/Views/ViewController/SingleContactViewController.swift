@@ -18,6 +18,10 @@ class SingleContactViewController: ContactAccessViewController {
     
     @IBOutlet weak var messageLabel: UILabel!
     
+    @IBOutlet weak var refreshButton: UIBarButtonItem!
+    
+    @IBOutlet weak var assignButton: UIBarButtonItem!
+    
     var contact: MiContact!
 
     override func viewDidLoad() {
@@ -70,14 +74,15 @@ class SingleContactViewController: ContactAccessViewController {
     
     fileprivate func showLoadingOverlay() {
         showLoadingOverlay(
-            withMessage: NSLocalizedString("general_wait_msg", comment: "Please wait...")
+//            withMessage: NSLocalizedString("general_wait_msg", comment: "Please wait.")
+            withMessage: "Please wait."
         )
     }
     
     fileprivate func showLoadingOverlay(withMessage message: String) {
 //        loadingOverlay.backgroundColor = ColorPalette.randomColor(withAlpha: 1)
         
-        self.view.isUserInteractionEnabled = false
+        setLoadingOverlayHidden(false)
         
         let gradient: CAGradientLayer = CAGradientLayer()
         gradient.frame = self.view.bounds
@@ -85,7 +90,6 @@ class SingleContactViewController: ContactAccessViewController {
         loadingOverlay.layer.insertSublayer(gradient, at: 0)
         
         loadingOverlay.alpha = 1
-        loadingOverlay.isHidden = false
         
         messageLabel.text = message
     }
@@ -98,7 +102,7 @@ class SingleContactViewController: ContactAccessViewController {
             },
             completion: {
                 (_) in
-                self.setLoadingOverlayHidden()
+                self.setLoadingOverlayHidden(true)
             }
         )
     }
@@ -112,14 +116,21 @@ class SingleContactViewController: ContactAccessViewController {
             },
             completion: {
                 (_) in
-                self.setLoadingOverlayHidden()
+                self.setLoadingOverlayHidden(true)
             }
         )
     }
     
-    fileprivate func setLoadingOverlayHidden() {
-        self.loadingOverlay.isHidden = true
-        self.view.isUserInteractionEnabled = true
+    fileprivate func setLoadingOverlayHidden(_ hidden: Bool) {
+        self.loadingOverlay.isHidden = hidden
+        
+        let uiEnabled = hidden
+        
+        view.isUserInteractionEnabled = uiEnabled
+        
+        navigationItem.rightBarButtonItem?.isEnabled = uiEnabled
+        refreshButton.isEnabled = uiEnabled
+        assignButton.isEnabled = uiEnabled
     }
     
     // MARK: - Toolbar
@@ -154,12 +165,14 @@ class SingleContactViewController: ContactAccessViewController {
         let message: String
         if didAssign {
             message = String(
-                format: NSLocalizedString("single_did_assign", comment: "Did assign to %s"),
+                format: "%@ has got a new image.",
+//                format: NSLocalizedString("single_did_assign", comment: "Did assign to %s"),
                 contact.displayName
             )
         } else {
             message = String(
-                format: NSLocalizedString("single_error_assign", comment: "Did not assign to %s"),
+                format: "There was an error assigning the image to %@.",
+//                format: NSLocalizedString("single_error_assign", comment: "Did not assign to %s"),
                 contact.displayName
             )
         }
