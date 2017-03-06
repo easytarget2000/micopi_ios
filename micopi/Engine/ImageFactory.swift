@@ -53,25 +53,37 @@ class ImageFactory {
         
         // The background colour is based on the initial character of the Display Name.
         let displayedInitials = contact.initials
+                
+        let mirrored = Random.b(withChance: 0.5)
         
-        let imageSizeHalf = Float(imageSize * 0.5)
+        let numberOfShapes = Random.i(largerThan: 1, smallerThan: 4)
         
-        let mirrored = (Int(drand48() * 2) % 2) == 0
-        
-        let foliage = Foliage.init(imageSize: Float(imageSize), mirroredMode: mirrored)
-        foliage.start(inCircleAtX: imageSizeHalf, atY: imageSizeHalf)
+        for i in 0 ..< numberOfShapes {
+            let foliage = Foliage.init(imageSize: Float(imageSize), mirroredMode: mirrored)
+            let foliageX: Float
+            let foliageY: Float
+            if i == 0 {
+                foliageX = Random.f(largerThan: Float(imageSize * 0.4), smallerThan: Float(imageSize * 0.6))
+                foliageY = Random.f(largerThan: Float(imageSize * 0.4), smallerThan: Float(imageSize * 0.6))
+            } else {
+                foliageX = Random.f(largerThan: 0, smallerThan: Float(imageSize))
+                foliageY = Random.f(largerThan: 0, smallerThan: Float(imageSize))
+            }
+            foliage.start(inCircleAtX: foliageX, atY: foliageY)
+            
+            let alpha: CGFloat = mirrored ? 0.1 : 0.1
+            
+            let color1 = ColorPalette.randomColor(withAlpha: alpha).cgColor
+            let color2 = ColorPalette.randomColor(withAlpha: alpha).cgColor
+            
+            while foliage.updateAndDraw(
+                inContext: context,
+                withColor1: color1,
+                color2: color2
+            ) {}
+        }
         
 //        let color1 = UIColor.black.withAlphaComponent(0.2).cgColor
-        let alpha: CGFloat = mirrored ? 0.4 : 0.2
-        
-        let color1 = ColorPalette.randomColor(withAlpha: alpha).cgColor
-        let color2 = ColorPalette.randomColor(withAlpha: alpha).cgColor
-        
-        while foliage.updateAndDraw(
-            inContext: context,
-            withColor1: color1,
-            color2: color2
-        ) {}
         
         if !displayedInitials.isEmpty {
             //            CGContextSaveGState(context);

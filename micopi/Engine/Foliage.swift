@@ -11,11 +11,11 @@ import UIKit
 
 class Foliage {
     
-    fileprivate static let numberOfInitialNodes = Int(drand48() * 24) + 24
+    fileprivate static let numberOfInitialNodes = Random.i(largerThan: 24, smallerThan: 64)
     
-    fileprivate static let maxAge = 48
+    fileprivate static let maxAge = 40
     
-    fileprivate static let maxNewNodes = 32
+    fileprivate static let maxNewNodes = 24
     
     fileprivate static let pushForce = Float(2)
     
@@ -57,6 +57,14 @@ class Foliage {
         return self.imageSize * 0.001
     }()
     
+    fileprivate lazy var shape: Int = {
+        return Random.i(smallerThan: 2)
+    }()
+    
+    fileprivate lazy var maxCircleShapeSize: CGFloat = {
+        return CGFloat(self.nodeRadius * 4)
+    }()
+    
     fileprivate var mirrored: Bool
     
     fileprivate var drawRects: Bool
@@ -64,7 +72,7 @@ class Foliage {
     fileprivate var age = 0
     
     fileprivate lazy var density: Int = {
-       return Foliage.maxNewNodes / (Int(drand48() * 8.0) + 6)
+       return Foliage.maxNewNodes / Random.i(largerThan: 3, smallerThan: 12)
     }()
     
     fileprivate var firstNode: Node!
@@ -81,7 +89,10 @@ class Foliage {
     }
     
     func start(inCircleAtX x: Float, atY y: Float) {
-        let initialRadius = imageSize * (Float(drand48() * 0.01) + 0.01)
+        let initialRadius = Random.f(
+            largerThan: imageSize * 0.01,
+            smallerThan: imageSize * 0.05
+        )
 
         var lastNode: Node!
         for i in 0 ..< Foliage.numberOfInitialNodes {
@@ -124,15 +135,27 @@ class Foliage {
             
             nodeCounter += 1
             
-            context.setFillColor(color2)
-            context.fill(
-                CGRect(
-                    x: currentNode.cgX(),
-                    y: currentNode.cgY(),
-                    width: 1,
-                    height: 1
+            if shape == 1 {
+                context.setStrokeColor(color2)
+                context.strokeEllipse(
+                    in: CGRect(
+                        x: currentNode.cgX() + 1,
+                        y: currentNode.cgY() + 1,
+                        width: Random.cgF(smallerThan: maxCircleShapeSize),
+                        height: Random.cgF(smallerThan: maxCircleShapeSize)
+                    )
                 )
-            )
+            } else {
+                context.setFillColor(color2)
+                context.fill(
+                    CGRect(
+                        x: currentNode.cgX() + 1,
+                        y: currentNode.cgY() + 1,
+                        width: 1,
+                        height: 1
+                    )
+                )
+            }
             
             if mirrored {
                 context.setFillColor(color1)
@@ -188,7 +211,7 @@ class Foliage {
     }
     
     fileprivate func jitterValue() -> Float {
-        return (jitter * 0.5) - (Float(drand48()) * jitter)
+        return (jitter * 0.5) - Random.f(smallerThan: jitter)
     }
     
     fileprivate func update(node currentNode: Node) {
@@ -234,7 +257,7 @@ class Foliage {
             
         } while !stopped
     }
-    
+        
     class Node {
         
         fileprivate var next: Node?

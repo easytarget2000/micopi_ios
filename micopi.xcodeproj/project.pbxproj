@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0B65B9291E6211DE007D93C2 /* Foliage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B65B9281E6211DE007D93C2 /* Foliage.swift */; };
 		0BAE2E601E64D5C000B99057 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAE2E5F1E64D5C000B99057 /* ColorPalette.swift */; };
+		0BD44F1D1E6DE8CF008A1321 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD44F1C1E6DE8CF008A1321 /* Random.swift */; };
 		D069FFB91C7F9CB70069B3F4 /* ContactPictureWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D069FFB81C7F9CB70069B3F4 /* ContactPictureWriter.swift */; };
 		D069FFBB1C7FB02D0069B3F4 /* ContactAccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D069FFBA1C7FB02D0069B3F4 /* ContactAccessViewController.swift */; };
 		D0B1389E1C7BB93C00E58407 /* ImageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B1389D1C7BB93C00E58407 /* ImageFactory.swift */; };
@@ -24,6 +25,7 @@
 /* Begin PBXFileReference section */
 		0B65B9281E6211DE007D93C2 /* Foliage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Foliage.swift; path = Engine/Foliage.swift; sourceTree = "<group>"; };
 		0BAE2E5F1E64D5C000B99057 /* ColorPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorPalette.swift; path = Engine/ColorPalette.swift; sourceTree = "<group>"; };
+		0BD44F1C1E6DE8CF008A1321 /* Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Random.swift; path = Engine/Random.swift; sourceTree = "<group>"; };
 		D069FFB81C7F9CB70069B3F4 /* ContactPictureWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactPictureWriter.swift; path = Engine/ContactPictureWriter.swift; sourceTree = "<group>"; };
 		D069FFBA1C7FB02D0069B3F4 /* ContactAccessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactAccessViewController.swift; path = Views/ViewController/ContactAccessViewController.swift; sourceTree = "<group>"; };
 		D0B1389D1C7BB93C00E58407 /* ImageFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageFactory.swift; path = Engine/ImageFactory.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				D0B1389D1C7BB93C00E58407 /* ImageFactory.swift */,
 				0B65B9281E6211DE007D93C2 /* Foliage.swift */,
 				0BAE2E5F1E64D5C000B99057 /* ColorPalette.swift */,
+				0BD44F1C1E6DE8CF008A1321 /* Random.swift */,
 			);
 			name = Engine;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 				D0CA32C51C7BAA82007E7B0F /* MiContact.swift in Sources */,
 				D0CA32B21C7BA87B007E7B0F /* AppDelegate.swift in Sources */,
 				0B65B9291E6211DE007D93C2 /* Foliage.swift in Sources */,
+				0BD44F1D1E6DE8CF008A1321 /* Random.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
