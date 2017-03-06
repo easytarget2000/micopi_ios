@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B46D5D91E6E1CC500F0D819 /* MultiModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B46D5D81E6E1CC500F0D819 /* MultiModeViewController.swift */; };
 		0B65B9291E6211DE007D93C2 /* Foliage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B65B9281E6211DE007D93C2 /* Foliage.swift */; };
 		0BAE2E601E64D5C000B99057 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAE2E5F1E64D5C000B99057 /* ColorPalette.swift */; };
 		0BD44F1D1E6DE8CF008A1321 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD44F1C1E6DE8CF008A1321 /* Random.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B46D5D81E6E1CC500F0D819 /* MultiModeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MultiModeViewController.swift; path = Views/ViewController/MultiModeViewController.swift; sourceTree = "<group>"; };
 		0B65B9281E6211DE007D93C2 /* Foliage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Foliage.swift; path = Engine/Foliage.swift; sourceTree = "<group>"; };
 		0BAE2E5F1E64D5C000B99057 /* ColorPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorPalette.swift; path = Engine/ColorPalette.swift; sourceTree = "<group>"; };
 		0BD44F1C1E6DE8CF008A1321 /* Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Random.swift; path = Engine/Random.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				D0CA32CF1C7BB071007E7B0F /* WelcomeViewController.swift */,
 				D0CA32D11C7BB1F5007E7B0F /* SingleContactViewController.swift */,
 				D069FFBA1C7FB02D0069B3F4 /* ContactAccessViewController.swift */,
+				0B46D5D81E6E1CC500F0D819 /* MultiModeViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -195,6 +198,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B46D5D91E6E1CC500F0D819 /* MultiModeViewController.swift in Sources */,
 				D0B1389E1C7BB93C00E58407 /* ImageFactory.swift in Sources */,
 				D0CA32D01C7BB071007E7B0F /* WelcomeViewController.swift in Sources */,
 				0BAE2E601E64D5C000B99057 /* ColorPalette.swift in Sources */,

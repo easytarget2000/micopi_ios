@@ -44,34 +44,40 @@ class ImageFactory {
     }
     
     fileprivate func generateInThread() -> UIImage {
+        let imageSize = Float(self.imageSize)
+
         let contextSize = CGSize(width: CGFloat(imageSize), height: CGFloat(imageSize))
         UIGraphicsBeginImageContext(contextSize)
         
         let context = UIGraphicsGetCurrentContext()!
         context.setFillColor(UIColor.white.cgColor)
-        context.fill(CGRect(x: 0, y: 0, width: imageSize, height: imageSize))
+        context.fill(CGRect(x: 0, y: 0, width: self.imageSize, height: self.imageSize))
         
         // The background colour is based on the initial character of the Display Name.
         let displayedInitials = contact.initials
-                
-        let mirrored = Random.b(withChance: 0.5)
         
         let numberOfShapes = Random.i(largerThan: 1, smallerThan: 4)
+        let mirrored = Random.b(withChance: 0.5)
+        let alpha: CGFloat = (mirrored ? 0.1 : 0.05) / CGFloat(numberOfShapes)
+//        let alpha: CGFloat = 1
         
         for i in 0 ..< numberOfShapes {
             let foliage = Foliage.init(imageSize: Float(imageSize), mirroredMode: mirrored)
             let foliageX: Float
             let foliageY: Float
             if i == 0 {
-                foliageX = Random.f(largerThan: Float(imageSize * 0.4), smallerThan: Float(imageSize * 0.6))
-                foliageY = Random.f(largerThan: Float(imageSize * 0.4), smallerThan: Float(imageSize * 0.6))
+                foliageX = Random.f(largerThan: imageSize * 0.4, smallerThan: imageSize * 0.6)
+                foliageY = Random.f(largerThan: imageSize * 0.4, smallerThan: imageSize * 0.6)
             } else {
-                foliageX = Random.f(largerThan: 0, smallerThan: Float(imageSize))
-                foliageY = Random.f(largerThan: 0, smallerThan: Float(imageSize))
+                foliageX = Random.f(largerThan: imageSize * 0.1, smallerThan: imageSize * 0.9)
+                foliageY = Random.f(largerThan: imageSize * 0.1, smallerThan: imageSize * 0.9)
             }
-            foliage.start(inCircleAtX: foliageX, atY: foliageY)
             
-            let alpha: CGFloat = mirrored ? 0.1 : 0.1
+            if Random.b(withChance: 0.5) {
+                foliage.start(inCircleAtX: foliageX, atY: foliageY)
+            } else {
+                foliage.start(inRectAroundX: foliageX, aroundY: foliageY)
+            }
             
             let color1 = ColorPalette.randomColor(withAlpha: alpha).cgColor
             let color2 = ColorPalette.randomColor(withAlpha: alpha).cgColor

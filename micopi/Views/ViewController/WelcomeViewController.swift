@@ -8,11 +8,19 @@
 
 import ContactsUI
 
-class WelcomeViewController: ContactAccessViewController {
+class WelcomeViewController: UIViewController {
     
     @IBOutlet weak var pickerButton: UIButton!
     
-    fileprivate static let toContactViewSegue = "welcomeToContactSegue"
+    @IBOutlet weak var multiButton: UIButton!
+    
+    @IBOutlet weak var resetButton: UIButton!
+    
+    fileprivate static let toContactViewSegue = "WelcomeToContactSegue"
+    
+    fileprivate static let toMultipleModeSegue = "WelcomeToMultiSegue"
+    
+    fileprivate static let toResetModeSegue = "WelcomeToResetSegue"
     
     // MARK: - UIViewController Overrides
     
@@ -29,6 +37,15 @@ class WelcomeViewController: ContactAccessViewController {
         pickerButton.layer.borderWidth = 1
         pickerButton.layer.masksToBounds = true
         
+        multiButton.layer.cornerRadius = 4
+        multiButton.layer.borderColor = UIColor.white.cgColor
+        multiButton.layer.borderWidth = 1
+        multiButton.layer.masksToBounds = true
+        
+        resetButton.layer.cornerRadius = 4
+        resetButton.layer.borderColor = UIColor.white.cgColor
+        resetButton.layer.borderWidth = 1
+        resetButton.layer.masksToBounds = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,27 +67,54 @@ class WelcomeViewController: ContactAccessViewController {
     @IBAction func onSelectContactTouched(_ sender: AnyObject) {
         AppDelegate.getAppDelegate().requestForAccess {
             () -> Void in
-            let contactPicker = CNContactPickerViewController()
-            contactPicker.delegate = self
-            self.present(contactPicker, animated: true, completion: nil)
+            self.performSegue(
+                withIdentifier: WelcomeViewController.toContactViewSegue,
+                sender: nil
+            )
         }
     }
     
+    @IBAction func onMultipleButtonTouched(_ sender: Any) {
+        AppDelegate.getAppDelegate().requestForAccess {
+            () -> Void in
+            self.performSegue(
+                withIdentifier: WelcomeViewController.toMultipleModeSegue,
+                sender: nil
+            )
+        }
+    }
+    
+    @IBAction func onResetButtonTouched(_ sender: Any) {
+        AppDelegate.getAppDelegate().requestForAccess {
+            () -> Void in
+            self.performSegue(
+                withIdentifier: WelcomeViewController.toResetModeSegue,
+                sender: nil
+            )
+        }
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if WelcomeViewController.toContactViewSegue == segue.identifier,
-            let viewController = segue.destination as? SingleContactViewController,
-            let contact = sender as? MiContact {
-                
-            viewController.contact = contact
+        
+        switch segue.identifier! {
+        case WelcomeViewController.toMultipleModeSegue:
+            let viewController = segue.destination as! MultiModeViewController
+            viewController.mode = .assign
+        
+        case WelcomeViewController.toResetModeSegue:
+            let viewController = segue.destination as! MultiModeViewController
+            viewController.mode = .reset
+            
+        default:
+            return
         }
+
     }
     
-    // MARK: - CNContactPickerDelegate
+//    func contactPicker(_ picker: CNContactPickerViewController, didSelectContact contact: CNContact) {
+//        performSegue(
+//            withIdentifier: WelcomeViewController.toContactViewSegue,
+//            sender: MiContact(cn: contact)
+//        )
+//    }
     
-    func contactPicker(_ picker: CNContactPickerViewController, didSelectContact contact: CNContact) {
-        performSegue(
-            withIdentifier: WelcomeViewController.toContactViewSegue,
-            sender: MiContact(cn: contact)
-        )
-    }
 }

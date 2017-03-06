@@ -21,8 +21,8 @@ class SingleContactViewController: ContactAccessViewController {
     @IBOutlet weak var refreshButton: UIBarButtonItem!
     
     @IBOutlet weak var assignButton: UIBarButtonItem!
-    
-    var contact: MiContact!
+        
+    var contact: MiContact?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,10 +31,8 @@ class SingleContactViewController: ContactAccessViewController {
             title: NSLocalizedString("Search", comment: "Select Contact"),
             style: UIBarButtonItemStyle.plain,
             target: self,
-            action: #selector(SingleContactViewController.searchButtonTouched)
+            action: #selector(SingleContactViewController.openContactPicker)
         )
-        
-        generateImage()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -157,9 +155,11 @@ class SingleContactViewController: ContactAccessViewController {
     }
     
     fileprivate func assignImage() {
+        let contact = self.contact!
+        
         let didAssign = ContactPictureWriter.assign(
             self.previewImageView.image!,
-            toContact: self.contact!
+            toContact: contact
         )
         
         let message: String
@@ -183,18 +183,15 @@ class SingleContactViewController: ContactAccessViewController {
     
     // MARK: - Contact Picker
     
-    func searchButtonTouched() {
-        AppDelegate.getAppDelegate().requestForAccess {
-            () -> Void in
-            let contactPicker = CNContactPickerViewController()
-            contactPicker.delegate = self
-            self.present(contactPicker, animated: true, completion: nil)
-        }
-    }
-    
     func contactPicker(_ picker: CNContactPickerViewController, didSelectContact contact: CNContact) {
         self.contact = MiContact(cn: contact)
         generateImage()
+    }
+    
+    func contactPickerDidCancel(_ picker: CNContactPickerViewController) {
+        if self.contact == nil {
+            let _ = navigationController?.popViewController(animated: true)
+        }
     }
     
 }

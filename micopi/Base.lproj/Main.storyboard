@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="cHF-Wv-j8b">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -20,54 +20,97 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="436"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="micopi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NVh-rl-Gef">
-                                <rect key="frame" x="125" y="128" width="125.5" height="52"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="micopi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="22" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NVh-rl-Gef">
+                                <rect key="frame" x="97" y="84" width="126" height="52"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="44"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fe5-YY-3pf">
-                                <rect key="frame" x="80" y="256" width="440" height="45"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fe5-YY-3pf" userLabel="SingleModeButton">
+                                <rect key="frame" x="24" y="176" width="272" height="38"/>
+                                <color key="backgroundColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="22"/>
                                 <state key="normal" title="Select a Contact">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="onSelectContactTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2Zj-ss-g4v"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="After selecting a contact, the generated picture will be previewed before assigning it to that person." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="41B-tj-dfh">
-                                <rect key="frame" x="80" y="309" width="440" height="41"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="After selecting a single contact, the generated picture will be previewed before assigning it to that person." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="41B-tj-dfh" userLabel="SingleModeLabel">
+                                <rect key="frame" x="24" y="222" width="272" height="60.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w8u-Uz-Ybr" userLabel="MultiModeButton">
+                                <rect key="frame" x="24" y="322.5" width="272" height="38"/>
+                                <color key="backgroundColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="22"/>
+                                <state key="normal" title="Select Multiple Contacts">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="onMultipleButtonTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ymf-e3-l1K"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="After selecting multiple contacts, all images will be overwritten automatically." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FET-Ex-SEM" userLabel="MultiModeLabel">
+                                <rect key="frame" x="24" y="445" width="327" height="40.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CaT-0R-5va" userLabel="ResetModeButton">
+                                <rect key="frame" x="24" y="378" width="272" height="38"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="22"/>
+                                <state key="normal" title="Reset Multiple Contacts">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="onResetButtonTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QPX-sb-J4l"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.20392156862745098" green="0.66666666666666663" blue="0.86274509803921573" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Fe5-YY-3pf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="60" id="22K-jJ-RiD">
                                 <variation key="heightClass=regular-widthClass=compact" constant="8"/>
                             </constraint>
-                            <constraint firstItem="Fe5-YY-3pf" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="3sn-aL-Cje"/>
                             <constraint firstItem="41B-tj-dfh" firstAttribute="top" secondItem="Fe5-YY-3pf" secondAttribute="bottom" constant="8" id="AqW-gJ-kJJ"/>
+                            <constraint firstItem="FET-Ex-SEM" firstAttribute="leading" secondItem="w8u-Uz-Ybr" secondAttribute="leading" id="EnN-LZ-MAK"/>
                             <constraint firstItem="NVh-rl-Gef" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Klf-8M-FMd"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="CaT-0R-5va" secondAttribute="bottom" constant="20" id="L2J-aE-zq3"/>
                             <constraint firstItem="41B-tj-dfh" firstAttribute="trailing" secondItem="Fe5-YY-3pf" secondAttribute="trailing" id="TMK-hC-V01"/>
+                            <constraint firstItem="Fe5-YY-3pf" firstAttribute="top" secondItem="NVh-rl-Gef" secondAttribute="bottom" constant="40" id="Ugh-hW-BSa"/>
+                            <constraint firstItem="w8u-Uz-Ybr" firstAttribute="top" secondItem="41B-tj-dfh" secondAttribute="bottom" constant="40" id="coB-NL-Xgz"/>
+                            <constraint firstItem="CaT-0R-5va" firstAttribute="trailing" secondItem="Fe5-YY-3pf" secondAttribute="trailing" id="fRG-i3-dac"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Fe5-YY-3pf" secondAttribute="trailing" constant="60" id="oHR-wD-TuT">
                                 <variation key="heightClass=regular-widthClass=compact" constant="8"/>
                             </constraint>
-                            <constraint firstItem="NVh-rl-Gef" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="64" id="sYC-cx-iYn"/>
+                            <constraint firstItem="w8u-Uz-Ybr" firstAttribute="trailing" secondItem="Fe5-YY-3pf" secondAttribute="trailing" id="oYD-kF-mY4"/>
+                            <constraint firstItem="CaT-0R-5va" firstAttribute="leading" secondItem="Fe5-YY-3pf" secondAttribute="leading" id="qqo-Dr-UQ2"/>
+                            <constraint firstItem="w8u-Uz-Ybr" firstAttribute="leading" secondItem="Fe5-YY-3pf" secondAttribute="leading" id="sXl-Wk-4td"/>
+                            <constraint firstItem="NVh-rl-Gef" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="sYC-cx-iYn"/>
+                            <constraint firstItem="FET-Ex-SEM" firstAttribute="top" secondItem="w8u-Uz-Ybr" secondAttribute="bottom" constant="8" id="wJV-1H-NQv"/>
                             <constraint firstItem="41B-tj-dfh" firstAttribute="leading" secondItem="Fe5-YY-3pf" secondAttribute="leading" id="xWT-Ho-Lw8"/>
+                            <constraint firstItem="FET-Ex-SEM" firstAttribute="trailing" secondItem="w8u-Uz-Ybr" secondAttribute="trailing" id="yfx-YQ-E5y"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="wOV-UM-ar9"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
+                        <outlet property="multiButton" destination="w8u-Uz-Ybr" id="T4O-Fu-V4m"/>
                         <outlet property="pickerButton" destination="Fe5-YY-3pf" id="rMn-Ts-P38"/>
-                        <segue destination="D0v-49-fFy" kind="show" identifier="welcomeToContactSegue" id="fvH-Hv-7t8"/>
+                        <outlet property="resetButton" destination="CaT-0R-5va" id="i2m-RR-d46"/>
+                        <segue destination="D0v-49-fFy" kind="show" identifier="WelcomeToContactSegue" id="fvH-Hv-7t8"/>
+                        <segue destination="hsC-fg-eiC" kind="show" identifier="WelcomeToMultiSegue" id="TL6-mi-3qB"/>
+                        <segue destination="hsC-fg-eiC" kind="show" identifier="WelcomeToResetSegue" id="qtK-QS-waX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -99,7 +142,7 @@
                         <viewControllerLayoutGuide type="bottom" id="N5D-9S-TtT"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="b96-V1-qXf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="436"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Generated Contact Picture" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nwj-aR-fug">
@@ -109,23 +152,23 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No contact selected" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DE8-bc-utL" userLabel="ContactNameView">
-                                <rect key="frame" x="16" y="461" width="343" height="26"/>
+                                <rect key="frame" x="16" y="406" width="288" height="26"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="22"/>
                                 <color key="textColor" red="0.20392156859999999" green="0.66666666669999997" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xhI-tg-PzG">
-                                <rect key="frame" x="0.0" y="57" width="375" height="375"/>
+                                <rect key="frame" x="0.0" y="57" width="320" height="320"/>
                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="xhI-tg-PzG" secondAttribute="height" multiplier="1:1" id="Trp-kz-rjA"/>
                                 </constraints>
                             </imageView>
-                            <view hidden="YES" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f4c-fL-5Hn" userLabel="LoadingOverlay">
-                                <rect key="frame" x="-0.5" y="-0.5" width="375" height="623"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f4c-fL-5Hn" userLabel="LoadingOverlay">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="436"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please wait..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d3v-4e-taS" userLabel="MessageLabel">
-                                        <rect key="frame" x="124.5" y="298.5" width="126" height="26"/>
+                                        <rect key="frame" x="97" y="205" width="126" height="26"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -181,5 +224,26 @@
             </objects>
             <point key="canvasLocation" x="1551" y="657"/>
         </scene>
+        <!--Multi Mode View Controller-->
+        <scene sceneID="vKy-YG-mUJ">
+            <objects>
+                <viewController storyboardIdentifier="MultiModeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hsC-fg-eiC" customClass="MultiModeViewController" customModule="Micopi" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KEk-uX-M7R"/>
+                        <viewControllerLayoutGuide type="bottom" id="S2b-G2-KAm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="X4b-em-z40">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="436"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BEq-hA-Fb9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1551" y="1579"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="qtK-QS-waX"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -11,17 +11,18 @@ import UIKit
 
 class Foliage {
     
-    fileprivate static let numberOfInitialNodes = Random.i(largerThan: 24, smallerThan: 64)
     
-    fileprivate static let maxAge = 40
+    fileprivate static let maxAge = 64
     
-    fileprivate static let maxNewNodes = 24
+    fileprivate static let maxNewNodes = 36
     
     fileprivate static let pushForce = Float(2)
     
     fileprivate static let pi = Float(M_PI)
     
     fileprivate static let piTwo = pi * 2
+    
+    fileprivate let numberOfInitialNodes = Random.i(largerThan: 24, smallerThan: 64)
     
     fileprivate var imageSize: Float
     
@@ -58,11 +59,12 @@ class Foliage {
     }()
     
     fileprivate lazy var shape: Int = {
-        return Random.i(smallerThan: 2)
+        return 0
+//        return Random.i(smallerThan: 2)
     }()
     
     fileprivate lazy var maxCircleShapeSize: CGFloat = {
-        return CGFloat(self.nodeRadius * 4)
+        return CGFloat(self.nodeRadius * 36)
     }()
     
     fileprivate var mirrored: Bool
@@ -72,7 +74,8 @@ class Foliage {
     fileprivate var age = 0
     
     fileprivate lazy var density: Int = {
-       return Foliage.maxNewNodes / Random.i(largerThan: 3, smallerThan: 12)
+        return self.numberOfInitialNodes / Random.i(largerThan: 2, smallerThan: 5)
+//       return Foliage.maxNewNodes / Random.i(largerThan: 3, smallerThan: 12)
     }()
     
     fileprivate var firstNode: Node!
@@ -91,13 +94,24 @@ class Foliage {
     func start(inCircleAtX x: Float, atY y: Float) {
         let initialRadius = Random.f(
             largerThan: imageSize * 0.01,
-            smallerThan: imageSize * 0.05
+            smallerThan: imageSize * 0.03
         )
+        
+        let fullCircle = Random.b(withChance: 0.5)
+        let arcStart: Float
+        let arcEnd: Float
+        if fullCircle {
+            arcStart = 0
+            arcEnd = Foliage.piTwo
+        } else {
+            arcStart = Random.f(smallerThan: Foliage.piTwo)
+            arcEnd = Random.f(smallerThan: Foliage.piTwo)
+        }
 
         var lastNode: Node!
-        for i in 0 ..< Foliage.numberOfInitialNodes {
+        for i in 0 ..< numberOfInitialNodes {
             
-            let angleOfNode = Foliage.piTwo * Float((i + 1)) / Float(Foliage.numberOfInitialNodes)
+            let angleOfNode = arcStart + (arcEnd * Float((i + 1)) / Float(numberOfInitialNodes))
             
             let nodeX = x + (cosf(angleOfNode) * initialRadius) + jitterValue()
             let nodeY = y + (sinf(angleOfNode) * initialRadius) + jitterValue()
@@ -105,10 +119,63 @@ class Foliage {
             
             
             if firstNode == nil {
-                self.firstNode = node
+                firstNode = node
                 lastNode = node
-            } else if i == Foliage.numberOfInitialNodes - 1 {
+            } else if i == numberOfInitialNodes - 1 {
                 self.preferredNeighborDistance = node.distance(toOtherNode: lastNode)
+                if fullCircle {
+                    node.next = firstNode
+                }
+            } else {
+                lastNode.next = node
+                lastNode = node
+            }
+            
+        }
+    }
+    
+    func start(inRectAroundX x: Float, aroundY y: Float) {
+        let sideLength = Random.f(
+            largerThan: imageSize * 0.01,
+            smallerThan: imageSize * 0.03
+        )
+        
+        let sideLengthHalf = sideLength * 0.5
+        let quarterOfInitialNodes = numberOfInitialNodes / 4
+        
+        var lastNode: Node!
+        for i in 0 ..< numberOfInitialNodes {
+            
+            let nodeX: Float
+            let nodeY: Float
+            
+            if i < quarterOfInitialNodes {
+                // Top left to top right:
+                nodeX = (x - sideLengthHalf) + (sideLength * Float(i) / Float(quarterOfInitialNodes))
+                nodeY = y - sideLengthHalf
+            } else if i < (quarterOfInitialNodes * 2) {
+                // Top right to bottom right:
+                nodeX = x + sideLengthHalf
+                nodeY = (y - sideLengthHalf) + (sideLength * Float((i - quarterOfInitialNodes)) / Float(quarterOfInitialNodes))
+            } else if i < (quarterOfInitialNodes * 3) {
+                // Bottom right to bottom left:
+                nodeX = (x + sideLengthHalf) - (sideLength * Float(i - (quarterOfInitialNodes * 2)) / Float(quarterOfInitialNodes))
+                nodeY = y + sideLengthHalf
+            } else {
+                nodeX = x - sideLengthHalf
+                nodeY = (y + sideLengthHalf) - (sideLength * Float(i - (quarterOfInitialNodes * 3)) / Float(quarterOfInitialNodes))
+            }
+            
+//            NSLog("\(i) / \(numberOfInitialNodes): \(nodeX), \(nodeY)")
+            
+            let node = Node(x: nodeX, y: nodeY)
+            
+            if firstNode == nil {
+                firstNode = node
+                lastNode = node
+            } else if i == numberOfInitialNodes - 1 {
+                self.preferredNeighborDistance = node.distance(toOtherNode: lastNode)
+                node.next = firstNode
             } else {
                 lastNode.next = node
                 lastNode = node
@@ -158,15 +225,27 @@ class Foliage {
             }
             
             if mirrored {
-                context.setFillColor(color1)
-                context.fill(
-                    CGRect(
-                        x: cgImageSize - currentNode.cgX(),
-                        y: currentNode.cgY(),
-                        width: 1,
-                        height: 1
+                if shape == 1 {
+                    context.setStrokeColor(color2)
+                    context.strokeEllipse(
+                        in: CGRect(
+                            x: currentNode.cgX() + 1,
+                            y: currentNode.cgY() + 1,
+                            width: Random.cgF(smallerThan: maxCircleShapeSize),
+                            height: Random.cgF(smallerThan: maxCircleShapeSize)
+                        )
                     )
-                )
+                } else {
+                    context.setFillColor(color1)
+                    context.fill(
+                        CGRect(
+                            x: cgImageSize - currentNode.cgX(),
+                            y: currentNode.cgY(),
+                            width: 1,
+                            height: 1
+                        )
+                    )
+                }
             } else {
                 context.beginPath()
                 context.move(to: currentNode.point())
