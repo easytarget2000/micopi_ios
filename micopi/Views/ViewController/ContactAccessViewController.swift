@@ -2,7 +2,7 @@
 //  ContactAccessViewController.swift
 //  Micopi
 //
-//  Created by Michel on 25/02/16.
+//  Created by michel@easy-target.org on 2016-02-25.
 //  Copyright © 2016 Easy Target. All rights reserved.
 //
 

@@ -157,7 +157,7 @@
 				TargetAttributes = {
 					D0CA32AD1C7BA87B007E7B0F = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = 4942X8FYB7;
+						DevelopmentTeam = X59SC9WX5X;
 						LastSwiftMigration = 0820;
 					};
 				};
@@ -323,6 +323,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = X59SC9WX5X;
 				INFOPLIST_FILE = micopi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.eztarget.micopi;
@@ -339,6 +340,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = X59SC9WX5X;
 				INFOPLIST_FILE = micopi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.eztarget.micopi;

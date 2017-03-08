@@ -235,12 +235,72 @@
                     <view key="view" contentMode="scaleToFill" id="X4b-em-z40">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="436"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mHB-Rf-mu7" userLabel="MainView">
+                                <rect key="frame" x="16" y="146" width="288" height="145"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please wait." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EQk-yX-SLD" userLabel="InformationLabel">
+                                        <rect key="frame" x="0.0" y="4" width="288" height="20.5"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BhT-a1-iGa" userLabel="ContinueButton">
+                                        <rect key="frame" x="0.0" y="44.5" width="288" height="38"/>
+                                        <color key="backgroundColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="22"/>
+                                        <state key="normal" title="Continue">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onContinueButtonTouched:" destination="hsC-fg-eiC" eventType="touchUpInside" id="4A3-ea-89r"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sAB-5Z-A8m" userLabel="CancelButton">
+                                        <rect key="frame" x="0.0" y="102.5" width="288" height="38"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="22"/>
+                                        <state key="normal" title="Back">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onBackButtonTouched:" destination="hsC-fg-eiC" eventType="touchUpInside" id="31I-Pk-rGW"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="BhT-a1-iGa" firstAttribute="top" secondItem="EQk-yX-SLD" secondAttribute="bottom" constant="20" id="04C-g0-1n0"/>
+                                    <constraint firstAttribute="trailing" secondItem="EQk-yX-SLD" secondAttribute="trailing" id="884-Ez-9wG"/>
+                                    <constraint firstAttribute="trailing" secondItem="sAB-5Z-A8m" secondAttribute="trailing" id="93M-iW-YrN"/>
+                                    <constraint firstAttribute="bottom" secondItem="sAB-5Z-A8m" secondAttribute="bottom" constant="4" id="NwQ-gN-WFJ"/>
+                                    <constraint firstItem="sAB-5Z-A8m" firstAttribute="top" secondItem="BhT-a1-iGa" secondAttribute="bottom" constant="20" id="Vfc-sX-0ms"/>
+                                    <constraint firstItem="sAB-5Z-A8m" firstAttribute="leading" secondItem="mHB-Rf-mu7" secondAttribute="leading" id="gQQ-Df-vw1"/>
+                                    <constraint firstItem="EQk-yX-SLD" firstAttribute="top" secondItem="mHB-Rf-mu7" secondAttribute="top" constant="4" id="kwn-F2-bhi"/>
+                                    <constraint firstAttribute="trailing" secondItem="BhT-a1-iGa" secondAttribute="trailing" id="qjd-I3-sAk"/>
+                                    <constraint firstItem="EQk-yX-SLD" firstAttribute="leading" secondItem="mHB-Rf-mu7" secondAttribute="leading" id="zhj-KU-qHf"/>
+                                    <constraint firstItem="BhT-a1-iGa" firstAttribute="leading" secondItem="mHB-Rf-mu7" secondAttribute="leading" id="zmh-QY-bFR"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.20392156859999999" green="0.66666666669999997" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="mHB-Rf-mu7" secondAttribute="trailing" id="5nQ-h2-EFQ"/>
+                            <constraint firstItem="mHB-Rf-mu7" firstAttribute="centerY" secondItem="X4b-em-z40" secondAttribute="centerY" id="LAN-2C-zjo"/>
+                            <constraint firstItem="mHB-Rf-mu7" firstAttribute="centerX" secondItem="X4b-em-z40" secondAttribute="centerX" id="Nj8-ue-bRM"/>
+                            <constraint firstItem="mHB-Rf-mu7" firstAttribute="leading" secondItem="X4b-em-z40" secondAttribute="leadingMargin" id="lH1-OB-BkS"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="backButton" destination="sAB-5Z-A8m" id="62n-PJ-bT0"/>
+                        <outlet property="continueButton" destination="BhT-a1-iGa" id="E1D-ou-oez"/>
+                        <outlet property="informationLabel" destination="EQk-yX-SLD" id="RsQ-GQ-5aL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BEq-hA-Fb9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1551" y="1579"/>
+            <point key="canvasLocation" x="1550.625" y="1578.75"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

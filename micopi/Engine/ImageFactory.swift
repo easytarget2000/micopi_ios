@@ -16,6 +16,8 @@ class ImageFactory {
     
     fileprivate let imageSize: CGFloat
     
+    fileprivate var stopped = false
+    
     convenience init(contact: MiContact) {
         self.init(contact: contact, imageSize: ImageFactory.recommendedImageSize)
     }
@@ -29,7 +31,7 @@ class ImageFactory {
     
     var rgb = CGColorSpaceCreateDeviceRGB()
     
-    func generateImage(_ completionHandler: @escaping (UIImage) -> ()) {
+    func generateImage(_ completionHandler: @escaping (UIImage?) -> ()) {
         
         DispatchQueue.global().async {
             // Background thread
@@ -43,7 +45,9 @@ class ImageFactory {
         
     }
     
-    fileprivate func generateInThread() -> UIImage {
+    func generateInThread() -> UIImage? {
+        stopped = false
+        
         let imageSize = Float(self.imageSize)
 
         let contextSize = CGSize(width: CGFloat(imageSize), height: CGFloat(imageSize))
@@ -62,6 +66,11 @@ class ImageFactory {
 //        let alpha: CGFloat = 1
         
         for i in 0 ..< numberOfShapes {
+            if stopped {
+                UIGraphicsEndImageContext()
+                return nil
+            }
+            
             let foliage = Foliage.init(imageSize: Float(imageSize), mirroredMode: mirrored)
             let foliageX: Float
             let foliageY: Float
@@ -86,7 +95,12 @@ class ImageFactory {
                 inContext: context,
                 withColor1: color1,
                 color2: color2
-            ) {}
+            ) {
+                if stopped {
+                    UIGraphicsEndImageContext()
+                    return nil
+                }
+            }
         }
         
 //        let color1 = UIColor.black.withAlphaComponent(0.2).cgColor
@@ -106,7 +120,15 @@ class ImageFactory {
         
         UIGraphicsEndImageContext()
         
+        if stopped {
+            return nil
+        }
+        
         return newImage
+    }
+    
+    func stop() {
+        stopped = true
     }
     
     // MARK: - Initials Circle
