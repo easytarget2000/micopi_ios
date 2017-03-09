@@ -38,9 +38,16 @@ class MultiModeViewController: ContactAccessViewController {
         gradient.frame = view.bounds
         gradient.colors = ColorPalette.backgroundGradient
         view.layer.insertSublayer(gradient, at: 0)
+        
+        informationLabel.text = ""
+        
+        continueButton.isHidden = true
+        continueButton.isEnabled = false
+        
+        backButton.isHidden = true
+        backButton.isEnabled = false
     }
 
-    
     func contactPickerDidCancel(_ picker: CNContactPickerViewController) {
         let _ = navigationController?.popViewController(animated: true)
     }
@@ -57,25 +64,37 @@ class MultiModeViewController: ContactAccessViewController {
         }
         
         if mode == .assign {
-            showAssignDialog()
-        } else {
-            showResetDialog()
+            showAssignMessage()
+        } else if mode == .reset {
+            showResetMessage()
         }
+        
+        continueButton.isHidden = false
+        continueButton.isEnabled = true
+        
+        backButton.isHidden = false
+        backButton.isEnabled = true
     }
     
-    fileprivate func showAssignDialog() {
-        
+    fileprivate func showAssignMessage() {
+        let numberOfContacts = self.contacts!.count
+        let imageNoun = numberOfContacts > 1 ? "images" : "image"
+        informationLabel.text = "Please confirm that you would like to overwrite \(numberOfContacts) contact \(imageNoun)."
     }
     
-    fileprivate func showResetDialog() {
-        
+    fileprivate func showResetMessage() {
+        let numberOfContacts = self.contacts!.count
+        let imageNoun = numberOfContacts > 1 ? "images" : "image"
+        informationLabel.text = "Please confirm that you would like to delete \(numberOfContacts) contact \(imageNoun)."
     }
     
     @IBAction func onContinueButtonTouched(_ sender: Any) {
-        startProcessing()
+        if mode == .assign {
+            startGeneratingAndAssigning()
+        } else if mode == .reset {
+            startResetting()
+        }
     }
-    
-    
     
     @IBAction func onBackButtonTouched(_ sender: Any) {
         if isProcessing {
@@ -85,7 +104,7 @@ class MultiModeViewController: ContactAccessViewController {
         }
     }
     
-    fileprivate func startProcessing() {
+    fileprivate func startGeneratingAndAssigning() {
         
         guard !isProcessing else {
             NSLog("MultiModeViewController: startProcessing(): ERROR: Already processing!")
@@ -93,6 +112,9 @@ class MultiModeViewController: ContactAccessViewController {
         }
         
         stopped = false
+        continueButton.isHidden = true
+        continueButton.isEnabled = false
+        backButton.setTitle("Back", for: .normal)
         
         DispatchQueue.global().async {
             // Background thread
@@ -106,7 +128,7 @@ class MultiModeViewController: ContactAccessViewController {
                 }
                 
                 DispatchQueue.main.async(execute: {
-                    self.informationLabel.text = "Generating image for \(contact.displayName)"
+                    self.informationLabel.text = "Generating image for \(contact.displayName)."
                 })
                 self.imageFactory = ImageFactory.init(contact: contact)
                 
@@ -115,19 +137,71 @@ class MultiModeViewController: ContactAccessViewController {
                         self.isProcessing = false
                         return
                     }
-                    ContactPictureWriter.assign(image, toContact: contact)
+                    
+                    DispatchQueue.main.async(execute: {
+                        self.informationLabel.text = "Assigning new image to \(contact.displayName)."
+                    })
+                    
+                    let _ = ContactPictureWriter.assign(image, toContact: contact)
                 } else {
                     NSLog("MultiModeViewController: startProcessing(): WARNING: No image generated for \(contact).")
                 }
             }
             
             self.isProcessing = false
-            
+            self.showDoneMessage()
         }
         
     }
     
-    fileprivate func stopProcessing() -> Bool {
+    fileprivate func startResetting() {
+        guard !isProcessing else {
+            NSLog("MultiModeViewController: startProcessing(): ERROR: Already processing!")
+            return
+        }
+        
+        stopped = false
+        continueButton.isHidden = true
+        continueButton.isEnabled = false
+        backButton.setTitle("Back", for: .normal)
+
+        DispatchQueue.global().async {
+            // Background thread
+            
+            self.isProcessing = true
+            
+            for contact in self.contacts! {
+                if self.stopped {
+                    self.isProcessing = false
+                    return
+                }
+                
+                DispatchQueue.main.async(execute: {
+                    self.informationLabel.text = "Deleting image of \(contact.displayName)."
+                })
+                
+                let _ = ContactPictureWriter.delete(imageOfContact: contact)
+            }
+            
+            self.isProcessing = false
+            self.showDoneMessage()
+        }
+    }
+    
+    fileprivate func showDoneMessage() {
+        
+        let actionVerb = mode == .reset ? "Deleted" : "Assigned"
+        let imageNoun = contacts!.count > 1 ? "images" : "image"
+        informationLabel.text = "\(actionVerb) \(contacts!.count) \(imageNoun)."
+        
+        contacts = nil
+
+        continueButton.isHidden = true
+        continueButton.isEnabled = false
+        backButton.setTitle("Back", for: .normal)
+    }
+    
+    fileprivate func stopProcessing() {
         imageFactory?.stop()
         stopped = true
         

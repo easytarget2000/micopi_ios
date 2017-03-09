@@ -71,8 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         if authorizationStatus == CNAuthorizationStatus.denied {
                             DispatchQueue.main.async(execute: {
                                     () -> Void in
-                                    let message = "\(accessError!.localizedDescription)\n\nPlease allow the app to access your contacts through the Settings."
-                                    self.showMessage(message)
+                                    self.showContactsAccessMessage()
                                 }
                             )
                         }
@@ -82,17 +81,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
         default:
             let message = "Please allow the app to access your contacts through the Settings."
-            self.showMessage(message)
+            self.showContactsAccessMessage()
         }
     }
     
     // MARK: - Alerts
     
-    func showMessage(_ message: String) {
+    fileprivate func showContactsAccessMessage() {
+        let message = "Please allow the app to access your contacts."
         let alertController = UIAlertController(title: nil, message: message, preferredStyle: UIAlertControllerStyle.alert)
         
-        let dismissAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (action) -> Void in
+        if let settingsURL = URL(string: UIApplicationOpenSettingsURLString) {
+            let settingsAction = UIAlertAction(
+                title: "Settings",
+                style: UIAlertActionStyle.default,
+                handler: {
+                    (_) in
+                    UIApplication.shared.openURL(settingsURL)
+                }
+            )
+            
+            alertController.addAction(settingsAction)
         }
+        
+        let dismissAction = UIAlertAction(title: "Later", style: UIAlertActionStyle.default, handler: nil)
         
         alertController.addAction(dismissAction)
         

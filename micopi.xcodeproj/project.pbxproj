@@ -117,10 +117,10 @@
 		D0CA32CC1C7BB026007E7B0F /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				D0CA32CF1C7BB071007E7B0F /* WelcomeViewController.swift */,
-				D0CA32D11C7BB1F5007E7B0F /* SingleContactViewController.swift */,
 				D069FFBA1C7FB02D0069B3F4 /* ContactAccessViewController.swift */,
 				0B46D5D81E6E1CC500F0D819 /* MultiModeViewController.swift */,
+				D0CA32D11C7BB1F5007E7B0F /* SingleContactViewController.swift */,
+				D0CA32CF1C7BB071007E7B0F /* WelcomeViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";

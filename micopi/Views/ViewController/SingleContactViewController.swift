@@ -22,7 +22,7 @@ class SingleContactViewController: ContactAccessViewController {
     
     @IBOutlet weak var assignButton: UIBarButtonItem!
         
-    var contact: MiContact?
+    fileprivate var contact: MiContact?
 
     override func viewDidLoad() {
         super.viewDidLoad()
