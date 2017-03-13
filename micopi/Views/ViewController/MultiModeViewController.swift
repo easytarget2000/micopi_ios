@@ -33,7 +33,7 @@ class MultiModeViewController: ContactAccessViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         let gradient: CAGradientLayer = CAGradientLayer()
         gradient.frame = view.bounds
         gradient.colors = ColorPalette.backgroundGradient
@@ -41,11 +41,28 @@ class MultiModeViewController: ContactAccessViewController {
         
         informationLabel.text = ""
         
+        continueButton.layer.cornerRadius = 4
+        continueButton.layer.borderColor = UIColor.white.cgColor
+        continueButton.layer.borderWidth = 1
+        continueButton.layer.masksToBounds = true
         continueButton.isHidden = true
         continueButton.isEnabled = false
         
+        backButton.layer.cornerRadius = 4
+        backButton.layer.borderColor = UIColor.white.cgColor
+        backButton.layer.borderWidth = 1
+        backButton.layer.masksToBounds = true
         backButton.isHidden = true
         backButton.isEnabled = false
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = true
+    }
+    
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return UIStatusBarStyle.lightContent
     }
 
     func contactPickerDidCancel(_ picker: CNContactPickerViewController) {

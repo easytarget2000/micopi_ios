@@ -22,6 +22,14 @@ class Random {
         return Int(drand48() * Double(max - min)) + min
     }
     
+    static func i(greater min: Int, smaller max: Int) -> Int {
+        guard min < max else {
+            return min
+        }
+        
+        return Int(drand48() * Double(max - min)) + min
+    }
+    
     static func b(withChance chance: Double) -> Bool {
         guard chance > 0 else {
             return false
@@ -38,7 +46,28 @@ class Random {
         return Float(drand48()) * max
     }
     
+    static func f(smaller max: Float) -> Float {
+        return Float(drand48()) * max
+    }
+    
+    static func f(smaller max: Float, greater min: Float) -> Float {
+        guard min < max else {
+            return min
+        }
+        
+        return (Float(drand48()) * (max - min)) + min
+    }
+    
     static func f(largerThan min: Float, smallerThan max: Float) -> Float {
+        guard min < max else {
+            return min
+        }
+        
+        return Float(drand48() * Double(max - min)) + min
+
+    }
+    
+    static func f(greater min: Float, smaller max: Float) -> Float {
         guard min < max else {
             return min
         }
@@ -48,6 +77,18 @@ class Random {
     
     static func cgF(smallerThan max: CGFloat) -> CGFloat {
         return CGFloat(drand48()) * max
+    }
+    
+    static func cgF(smaller max: CGFloat) -> CGFloat {
+        return CGFloat(drand48()) * max
+    }
+    
+    static func cgF(greater min: CGFloat, smaller max: CGFloat) -> CGFloat {
+        guard min < max else {
+            return min
+        }
+        
+        return CGFloat(drand48() * Double(max - min)) + min
     }
 
 }

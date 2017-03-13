@@ -60,10 +60,12 @@ class ImageFactory {
         // The background colour is based on the initial character of the Display Name.
         let displayedInitials = contact.initials
         
-        let numberOfShapes = Random.i(largerThan: 1, smallerThan: 4)
+        let numberOfShapes = Random.i(largerThan: 2, smallerThan: 6)
         let mirrored = Random.b(withChance: 0.5)
-        let alpha: CGFloat = (mirrored ? 0.1 : 0.05) / CGFloat(numberOfShapes)
-//        let alpha: CGFloat = 1
+//        let alpha: CGFloat = (mirrored ? 0.2 : 0.1) / CGFloat(numberOfShapes)
+        let alpha = Random.cgF(greater: 0.1, smaller: 0.6)
+        let mutableColor1 = Random.b(withChance: 0.2)
+        let mutableColor2 = Random.b(withChance: 0.2)
         
         for i in 0 ..< numberOfShapes {
             if stopped {
@@ -82,20 +84,29 @@ class ImageFactory {
                 foliageY = Random.f(largerThan: imageSize * 0.1, smallerThan: imageSize * 0.9)
             }
             
-            if Random.b(withChance: 0.5) {
-                foliage.start(inCircleAtX: foliageX, atY: foliageY)
-            } else {
-                foliage.start(inRectAroundX: foliageX, aroundY: foliageY)
-            }
+//            foliage.start(inCircleAtX: foliageX, atY: foliageY)
+            foliage.start(inPolygonAroundX: foliageX, y: foliageY)
+//            if Random.b(withChance: 0.5) {
+//                foliage.start(inCircleAtX: foliageX, atY: foliageY)
+//            } else {
+//                foliage.start(inRectAroundX: foliageX, aroundY: foliageY)
+//            }
             
-            let color1 = ColorPalette.randomColor(withAlpha: alpha).cgColor
-            let color2 = ColorPalette.randomColor(withAlpha: alpha).cgColor
+            var color1 = ColorPalette.randomColor(withAlpha: alpha).cgColor
+            var color2 = ColorPalette.randomColor(withAlpha: alpha).cgColor
             
             while foliage.updateAndDraw(
                 inContext: context,
                 withColor1: color1,
                 color2: color2
             ) {
+                if mutableColor1 {
+                    color1 = ColorPalette.randomColor(withAlpha: alpha).cgColor
+                }
+                if mutableColor2 {
+                    color2 = ColorPalette.randomColor(withAlpha: alpha).cgColor
+                }
+                
                 if stopped {
                     UIGraphicsEndImageContext()
                     return nil
@@ -157,6 +168,9 @@ class ImageFactory {
     
     
 }
+
+
+// MARK: - Character to Int Extension
 
 extension Character {
     

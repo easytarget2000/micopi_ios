@@ -14,7 +14,7 @@ class Foliage {
     
     fileprivate static let maxAge = 64
     
-    fileprivate static let maxNewNodes = 36
+    fileprivate static let maxNewNodes = 24
     
     fileprivate static let pushForce = Float(2)
     
@@ -92,40 +92,26 @@ class Foliage {
     }
     
     func start(inCircleAtX x: Float, atY y: Float) {
-        let initialRadius = Random.f(
-            largerThan: imageSize * 0.01,
-            smallerThan: imageSize * 0.03
-        )
+        let initialRadius = Random.f(greater: imageSize * 0.01, smaller: imageSize * 0.05)
         
-        let fullCircle = Random.b(withChance: 0.5)
-        let arcStart: Float
-        let arcEnd: Float
-        if fullCircle {
-            arcStart = 0
-            arcEnd = Foliage.piTwo
-        } else {
-            arcStart = Random.f(smallerThan: Foliage.piTwo)
-            arcEnd = Random.f(smallerThan: Foliage.piTwo)
-        }
-
+        let slimnessFactor = Random.f(greater: 0.01, smaller: 2)
+        
         var lastNode: Node!
         for i in 0 ..< numberOfInitialNodes {
             
-            let angleOfNode = arcStart + (arcEnd * Float((i + 1)) / Float(numberOfInitialNodes))
+            let angleOfNode = Foliage.piTwo * (Float((i + 1)) / Float(numberOfInitialNodes))
             
-            let nodeX = x + (cosf(angleOfNode) * initialRadius) + jitterValue()
+            let nodeX = x + (slimnessFactor * cosf(angleOfNode) * initialRadius) + jitterValue()
             let nodeY = y + (sinf(angleOfNode) * initialRadius) + jitterValue()
             let node = Node(x: nodeX, y: nodeY)
-            
             
             if firstNode == nil {
                 firstNode = node
                 lastNode = node
             } else if i == numberOfInitialNodes - 1 {
                 self.preferredNeighborDistance = node.distance(toOtherNode: lastNode)
-                if fullCircle {
-                    node.next = firstNode
-                }
+                lastNode.next = node
+                node.next = firstNode
             } else {
                 lastNode.next = node
                 lastNode = node
@@ -134,47 +120,76 @@ class Foliage {
         }
     }
     
-    func start(inRectAroundX x: Float, aroundY y: Float) {
-        let sideLength = Random.f(
-            largerThan: imageSize * 0.01,
-            smallerThan: imageSize * 0.03
-        )
+    func start(inPolygonAroundX x: Float, y: Float) {
+        let size = Random.f(greater: imageSize * 0.01, smaller: imageSize * 0.06)
         
-        let sideLengthHalf = sideLength * 0.5
-        let quarterOfInitialNodes = numberOfInitialNodes / 4
+        let numberOfEdges = Random.i(greater: 3, smaller: 8)
+//        let numberOfEdges = 4
+        let numberOfEdgesF = Float(numberOfEdges)
+        let nodesPerEdge = numberOfInitialNodes / numberOfEdges
+        let nodesPerEdgeF = Float(nodesPerEdge)
+        
+        let angleOffset = Random.f(smaller: Foliage.piTwo)
         
         var lastNode: Node!
         for i in 0 ..< numberOfInitialNodes {
             
-            let nodeX: Float
-            let nodeY: Float
+            let edge = i / nodesPerEdge
+            let edgeF = Float(edge)
+            let angleOfEdge1 = angleOffset + (Foliage.piTwo * edgeF / numberOfEdgesF)
+            let angleOfEdge2 = angleOffset + (Foliage.piTwo * (edgeF + 1) / numberOfEdgesF)
             
-            if i < quarterOfInitialNodes {
-                // Top left to top right:
-                nodeX = (x - sideLengthHalf) + (sideLength * Float(i) / Float(quarterOfInitialNodes))
-                nodeY = y - sideLengthHalf
-            } else if i < (quarterOfInitialNodes * 2) {
-                // Top right to bottom right:
-                nodeX = x + sideLengthHalf
-                nodeY = (y - sideLengthHalf) + (sideLength * Float((i - quarterOfInitialNodes)) / Float(quarterOfInitialNodes))
-            } else if i < (quarterOfInitialNodes * 3) {
-                // Bottom right to bottom left:
-                nodeX = (x + sideLengthHalf) - (sideLength * Float(i - (quarterOfInitialNodes * 2)) / Float(quarterOfInitialNodes))
-                nodeY = y + sideLengthHalf
-            } else {
-                nodeX = x - sideLengthHalf
-                nodeY = (y + sideLengthHalf) - (sideLength * Float(i - (quarterOfInitialNodes * 3)) / Float(quarterOfInitialNodes))
-            }
+            let edge1X = x + (size * cosf(angleOfEdge1))
+            let edge1Y = y + (size * sinf(angleOfEdge1))
             
-//            NSLog("\(i) / \(numberOfInitialNodes): \(nodeX), \(nodeY)")
+            let edge2X = x + (size * cosf(angleOfEdge2))
+            let edge2Y = y + (size * sinf(angleOfEdge2))
             
-            let node = Node(x: nodeX, y: nodeY)
+//            print("Edge 1: \(edge1X), \(edge1Y)")
+//            print("Edge 2: \(edge2X), \(edge2Y)")
+            
+            let angleBetweenEdges = Foliage.angle(
+                betweenX1: edge1X,
+                y1: edge1Y,
+                x2: edge2X,
+                y2: edge2Y
+            )
+            let nodeRelativeToEdge1 = (Float(i) - (edgeF * nodesPerEdgeF)) / nodesPerEdgeF
+            
+            print("i: \(i), edge: \(edge), angleBetweenEdges: \(angleBetweenEdges), nodeRelTo1: \(nodeRelativeToEdge1)")
+                        
+//            final double edge = i / nodesPerEdge;
+//            final double angleOfEdge1 = polygonAngle + (TWO_PI * edge / numberOfEdges);
+//            final double angleOfEdge2 = polygonAngle + (TWO_PI * (edge + 1) / numberOfEdges);
+//            
+//            final double edge1X = x + (size * Math.cos(angleOfEdge1));
+//            final double edge1Y = y + (size * Math.sin(angleOfEdge1));
+//            
+//            final double edge2X = x + (size * Math.cos(angleOfEdge2));
+//            final double edge2Y = y + (size * Math.sin(angleOfEdge2));
+//            
+//            //            Log.d(TAG, "Edge 1: " + edge1X + ", " + edge1Y);
+//            //            Log.d(TAG, "Edge 2: " + edge2X + ", " + edge2Y);
+//            
+//            final double angleBetweenEdges = angle(edge1X, edge1Y, edge2X, edge2Y);
+//            final double nodeRelativeToEdge1 = (i  - (edge * (double) nodesPerEdge)) / (double) nodesPerEdge;
+//            //            Log.d(TAG, "i: " + i + ", edge: " + edge + ", angleBetweenEdges: " + angleBetweenEdges + ", nodeRelativeToEdge1: " + nodeRelativeToEdge1);
+//            
+//            final Node node = new Node();
+//            node.mX = edge1X + (Math.cos(angleBetweenEdges) * nodeRelativeToEdge1 * size);
+//            node.mY = edge1Y + (Math.sin(angleBetweenEdges) * nodeRelativeToEdge1 * size);
+            
+            let node = Node(
+                x: edge1X + (cosf(angleBetweenEdges) * nodeRelativeToEdge1 * size),
+                y: edge1Y + (sinf(angleBetweenEdges) * nodeRelativeToEdge1 * size)
+            )
             
             if firstNode == nil {
                 firstNode = node
                 lastNode = node
             } else if i == numberOfInitialNodes - 1 {
                 self.preferredNeighborDistance = node.distance(toOtherNode: lastNode)
+                lastNode.next = node
                 node.next = firstNode
             } else {
                 lastNode.next = node
@@ -301,7 +316,7 @@ class Foliage {
         
         repeat {
             
-            guard let nextNode = otherNode.next, nextNode !== self else {
+            guard let nextNode = otherNode.next, nextNode !== firstNode else {
                 return
             }
             
@@ -329,12 +344,21 @@ class Foliage {
                 }
             }
             
-            let angle = currentNode.angle(toOtherNode: otherNode)
+//            let angle = currentNode.angle(toOtherNode: otherNode)
+            let angle = Foliage.angle(betweenNode: currentNode, node2: otherNode)
             
             currentNode.x += cosf(angle) * force
             currentNode.y += sinf(angle) * force
             
         } while !stopped
+    }
+    
+    fileprivate static func angle(betweenNode node1: Node, node2: Node) -> Float {
+        return Foliage.angle(betweenX1: node1.x, y1: node1.y, x2: node2.x, y2: node2.y)
+    }
+    
+    fileprivate static func angle(betweenX1 x1: Float, y1: Float, x2: Float, y2: Float) -> Float {
+        return atan2f(y2 - y1, x2 - x1) + Foliage.pi
     }
         
     class Node {
@@ -366,9 +390,9 @@ class Foliage {
             return sqrtf(pow(otherNode.x - x, 2) + pow(otherNode.y - y, 2))
         }
         
-        fileprivate func angle(toOtherNode otherNode: Node) -> Float {
-            return atan2f(otherNode.y - y, otherNode.x - x) + Foliage.pi
-        }
+//        fileprivate func angle(toOtherNode otherNode: Node) -> Float {
+//            return atan2f(otherNode.y - y, otherNode.x - x) + Foliage.pi
+//        }
         
 
     }

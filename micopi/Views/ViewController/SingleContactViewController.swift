@@ -22,7 +22,7 @@ class SingleContactViewController: ContactAccessViewController {
     
     @IBOutlet weak var assignButton: UIBarButtonItem!
         
-    fileprivate var contact: MiContact?
+    var contact: MiContact?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +38,7 @@ class SingleContactViewController: ContactAccessViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isToolbarHidden = false
+        setLoadingOverlayHidden(false)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -72,7 +73,6 @@ class SingleContactViewController: ContactAccessViewController {
     
     fileprivate func showLoadingOverlay() {
         showLoadingOverlay(
-//            withMessage: NSLocalizedString("general_wait_msg", comment: "Please wait.")
             withMessage: "Please wait."
         )
     }
