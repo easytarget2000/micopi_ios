@@ -63,7 +63,7 @@ class ImageFactory {
         let numberOfShapes = Random.i(largerThan: 2, smallerThan: 6)
         let mirrored = Random.b(withChance: 0.5)
 //        let alpha: CGFloat = (mirrored ? 0.2 : 0.1) / CGFloat(numberOfShapes)
-        let alpha = Random.cgF(greater: 0.1, smaller: 0.6)
+        let alpha = Random.cgF(greater: 0.05, smaller: 0.33)
         let mutableColor1 = Random.b(withChance: 0.2)
         let mutableColor2 = Random.b(withChance: 0.2)
         
@@ -85,13 +85,12 @@ class ImageFactory {
             }
             
 //            foliage.start(inCircleAtX: foliageX, atY: foliageY)
-            foliage.start(inPolygonAroundX: foliageX, y: foliageY)
-//            if Random.b(withChance: 0.5) {
-//                foliage.start(inCircleAtX: foliageX, atY: foliageY)
-//            } else {
-//                foliage.start(inRectAroundX: foliageX, aroundY: foliageY)
-//            }
-            
+            if Random.b(withChance: 0.5) {
+                foliage.start(inCircleAtX: foliageX, atY: foliageY)
+            } else {
+                foliage.start(inPolygonAroundX: foliageX, y: foliageY)
+            }
+        
             var color1 = ColorPalette.randomColor(withAlpha: alpha).cgColor
             var color2 = ColorPalette.randomColor(withAlpha: alpha).cgColor
             
