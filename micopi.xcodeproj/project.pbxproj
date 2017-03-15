@@ -11,6 +11,7 @@
 		0B65B9291E6211DE007D93C2 /* Foliage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B65B9281E6211DE007D93C2 /* Foliage.swift */; };
 		0BAE2E601E64D5C000B99057 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAE2E5F1E64D5C000B99057 /* ColorPalette.swift */; };
 		0BD44F1D1E6DE8CF008A1321 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD44F1C1E6DE8CF008A1321 /* Random.swift */; };
+		0BEC03E91E79E3500027B8DB /* DefaultsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEC03E81E79E3500027B8DB /* DefaultsCoordinator.swift */; };
 		D069FFB91C7F9CB70069B3F4 /* ContactPictureWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D069FFB81C7F9CB70069B3F4 /* ContactPictureWriter.swift */; };
 		D069FFBB1C7FB02D0069B3F4 /* ContactAccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D069FFBA1C7FB02D0069B3F4 /* ContactAccessViewController.swift */; };
 		D0B1389E1C7BB93C00E58407 /* ImageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B1389D1C7BB93C00E58407 /* ImageFactory.swift */; };
@@ -28,6 +29,7 @@
 		0B65B9281E6211DE007D93C2 /* Foliage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Foliage.swift; path = Engine/Foliage.swift; sourceTree = "<group>"; };
 		0BAE2E5F1E64D5C000B99057 /* ColorPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorPalette.swift; path = Engine/ColorPalette.swift; sourceTree = "<group>"; };
 		0BD44F1C1E6DE8CF008A1321 /* Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Random.swift; path = Engine/Random.swift; sourceTree = "<group>"; };
+		0BEC03E81E79E3500027B8DB /* DefaultsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultsCoordinator.swift; sourceTree = "<group>"; };
 		D069FFB81C7F9CB70069B3F4 /* ContactPictureWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactPictureWriter.swift; path = Engine/ContactPictureWriter.swift; sourceTree = "<group>"; };
 		D069FFBA1C7FB02D0069B3F4 /* ContactAccessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactAccessViewController.swift; path = Views/ViewController/ContactAccessViewController.swift; sourceTree = "<group>"; };
 		D0B1389D1C7BB93C00E58407 /* ImageFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageFactory.swift; path = Engine/ImageFactory.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				D0CA32B81C7BA87B007E7B0F /* Assets.xcassets */,
 				D0CA32BA1C7BA87B007E7B0F /* LaunchScreen.storyboard */,
 				D0CA32BD1C7BA87B007E7B0F /* Info.plist */,
+				0BEC03E81E79E3500027B8DB /* DefaultsCoordinator.swift */,
 			);
 			path = micopi;
 			sourceTree = "<group>";
@@ -159,6 +162,7 @@
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = X59SC9WX5X;
 						LastSwiftMigration = 0820;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -198,6 +202,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BEC03E91E79E3500027B8DB /* DefaultsCoordinator.swift in Sources */,
 				0B46D5D91E6E1CC500F0D819 /* MultiModeViewController.swift in Sources */,
 				D0B1389E1C7BB93C00E58407 /* ImageFactory.swift in Sources */,
 				D0CA32D01C7BB071007E7B0F /* WelcomeViewController.swift in Sources */,
@@ -323,10 +328,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = X59SC9WX5X;
 				INFOPLIST_FILE = micopi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.eztarget.micopi;
+				PRODUCT_BUNDLE_IDENTIFIER = org.eztarget.wmicopi;
 				PRODUCT_NAME = Micopi;
 				SWIFT_OBJC_BRIDGING_HEADER = "micopi-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -340,10 +346,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = X59SC9WX5X;
 				INFOPLIST_FILE = micopi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.eztarget.micopi;
+				PRODUCT_BUNDLE_IDENTIFIER = org.eztarget.wmicopi;
 				PRODUCT_NAME = Micopi;
 				SWIFT_OBJC_BRIDGING_HEADER = "micopi-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;

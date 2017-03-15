@@ -14,6 +14,8 @@ class WelcomeViewController: UIViewController {
     
     @IBOutlet weak var multiButton: UIButton!
     
+    @IBOutlet weak var settingsButton: UIButton!
+    
     @IBOutlet weak var resetButton: UIButton!
     
     fileprivate static let toContactViewSegue = "WelcomeToContactSegue"

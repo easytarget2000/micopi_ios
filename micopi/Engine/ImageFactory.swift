@@ -54,8 +54,21 @@ class ImageFactory {
         UIGraphicsBeginImageContext(contextSize)
         
         let context = UIGraphicsGetCurrentContext()!
-        context.setFillColor(UIColor.white.cgColor)
-        context.fill(CGRect(x: 0, y: 0, width: self.imageSize, height: self.imageSize))
+        
+        let fullRect = CGRect(x: 0, y: 0, width: self.imageSize, height: self.imageSize)
+        
+        var backgroundImage: UIImage?
+        if DefaultsCoordinator.overdrawExistingImage(),
+            let imageData = contact.cn.imageData,
+            let image = UIImage(data: imageData) {
+            
+            image.draw(in: fullRect)
+            backgroundImage = image
+            
+        } else {
+            context.setFillColor(UIColor.white.cgColor)
+            context.fill(fullRect)
+        }
         
         // The background colour is based on the initial character of the Display Name.
         let displayedInitials = contact.initials
@@ -64,8 +77,8 @@ class ImageFactory {
         let mirrored = Random.b(withChance: 0.5)
 //        let alpha: CGFloat = (mirrored ? 0.2 : 0.1) / CGFloat(numberOfShapes)
         let alpha = Random.cgF(greater: 0.05, smaller: 0.33)
-        let mutableColor1 = Random.b(withChance: 0.2)
-        let mutableColor2 = Random.b(withChance: 0.2)
+        let mutableColor1 = backgroundImage == nil && Random.b(withChance: 0.2)
+        let mutableColor2 = backgroundImage == nil  && Random.b(withChance: 0.2)
         
         for i in 0 ..< numberOfShapes {
             if stopped {
@@ -91,8 +104,18 @@ class ImageFactory {
                 foliage.start(inPolygonAroundX: foliageX, y: foliageY)
             }
         
-            var color1 = ColorPalette.randomColor(withAlpha: alpha).cgColor
-            var color2 = ColorPalette.randomColor(withAlpha: alpha).cgColor
+            var color1: CGColor
+            var color2: CGColor
+
+            if let image = backgroundImage {
+                color1 = image.get(cgColorAtX: Int(foliageX), y: Int(foliageY), alpha: 0.5)
+                let color2X = foliageX < imageSize - 5 ? Int(foliageX + 5) : Int(foliageX + 5)
+                let color2Y = foliageY < imageSize - 5 ? Int(foliageY + 5) : Int(foliageY + 5)
+                color2 = image.get(cgColorAtX: color2X, y: color2Y, alpha: 0.5)
+            } else {
+                color1 = ColorPalette.randomColor(withAlpha: alpha).cgColor
+                color2 = ColorPalette.randomColor(withAlpha: alpha).cgColor
+            }
             
             while foliage.updateAndDraw(
                 inContext: context,
@@ -116,14 +139,7 @@ class ImageFactory {
 //        let color1 = UIColor.black.withAlphaComponent(0.2).cgColor
         
         if !displayedInitials.isEmpty {
-            //            CGContextSaveGState(context);
-            //            [myLayer renderInContext:context];
-            //            CGContextRestoreGState(context);
-            
-            //            context.setBlendMode(.clear)
-            
             paintInitials(displayedInitials)
-            //            context.setBlendMode(.normal)
         }
         
         let newImage = UIGraphicsGetImageFromCurrentImageContext()!
@@ -163,8 +179,7 @@ class ImageFactory {
             withAttributes: attributes
         )
     }
-    
-    
+
     
 }
 
@@ -178,5 +193,51 @@ extension Character {
             return Int(s.value)
         }
         return 0
+    }
+}
+
+
+// MARK: - UIImage pixel color extension
+
+extension UIImage {
+    
+    func get(cgColorAtX x: Int, y: Int, alpha: CGFloat = 1) -> CGColor {
+        return get(colorAtX: x, y: y).withAlphaComponent(alpha).cgColor
+    }
+    
+    func get(colorAtX x: Int, y: Int) -> UIColor {
+        
+        guard let cgImage = self.cgImage else {
+            return UIColor.brown
+        }
+        
+        guard let imageDataProvider = cgImage.dataProvider else {
+            return UIColor.lightGray
+        }
+        
+        guard let pixelData = imageDataProvider.data else {
+            return UIColor.black
+        }
+        
+        guard let data = CFDataGetBytePtr(pixelData) else {
+            return UIColor.cyan
+        }
+        
+        let index = Int(self.size.width) * y + x
+        let expectedLengthA = Int(self.size.width * self.size.height)
+        let expectedLengthRGB = 3 * expectedLengthA
+        let expectedLengthRGBA = 4 * expectedLengthA
+        
+        let numBytes = CFDataGetLength(pixelData)
+        switch numBytes {
+        case expectedLengthA:
+            return UIColor(red: 0, green: 0, blue: 0, alpha: CGFloat(data[index])/255.0)
+        case expectedLengthRGB:
+            return UIColor(red: CGFloat(data[3*index])/255.0, green: CGFloat(data[3*index+1])/255.0, blue: CGFloat(data[3*index+2])/255.0, alpha: 1.0)
+        case expectedLengthRGBA:
+            return UIColor(red: CGFloat(data[4*index])/255.0, green: CGFloat(data[4*index+1])/255.0, blue: CGFloat(data[4*index+2])/255.0, alpha: CGFloat(data[4*index+3])/255.0)
+        default:
+            return UIColor.orange
+        }
     }
 }

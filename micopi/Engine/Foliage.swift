@@ -14,7 +14,7 @@ class Foliage {
     
     fileprivate static let maxAge = 64
     
-    fileprivate static let maxNewNodes = 24
+    fileprivate static let maxNewNodes = 16
     
     fileprivate static let pushForce = Float(2)
     
@@ -22,7 +22,7 @@ class Foliage {
     
     fileprivate static let piTwo = pi * 2
     
-    fileprivate let numberOfInitialNodes = Random.i(largerThan: 24, smallerThan: 64)
+    fileprivate let numberOfInitialNodes = Random.i(largerThan: 36, smallerThan: 64)
     
     fileprivate var imageSize: Float
     
@@ -74,7 +74,7 @@ class Foliage {
     fileprivate var age = 0
     
     fileprivate lazy var density: Int = {
-        return self.numberOfInitialNodes / Random.i(largerThan: 2, smallerThan: 5)
+        return self.numberOfInitialNodes / Random.i(largerThan: 4, smallerThan: 8)
 //       return Foliage.maxNewNodes / Random.i(largerThan: 3, smallerThan: 12)
     }()
     
@@ -92,7 +92,7 @@ class Foliage {
     }
     
     func start(inCircleAtX x: Float, atY y: Float) {
-        let initialRadius = Random.f(greater: imageSize * 0.01, smaller: imageSize * 0.05)
+        let initialRadius = Random.f(greater: imageSize * 0.02, smaller: imageSize * 0.07)
         
         let slimnessFactor = Random.f(greater: 0.01, smaller: 2)
         
@@ -121,7 +121,7 @@ class Foliage {
     }
     
     func start(inPolygonAroundX x: Float, y: Float) {
-        let size = Random.f(greater: imageSize * 0.01, smaller: imageSize * 0.06)
+        let size = Random.f(greater: imageSize * 0.01, smaller: imageSize * 0.07)
         
         let numberOfEdges = Random.i(greater: 3, smaller: 8)
 //        let numberOfEdges = 4
@@ -156,8 +156,8 @@ class Foliage {
             )
             let nodeRelativeToEdge1 = (Float(i) - (edgeF * nodesPerEdgeF)) / nodesPerEdgeF
             
-            print("i: \(i), edge: \(edge), angleBetweenEdges: \(angleBetweenEdges), nodeRelTo1: \(nodeRelativeToEdge1)")
-                        
+//            print("i: \(i), edge: \(edge), angleBetweenEdges: \(angleBetweenEdges), nodeRelTo1: \(nodeRelativeToEdge1)")
+            
 //            final double edge = i / nodesPerEdge;
 //            final double angleOfEdge1 = polygonAngle + (TWO_PI * edge / numberOfEdges);
 //            final double angleOfEdge2 = polygonAngle + (TWO_PI * (edge + 1) / numberOfEdges);
