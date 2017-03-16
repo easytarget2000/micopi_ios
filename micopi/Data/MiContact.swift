@@ -61,13 +61,23 @@ class MiContact {
         return ""
     }()
     
-    var initials: String {
+    var initials: String? {
         get {
+            let numberOfInitials = DefaultsCoordinator.preferredNumberOfInitials()
+            guard numberOfInitials > 0 else {
+                return nil
+            }
+            
             guard !displayName.isEmpty else {
-                return ""
+                return nil
             }
             
             if let firstChar = displayName.characters.first {
+                
+                if numberOfInitials == 1 {
+                    return String(firstChar)
+                }
+                
                 if let secondChar = self.cn.familyName.characters.first {
                     return String(firstChar) + String(secondChar)
                 } else if let secondChar = self.cn.middleName.characters.first {
@@ -76,7 +86,7 @@ class MiContact {
                     return String(firstChar)
                 }
             } else {
-                return ""
+                return nil
             }
             
         }

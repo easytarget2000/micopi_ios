@@ -44,10 +44,15 @@ class WelcomeViewController: UIViewController {
         multiButton.layer.borderWidth = 1
         multiButton.layer.masksToBounds = true
         
-        resetButton.layer.cornerRadius = 4
-        resetButton.layer.borderColor = UIColor.white.cgColor
-        resetButton.layer.borderWidth = 1
-        resetButton.layer.masksToBounds = true
+//        resetButton.layer.cornerRadius = 4
+//        resetButton.layer.borderColor = UIColor.white.cgColor
+//        resetButton.layer.borderWidth = 1
+//        resetButton.layer.masksToBounds = true
+//        
+//        settingsButton.layer.cornerRadius = 4
+//        settingsButton.layer.borderColor = UIColor.white.cgColor
+//        settingsButton.layer.borderWidth = 1
+//        settingsButton.layer.masksToBounds = true
     }
     
     override func viewWillAppear(_ animated: Bool) {

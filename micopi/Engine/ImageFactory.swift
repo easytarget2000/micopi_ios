@@ -76,7 +76,7 @@ class ImageFactory {
         let numberOfShapes = Random.i(largerThan: 2, smallerThan: 6)
         let mirrored = Random.b(withChance: 0.5)
 //        let alpha: CGFloat = (mirrored ? 0.2 : 0.1) / CGFloat(numberOfShapes)
-        let alpha = Random.cgF(greater: 0.05, smaller: 0.33)
+        let alpha = Random.cgF(greater: 0.1, smaller: 0.33)
         let mutableColor1 = backgroundImage == nil && Random.b(withChance: 0.2)
         let mutableColor2 = backgroundImage == nil  && Random.b(withChance: 0.2)
         
@@ -138,8 +138,8 @@ class ImageFactory {
         
 //        let color1 = UIColor.black.withAlphaComponent(0.2).cgColor
         
-        if !displayedInitials.isEmpty {
-            paintInitials(displayedInitials)
+        if let initials = displayedInitials, !initials.isEmpty {
+            paintInitials(initials)
         }
         
         let newImage = UIGraphicsGetImageFromCurrentImageContext()!
@@ -161,9 +161,11 @@ class ImageFactory {
     
     fileprivate func paintInitials(_ initials: String!) {
         
+        let fontSize = imageSize * pow(0.66, CGFloat(initials.characters.count))
+        
         let attributes = [
-            NSFontAttributeName : UIFont.systemFont(ofSize: imageSize * pow(0.66, CGFloat(initials.characters.count))),
-//            NSFontAttributeName : UIFont.systemFontOfSize(12.0),
+            NSFontAttributeName : UIFont(name: "HelveticaNeue-Light", size: fontSize),
+//            NSFontAttributeName : UIFont.systemFont(ofSize: fontSize)),
             NSForegroundColorAttributeName : UIColor.white
         ]
         

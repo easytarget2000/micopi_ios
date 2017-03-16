@@ -33,6 +33,11 @@ class SingleContactViewController: ContactAccessViewController {
             target: self,
             action: #selector(SingleContactViewController.openContactPicker)
         )
+        
+        let gradient: CAGradientLayer = CAGradientLayer()
+        gradient.frame = self.view.bounds
+        gradient.colors = ColorPalette.backgroundGradient
+        loadingOverlay.layer.insertSublayer(gradient, at: 0)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,7 +52,7 @@ class SingleContactViewController: ContactAccessViewController {
     }
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
-        return UIStatusBarStyle.default
+        return UIStatusBarStyle.lightContent
     }
     
     fileprivate func generateImage() {
@@ -81,11 +86,6 @@ class SingleContactViewController: ContactAccessViewController {
 //        loadingOverlay.backgroundColor = ColorPalette.randomColor(withAlpha: 1)
         
         setLoadingOverlayHidden(false)
-        
-        let gradient: CAGradientLayer = CAGradientLayer()
-        gradient.frame = self.view.bounds
-        gradient.colors = ColorPalette.backgroundGradient
-        loadingOverlay.layer.insertSublayer(gradient, at: 0)
         
         loadingOverlay.alpha = 1
         

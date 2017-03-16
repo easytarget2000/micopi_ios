@@ -48,12 +48,12 @@ class MultiModeViewController: ContactAccessViewController {
         continueButton.isHidden = true
         continueButton.isEnabled = false
         
-        backButton.layer.cornerRadius = 4
-        backButton.layer.borderColor = UIColor.white.cgColor
-        backButton.layer.borderWidth = 1
-        backButton.layer.masksToBounds = true
-        backButton.isHidden = true
-        backButton.isEnabled = false
+//        backButton.layer.cornerRadius = 4
+//        backButton.layer.borderColor = UIColor.white.cgColor
+//        backButton.layer.borderWidth = 1
+//        backButton.layer.masksToBounds = true
+//        backButton.isHidden = true
+//        backButton.isEnabled = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -165,8 +165,11 @@ class MultiModeViewController: ContactAccessViewController {
                 }
             }
             
-            self.isProcessing = false
-            self.showDoneMessage()
+            DispatchQueue.main.async(execute: {
+                self.isProcessing = false
+                self.showDoneMessage()
+            }
+            )
         }
         
     }
@@ -200,8 +203,11 @@ class MultiModeViewController: ContactAccessViewController {
                 let _ = ContactPictureWriter.delete(imageOfContact: contact)
             }
             
-            self.isProcessing = false
-            self.showDoneMessage()
+            DispatchQueue.main.async(execute: {
+                    self.isProcessing = false
+                    self.showDoneMessage()
+                }
+            )
         }
     }
     

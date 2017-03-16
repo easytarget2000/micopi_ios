@@ -12,6 +12,9 @@
 		0BAE2E601E64D5C000B99057 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAE2E5F1E64D5C000B99057 /* ColorPalette.swift */; };
 		0BD44F1D1E6DE8CF008A1321 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD44F1C1E6DE8CF008A1321 /* Random.swift */; };
 		0BEC03E91E79E3500027B8DB /* DefaultsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEC03E81E79E3500027B8DB /* DefaultsCoordinator.swift */; };
+		0BEC03EB1E7A000C0027B8DB /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEC03EA1E7A000C0027B8DB /* SettingsViewController.swift */; };
+		0BEC03ED1E7A00B80027B8DB /* SwitchSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEC03EC1E7A00B80027B8DB /* SwitchSettingCell.swift */; };
+		0BEC03EF1E7A00DE0027B8DB /* SliderSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEC03EE1E7A00DE0027B8DB /* SliderSettingCell.swift */; };
 		D069FFB91C7F9CB70069B3F4 /* ContactPictureWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D069FFB81C7F9CB70069B3F4 /* ContactPictureWriter.swift */; };
 		D069FFBB1C7FB02D0069B3F4 /* ContactAccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D069FFBA1C7FB02D0069B3F4 /* ContactAccessViewController.swift */; };
 		D0B1389E1C7BB93C00E58407 /* ImageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B1389D1C7BB93C00E58407 /* ImageFactory.swift */; };
@@ -30,6 +33,9 @@
 		0BAE2E5F1E64D5C000B99057 /* ColorPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorPalette.swift; path = Engine/ColorPalette.swift; sourceTree = "<group>"; };
 		0BD44F1C1E6DE8CF008A1321 /* Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Random.swift; path = Engine/Random.swift; sourceTree = "<group>"; };
 		0BEC03E81E79E3500027B8DB /* DefaultsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultsCoordinator.swift; sourceTree = "<group>"; };
+		0BEC03EA1E7A000C0027B8DB /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = Views/ViewController/SettingsViewController.swift; sourceTree = "<group>"; };
+		0BEC03EC1E7A00B80027B8DB /* SwitchSettingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwitchSettingCell.swift; path = Views/SwitchSettingCell.swift; sourceTree = "<group>"; };
+		0BEC03EE1E7A00DE0027B8DB /* SliderSettingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SliderSettingCell.swift; path = Views/SliderSettingCell.swift; sourceTree = "<group>"; };
 		D069FFB81C7F9CB70069B3F4 /* ContactPictureWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactPictureWriter.swift; path = Engine/ContactPictureWriter.swift; sourceTree = "<group>"; };
 		D069FFBA1C7FB02D0069B3F4 /* ContactAccessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactAccessViewController.swift; path = Views/ViewController/ContactAccessViewController.swift; sourceTree = "<group>"; };
 		D0B1389D1C7BB93C00E58407 /* ImageFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageFactory.swift; path = Engine/ImageFactory.swift; sourceTree = "<group>"; };
@@ -76,15 +82,16 @@
 		D0CA32B01C7BA87B007E7B0F /* micopi */ = {
 			isa = PBXGroup;
 			children = (
-				D0CA32CB1C7BB01D007E7B0F /* Views */,
-				D0CA32CA1C7BAD99007E7B0F /* Engine */,
-				D0CA32C31C7BAA57007E7B0F /* Data */,
-				D0CA32B11C7BA87B007E7B0F /* AppDelegate.swift */,
-				D0CA32B51C7BA87B007E7B0F /* Main.storyboard */,
-				D0CA32B81C7BA87B007E7B0F /* Assets.xcassets */,
-				D0CA32BA1C7BA87B007E7B0F /* LaunchScreen.storyboard */,
 				D0CA32BD1C7BA87B007E7B0F /* Info.plist */,
+				D0CA32B11C7BA87B007E7B0F /* AppDelegate.swift */,
 				0BEC03E81E79E3500027B8DB /* DefaultsCoordinator.swift */,
+				D0CA32B81C7BA87B007E7B0F /* Assets.xcassets */,
+				D0CA32C31C7BAA57007E7B0F /* Data */,
+				D0CA32CA1C7BAD99007E7B0F /* Engine */,
+				D0CA32BA1C7BA87B007E7B0F /* LaunchScreen.storyboard */,
+				D0CA32B51C7BA87B007E7B0F /* Main.storyboard */,
+				D0CA32CC1C7BB026007E7B0F /* ViewController */,
+				D0CA32CB1C7BB01D007E7B0F /* Views */,
 			);
 			path = micopi;
 			sourceTree = "<group>";
@@ -112,7 +119,8 @@
 		D0CA32CB1C7BB01D007E7B0F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				D0CA32CC1C7BB026007E7B0F /* ViewController */,
+				0BEC03EC1E7A00B80027B8DB /* SwitchSettingCell.swift */,
+				0BEC03EE1E7A00DE0027B8DB /* SliderSettingCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -124,6 +132,7 @@
 				0B46D5D81E6E1CC500F0D819 /* MultiModeViewController.swift */,
 				D0CA32D11C7BB1F5007E7B0F /* SingleContactViewController.swift */,
 				D0CA32CF1C7BB071007E7B0F /* WelcomeViewController.swift */,
+				0BEC03EA1E7A000C0027B8DB /* SettingsViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -210,9 +219,12 @@
 				D069FFB91C7F9CB70069B3F4 /* ContactPictureWriter.swift in Sources */,
 				D069FFBB1C7FB02D0069B3F4 /* ContactAccessViewController.swift in Sources */,
 				D0CA32D21C7BB1F5007E7B0F /* SingleContactViewController.swift in Sources */,
+				0BEC03EB1E7A000C0027B8DB /* SettingsViewController.swift in Sources */,
 				D0CA32C51C7BAA82007E7B0F /* MiContact.swift in Sources */,
 				D0CA32B21C7BA87B007E7B0F /* AppDelegate.swift in Sources */,
 				0B65B9291E6211DE007D93C2 /* Foliage.swift in Sources */,
+				0BEC03ED1E7A00B80027B8DB /* SwitchSettingCell.swift in Sources */,
+				0BEC03EF1E7A00DE0027B8DB /* SliderSettingCell.swift in Sources */,
 				0BD44F1D1E6DE8CF008A1321 /* Random.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
