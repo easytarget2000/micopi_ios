@@ -38,6 +38,8 @@ class SingleContactViewController: ContactAccessViewController {
         gradient.frame = self.view.bounds
         gradient.colors = ColorPalette.backgroundGradient
         loadingOverlay.layer.insertSublayer(gradient, at: 0)
+        
+        messageLabel.text = ""
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -150,7 +152,15 @@ class SingleContactViewController: ContactAccessViewController {
     @IBAction func assignButtonTouched(_ sender: AnyObject) {
         AppDelegate.getAppDelegate().requestForAccess({
             () -> Void in
-            self.assignImage()
+            if DefaultsCoordinator.askBeforeOverwrite(), let _ = self.contact!.cn.imageData {
+                self.present(overwriteAlertForContact: self.contact!, positiveHandler: {
+                        (_) in
+                        self.assignImage()
+                    }
+                )
+            } else {
+                self.assignImage()
+            }
         })
     }
     
@@ -165,7 +175,7 @@ class SingleContactViewController: ContactAccessViewController {
         let message: String
         if didAssign {
             message = String(
-                format: "%@ has got a new image.",
+                format: "Assigned the image to %@.",
 //                format: NSLocalizedString("single_did_assign", comment: "Did assign to %s"),
                 contact.displayName
             )

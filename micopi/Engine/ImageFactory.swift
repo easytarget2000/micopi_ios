@@ -73,10 +73,10 @@ class ImageFactory {
         // The background colour is based on the initial character of the Display Name.
         let displayedInitials = contact.initials
         
-        let numberOfShapes = Random.i(largerThan: 2, smallerThan: 6)
+        let numberOfShapes = Random.i(largerThan: 2, smallerThan: 7)
         let mirrored = Random.b(withChance: 0.5)
 //        let alpha: CGFloat = (mirrored ? 0.2 : 0.1) / CGFloat(numberOfShapes)
-        let alpha = Random.cgF(greater: 0.1, smaller: 0.33)
+        let alpha = (mirrored ? 2 : 1) * Random.cgF(greater: 0.05, smaller: 0.15)
         let mutableColor1 = backgroundImage == nil && Random.b(withChance: 0.2)
         let mutableColor2 = backgroundImage == nil  && Random.b(withChance: 0.2)
         
@@ -89,12 +89,12 @@ class ImageFactory {
             let foliage = Foliage.init(imageSize: Float(imageSize), mirroredMode: mirrored)
             let foliageX: Float
             let foliageY: Float
-            if i == 0 {
-                foliageX = Random.f(largerThan: imageSize * 0.4, smallerThan: imageSize * 0.6)
-                foliageY = Random.f(largerThan: imageSize * 0.4, smallerThan: imageSize * 0.6)
+            if i < 4 {
+                foliageX = Random.f(largerThan: imageSize * 0.35, smallerThan: imageSize * 0.65)
+                foliageY = Random.f(largerThan: imageSize * 0.35, smallerThan: imageSize * 0.65)
             } else {
-                foliageX = Random.f(largerThan: imageSize * 0.1, smallerThan: imageSize * 0.9)
-                foliageY = Random.f(largerThan: imageSize * 0.1, smallerThan: imageSize * 0.9)
+                foliageX = Random.f(largerThan: imageSize * 0.05, smallerThan: imageSize * 0.95)
+                foliageY = Random.f(largerThan: imageSize * 0.05, smallerThan: imageSize * 0.95)
             }
             
 //            foliage.start(inCircleAtX: foliageX, atY: foliageY)

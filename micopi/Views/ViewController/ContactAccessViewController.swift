@@ -29,5 +29,29 @@ class ContactAccessViewController: UIViewController, CNContactPickerDelegate {
         }
         
     }
+    
+    func present(
+        overwriteAlertForContact contact: MiContact,
+        positiveHandler: ((UIAlertAction) -> Swift.Void)? = nil,
+        cancelHandler: ((UIAlertAction) -> Swift.Void)? = nil
+    ) {
+        let alert = UIAlertController(
+            title: contact.displayName,
+            message: "This contact already has an image. Are you sure you would like to overwrite it? This action cannot be undone.",
+            preferredStyle: .alert
+        )
         
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: cancelHandler)
+        alert.addAction(cancelAction)
+        
+        let positiveAction = UIAlertAction(
+            title: "Overwrite",
+            style: .destructive,
+            handler: positiveHandler
+        )
+        alert.addAction(positiveAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
 }

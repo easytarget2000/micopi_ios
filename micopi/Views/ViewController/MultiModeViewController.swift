@@ -25,7 +25,19 @@ class MultiModeViewController: ContactAccessViewController {
     
     fileprivate var contacts: [MiContact]?
     
-    fileprivate var isProcessing = false
+    fileprivate var currentContactIndex = 0
+    
+    fileprivate var isProcessing = false {
+        didSet {
+            DispatchQueue.global().async {
+                if self.isProcessing {
+                    self.backButton.setTitle("Cancel", for: .normal)
+                } else {
+                    self.backButton.setTitle("Back", for: .normal)
+                }
+            }
+        }
+    }
     
     fileprivate var stopped = false
     
@@ -52,8 +64,8 @@ class MultiModeViewController: ContactAccessViewController {
 //        backButton.layer.borderColor = UIColor.white.cgColor
 //        backButton.layer.borderWidth = 1
 //        backButton.layer.masksToBounds = true
-//        backButton.isHidden = true
-//        backButton.isEnabled = false
+        backButton.isHidden = true
+        backButton.isEnabled = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -131,47 +143,85 @@ class MultiModeViewController: ContactAccessViewController {
         stopped = false
         continueButton.isHidden = true
         continueButton.isEnabled = false
-        backButton.setTitle("Back", for: .normal)
+        informationLabel.text = ""
+        
+        currentContactIndex = 0
         
         DispatchQueue.global().async {
-            // Background thread
-            
-            self.isProcessing = true
-            
-            for contact in self.contacts! {
-                if self.stopped {
+            self.continueProcessing()
+        }
+        
+    }
+    
+    fileprivate func continueProcessing() {
+        guard let contacts = self.contacts, self.currentContactIndex < contacts.count else {
+                
+            DispatchQueue.main.async(execute: {
                     self.isProcessing = false
-                    return
+                    self.showDoneMessage()
                 }
-                
-                DispatchQueue.main.async(execute: {
-                    self.informationLabel.text = "Generating image for \(contact.displayName)."
-                })
-                self.imageFactory = ImageFactory.init(contact: contact)
-                
-                if let image = self.imageFactory?.generateInThread() {
-                    if self.stopped {
-                        self.isProcessing = false
-                        return
+            )
+            return
+        }
+        
+        if self.stopped {
+            self.isProcessing = false
+            return
+        }
+        
+        isProcessing = true
+        
+        let contact = contacts[self.currentContactIndex]
+        
+        if DefaultsCoordinator.askBeforeOverwrite(), let _ = contact.cn.imageData {
+            DispatchQueue.main.async(execute: {
+            self.present(
+                overwriteAlertForContact: contact,
+                positiveHandler: {
+                    (_) in
+                    DispatchQueue.global().async {
+                        self.generate(imageForContact: contact)
+                        self.nextContact()
                     }
-                    
-                    DispatchQueue.main.async(execute: {
-                        self.informationLabel.text = "Assigning new image to \(contact.displayName)."
-                    })
-                    
-                    let _ = ContactPictureWriter.assign(image, toContact: contact)
-                } else {
-                    NSLog("MultiModeViewController: startProcessing(): WARNING: No image generated for \(contact).")
+                },
+                cancelHandler: {
+                    (_) in
+                    self.nextContact()
                 }
+            )
+            })
+        } else {
+            self.generate(imageForContact: contact)
+            self.nextContact()
+        }
+    }
+    
+    fileprivate func generate(imageForContact contact: MiContact) {
+        
+        DispatchQueue.main.async(execute: {
+            self.informationLabel.text = "Generating image for \(contact.displayName)."
+        })
+        imageFactory = ImageFactory.init(contact: contact)
+        
+        if let image = imageFactory?.generateInThread() {
+            if stopped {
+                isProcessing = false
+                return
             }
             
             DispatchQueue.main.async(execute: {
-                self.isProcessing = false
-                self.showDoneMessage()
-            }
-            )
+                self.informationLabel.text = "Assigning new image to \(contact.displayName)."
+            })
+            
+            let _ = ContactPictureWriter.assign(image, toContact: contact)
+        } else {
+            NSLog("MultiModeViewController: startProcessing(): WARNING: No image generated for \(contact).")
         }
-        
+    }
+    
+    fileprivate func nextContact() {
+        currentContactIndex += 1
+        continueProcessing()
     }
     
     fileprivate func startResetting() {
@@ -227,8 +277,8 @@ class MultiModeViewController: ContactAccessViewController {
     fileprivate func stopProcessing() {
         imageFactory?.stop()
         stopped = true
+        isProcessing = false
         
         informationLabel.text = "Canceled."
-        backButton.setTitle("Back", for: .normal)
     }
 }

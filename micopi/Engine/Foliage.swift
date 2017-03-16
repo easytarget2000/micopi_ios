@@ -12,11 +12,11 @@ import UIKit
 class Foliage {
     
     
-    fileprivate static let maxAge = 64
+    fileprivate static let maxAge = 48
     
     fileprivate static let maxNewNodes = 16
     
-    fileprivate static let pushForce = Float(2)
+    fileprivate static let pushForce = Float(8)
     
     fileprivate static let pi = Float(M_PI)
     
@@ -41,7 +41,7 @@ class Foliage {
     }()
 
     fileprivate lazy var neighborGravity: Float = {
-       return self.nodeRadius * 0.2
+       return self.nodeRadius * 0.5
     }()
     
     fileprivate var preferredNeighborDistance: Float = 1
@@ -51,7 +51,7 @@ class Foliage {
     }()
     
     fileprivate lazy var maxPushDistance: Float = {
-        return self.imageSize * 0.5
+        return self.imageSize * 0.2
     }()
 
     fileprivate lazy var jitter: Float = {
