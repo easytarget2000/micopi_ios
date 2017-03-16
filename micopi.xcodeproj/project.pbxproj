@@ -11,6 +11,7 @@
 		0B65B9291E6211DE007D93C2 /* Foliage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B65B9281E6211DE007D93C2 /* Foliage.swift */; };
 		0BAE2E601E64D5C000B99057 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAE2E5F1E64D5C000B99057 /* ColorPalette.swift */; };
 		0BD44F1D1E6DE8CF008A1321 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD44F1C1E6DE8CF008A1321 /* Random.swift */; };
+		0BE240121E7B467500EBDAD4 /* FlowerBud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE240111E7B467500EBDAD4 /* FlowerBud.swift */; };
 		0BEC03E91E79E3500027B8DB /* DefaultsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEC03E81E79E3500027B8DB /* DefaultsCoordinator.swift */; };
 		0BEC03EB1E7A000C0027B8DB /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEC03EA1E7A000C0027B8DB /* SettingsViewController.swift */; };
 		0BEC03ED1E7A00B80027B8DB /* SwitchSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEC03EC1E7A00B80027B8DB /* SwitchSettingCell.swift */; };
@@ -32,6 +33,7 @@
 		0B65B9281E6211DE007D93C2 /* Foliage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Foliage.swift; path = Engine/Foliage.swift; sourceTree = "<group>"; };
 		0BAE2E5F1E64D5C000B99057 /* ColorPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorPalette.swift; path = Engine/ColorPalette.swift; sourceTree = "<group>"; };
 		0BD44F1C1E6DE8CF008A1321 /* Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Random.swift; path = Engine/Random.swift; sourceTree = "<group>"; };
+		0BE240111E7B467500EBDAD4 /* FlowerBud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FlowerBud.swift; path = Engine/FlowerBud.swift; sourceTree = "<group>"; };
 		0BEC03E81E79E3500027B8DB /* DefaultsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultsCoordinator.swift; sourceTree = "<group>"; };
 		0BEC03EA1E7A000C0027B8DB /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = Views/ViewController/SettingsViewController.swift; sourceTree = "<group>"; };
 		0BEC03EC1E7A00B80027B8DB /* SwitchSettingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwitchSettingCell.swift; path = Views/SwitchSettingCell.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				0B65B9281E6211DE007D93C2 /* Foliage.swift */,
 				0BAE2E5F1E64D5C000B99057 /* ColorPalette.swift */,
 				0BD44F1C1E6DE8CF008A1321 /* Random.swift */,
+				0BE240111E7B467500EBDAD4 /* FlowerBud.swift */,
 			);
 			name = Engine;
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 				0B46D5D91E6E1CC500F0D819 /* MultiModeViewController.swift in Sources */,
 				D0B1389E1C7BB93C00E58407 /* ImageFactory.swift in Sources */,
 				D0CA32D01C7BB071007E7B0F /* WelcomeViewController.swift in Sources */,
+				0BE240121E7B467500EBDAD4 /* FlowerBud.swift in Sources */,
 				0BAE2E601E64D5C000B99057 /* ColorPalette.swift in Sources */,
 				D069FFB91C7F9CB70069B3F4 /* ContactPictureWriter.swift in Sources */,
 				D069FFBB1C7FB02D0069B3F4 /* ContactAccessViewController.swift in Sources */,

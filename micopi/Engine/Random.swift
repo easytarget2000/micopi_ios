@@ -42,6 +42,14 @@ class Random {
         return Int(drand48() * (1/chance)) % Int(1/chance) == 0
     }
     
+    static func d(greater min: Double, smaller max: Double) -> Double {
+        guard min < max else {
+            return min
+        }
+        
+        return (drand48() * Double(max - min)) + min
+    }
+    
     static func f(smallerThan max: Float) -> Float {
         return Float(drand48()) * max
     }

@@ -11,7 +11,6 @@ import UIKit
 
 class Foliage {
     
-    
     fileprivate static let maxAge = 48
     
     fileprivate static let maxNewNodes = 16
