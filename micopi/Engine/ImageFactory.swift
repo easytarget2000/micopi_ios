@@ -8,6 +8,10 @@
 
 import UIKit.UIColor
 
+public let pi = Float(M_PI)
+
+public let piTwo = pi * 2
+
 class ImageFactory {
     
     fileprivate static let recommendedImageSize: CGFloat = 1600
@@ -76,9 +80,13 @@ class ImageFactory {
         let numberOfShapes = Random.i(largerThan: 2, smallerThan: 7)
         let mirrored = Random.b(withChance: 0.5)
 //        let alpha: CGFloat = (mirrored ? 0.2 : 0.1) / CGFloat(numberOfShapes)
-        let alpha = (mirrored ? 2 : 1) * Random.cgF(greater: 0.05, smaller: 0.15)
+        let alpha = (mirrored ? 4 : 1) * Random.cgF(greater: 0.05, smaller: 0.1)
         let mutableColor1 = backgroundImage == nil && Random.b(withChance: 0.2)
         let mutableColor2 = backgroundImage == nil  && Random.b(withChance: 0.2)
+        
+        let center = imageSize / 2
+        let distributionRadius = imageSize * 0.25
+        let distributionAngle = Random.f(smallerThan: piTwo)
         
         for i in 0 ..< numberOfShapes {
             if stopped {
@@ -87,17 +95,21 @@ class ImageFactory {
             }
             
             let foliage = Foliage.init(imageSize: Float(imageSize), mirroredMode: mirrored)
-            let foliageX: Float
-            let foliageY: Float
-            if i < 4 {
-                foliageX = Random.f(largerThan: imageSize * 0.35, smallerThan: imageSize * 0.65)
-                foliageY = Random.f(largerThan: imageSize * 0.35, smallerThan: imageSize * 0.65)
-            } else {
-                foliageX = Random.f(largerThan: imageSize * 0.05, smallerThan: imageSize * 0.95)
-                foliageY = Random.f(largerThan: imageSize * 0.05, smallerThan: imageSize * 0.95)
-            }
+//            let foliageX: Float
+//            let foliageY: Float
+//            if i < 4 {
+//                foliageX = Random.f(largerThan: imageSize * 0.35, smallerThan: imageSize * 0.65)
+//                foliageY = Random.f(largerThan: imageSize * 0.35, smallerThan: imageSize * 0.65)
+//            } else {
+//                foliageX = Random.f(largerThan: imageSize * 0.05, smallerThan: imageSize * 0.95)
+//                foliageY = Random.f(largerThan: imageSize * 0.05, smallerThan: imageSize * 0.95)
+//            }
             
-//            foliage.start(inCircleAtX: foliageX, atY: foliageY)
+            let angleOfFoliagePoint = distributionAngle + (piTwo * Float(i) / Float(numberOfShapes))
+            
+            let foliageX = center + (distributionRadius * cosf(angleOfFoliagePoint))
+            let foliageY = center + (distributionRadius * sinf(angleOfFoliagePoint))
+            
             if Random.b(withChance: 0.5) {
                 foliage.start(inCircleAtX: foliageX, atY: foliageY)
             } else {

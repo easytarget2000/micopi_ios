@@ -18,10 +18,6 @@ class Foliage {
     
     fileprivate static let pushForce = Float(8)
     
-    fileprivate static let pi = Float(M_PI)
-    
-    fileprivate static let piTwo = pi * 2
-    
     fileprivate let numberOfInitialNodes = Random.i(largerThan: 36, smallerThan: 64)
     
     fileprivate var imageSize: Float
@@ -99,7 +95,7 @@ class Foliage {
         var lastNode: Node!
         for i in 0 ..< numberOfInitialNodes {
             
-            let angleOfNode = Foliage.piTwo * (Float((i + 1)) / Float(numberOfInitialNodes))
+            let angleOfNode = piTwo * (Float((i + 1)) / Float(numberOfInitialNodes))
             
             let nodeX = x + (slimnessFactor * cosf(angleOfNode) * initialRadius) + jitterValue()
             let nodeY = y + (sinf(angleOfNode) * initialRadius) + jitterValue()
@@ -129,15 +125,15 @@ class Foliage {
         let nodesPerEdge = numberOfInitialNodes / numberOfEdges
         let nodesPerEdgeF = Float(nodesPerEdge)
         
-        let angleOffset = Random.f(smaller: Foliage.piTwo)
+        let angleOffset = Random.f(smaller: piTwo)
         
         var lastNode: Node!
         for i in 0 ..< numberOfInitialNodes {
             
             let edge = i / nodesPerEdge
             let edgeF = Float(edge)
-            let angleOfEdge1 = angleOffset + (Foliage.piTwo * edgeF / numberOfEdgesF)
-            let angleOfEdge2 = angleOffset + (Foliage.piTwo * (edgeF + 1) / numberOfEdgesF)
+            let angleOfEdge1 = angleOffset + (piTwo * edgeF / numberOfEdgesF)
+            let angleOfEdge2 = angleOffset + (piTwo * (edgeF + 1) / numberOfEdgesF)
             
             let edge1X = x + (size * cosf(angleOfEdge1))
             let edge1Y = y + (size * sinf(angleOfEdge1))
@@ -358,7 +354,7 @@ class Foliage {
     }
     
     fileprivate static func angle(betweenX1 x1: Float, y1: Float, x2: Float, y2: Float) -> Float {
-        return atan2f(y2 - y1, x2 - x1) + Foliage.pi
+        return atan2f(y2 - y1, x2 - x1) + pi
     }
         
     class Node {
