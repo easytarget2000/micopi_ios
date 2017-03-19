@@ -20,12 +20,25 @@ class ContactAccessViewController: UIViewController, CNContactPickerDelegate {
         }
     }
     
+    func showLoadingViews() {
+        // Override me.
+    }
+    
     func openContactPicker() {
-        AppDelegate.getAppDelegate().requestForAccess {
-            () -> Void in
+        let authorizationStatus = CNContactStore.authorizationStatus(for: CNEntityType.contacts)
+        
+        if authorizationStatus == .authorized {
             let contactPicker = CNContactPickerViewController()
             contactPicker.delegate = self
             self.present(contactPicker, animated: true, completion: nil)
+        } else {
+            showLoadingViews()
+            AppDelegate.getAppDelegate().requestForAccess {
+                () -> Void in
+                let contactPicker = CNContactPickerViewController()
+                contactPicker.delegate = self
+                self.present(contactPicker, animated: true, completion: nil)
+            }
         }
         
     }

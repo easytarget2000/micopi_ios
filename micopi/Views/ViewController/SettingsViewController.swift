@@ -60,7 +60,7 @@ class SettingsViewController: UITableViewController {
             for: indexPath
             ) as! SwitchSettingCell
         
-        overwriteCell.label.text = "Always ask before overwriting images."
+        overwriteCell.label.text = "Ask Before Overwriting Images"
         overwriteCell.valueSwitch.isOn = DefaultsCoordinator.askBeforeOverwrite()
         overwriteCell.switchValueChangeHandler = {
             (value) in
@@ -75,7 +75,7 @@ class SettingsViewController: UITableViewController {
             for: indexPath
         ) as! SwitchSettingCell
         
-        useBGCell.label.text = "Draw over existing images."
+        useBGCell.label.text = "Draw Over Existing Images (Experimental)"
         useBGCell.valueSwitch.isOn = DefaultsCoordinator.overdrawExistingImage()
         useBGCell.switchValueChangeHandler = {
             (value) in
@@ -108,7 +108,7 @@ class SettingsViewController: UITableViewController {
     }
     
     fileprivate func initialsLabel(textForValue value: Int) -> String {
-        var text = "Maximum length of initials: "
+        var text = "Maximum Length of Initials: "
         switch value {
         case 1:
             text += "A"

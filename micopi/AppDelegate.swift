@@ -68,19 +68,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     if access {
                         completionHandler()
                     } else {
-                        if authorizationStatus == CNAuthorizationStatus.denied {
-                            DispatchQueue.main.async(execute: {
-                                    () -> Void in
-                                    self.showContactsAccessMessage()
-                                }
-                            )
-                        }
+                        DispatchQueue.main.async(execute: {
+                                () -> Void in
+                                self.showContactsAccessMessage()
+                            }
+                        )
                     }
                 }
             )
             
         default:
-            let message = "Please allow the app to access your contacts through the Settings."
             self.showContactsAccessMessage()
         }
     }
@@ -88,12 +85,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Alerts
     
     fileprivate func showContactsAccessMessage() {
+        let pushedViewControllers = (self.window?.rootViewController as! UINavigationController).viewControllers
+        let presentedViewController = pushedViewControllers[pushedViewControllers.count - 1]
+        
         let message = "Please allow the app to access your contacts."
         let alertController = UIAlertController(title: nil, message: message, preferredStyle: UIAlertControllerStyle.alert)
         
+        
+        let dismissAction = UIAlertAction(
+            title: "Later",
+            style: UIAlertActionStyle.destructive,
+            handler: {
+                (_) in
+                if let navController = presentedViewController.navigationController {
+                    let _ = navController.popViewController(animated: true)
+                } else {
+                    presentedViewController.dismiss(animated: true, completion: nil)
+                }
+            }
+        )
+        alertController.addAction(dismissAction)
+        
         if let settingsURL = URL(string: UIApplicationOpenSettingsURLString) {
             let settingsAction = UIAlertAction(
-                title: "Settings",
+                title: "OK",
                 style: UIAlertActionStyle.default,
                 handler: {
                     (_) in
@@ -104,12 +119,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             alertController.addAction(settingsAction)
         }
         
-        let dismissAction = UIAlertAction(title: "Later", style: UIAlertActionStyle.default, handler: nil)
         
-        alertController.addAction(dismissAction)
-        
-        let pushedViewControllers = (self.window?.rootViewController as! UINavigationController).viewControllers
-        let presentedViewController = pushedViewControllers[pushedViewControllers.count - 1]
         
         presentedViewController.present(alertController, animated: true, completion: nil)
     }

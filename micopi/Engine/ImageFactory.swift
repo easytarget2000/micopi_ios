@@ -80,7 +80,7 @@ class ImageFactory {
         let numberOfShapes = Random.i(largerThan: 2, smallerThan: 7)
         let mirrored = Random.b(withChance: 0.5)
 //        let alpha: CGFloat = (mirrored ? 0.2 : 0.1) / CGFloat(numberOfShapes)
-        let alpha = (mirrored ? 4 : 1) * Random.cgF(greater: 0.05, smaller: 0.1)
+        let alpha = (mirrored ? 4 : 1) * Random.cgF(greater: 0.02, smaller: 0.08)
         let mutableColor1 = backgroundImage == nil && Random.b(withChance: 0.2)
         let mutableColor2 = backgroundImage == nil  && Random.b(withChance: 0.2)
         
@@ -120,7 +120,7 @@ class ImageFactory {
             var color2: CGColor
 
             if let image = backgroundImage {
-                color1 = image.get(cgColorAtX: Int(foliageX), y: Int(foliageY), alpha: 0.5)
+                color1 = image.get(cgColorAtX: Int(foliageX), y: Int(foliageY), alpha: 0.3)
                 let color2X = foliageX < imageSize - 5 ? Int(foliageX + 5) : Int(foliageX + 5)
                 let color2Y = foliageY < imageSize - 5 ? Int(foliageY + 5) : Int(foliageY + 5)
                 color2 = image.get(cgColorAtX: color2X, y: color2Y, alpha: 0.5)
@@ -237,7 +237,7 @@ extension UIImage {
             return UIColor.cyan
         }
         
-        let index = Int(self.size.width) * y + x
+        let index = (Int(self.size.width) * y) + x
         let expectedLengthA = Int(self.size.width * self.size.height)
         let expectedLengthRGB = 3 * expectedLengthA
         let expectedLengthRGBA = 4 * expectedLengthA
@@ -249,7 +249,12 @@ extension UIImage {
         case expectedLengthRGB:
             return UIColor(red: CGFloat(data[3*index])/255.0, green: CGFloat(data[3*index+1])/255.0, blue: CGFloat(data[3*index+2])/255.0, alpha: 1.0)
         case expectedLengthRGBA:
-            return UIColor(red: CGFloat(data[4*index])/255.0, green: CGFloat(data[4*index+1])/255.0, blue: CGFloat(data[4*index+2])/255.0, alpha: CGFloat(data[4*index+3])/255.0)
+            let red = Int(data[4*index])
+            let green = Int(data[4*index+1])
+            let blue = Int(data[4*index+2])
+//            let alpha = Int(data[4*index+3])
+            return UIColor(red: red, green: green, blue: blue)
+//            return UIColor(red: CGFloat(data[4*index])/255.0, green: CGFloat(data[4*index+1])/255.0, blue: CGFloat(data[4*index+2])/255.0, alpha: CGFloat(data[4*index+3])/255.0)
         default:
             return UIColor.orange
         }

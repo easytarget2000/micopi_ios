@@ -58,7 +58,7 @@ class SingleContactViewController: ContactAccessViewController {
     }
     
     fileprivate func generateImage() {
-        showLoadingOverlay()
+        showLoadingViews()
         
         contactNameLabel.text = contact!.displayName
         
@@ -78,7 +78,8 @@ class SingleContactViewController: ContactAccessViewController {
         
     }
     
-    fileprivate func showLoadingOverlay() {
+    override func showLoadingViews() {
+        super.showLoadingViews()
         showLoadingOverlay(
             withMessage: "Please wait."
         )

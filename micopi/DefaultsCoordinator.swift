@@ -51,7 +51,7 @@ class DefaultsCoordinator {
         if let num = defaults.object(forKey: "overdraw") {
             return num as! Bool
         } else {
-            return true
+            return false
         }
     }
 

@@ -72,34 +72,26 @@ class WelcomeViewController: UIViewController {
     // MARK: Navigation
 
     @IBAction func onSelectContactTouched(_ sender: AnyObject) {
-        AppDelegate.getAppDelegate().requestForAccess {
-            () -> Void in
-            self.performSegue(
-                withIdentifier: WelcomeViewController.toContactViewSegue,
-                sender: nil
-            )
-        }
+        self.performSegue(
+            withIdentifier: WelcomeViewController.toContactViewSegue,
+            sender: nil
+        )
     }
     
     @IBAction func onMultipleButtonTouched(_ sender: Any) {
-        AppDelegate.getAppDelegate().requestForAccess {
-            () -> Void in
-            self.performSegue(
-                withIdentifier: WelcomeViewController.toMultipleModeSegue,
-                sender: nil
-            )
-        }
+        self.performSegue(
+            withIdentifier: WelcomeViewController.toMultipleModeSegue,
+            sender: nil
+        )
     }
     
     @IBAction func onResetButtonTouched(_ sender: Any) {
-        AppDelegate.getAppDelegate().requestForAccess {
-            () -> Void in
-            self.performSegue(
-                withIdentifier: WelcomeViewController.toResetModeSegue,
-                sender: nil
-            )
-        }
+        self.performSegue(
+            withIdentifier: WelcomeViewController.toResetModeSegue,
+            sender: nil
+        )
     }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         switch segue.identifier! {
@@ -116,12 +108,5 @@ class WelcomeViewController: UIViewController {
         }
 
     }
-    
-//    func contactPicker(_ picker: CNContactPickerViewController, didSelectContact contact: CNContact) {
-//        performSegue(
-//            withIdentifier: WelcomeViewController.toContactViewSegue,
-//            sender: MiContact(cn: contact)
-//        )
-//    }
-    
+
 }

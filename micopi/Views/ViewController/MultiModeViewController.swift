@@ -105,6 +105,17 @@ class MultiModeViewController: ContactAccessViewController {
         backButton.isEnabled = true
     }
     
+    override func showLoadingViews() {
+        super.showLoadingViews()
+        
+        informationLabel.text = "Please wait."
+        
+        continueButton.isHidden = true
+        continueButton.isEnabled = false
+        backButton.isHidden = true
+        continueButton.isEnabled = false
+    }
+    
     fileprivate func showAssignMessage() {
         let numberOfContacts = self.contacts!.count
         let imageNoun = numberOfContacts > 1 ? "images" : "image"
