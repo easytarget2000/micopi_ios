@@ -1,10 +1,12 @@
 import UIKit
 
 class MenuViewController: UIViewController {
+    
+    fileprivate static let toContactPickerSegue
+        = "MenuToContactPickerWrapperSegue"
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -13,7 +15,10 @@ class MenuViewController: UIViewController {
     }
 
     fileprivate func showContactListForGenerator() {
-        
+        performSegue(
+            withIdentifier: MenuViewController.toContactPickerSegue,
+            sender: nil
+        )
     }
 }
 
