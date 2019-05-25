@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		0B4064932299E00800D2BFFF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4064922299E00800D2BFFF /* AppDelegate.swift */; };
-		0B4064952299E00800D2BFFF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4064942299E00800D2BFFF /* ViewController.swift */; };
+		0B4064952299E00800D2BFFF /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4064942299E00800D2BFFF /* MenuViewController.swift */; };
 		0B4064982299E00800D2BFFF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B4064962299E00800D2BFFF /* Main.storyboard */; };
 		0B40649A2299E00A00D2BFFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B4064992299E00A00D2BFFF /* Assets.xcassets */; };
 		0B40649D2299E00A00D2BFFF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B40649B2299E00A00D2BFFF /* LaunchScreen.storyboard */; };
 		0B4064A82299E00A00D2BFFF /* micopiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4064A72299E00A00D2BFFF /* micopiTests.swift */; };
 		0B4064B32299E00A00D2BFFF /* micopiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4064B22299E00A00D2BFFF /* micopiUITests.swift */; };
+		0B4064C12299E28C00D2BFFF /* ContactPickerWrapperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4064C02299E28C00D2BFFF /* ContactPickerWrapperViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +37,7 @@
 /* Begin PBXFileReference section */
 		0B40648F2299E00800D2BFFF /* micopi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = micopi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B4064922299E00800D2BFFF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0B4064942299E00800D2BFFF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0B4064942299E00800D2BFFF /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		0B4064972299E00800D2BFFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0B4064992299E00A00D2BFFF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0B40649C2299E00A00D2BFFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +48,7 @@
 		0B4064AE2299E00A00D2BFFF /* micopiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = micopiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B4064B22299E00A00D2BFFF /* micopiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = micopiUITests.swift; sourceTree = "<group>"; };
 		0B4064B42299E00A00D2BFFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0B4064C02299E28C00D2BFFF /* ContactPickerWrapperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactPickerWrapperViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,12 +99,9 @@
 		0B4064912299E00800D2BFFF /* micopi */ = {
 			isa = PBXGroup;
 			children = (
-				0B4064922299E00800D2BFFF /* AppDelegate.swift */,
-				0B4064942299E00800D2BFFF /* ViewController.swift */,
-				0B4064962299E00800D2BFFF /* Main.storyboard */,
-				0B4064992299E00A00D2BFFF /* Assets.xcassets */,
-				0B40649B2299E00A00D2BFFF /* LaunchScreen.storyboard */,
 				0B40649E2299E00A00D2BFFF /* Info.plist */,
+				0B4064922299E00800D2BFFF /* AppDelegate.swift */,
+				0B4064C22299E2A600D2BFFF /* UI */,
 			);
 			path = micopi;
 			sourceTree = "<group>";
@@ -123,6 +122,18 @@
 				0B4064B42299E00A00D2BFFF /* Info.plist */,
 			);
 			path = micopiUITests;
+			sourceTree = "<group>";
+		};
+		0B4064C22299E2A600D2BFFF /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				0B4064C02299E28C00D2BFFF /* ContactPickerWrapperViewController.swift */,
+				0B4064942299E00800D2BFFF /* MenuViewController.swift */,
+				0B4064992299E00A00D2BFFF /* Assets.xcassets */,
+				0B40649B2299E00A00D2BFFF /* LaunchScreen.storyboard */,
+				0B4064962299E00800D2BFFF /* Main.storyboard */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,8 +267,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0B4064952299E00800D2BFFF /* ViewController.swift in Sources */,
+				0B4064952299E00800D2BFFF /* MenuViewController.swift in Sources */,
 				0B4064932299E00800D2BFFF /* AppDelegate.swift in Sources */,
+				0B4064C12299E28C00D2BFFF /* ContactPickerWrapperViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
