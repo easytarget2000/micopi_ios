@@ -37,8 +37,8 @@ struct ContactCNConverter {
     
     static func combineName(
         givenName: String?,
-        nickname: String?,
-        familyName: String?
+        nickname: String? = nil,
+        familyName: String? = nil
     ) -> String {
         var fullName = ""
         fullName = appendWord(givenName, toString: fullName)
