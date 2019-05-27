@@ -25,11 +25,11 @@ struct ContactCNConverter {
         if let familyName = familyName {
             fullName += familyName
         }
-        
         let firstEmailAddress = cnContact.emailAddresses.first?.value as String?
         let firstPhoneNumber = cnContact.phoneNumbers.first?.value.description
         
         return Contact(
+            identifier: cnContact.identifier,
             fullName: fullName,
             mainEmailAddress: firstEmailAddress,
             mainPhoneNumber: firstPhoneNumber
