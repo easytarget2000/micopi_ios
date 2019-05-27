@@ -18,20 +18,20 @@ struct ContactCNConverter {
     }
     
     func convertCNContact(_ cnContact: CNContact) -> Contact {
-        let givenName = cnContact.givenName.isEmpty ? nil : cnContact.givenName
-        let nickname = cnContact.nickname.isEmpty ? nil : cnContact.nickname
-        let familyName = cnContact.familyName.isEmpty ?
-            nil : cnContact.familyName
         var fullName = ""
-        if let givenName = givenName {
-            fullName += givenName
-        }
-        if let nickname = nickname {
-            fullName += "\"\(nickname)\""
-        }
-        if let familyName = familyName {
-            fullName += familyName
-        }
+        fullName = ContactCNConverter.appendWord(
+            cnContact.givenName,
+            toString: fullName
+        )
+        fullName = ContactCNConverter.appendWord(
+            cnContact.nickname,
+            toString: "\"\(cnContact.nickname)\""
+        )
+        fullName = ContactCNConverter.appendWord(
+            cnContact.familyName,
+            toString: fullName
+        )
+        
         let firstEmailAddress = cnContact.emailAddresses.first?.value as String?
         let firstPhoneNumber = cnContact.phoneNumbers.first?.value.description
         
@@ -43,4 +43,20 @@ struct ContactCNConverter {
         )
     }
     
+    fileprivate static func appendWord(
+        _ word: String?,
+        toString string: String
+    ) -> String {
+        var newString = string
+        
+        guard let word = word, !word.isEmpty else {
+            return newString
+        }
+        
+        if !newString.isEmpty {
+            newString += " "
+        }
+        newString += word
+        return newString
+    }
 }

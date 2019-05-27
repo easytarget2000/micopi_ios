@@ -66,15 +66,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TmU-J9-eaq" userLabel="ContactFullNameLabel">
-                                <rect key="frame" x="47" y="438" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1Oq-Of-fZj" userLabel="PreviewImageView">
+                                <rect key="frame" x="0.0" y="44" width="414" height="414"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="1Oq-Of-fZj" secondAttribute="height" multiplier="1:1" id="qwD-rZ-xN1"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John Appleseed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TmU-J9-eaq" userLabel="ContactFullNameLabel">
+                                <rect key="frame" x="40" y="486" width="334" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="TmU-J9-eaq" firstAttribute="top" secondItem="1Oq-Of-fZj" secondAttribute="bottom" constant="28" id="3Y7-Gl-5OT"/>
+                            <constraint firstItem="1Oq-Of-fZj" firstAttribute="top" secondItem="2ha-fz-Vd3" secondAttribute="top" id="cIq-7t-c4G"/>
+                            <constraint firstItem="1Oq-Of-fZj" firstAttribute="leading" secondItem="2ha-fz-Vd3" secondAttribute="leading" id="dKY-BN-6pt"/>
+                            <constraint firstItem="TmU-J9-eaq" firstAttribute="leading" secondItem="2ha-fz-Vd3" secondAttribute="leading" constant="40" id="gvc-im-ihr"/>
+                            <constraint firstItem="2ha-fz-Vd3" firstAttribute="trailing" secondItem="TmU-J9-eaq" secondAttribute="trailing" constant="40" id="lF6-Fw-1sj"/>
+                            <constraint firstItem="2ha-fz-Vd3" firstAttribute="trailing" secondItem="1Oq-Of-fZj" secondAttribute="trailing" id="rMe-Rs-JSe"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="2ha-fz-Vd3"/>
                     </view>
                     <connections>
@@ -83,7 +96,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S7I-lh-tyE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2186" y="21"/>
+            <point key="canvasLocation" x="2185.507246376812" y="20.758928571428569"/>
         </scene>
     </scenes>
     <resources>
