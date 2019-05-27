@@ -6,10 +6,22 @@ class ContactPickerWrapperViewController: UIViewController {
     fileprivate static let toImagePreviewSegue
         = "ContactPickerToImagePreviewSegue"
     var contactCNConverter = ContactCNConverter()
+    fileprivate var showContactPickerOnAppear = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        showContactPicker()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if showContactPickerOnAppear {
+            showContactPickerOnAppear = false
+            showContactPicker()
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
     
     fileprivate func showContactPicker() {
@@ -36,7 +48,10 @@ class ContactPickerWrapperViewController: UIViewController {
     fileprivate func convertAndForwardCNContacts(_ cnContacts: [CNContact]) {
         let contactWrappers
             = contactCNConverter.convertCNContactsWrapped(cnContacts)
-        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        <#code#>
     }
 }
 
@@ -46,16 +61,15 @@ extension ContactPickerWrapperViewController: CNContactPickerDelegate {
     
     func contactPicker(
         _ picker: CNContactPickerViewController,
-        didSelect contact: CNContact
-    ) {
-        convertAndForwardCNContact(contact)
-    }
-    
-    func contactPicker(
-        _ picker: CNContactPickerViewController,
         didSelect contacts: [CNContact]
     ) {
-        convertAndForwardCNContacts(contacts)
+        if contacts.isEmpty {
+            close()
+        } else if contacts.count == 1 {
+            convertAndForwardCNContact(contacts.first!)
+        } else {
+            convertAndForwardCNContacts(contacts)
+        }
     }
     
     func contactPickerDidCancel(_ picker: CNContactPickerViewController) {

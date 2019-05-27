@@ -50,10 +50,40 @@
                         <color key="backgroundColor" name="SolidColor"/>
                         <viewLayoutGuide key="safeArea" id="Nhn-NZ-qig"/>
                     </view>
+                    <connections>
+                        <segue destination="8aT-AV-wQL" kind="show" identifier="ContactPickerToImagePreviewSegue" id="gYe-5T-ltD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fAp-eE-Am3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1106" y="21"/>
+            <point key="canvasLocation" x="1291" y="21"/>
+        </scene>
+        <!--Image Preview View Controller-->
+        <scene sceneID="jV8-Df-4xv">
+            <objects>
+                <viewController id="8aT-AV-wQL" customClass="ImagePreviewViewController" customModule="micopi" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1m8-MY-9Tl">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TmU-J9-eaq" userLabel="ContactFullNameLabel">
+                                <rect key="frame" x="47" y="438" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="2ha-fz-Vd3"/>
+                    </view>
+                    <connections>
+                        <outlet property="contactFullNameLabel" destination="TmU-J9-eaq" id="trj-Du-FAD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S7I-lh-tyE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2186" y="21"/>
         </scene>
     </scenes>
     <resources>

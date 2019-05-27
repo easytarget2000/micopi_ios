@@ -1,21 +1,24 @@
-//
-//  ImagePreviewViewController.swift
-//  micopi
-//
-//  Created by Michel Sievers on 27.05.19.
-//  Copyright © 2019 Things I Like GmbH. All rights reserved.
-//
-
 import UIKit
 
 class ImagePreviewViewController: UIViewController {
     
     var contactWrapper: ContactHashWrapper!
+    var contact: Contact! {
+        get {
+            return contactWrapper.contact
+        }
+    }
 
+    @IBOutlet weak var contactFullNameLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        populateContactViews()
     }
 
+    fileprivate func populateContactViews() {
+        contactFullNameLabel.text = contact.fullName
+    }
+    
 }
