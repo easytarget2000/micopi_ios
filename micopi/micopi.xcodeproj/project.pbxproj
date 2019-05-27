@@ -17,6 +17,7 @@
 		0B4064C12299E28C00D2BFFF /* ContactPickerWrapperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4064C02299E28C00D2BFFF /* ContactPickerWrapperViewController.swift */; };
 		0B4064C72299ED8F00D2BFFF /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4064C62299ED8F00D2BFFF /* Contact.swift */; };
 		0B4064C92299EE1B00D2BFFF /* ContactCNConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4064C82299EE1B00D2BFFF /* ContactCNConverter.swift */; };
+		0B56545B229C1DA8000076E0 /* ContactHashWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B56545A229C1DA8000076E0 /* ContactHashWrapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		0B4064C02299E28C00D2BFFF /* ContactPickerWrapperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactPickerWrapperViewController.swift; sourceTree = "<group>"; };
 		0B4064C62299ED8F00D2BFFF /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		0B4064C82299EE1B00D2BFFF /* ContactCNConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCNConverter.swift; sourceTree = "<group>"; };
+		0B56545A229C1DA8000076E0 /* ContactHashWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactHashWrapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 			children = (
 				0B4064C62299ED8F00D2BFFF /* Contact.swift */,
 				0B4064C82299EE1B00D2BFFF /* ContactCNConverter.swift */,
+				0B56545A229C1DA8000076E0 /* ContactHashWrapper.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B56545B229C1DA8000076E0 /* ContactHashWrapper.swift in Sources */,
 				0B4064C92299EE1B00D2BFFF /* ContactCNConverter.swift in Sources */,
 				0B4064C72299ED8F00D2BFFF /* Contact.swift in Sources */,
 				0B4064952299E00800D2BFFF /* MenuViewController.swift in Sources */,
