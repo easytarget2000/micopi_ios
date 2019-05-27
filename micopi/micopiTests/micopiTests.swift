@@ -30,14 +30,28 @@ class micopiTests: XCTestCase {
             givenName: "Anna",
             nickname: "Banana",
             familyName: "Bonano",
-            expectedFullName: "Anna \"Banana\" Bonano."
+            expectedFullName: "Anna \"Banana\" Bonano"
+        )
+        testThat_ContactCNConverterCombinesName(
+            givenName: "Jules",
+            expectedFullName: "Jules"
+        )
+        testThat_ContactCNConverterCombinesName(
+            givenName: nil,
+            familyName: "TestFamily",
+            expectedFullName: "TestFamily"
+        )
+        testThat_ContactCNConverterCombinesName(
+            givenName: "Anna",
+            familyName: "Bonano",
+            expectedFullName: "Anna Bonano"
         )
     }
     
     fileprivate func testThat_ContactCNConverterCombinesName(
         givenName: String?,
-        nickname: String?,
-        familyName: String?,
+        nickname: String? = nil,
+        familyName: String? = nil,
         expectedFullName: String
     ) {
         let fullName = ContactCNConverter.combineName(
