@@ -2,6 +2,14 @@ import Contacts.CNContact
 
 struct ContactCNConverter {
     
+    func convertCNContacts(_ cnContacts: [CNContact]) -> [Contact] {
+        return cnContacts.map({
+                (cnContact) -> Contact in
+                return convertCNContact(cnContact)
+            }
+        )
+    }
+    
     func convertCNContact(_ cnContact: CNContact) -> Contact {
         let givenName = cnContact.givenName.isEmpty ? nil : cnContact.givenName
         let nickname = cnContact.nickname.isEmpty ? nil : cnContact.nickname
