@@ -38,6 +38,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="412" y="21"/>
         </scene>
         <!--Contact Picker Wrapper View Controller-->
         <scene sceneID="zWg-6G-YcA">
