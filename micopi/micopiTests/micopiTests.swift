@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import Contacts.CNContact
 @testable import micopi
 
 class micopiTests: XCTestCase {
@@ -22,6 +23,30 @@ class micopiTests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+    }
+    
+    func testThat_ContactCNConverterCombinesNames() {
+        testThat_ContactCNConverterCombinesName(
+            givenName: "Anna",
+            nickname: "Banana",
+            familyName: "Bonano",
+            expectedFullName: "Anna \"Banana\" Bonano."
+        )
+    }
+    
+    fileprivate func testThat_ContactCNConverterCombinesName(
+        givenName: String?,
+        nickname: String?,
+        familyName: String?,
+        expectedFullName: String
+    ) {
+        let fullName = ContactCNConverter.combineName(
+            givenName: givenName,
+            nickname: nickname,
+            familyName: familyName
+        )
+        
+        XCTAssert(fullName == expectedFullName)
     }
 
     func testPerformanceExample() {
