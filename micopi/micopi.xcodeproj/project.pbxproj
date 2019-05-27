@@ -137,11 +137,11 @@
 			isa = PBXGroup;
 			children = (
 				0B4064C02299E28C00D2BFFF /* ContactPickerWrapperViewController.swift */,
+				0B56545C229C20B1000076E0 /* ImagePreviewViewController.swift */,
 				0B4064942299E00800D2BFFF /* MenuViewController.swift */,
 				0B4064992299E00A00D2BFFF /* Assets.xcassets */,
 				0B40649B2299E00A00D2BFFF /* LaunchScreen.storyboard */,
 				0B4064962299E00800D2BFFF /* Main.storyboard */,
-				0B56545C229C20B1000076E0 /* ImagePreviewViewController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";

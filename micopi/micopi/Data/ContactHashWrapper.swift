@@ -3,8 +3,7 @@ class ContactHashWrapper: Hashable {
     let contact: Contact
     var modifier: Int = 0
     var hashable: String {
-        return "\(contact.fullName),\(contact.mainEmailAddress ?? "."),"
-            + "\(contact.mainPhoneNumber ?? "."),\(modifier)"
+        return "\(contact.identifier),\(modifier)"
     }
     
     init(contact: Contact) {

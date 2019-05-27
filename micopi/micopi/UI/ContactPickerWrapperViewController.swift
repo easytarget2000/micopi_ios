@@ -14,14 +14,15 @@ class ContactPickerWrapperViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if showContactPickerOnAppear {
-            showContactPickerOnAppear = false
-            showContactPicker()
-        }
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        if showContactPickerOnAppear {
+            showContactPickerOnAppear = false
+            showContactPicker()
+        }
     }
     
     fileprivate func showContactPicker() {
@@ -51,7 +52,14 @@ class ContactPickerWrapperViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        <#code#>
+        if let imagePreviewViewController
+            = segue.destination as? ImagePreviewViewController {
+            
+            let contactWrapper = sender as! ContactHashWrapper
+            imagePreviewViewController.contactWrapper = contactWrapper
+        }
+        
+        super.prepare(for: segue, sender: sender)
     }
 }
 

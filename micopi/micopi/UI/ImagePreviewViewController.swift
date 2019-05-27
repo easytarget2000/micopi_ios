@@ -3,7 +3,7 @@ import UIKit
 class ImagePreviewViewController: UIViewController {
     
     var contactWrapper: ContactHashWrapper!
-    var contact: Contact! {
+    fileprivate var contact: Contact! {
         get {
             return contactWrapper.contact
         }
