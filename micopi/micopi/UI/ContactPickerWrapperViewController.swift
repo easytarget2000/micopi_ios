@@ -3,6 +3,8 @@ import UIKit
 
 class ContactPickerWrapperViewController: UIViewController {
     
+    fileprivate static let toImagePreviewSegue
+        = "ContactPickerToImagePreviewSegue"
     var contactCNConverter = ContactCNConverter()
 
     override func viewDidLoad() {
@@ -21,10 +23,19 @@ class ContactPickerWrapperViewController: UIViewController {
     }
     
     fileprivate func convertAndForwardCNContact(_ cnContact: CNContact) {
+        let contactWrapper
+            = contactCNConverter.convertCNContactWrapped(cnContact)
         
+        performSegue(
+            withIdentifier:
+                ContactPickerWrapperViewController.toImagePreviewSegue,
+            sender: contactWrapper
+        )
     }
     
     fileprivate func convertAndForwardCNContacts(_ cnContacts: [CNContact]) {
+        let contactWrappers
+            = contactCNConverter.convertCNContactsWrapped(cnContacts)
         
     }
 }

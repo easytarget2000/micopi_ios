@@ -18,6 +18,7 @@
 		0B4064C72299ED8F00D2BFFF /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4064C62299ED8F00D2BFFF /* Contact.swift */; };
 		0B4064C92299EE1B00D2BFFF /* ContactCNConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4064C82299EE1B00D2BFFF /* ContactCNConverter.swift */; };
 		0B56545B229C1DA8000076E0 /* ContactHashWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B56545A229C1DA8000076E0 /* ContactHashWrapper.swift */; };
+		0B56545D229C20B1000076E0 /* ImagePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B56545C229C20B1000076E0 /* ImagePreviewViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		0B4064C62299ED8F00D2BFFF /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		0B4064C82299EE1B00D2BFFF /* ContactCNConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCNConverter.swift; sourceTree = "<group>"; };
 		0B56545A229C1DA8000076E0 /* ContactHashWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactHashWrapper.swift; sourceTree = "<group>"; };
+		0B56545C229C20B1000076E0 /* ImagePreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreviewViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 				0B4064992299E00A00D2BFFF /* Assets.xcassets */,
 				0B40649B2299E00A00D2BFFF /* LaunchScreen.storyboard */,
 				0B4064962299E00800D2BFFF /* Main.storyboard */,
+				0B56545C229C20B1000076E0 /* ImagePreviewViewController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 			files = (
 				0B56545B229C1DA8000076E0 /* ContactHashWrapper.swift in Sources */,
 				0B4064C92299EE1B00D2BFFF /* ContactCNConverter.swift in Sources */,
+				0B56545D229C20B1000076E0 /* ImagePreviewViewController.swift in Sources */,
 				0B4064C72299ED8F00D2BFFF /* Contact.swift in Sources */,
 				0B4064952299E00800D2BFFF /* MenuViewController.swift in Sources */,
 				0B4064932299E00800D2BFFF /* AppDelegate.swift in Sources */,

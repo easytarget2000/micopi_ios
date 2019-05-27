@@ -2,12 +2,19 @@ import Contacts.CNContact
 
 struct ContactCNConverter {
     
-    func convertCNContacts(_ cnContacts: [CNContact]) -> [Contact] {
+    func convertCNContactsWrapped(
+        _ cnContacts: [CNContact]
+    ) -> [ContactHashWrapper] {
         return cnContacts.map({
-                (cnContact) -> Contact in
-                return convertCNContact(cnContact)
+                (cnContact) -> ContactHashWrapper in
+                return convertCNContactWrapped(cnContact)
             }
         )
+    }
+    
+    func convertCNContactWrapped(_ cnContact: CNContact) -> ContactHashWrapper {
+        let contact = convertCNContact(cnContact)
+        return ContactHashWrapper(contact: contact)
     }
     
     func convertCNContact(_ cnContact: CNContact) -> Contact {
