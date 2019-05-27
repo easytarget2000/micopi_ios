@@ -11,14 +11,6 @@ class MenuViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        showContactListForGenerator()
-    }
-
-    fileprivate func showContactListForGenerator() {
-        performSegue(
-            withIdentifier: MenuViewController.toContactPickerSegue,
-            sender: nil
-        )
     }
 }
 
