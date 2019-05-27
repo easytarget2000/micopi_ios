@@ -58,7 +58,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dZV-Ih-aJS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1355" y="21"/>
+            <point key="canvasLocation" x="1429" y="-405"/>
         </scene>
         <!--Contact Picker Wrapper View Controller-->
         <scene sceneID="zWg-6G-YcA">
@@ -73,11 +73,44 @@
                     <navigationItem key="navigationItem" id="3yx-8M-hG2"/>
                     <connections>
                         <segue destination="Xke-WE-7Se" kind="show" identifier="ContactPickerToImagePreviewSegue" id="sFB-Jt-ylE"/>
+                        <segue destination="u3u-dY-2O7" kind="show" identifier="ContactPickerToBatchGeneratorSegue" id="HL5-9B-XIg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fAp-eE-Am3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="513" y="21"/>
+        </scene>
+        <!--Batch Generator Navigation Controller-->
+        <scene sceneID="aBa-Wx-Xvn">
+            <objects>
+                <navigationController id="u3u-dY-2O7" customClass="BatchGeneratorNavigationController" customModule="micopi" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cdd-Sf-T6x">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Ire-wr-Jlg" kind="relationship" relationship="rootViewController" id="wPz-C4-G4r"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4EZ-Qv-loG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1429" y="394"/>
+        </scene>
+        <!--Batch Generator Navigation Controller-->
+        <scene sceneID="YyQ-MW-7qi">
+            <objects>
+                <viewController id="Ire-wr-Jlg" customClass="BatchGeneratorNavigationController" customModule="micopi" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wjx-Ws-MFc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="3C0-Kv-xHF"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="7cv-gw-Rsr"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gxi-bm-vEZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2261" y="394"/>
         </scene>
         <!--Preview-->
         <scene sceneID="jV8-Df-4xv">
@@ -118,7 +151,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S7I-lh-tyE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2185.507246376812" y="20.758928571428569"/>
+            <point key="canvasLocation" x="2261" y="-405"/>
         </scene>
     </scenes>
     <resources>
