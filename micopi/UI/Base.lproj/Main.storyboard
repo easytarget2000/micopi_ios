@@ -24,7 +24,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="CqN-OM-16F" kind="show" id="gvy-YZ-lET"/>
+                                    <segue destination="CqN-OM-16F" kind="show" id="iND-l5-YJL"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -38,7 +38,27 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="412" y="21"/>
+            <point key="canvasLocation" x="-268" y="21"/>
+        </scene>
+        <!--Image Preview Navigation Controller-->
+        <scene sceneID="puV-lp-Xy7">
+            <objects>
+                <navigationController id="Xke-WE-7Se" customClass="ImagePreviewNavigationController" customModule="micopi" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="l64-t9-ghs">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" name="SolidColor"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="8aT-AV-wQL" kind="relationship" relationship="rootViewController" id="iFh-xO-vuc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dZV-Ih-aJS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1355" y="21"/>
         </scene>
         <!--Contact Picker Wrapper View Controller-->
         <scene sceneID="zWg-6G-YcA">
@@ -50,15 +70,16 @@
                         <color key="backgroundColor" name="SolidColor"/>
                         <viewLayoutGuide key="safeArea" id="Nhn-NZ-qig"/>
                     </view>
+                    <navigationItem key="navigationItem" id="3yx-8M-hG2"/>
                     <connections>
-                        <segue destination="8aT-AV-wQL" kind="show" identifier="ContactPickerToImagePreviewSegue" id="gYe-5T-ltD"/>
+                        <segue destination="Xke-WE-7Se" kind="show" identifier="ContactPickerToImagePreviewSegue" id="sFB-Jt-ylE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fAp-eE-Am3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1291" y="21"/>
+            <point key="canvasLocation" x="513" y="21"/>
         </scene>
-        <!--Image Preview View Controller-->
+        <!--Preview-->
         <scene sceneID="jV8-Df-4xv">
             <objects>
                 <viewController id="8aT-AV-wQL" customClass="ImagePreviewViewController" customModule="micopi" customModuleProvider="target" sceneMemberID="viewController">
@@ -67,13 +88,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1Oq-Of-fZj" userLabel="PreviewImageView">
-                                <rect key="frame" x="0.0" y="44" width="414" height="414"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="414"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="1Oq-Of-fZj" secondAttribute="height" multiplier="1:1" id="qwD-rZ-xN1"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John Appleseed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TmU-J9-eaq" userLabel="ContactFullNameLabel">
-                                <rect key="frame" x="40" y="486" width="334" height="36"/>
+                                <rect key="frame" x="40" y="530" width="334" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -90,6 +111,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2ha-fz-Vd3"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Preview" largeTitleDisplayMode="never" id="Ddw-XJ-tW2"/>
                     <connections>
                         <outlet property="contactFullNameLabel" destination="TmU-J9-eaq" id="trj-Du-FAD"/>
                     </connections>

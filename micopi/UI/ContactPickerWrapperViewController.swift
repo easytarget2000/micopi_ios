@@ -31,7 +31,7 @@ class ContactPickerWrapperViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let imagePreviewViewController
-            = segue.destination as? ImagePreviewViewController {
+            = segue.destination as? ImagePreviewNavigationController {
             
             let contactWrapper = sender as! ContactHashWrapper
             imagePreviewViewController.contactWrapper = contactWrapper

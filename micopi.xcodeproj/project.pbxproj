@@ -19,6 +19,7 @@
 		0B4064C92299EE1B00D2BFFF /* ContactCNConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4064C82299EE1B00D2BFFF /* ContactCNConverter.swift */; };
 		0B56545B229C1DA8000076E0 /* ContactHashWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B56545A229C1DA8000076E0 /* ContactHashWrapper.swift */; };
 		0B56545D229C20B1000076E0 /* ImagePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B56545C229C20B1000076E0 /* ImagePreviewViewController.swift */; };
+		30C315B2229C88EE00B36C58 /* ImagePreviewNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C315B1229C88EE00B36C58 /* ImagePreviewNavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		0B4064C82299EE1B00D2BFFF /* ContactCNConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCNConverter.swift; sourceTree = "<group>"; };
 		0B56545A229C1DA8000076E0 /* ContactHashWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactHashWrapper.swift; sourceTree = "<group>"; };
 		0B56545C229C20B1000076E0 /* ImagePreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreviewViewController.swift; sourceTree = "<group>"; };
+		30C315B1229C88EE00B36C58 /* ImagePreviewNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePreviewNavigationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				0B4064C02299E28C00D2BFFF /* ContactPickerWrapperViewController.swift */,
+				30C315B1229C88EE00B36C58 /* ImagePreviewNavigationController.swift */,
 				0B56545C229C20B1000076E0 /* ImagePreviewViewController.swift */,
 				0B4064942299E00800D2BFFF /* MenuViewController.swift */,
 				0B4064992299E00A00D2BFFF /* Assets.xcassets */,
@@ -287,6 +290,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30C315B2229C88EE00B36C58 /* ImagePreviewNavigationController.swift in Sources */,
 				0B56545B229C1DA8000076E0 /* ContactHashWrapper.swift in Sources */,
 				0B4064C92299EE1B00D2BFFF /* ContactCNConverter.swift in Sources */,
 				0B56545D229C20B1000076E0 /* ImagePreviewViewController.swift in Sources */,
