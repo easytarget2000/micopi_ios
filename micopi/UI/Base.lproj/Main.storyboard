@@ -144,7 +144,28 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2ha-fz-Vd3"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Preview" largeTitleDisplayMode="never" id="Ddw-XJ-tW2"/>
+                    <toolbarItems>
+                        <barButtonItem title="Previous Image" id="xbM-AW-6b8" userLabel="PreviousImageButton">
+                            <connections>
+                                <action selector="previousImageButtonTouched:" destination="8aT-AV-wQL" id="7X3-RN-WIB"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="cJT-kR-yqK"/>
+                        <barButtonItem title="Next Image" id="DdC-vM-Vek" userLabel="NextImageButton">
+                            <connections>
+                                <action selector="nextImageButtonTouched:" destination="8aT-AV-wQL" id="kOt-DZ-fVs"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Preview" largeTitleDisplayMode="never" id="Ddw-XJ-tW2">
+                        <barButtonItem key="rightBarButtonItem" title="Assign" id="PIR-04-zbz" userLabel="AssignImageButton">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="assignButtonTouched:" destination="8aT-AV-wQL" id="kkk-kT-max"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="contactFullNameLabel" destination="TmU-J9-eaq" id="trj-Du-FAD"/>
                     </connections>

@@ -1,5 +1,3 @@
-import Foundation
-
 struct Contact: Equatable {
     
     let identifier: String

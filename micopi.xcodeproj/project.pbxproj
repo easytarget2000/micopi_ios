@@ -22,6 +22,7 @@
 		30C315B2229C88EE00B36C58 /* ImagePreviewNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C315B1229C88EE00B36C58 /* ImagePreviewNavigationController.swift */; };
 		30C315B4229C93A200B36C58 /* BatchGeneratorNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C315B3229C93A200B36C58 /* BatchGeneratorNavigationController.swift */; };
 		30C315B6229C93B400B36C58 /* BatchGeneratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C315B5229C93B400B36C58 /* BatchGeneratorViewController.swift */; };
+		30C315B8229C96AD00B36C58 /* ContactWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C315B7229C96AD00B36C58 /* ContactWriter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		30C315B1229C88EE00B36C58 /* ImagePreviewNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePreviewNavigationController.swift; sourceTree = "<group>"; };
 		30C315B3229C93A200B36C58 /* BatchGeneratorNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatchGeneratorNavigationController.swift; sourceTree = "<group>"; };
 		30C315B5229C93B400B36C58 /* BatchGeneratorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatchGeneratorViewController.swift; sourceTree = "<group>"; };
+		30C315B7229C96AD00B36C58 /* ContactWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactWriter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 				0B4064C62299ED8F00D2BFFF /* Contact.swift */,
 				0B4064C82299EE1B00D2BFFF /* ContactCNConverter.swift */,
 				0B56545A229C1DA8000076E0 /* ContactHashWrapper.swift */,
+				30C315B7229C96AD00B36C58 /* ContactWriter.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 				30C315B4229C93A200B36C58 /* BatchGeneratorNavigationController.swift in Sources */,
 				30C315B6229C93B400B36C58 /* BatchGeneratorViewController.swift in Sources */,
 				0B4064C72299ED8F00D2BFFF /* Contact.swift in Sources */,
+				30C315B8229C96AD00B36C58 /* ContactWriter.swift in Sources */,
 				0B4064952299E00800D2BFFF /* MenuViewController.swift in Sources */,
 				0B4064932299E00800D2BFFF /* AppDelegate.swift in Sources */,
 				0B4064C12299E28C00D2BFFF /* ContactPickerWrapperViewController.swift in Sources */,
