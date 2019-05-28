@@ -19,6 +19,7 @@
 		0B4064C92299EE1B00D2BFFF /* ContactCNConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4064C82299EE1B00D2BFFF /* ContactCNConverter.swift */; };
 		0B56545B229C1DA8000076E0 /* ContactHashWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B56545A229C1DA8000076E0 /* ContactHashWrapper.swift */; };
 		0B56545D229C20B1000076E0 /* ImagePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B56545C229C20B1000076E0 /* ImagePreviewViewController.swift */; };
+		3010CE95229DD85200CD32D4 /* ContactImageEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3010CE94229DD85200CD32D4 /* ContactImageEngine.swift */; };
 		30C315B2229C88EE00B36C58 /* ImagePreviewNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C315B1229C88EE00B36C58 /* ImagePreviewNavigationController.swift */; };
 		30C315B4229C93A200B36C58 /* BatchGeneratorNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C315B3229C93A200B36C58 /* BatchGeneratorNavigationController.swift */; };
 		30C315B6229C93B400B36C58 /* BatchGeneratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C315B5229C93B400B36C58 /* BatchGeneratorViewController.swift */; };
@@ -61,6 +62,7 @@
 		0B4064C82299EE1B00D2BFFF /* ContactCNConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCNConverter.swift; sourceTree = "<group>"; };
 		0B56545A229C1DA8000076E0 /* ContactHashWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactHashWrapper.swift; sourceTree = "<group>"; };
 		0B56545C229C20B1000076E0 /* ImagePreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreviewViewController.swift; sourceTree = "<group>"; };
+		3010CE94229DD85200CD32D4 /* ContactImageEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactImageEngine.swift; sourceTree = "<group>"; };
 		30C315B1229C88EE00B36C58 /* ImagePreviewNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePreviewNavigationController.swift; sourceTree = "<group>"; };
 		30C315B3229C93A200B36C58 /* BatchGeneratorNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatchGeneratorNavigationController.swift; sourceTree = "<group>"; };
 		30C315B5229C93B400B36C58 /* BatchGeneratorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatchGeneratorViewController.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				0B40649E2299E00A00D2BFFF /* Info.plist */,
 				0B4064922299E00800D2BFFF /* AppDelegate.swift */,
 				0B4064C52299ED3A00D2BFFF /* Data */,
+				3010CE93229DD82100CD32D4 /* Engine */,
 				0B4064C22299E2A600D2BFFF /* UI */,
 			);
 			path = micopi;
@@ -166,6 +169,14 @@
 				30C315B7229C96AD00B36C58 /* ContactWriter.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		3010CE93229DD82100CD32D4 /* Engine */ = {
+			isa = PBXGroup;
+			children = (
+				3010CE94229DD85200CD32D4 /* ContactImageEngine.swift */,
+			);
+			path = Engine;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -303,6 +314,7 @@
 				0B56545B229C1DA8000076E0 /* ContactHashWrapper.swift in Sources */,
 				0B4064C92299EE1B00D2BFFF /* ContactCNConverter.swift in Sources */,
 				0B56545D229C20B1000076E0 /* ImagePreviewViewController.swift in Sources */,
+				3010CE95229DD85200CD32D4 /* ContactImageEngine.swift in Sources */,
 				30C315B4229C93A200B36C58 /* BatchGeneratorNavigationController.swift in Sources */,
 				30C315B6229C93B400B36C58 /* BatchGeneratorViewController.swift in Sources */,
 				0B4064C72299ED8F00D2BFFF /* Contact.swift in Sources */,
