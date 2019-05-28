@@ -3,28 +3,30 @@ import UIKit.UIImage
 struct ContactImageEngine {
     
     static let defaultImageSize = CGFloat(1600)
+    var globalDispatchQueue = DispatchQueue.global()
+    var mainDispatchQueue = DispatchQueue.main
     
-    func generateImageForContact(
+    func generateImageForContactAsync(
         _ contact: Contact,
         size: CGFloat = ContactImageEngine.defaultImageSize,
         completionHandler: @escaping (UIImage) -> ()
     ) {
-        DispatchQueue.global().async {
+        globalDispatchQueue.async {
             // Background thread
             
-            let generatedImage = self.generateImageForContactSynchronized(
+            let generatedImage = self.generateImageForContact(
                 contact: contact,
                 size: size
             )
             
-            DispatchQueue.main.async(execute: {
+            self.mainDispatchQueue.async(execute: {
                     completionHandler(generatedImage)
                 }
             )
         }
     }
     
-    func generateImageForContactSynchronized(
+    func generateImageForContact(
         contact: Contact,
         size: CGFloat = ContactImageEngine.defaultImageSize
     ) -> UIImage {
