@@ -169,6 +169,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="contactFullNameLabel" destination="TmU-J9-eaq" id="trj-Du-FAD"/>
+                        <outlet property="previewImageView" destination="1Oq-Of-fZj" id="aes-Qs-c6K"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S7I-lh-tyE" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -7,7 +7,7 @@ struct ContactImageEngine {
     var mainDispatchQueue = DispatchQueue.main
     
     func generateImageForContactAsync(
-        _ contact: Contact,
+        contactWrapper: ContactHashWrapper,
         size: CGFloat = ContactImageEngine.defaultImageSize,
         completionHandler: @escaping (UIImage) -> ()
     ) {
@@ -15,7 +15,7 @@ struct ContactImageEngine {
             // Background thread
             
             let generatedImage = self.generateImageForContact(
-                contact: contact,
+                contactWrapper: contactWrapper,
                 size: size
             )
             
@@ -27,7 +27,7 @@ struct ContactImageEngine {
     }
     
     func generateImageForContact(
-        contact: Contact,
+        contactWrapper: ContactHashWrapper,
         size: CGFloat = ContactImageEngine.defaultImageSize
     ) -> UIImage {
         

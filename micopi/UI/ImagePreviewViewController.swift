@@ -12,10 +12,11 @@ class ImagePreviewViewController: UIViewController {
     }
     fileprivate var generatedImage: UIImage? {
         didSet {
-            
+            previewImageView.image = generatedImage
         }
     }
 
+    @IBOutlet weak var previewImageView: UIImageView!
     @IBOutlet weak var contactFullNameLabel: UILabel!
     @IBAction func assignButtonTouched(_ sender: Any) {
         assignImageToContact()
@@ -29,8 +30,8 @@ class ImagePreviewViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         populateContactViews()
+        generateImage()
     }
 
     fileprivate func populateContactViews() {
@@ -46,10 +47,22 @@ class ImagePreviewViewController: UIViewController {
     }
     
     fileprivate func generatePreviousImage() {
-        
+        contactWrapper.decreaseModifier()
+        generateImage()
     }
     
     fileprivate func generateNextImage() {
-        
+        contactWrapper.increaseModifier()
+        generateImage()
+    }
+    
+    fileprivate func generateImage() {
+        contactImageEngine.generateImageForContactAsync(
+            contactWrapper: contactWrapper,
+            completionHandler: {
+                    (generatedImage) in
+                    self.generatedImage = generatedImage
+                }
+        )
     }
 }
