@@ -3,7 +3,7 @@ import UIKit
 class ImagePreviewViewController: UIViewController {
     
     var contactWrapper: ContactHashWrapper!
-    var contactImageDrawer: ContactImageDrawer = ContactImageDrawer()
+    var contactImageDrawer: ContactImageEngine = ContactImageEngine()
     var contactWriter: ContactWriter = ContactWriter()
     fileprivate var contact: Contact! {
         get {
