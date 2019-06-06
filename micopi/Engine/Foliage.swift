@@ -182,17 +182,18 @@ class Foliage {
         var currentNode = firstNode!
         var numberOfNewNodes = 0
         repeat {
-            
             nodeCounter += 1
             
             nodeDrawer.drawNode(currentNode)
-            
-            // Update:
             
             if numberOfNewNodes < maxNewNodes && nodeCounter % density == 0 {
                 add(nodeNextTo: currentNode)
                 numberOfNewNodes += 1
             }
+            
+//            guard let nextNode = node.nextNode else {
+//                break
+//            }
             
             update(node: currentNode)
             

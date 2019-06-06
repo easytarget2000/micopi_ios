@@ -3,10 +3,15 @@ import CoreGraphics
 struct FoliageNodeCGDrawer {
     
     let context: CGContext
+    let imageSize: CGFloat
+    let maxCircleShapeSize: CGFloat
+    let randomGenerator: RandomCGNumberGenerator = RandomCGNumberGenerator()
     let color1: CGColor
     let color2: CGColor
+    let shape: Int = 0
+    let mirrored: Bool = false
     
-    func drawNode(_ node: FoliageNode) {
+    func drawNode(_ node: FoliageNode, nextNode: FoliageNode) {
         if shape == 1 {
             context.setStrokeColor(color2)
             context.strokeEllipse(
@@ -44,8 +49,8 @@ struct FoliageNodeCGDrawer {
                 context.setFillColor(color1)
                 context.fill(
                     CGRect(
-                        x: cgImageSize - node.x,
-                        y: node.y,
+                        x: imageSize - CGFloat(node.x),
+                        y: CGFloat(node.y),
                         width: 1,
                         height: 1
                     )
@@ -53,17 +58,14 @@ struct FoliageNodeCGDrawer {
             }
         } else {
             context.beginPath()
-            context.move(to: node.point())
+            let point = CGPoint(x: CGFloat(node.x), y: CGFloat(node.y))
+            context.move(to: point)
         }
         
-        guard let nextNode = node.nextNode else {
-            break
-        }
-        
-        if !mirrored {
-            context.addLine(to: nextNode.point())
-            context.closePath()
-            context.drawPath(using: CGPathDrawingMode.stroke)
-        }
+//        if !mirrored {
+//            context.addLine(to: nextNode.point())
+//            context.closePath()
+//            context.drawPath(using: CGPathDrawingMode.stroke)
+//        }
     }
 }

@@ -186,13 +186,13 @@
 		3010CE93229DD82100CD32D4 /* Engine */ = {
 			isa = PBXGroup;
 			children = (
-				3010CE94229DD85200CD32D4 /* ContactImageEngine.swift */,
-				0B98D82222A9B3F8009B266B /* InitialsDrawer.swift */,
-				0B98D82422A9B51F009B266B /* FoliageNode.swift */,
-				0B98D82622A9B5C2009B266B /* Foliage.swift */,
-				0B98D82822A9B969009B266B /* RandomCGNumberGenerator.swift */,
 				0B98D82A22A9C7F0009B266B /* Calculator.swift */,
+				3010CE94229DD85200CD32D4 /* ContactImageEngine.swift */,
+				0B98D82622A9B5C2009B266B /* Foliage.swift */,
+				0B98D82422A9B51F009B266B /* FoliageNode.swift */,
 				0B98D82C22A9C901009B266B /* FoliageNodeDrawer.swift */,
+				0B98D82222A9B3F8009B266B /* InitialsDrawer.swift */,
+				0B98D82822A9B969009B266B /* RandomCGNumberGenerator.swift */,
 			);
 			path = Engine;
 			sourceTree = "<group>";
