@@ -2,7 +2,7 @@ import CoreGraphics
 
 class Foliage {
     
-    fileprivate var firstNode: FoliageNode
+    fileprivate var firstNode: FoliageNode!
     fileprivate var age = 0
     fileprivate var maxAge = 50
     fileprivate var maxNewNodes = 20
@@ -32,11 +32,12 @@ class Foliage {
     fileprivate var drawRects: Bool
     fileprivate var shape = 0
     var randomGenerator: RandomCGNumberGenerator = RandomCGNumberGenerator()
+    var calculator: Calculator = Calculator()
     
-//    fileprivate lazy var density: Int = {
-//        return self.numberOfInitialNodes / randomGenerator.i(largerThan: 4, smallerThan: 8)
-//        //       return Foliage.maxNewNodes / randomGenerator.i(largerThan: 3, smallerThan: 12)
-//    }()
+    fileprivate lazy var density: Int = {
+        return self.numberOfInitialNodes / randomGenerator.i(largerThan: 4, smallerThan: 8)
+        //       return Foliage.maxNewNodes / randomGenerator.i(largerThan: 3, smallerThan: 12)
+    }()
     
     init(imageSize: Float, mirroredMode: Bool) {
         self.mirrored = mirroredMode
@@ -68,7 +69,7 @@ class Foliage {
             
             let nodeX = x + (slimnessFactor * cosf(angleOfNode) * initialRadius) + jitterValue()
             let nodeY = y + (sinf(angleOfNode) * initialRadius) + jitterValue()
-            let node = FoliagegNode(x: nodeX, y: nodeY)
+            let node = FoliageNode(x: nodeX, y: nodeY)
             
             if firstNode == nil {
                 firstNode = node
@@ -165,9 +166,7 @@ class Foliage {
 //    }
     
     func updateAndDraw(
-        inContext context: CGContext,
-        withColor1 color1: CGColor,
-        color2: CGColor
+        nodeDrawer: FoliageNodeDrawer
     ) -> Bool {
         age += 1
         stopped = false
@@ -180,70 +179,13 @@ class Foliage {
         //        let path = UIBezierPath()
         //        path.move(to: firstNode.point())
         
-        var currentNode = firstNode
+        var currentNode = firstNode!
         var numberOfNewNodes = 0
         repeat {
             
             nodeCounter += 1
             
-            if shape == 1 {
-                context.setStrokeColor(color2)
-                context.strokeEllipse(
-                    in: CGRect(
-                        x: currentNode.cgX() + 1,
-                        y: currentNode.cgY() + 1,
-                        width: randomGeneratorcgF(smallerThan: maxCircleShapeSize),
-                        height: randomGeneratorcgF(smallerThan: maxCircleShapeSize)
-                    )
-                )
-            } else {
-                context.setFillColor(color2)
-                context.fill(
-                    CGRect(
-                        x: currentNode.cgX() + 1,
-                        y: currentNode.cgY() + 1,
-                        width: 1,
-                        height: 1
-                    )
-                )
-            }
-            
-            if mirrored {
-                if shape == 1 {
-                    context.setStrokeColor(color2)
-                    context.strokeEllipse(
-                        in: CGRect(
-                            x: currentNode.cgX() + 1,
-                            y: currentNode.cgY() + 1,
-                            width: randomGeneratorcgF(smallerThan: maxCircleShapeSize),
-                            height: randomGeneratorcgF(smallerThan: maxCircleShapeSize)
-                        )
-                    )
-                } else {
-                    context.setFillColor(color1)
-                    context.fill(
-                        CGRect(
-                            x: cgImageSize - currentNode.cgX(),
-                            y: currentNode.cgY(),
-                            width: 1,
-                            height: 1
-                        )
-                    )
-                }
-            } else {
-                context.beginPath()
-                context.move(to: currentNode.point())
-            }
-            
-            guard let nextNode = currentNode.next else {
-                break
-            }
-            
-            if !mirrored {
-                context.addLine(to: nextNode.point())
-                context.closePath()
-                context.drawPath(using: CGPathDrawingMode.stroke)
-            }
+            nodeDrawer.drawNode(currentNode)
             
             // Update:
             
@@ -324,47 +266,5 @@ class Foliage {
             currentNode.applyForce(force, angle: angle)
             
         } while !stopped
-    }
-    
-    fileprivate static func distanceBetween(
-        node1: FoliageNode,
-        node2: FoliageNode
-    ) -> Float {
-        return distanceBetween(
-            x1: node1.x,
-            y1: node1.y,
-            x2: node2.x,
-            y2: node2.y
-        )
-    }
-    
-    fileprivate static func angleBetween(
-        node1: FoliageNode,
-        node2: FoliageNode
-    ) -> Float {
-        return angleBetween(
-            x1: node1.x,
-            y1: node1.y,
-            x2: node2.x,
-            y2: node2.y
-        )
-    }
-    
-    fileprivate static func distanceBetween(
-        x1: Float,
-        y1: Float,
-        x2: Float,
-        y2: Float
-    ) -> Float {
-        return sqrtf(pow(x2 - x1, 2) + pow(y2 - y1, 2))
-    }
-    
-    fileprivate static func angleBetween(
-        x1: Float,
-        y1: Float,
-        x2: Float,
-        y2: Float
-    ) -> Float {
-        return atan2f(y2 - y1, x2 - x1) + pi
     }
 }
