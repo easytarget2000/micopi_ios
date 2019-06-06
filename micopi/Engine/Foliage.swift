@@ -2,6 +2,7 @@ import CoreGraphics
 
 class Foliage {
     
+    fileprivate var firstNode: FoliageNode
     fileprivate var age = 0
     fileprivate var maxAge = 50
     fileprivate var maxNewNodes = 20
@@ -20,8 +21,7 @@ class Foliage {
     fileprivate var neighborGravity: Float
     fileprivate var preferredNeighborDistance: Float = 1 {
         didSet {
-            preferredNeighborDistanceHalf
-                = preferredNeighborDistance / 2
+            preferredNeighborDistanceHalf = preferredNeighborDistance / 2
         }
     }
     fileprivate var preferredNeighborDistanceHalf: Float
@@ -49,7 +49,7 @@ class Foliage {
         let numberOfInitialNodes = randomGenerator.i(largerThan: 36, smallerThan: 64)
     }
     
-    func start(inCircleAtX x: Float, atY y: Float) {
+    func start(inCircleAtX x: Float, atY y: Float, imageSize: Float) {
         let initialRadius = randomGenerator.f(
             greater: imageSize * 0.02,
             smaller: imageSize * 0.07
