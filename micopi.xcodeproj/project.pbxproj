@@ -20,6 +20,9 @@
 		0B56545B229C1DA8000076E0 /* ContactHashWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B56545A229C1DA8000076E0 /* ContactHashWrapper.swift */; };
 		0B56545D229C20B1000076E0 /* ImagePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B56545C229C20B1000076E0 /* ImagePreviewViewController.swift */; };
 		0B98D82322A9B3F8009B266B /* InitialsDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B98D82222A9B3F8009B266B /* InitialsDrawer.swift */; };
+		0B98D82522A9B51F009B266B /* FoliageNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B98D82422A9B51F009B266B /* FoliageNode.swift */; };
+		0B98D82722A9B5C2009B266B /* Foliage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B98D82622A9B5C2009B266B /* Foliage.swift */; };
+		0B98D82922A9B969009B266B /* RandomCGNumberGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B98D82822A9B969009B266B /* RandomCGNumberGenerator.swift */; };
 		3010CE95229DD85200CD32D4 /* ContactImageEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3010CE94229DD85200CD32D4 /* ContactImageEngine.swift */; };
 		30C315B2229C88EE00B36C58 /* ImagePreviewNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C315B1229C88EE00B36C58 /* ImagePreviewNavigationController.swift */; };
 		30C315B4229C93A200B36C58 /* BatchGeneratorNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C315B3229C93A200B36C58 /* BatchGeneratorNavigationController.swift */; };
@@ -64,6 +67,9 @@
 		0B56545A229C1DA8000076E0 /* ContactHashWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactHashWrapper.swift; sourceTree = "<group>"; };
 		0B56545C229C20B1000076E0 /* ImagePreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreviewViewController.swift; sourceTree = "<group>"; };
 		0B98D82222A9B3F8009B266B /* InitialsDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialsDrawer.swift; sourceTree = "<group>"; };
+		0B98D82422A9B51F009B266B /* FoliageNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoliageNode.swift; sourceTree = "<group>"; };
+		0B98D82622A9B5C2009B266B /* Foliage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Foliage.swift; sourceTree = "<group>"; };
+		0B98D82822A9B969009B266B /* RandomCGNumberGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomCGNumberGenerator.swift; sourceTree = "<group>"; };
 		3010CE94229DD85200CD32D4 /* ContactImageEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactImageEngine.swift; sourceTree = "<group>"; };
 		30C315B1229C88EE00B36C58 /* ImagePreviewNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePreviewNavigationController.swift; sourceTree = "<group>"; };
 		30C315B3229C93A200B36C58 /* BatchGeneratorNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatchGeneratorNavigationController.swift; sourceTree = "<group>"; };
@@ -178,6 +184,9 @@
 			children = (
 				3010CE94229DD85200CD32D4 /* ContactImageEngine.swift */,
 				0B98D82222A9B3F8009B266B /* InitialsDrawer.swift */,
+				0B98D82422A9B51F009B266B /* FoliageNode.swift */,
+				0B98D82622A9B5C2009B266B /* Foliage.swift */,
+				0B98D82822A9B969009B266B /* RandomCGNumberGenerator.swift */,
 			);
 			path = Engine;
 			sourceTree = "<group>";
@@ -315,9 +324,12 @@
 			files = (
 				30C315B2229C88EE00B36C58 /* ImagePreviewNavigationController.swift in Sources */,
 				0B56545B229C1DA8000076E0 /* ContactHashWrapper.swift in Sources */,
+				0B98D82722A9B5C2009B266B /* Foliage.swift in Sources */,
+				0B98D82922A9B969009B266B /* RandomCGNumberGenerator.swift in Sources */,
 				0B4064C92299EE1B00D2BFFF /* ContactCNConverter.swift in Sources */,
 				0B98D82322A9B3F8009B266B /* InitialsDrawer.swift in Sources */,
 				0B56545D229C20B1000076E0 /* ImagePreviewViewController.swift in Sources */,
+				0B98D82522A9B51F009B266B /* FoliageNode.swift in Sources */,
 				3010CE95229DD85200CD32D4 /* ContactImageEngine.swift in Sources */,
 				30C315B4229C93A200B36C58 /* BatchGeneratorNavigationController.swift in Sources */,
 				30C315B6229C93B400B36C58 /* BatchGeneratorViewController.swift in Sources */,
