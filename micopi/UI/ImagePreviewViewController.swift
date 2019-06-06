@@ -3,7 +3,7 @@ import UIKit
 class ImagePreviewViewController: UIViewController {
     
     var contactWrapper: ContactHashWrapper!
-    var contactImageEngine: ContactImageEngine = ContactImageEngine()
+    var contactImageDrawer: ContactImageDrawer = ContactImageDrawer()
     var contactWriter: ContactWriter = ContactWriter()
     fileprivate var contact: Contact! {
         get {
@@ -57,7 +57,7 @@ class ImagePreviewViewController: UIViewController {
     }
     
     fileprivate func generateImage() {
-        contactImageEngine.generateImageForContactAsync(
+        contactImageDrawer.drawImageForContactAsync(
             contactWrapper: contactWrapper,
             completionHandler: {
                     (generatedImage) in

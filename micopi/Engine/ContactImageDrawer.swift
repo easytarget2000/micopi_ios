@@ -1,25 +1,26 @@
 import UIKit.UIImage
 
-struct ContactImageEngine {
+class ContactImageDrawer {
     
-    static let defaultImageSize = CGFloat(1600)
+    static let defaultImageSize = Float(1600)
     var globalDispatchQueue = DispatchQueue.global()
     var mainDispatchQueue = DispatchQueue.main
     var initialsFont = UIFont(name: "HelveticaNeue-Light", size: 600)!
     var initialsFontSizeFactorBase = CGFloat(0.66)
-    var initialsTextColor = UIColor.white
+    var initialsTextColor = UIColor.black//UIColor.white
+    fileprivate var stopped = false
     
-    func generateImageForContactAsync(
+    func drawImageForContactAsync(
         contactWrapper: ContactHashWrapper,
-        size: CGFloat = ContactImageEngine.defaultImageSize,
+        imageSize: Float = ContactImageDrawer.defaultImageSize,
         completionHandler: @escaping (UIImage) -> ()
     ) {
         globalDispatchQueue.async {
             // Background thread
             
-            let generatedImage = self.generateImageForContact(
+            let generatedImage = self.drawImageForContact(
                 contactWrapper: contactWrapper,
-                size: size
+                imageSize: imageSize
             )
             
             self.mainDispatchQueue.async(execute: {
@@ -29,15 +30,34 @@ struct ContactImageEngine {
         }
     }
     
-    func generateImageForContact(
+    func stop() {
+        stopped = true
+    }
+    
+    func drawImageForContact(
         contactWrapper: ContactHashWrapper,
-        size: CGFloat = ContactImageEngine.defaultImageSize
+        imageSize: Float = ContactImageDrawer.defaultImageSize
     ) -> UIImage {
+        stopped = false
+        let cgImageSize = CGFloat(imageSize)
+        let contextSize = CGSize(width: cgImageSize, height: cgImageSize)
+    
+        UIGraphicsBeginImageContext(contextSize)
         
-        return UIImage()
+        let displayedInitials = "ABC"
+        paintInitials(displayedInitials, imageSize: cgImageSize)
+        
+        let generatedImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        return generatedImage
     }
     
     fileprivate func paintInitials(_ initials: String, imageSize: CGFloat) {
+        guard !initials.isEmpty else {
+            return
+        }
+        
         let fontSizeFactor = pow(
             initialsFontSizeFactorBase,
             CGFloat(initials.count)
