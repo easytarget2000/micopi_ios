@@ -6,27 +6,27 @@ class Foliage {
     fileprivate var age = 0
     fileprivate var maxAge = 50
     fileprivate var maxNewNodes = 20
-    fileprivate var pushForce = Float(8)
+    fileprivate var pushForce = Double(8)
     fileprivate var stopped = false
-    fileprivate var nodeSize: Float {
+    fileprivate var nodeSize: Double {
         didSet {
             nodeRadius = nodeSize / 2
         }
     }
-    fileprivate var nodeRadius: Float {
+    fileprivate var nodeRadius: Double {
         didSet {
             maxCircleShapeSize = CGFloat(nodeRadius) * CGFloat(36)
         }
     }
-    fileprivate var neighborGravity: Float
-    fileprivate var preferredNeighborDistance: Float = 1 {
+    fileprivate var neighborGravity: Double
+    fileprivate var preferredNeighborDistance: Double = 1 {
         didSet {
             preferredNeighborDistanceHalf = preferredNeighborDistance / 2
         }
     }
-    fileprivate var preferredNeighborDistanceHalf: Float
-    fileprivate var maxPushDistance: Float
-    fileprivate var jitter: Float
+    fileprivate var preferredNeighborDistanceHalf: Double
+    fileprivate var maxPushDistance: Double
+    fileprivate var jitter: Double
     fileprivate var maxCircleShapeSize: CGFloat
     fileprivate var mirrored: Bool
     fileprivate var drawRects: Bool
@@ -39,7 +39,7 @@ class Foliage {
         //       return Foliage.maxNewNodes / randomGenerator.i(largerThan: 3, smallerThan: 12)
     }()
     
-    init(imageSize: Float, mirroredMode: Bool) {
+    init(imageSize: Double, mirroredMode: Bool) {
         self.mirrored = mirroredMode
         self.drawRects = !mirroredMode && false
         
@@ -50,7 +50,7 @@ class Foliage {
         
     }
     
-    func start(inCircleAtX x: Float, atY y: Float, imageSize: Float) {
+    func start(inCircleAtX x: Double, atY y: Double, imageSize: Double) {
         let numberOfInitialNodes = randomGenerator.i(
             largerThan: 36,
             smallerThan: 64
@@ -65,7 +65,7 @@ class Foliage {
         var lastNode: FoliageNode!
         for i in 0 ..< numberOfInitialNodes {
             
-            let angleOfNode = piTwo * (Float((i + 1)) / Float(numberOfInitialNodes))
+            let angleOfNode = piTwo * (Double((i + 1)) / Double(numberOfInitialNodes))
             
             let nodeX = x + (slimnessFactor * cosf(angleOfNode) * initialRadius) + jitterValue()
             let nodeY = y + (sinf(angleOfNode) * initialRadius) + jitterValue()
@@ -86,14 +86,14 @@ class Foliage {
         }
     }
     
-//    func start(inPolygonAroundX x: Float, y: Float) {
+//    func start(inPolygonAroundX x: Double, y: Double) {
 //        let size = randomGenerator.f(greater: imageSize * 0.01, smaller: imageSize * 0.07)
 //
 //        let numberOfEdges = randomGenerator.i(greater: 3, smaller: 8)
 //        //        let numberOfEdges = 4
-//        let numberOfEdgesF = Float(numberOfEdges)
+//        let numberOfEdgesF = Double(numberOfEdges)
 //        let nodesPerEdge = numberOfInitialNodes / numberOfEdges
-//        let nodesPerEdgeF = Float(nodesPerEdge)
+//        let nodesPerEdgeF = Double(nodesPerEdge)
 //
 //        let angleOffset = randomGenerator.f(smaller: piTwo)
 //
@@ -101,7 +101,7 @@ class Foliage {
 //        for i in 0 ..< numberOfInitialNodes {
 //
 //            let edge = i / nodesPerEdge
-//            let edgeF = Float(edge)
+//            let edgeF = Double(edge)
 //            let angleOfEdge1 = angleOffset + (piTwo * edgeF / numberOfEdgesF)
 //            let angleOfEdge2 = angleOffset + (piTwo * (edgeF + 1) / numberOfEdgesF)
 //
@@ -120,7 +120,7 @@ class Foliage {
 //                x2: edge2X,
 //                y2: edge2Y
 //            )
-//            let nodeRelativeToEdge1 = (Float(i) - (edgeF * nodesPerEdgeF)) / nodesPerEdgeF
+//            let nodeRelativeToEdge1 = (Double(i) - (edgeF * nodesPerEdgeF)) / nodesPerEdgeF
 //
 //            //            print("i: \(i), edge: \(edge), angleBetweenEdges: \(angleBetweenEdges), nodeRelTo1: \(nodeRelativeToEdge1)")
 //
@@ -191,11 +191,11 @@ class Foliage {
                 numberOfNewNodes += 1
             }
             
-//            guard let nextNode = node.nextNode else {
-//                break
-//            }
+            guard let nextNode = currentNode.nextNode else {
+                break
+            }
             
-            update(node: currentNode)
+            updateNode(currentNode)
             
             currentNode = nextNode
         } while !stopped && currentNode !== firstNode
@@ -212,16 +212,17 @@ class Foliage {
         let node2Y = (node1.y + node3.y) * 0.5
         let node2 = FoliageNode(x: node2X, y: node2Y)
         
-        node1.next = node2
-        node2.next = node3
+        node1.nextNode = node2
+        node2.nextNode = node3
     }
     
-    fileprivate func jitterValue() -> Float {
-        return (jitter * 0.5) - randomGenerator.f(smallerThan: jitter)
+    fileprivate func jitterValue() -> Double {
+        return (jitter * 0.5) - randomGenerator.d(smallerThan: jitter)
     }
     
-    fileprivate func update(node currentNode: FoliageNode) {
-        currentNode.applyForce(jitterValue(), angle: jitterValue())
+    fileprivate func updateNode(_ currentNode: FoliageNode) {
+        currentNode.x += jitterValue()
+        currentNode.y += jitterValue()
         
         var otherNode = currentNode
         
@@ -235,7 +236,7 @@ class Foliage {
             
             otherNode = nextNode
             
-            let distance = Foliage.distanceBetween(
+            let distance = calculator.distanceBetween(
                 node1: currentNode,
                 node2: otherNode
             )
@@ -244,7 +245,7 @@ class Foliage {
                 break
             }
             
-            let force: Float
+            let force: Double
             if otherNode === currentNode.nextNode {
                 if distance > preferredNeighborDistance {
                     force = -preferredNeighborDistanceHalf

@@ -1,16 +1,12 @@
 class FoliageNode {
     
-    fileprivate(set) var x: Float
-    fileprivate(set) var y: Float
+    var x: Double
+    var y: Double
     var nextNode: FoliageNode?
     
-    init(x: Float, y: Float) {
+    init(x: Double, y: Double) {
         self.x = x
         self.y = y
     }
     
-    func applyForce(_ force: Float, angle: Float) {
-        x += cosf(angle) * force
-        y += sinf(angle) * force
-    }
 }
