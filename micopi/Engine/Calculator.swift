@@ -4,6 +4,13 @@ struct Calculator {
     
     let piTwo = Double.pi * 2
     
+    func distributedAngleOnCircle(
+        elementIndex: Int,
+        numberOfElements: Int
+    ) -> Double {
+        return piTwo * (Double(elementIndex) / Double(numberOfElements))
+    }
+    
     func applyForceToNode(_ node: FoliageNode, force: Double, angle: Double) {
         node.x += cos(angle) * force
         node.y += sin(angle) * force

@@ -6,6 +6,9 @@ class ContactImageEngine {
     var globalDispatchQueue = DispatchQueue.global()
     var mainDispatchQueue = DispatchQueue.main
     var initialsDrawer = InitialsDrawer()
+    var backgroundColor = UIColor.white.cgColor
+    var foregroundColor1 = UIColor.red.cgColor
+    var foregroundColor2 = UIColor.purple.cgColor
     fileprivate var stopped = false
     
     func drawImageForContactAsync(
@@ -41,12 +44,27 @@ class ContactImageEngine {
         let contextSize = CGSize(width: cgImageSize, height: cgImageSize)
     
         UIGraphicsBeginImageContext(contextSize)
+        let context = UIGraphicsGetCurrentContext()!
+        let backgroundDrawer = BackgroundCGDrawer(
+            context: context,
+            imageSize: cgImageSize
+        )
+        backgroundDrawer.fillWithColor(backgroundColor)
+        
+        let nodeDrawer = FoliageNodeCGDrawer(
+            context: context,
+            imageSize: cgImageSize,
+            maxCircleShapeSize: 20,
+            color1: foregroundColor1,
+            color2: foregroundColor2
+        )
         
         let displayedInitials = "ABC"
         initialsDrawer.drawInitialsInImageContext(
             displayedInitials,
             imageSize: cgImageSize
         )
+        
         
         let generatedImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
