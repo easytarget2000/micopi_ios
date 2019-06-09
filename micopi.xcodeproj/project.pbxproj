@@ -27,6 +27,9 @@
 		0B98D82D22A9C901009B266B /* FoliageNodeCGDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B98D82C22A9C901009B266B /* FoliageNodeCGDrawer.swift */; };
 		3010CE95229DD85200CD32D4 /* ContactImageEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3010CE94229DD85200CD32D4 /* ContactImageEngine.swift */; };
 		3072609322AA919D003B2FC4 /* BackgroundCGDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3072609222AA919D003B2FC4 /* BackgroundCGDrawer.swift */; };
+		3072609522AA9741003B2FC4 /* FoliageGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3072609422AA9741003B2FC4 /* FoliageGenerator.swift */; };
+		3074EEA622ADA58E008445DD /* GradientDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3074EEA522ADA58E008445DD /* GradientDrawer.swift */; };
+		3074EEA822ADA68F008445DD /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3074EEA722ADA68F008445DD /* ColorPalette.swift */; };
 		30C315B2229C88EE00B36C58 /* ImagePreviewNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C315B1229C88EE00B36C58 /* ImagePreviewNavigationController.swift */; };
 		30C315B4229C93A200B36C58 /* BatchGeneratorNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C315B3229C93A200B36C58 /* BatchGeneratorNavigationController.swift */; };
 		30C315B6229C93B400B36C58 /* BatchGeneratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C315B5229C93B400B36C58 /* BatchGeneratorViewController.swift */; };
@@ -77,6 +80,9 @@
 		0B98D82C22A9C901009B266B /* FoliageNodeCGDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoliageNodeCGDrawer.swift; sourceTree = "<group>"; };
 		3010CE94229DD85200CD32D4 /* ContactImageEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactImageEngine.swift; sourceTree = "<group>"; };
 		3072609222AA919D003B2FC4 /* BackgroundCGDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundCGDrawer.swift; sourceTree = "<group>"; };
+		3072609422AA9741003B2FC4 /* FoliageGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoliageGenerator.swift; sourceTree = "<group>"; };
+		3074EEA522ADA58E008445DD /* GradientDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientDrawer.swift; sourceTree = "<group>"; };
+		3074EEA722ADA68F008445DD /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
 		30C315B1229C88EE00B36C58 /* ImagePreviewNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePreviewNavigationController.swift; sourceTree = "<group>"; };
 		30C315B3229C93A200B36C58 /* BatchGeneratorNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatchGeneratorNavigationController.swift; sourceTree = "<group>"; };
 		30C315B5229C93B400B36C58 /* BatchGeneratorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatchGeneratorViewController.swift; sourceTree = "<group>"; };
@@ -190,10 +196,13 @@
 			children = (
 				3072609222AA919D003B2FC4 /* BackgroundCGDrawer.swift */,
 				0B98D82A22A9C7F0009B266B /* Calculator.swift */,
+				3074EEA722ADA68F008445DD /* ColorPalette.swift */,
 				3010CE94229DD85200CD32D4 /* ContactImageEngine.swift */,
 				0B98D82622A9B5C2009B266B /* Foliage.swift */,
+				3072609422AA9741003B2FC4 /* FoliageGenerator.swift */,
 				0B98D82422A9B51F009B266B /* FoliageNode.swift */,
 				0B98D82C22A9C901009B266B /* FoliageNodeCGDrawer.swift */,
+				3074EEA522ADA58E008445DD /* GradientDrawer.swift */,
 				0B98D82222A9B3F8009B266B /* InitialsDrawer.swift */,
 				0B98D82822A9B969009B266B /* RandomCGNumberGenerator.swift */,
 			);
@@ -342,14 +351,17 @@
 				0B98D82B22A9C7F0009B266B /* Calculator.swift in Sources */,
 				0B98D82522A9B51F009B266B /* FoliageNode.swift in Sources */,
 				3072609322AA919D003B2FC4 /* BackgroundCGDrawer.swift in Sources */,
+				3072609522AA9741003B2FC4 /* FoliageGenerator.swift in Sources */,
 				3010CE95229DD85200CD32D4 /* ContactImageEngine.swift in Sources */,
 				30C315B4229C93A200B36C58 /* BatchGeneratorNavigationController.swift in Sources */,
+				3074EEA622ADA58E008445DD /* GradientDrawer.swift in Sources */,
 				30C315B6229C93B400B36C58 /* BatchGeneratorViewController.swift in Sources */,
 				0B4064C72299ED8F00D2BFFF /* Contact.swift in Sources */,
 				30C315B8229C96AD00B36C58 /* ContactWriter.swift in Sources */,
 				0B4064952299E00800D2BFFF /* MenuViewController.swift in Sources */,
 				0B4064932299E00800D2BFFF /* AppDelegate.swift in Sources */,
 				0B4064C12299E28C00D2BFFF /* ContactPickerWrapperViewController.swift in Sources */,
+				3074EEA822ADA68F008445DD /* ColorPalette.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

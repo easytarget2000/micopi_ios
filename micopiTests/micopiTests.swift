@@ -62,6 +62,32 @@ class micopiTests: XCTestCase {
         
         XCTAssert(fullName == expectedFullName)
     }
+    
+    func testThat_ColorPaletteRandomIndexAccessReturnsColor() {
+        let colorIndex1 = 40
+        let colorIndex2 = -2
+        let colorIndex3 = 1
+        let colorIndex4 = 2
+        let colorIndex5 = 0
+        
+        let colorSpace = CGColorSpaceCreateDeviceRGB()
+        let colors = [
+            CGColor(colorSpace: colorSpace, components: [1, 1, 1])!,
+            CGColor(colorSpace: colorSpace, components: [0.5, 0.5, 0.5])!
+        ]
+        let colorPalette = ColorPalette(
+            colorSpace: colorSpace,
+            palette: colors
+        )
+        let _ = colorPalette.color(randomNumber: colorIndex1)
+        let _ = colorPalette.color(randomNumber: colorIndex2)
+        let color3 = colorPalette.color(randomNumber: colorIndex3)
+        let color4 = colorPalette.color(randomNumber: colorIndex4)
+        let _ = colorPalette.color(randomNumber: colorIndex5)
+        
+        XCTAssert(color3 == colorPalette.palette[1])
+        XCTAssert(color4 == colorPalette.palette[0])
+    }
 
     func testPerformanceExample() {
         // This is an example of a performance test case.

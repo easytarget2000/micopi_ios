@@ -50,9 +50,17 @@ class Foliage {
         )
         density = numberOfInitialNodes
             / randomGenerator.i(largerThan: 4, smallerThan: 8)
+        
+        let shapeCenterX = imageSize / 2
+        let shapeCenterY = imageSize / 2
+        initNodes(
+            inCircleAtX: shapeCenterX,
+            atY: shapeCenterY,
+            imageSize: imageSize
+        )
     }
     
-    func start(inCircleAtX x: Double, atY y: Double, imageSize: Double) {
+    fileprivate func initNodes(inCircleAtX x: Double, atY y: Double, imageSize: Double) {
         let initialRadius = randomGenerator.d(
             greater: imageSize * 0.02,
             smaller: imageSize * 0.07
