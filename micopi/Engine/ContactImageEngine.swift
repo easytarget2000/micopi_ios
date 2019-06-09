@@ -2,16 +2,16 @@ import UIKit.UIImage
 
 class ContactImageEngine {
     
-    static let defaultImageSize = Float(1600)
+    static let defaultImageSize = 1600.0
     var globalDispatchQueue = DispatchQueue.global()
     var mainDispatchQueue = DispatchQueue.main
     var initialsDrawer = InitialsDrawer()
-    var backgroundColor = UIColor.white.cgColor
+    var colorPalette = ColorPalette()
     fileprivate var stopped = false
     
     func drawImageForContactAsync(
         contactWrapper: ContactHashWrapper,
-        imageSize: Float = ContactImageEngine.defaultImageSize,
+        imageSize: Double = ContactImageEngine.defaultImageSize,
         completionHandler: @escaping (UIImage) -> ()
     ) {
         globalDispatchQueue.async {
@@ -35,7 +35,7 @@ class ContactImageEngine {
     
     func drawImageForContact(
         contactWrapper: ContactHashWrapper,
-        imageSize: Float = ContactImageEngine.defaultImageSize
+        imageSize: Double = ContactImageEngine.defaultImageSize
     ) -> UIImage {
         stopped = false
         let cgImageSize = CGFloat(imageSize)
@@ -43,12 +43,18 @@ class ContactImageEngine {
     
         UIGraphicsBeginImageContext(contextSize)
         let context = UIGraphicsGetCurrentContext()!
-        let backgroundDrawer = BackgroundCGDrawer(
-            context: context,
-            imageSize: cgImageSize
-        )
-        backgroundDrawer.fillWithColor(backgroundColor)
         
+        let backgroundColors = [
+            colorPalette.color(randomNumber: 0),
+            colorPalette.color(randomNumber: 1)
+        ]
+        
+        let gradientDrawer = GradientDrawer()
+        gradientDrawer.drawColors(
+            backgroundColors,
+            inContext: context,
+            size: contextSize
+        )
         
         let displayedInitials = "ABC"
         initialsDrawer.drawInitialsInImageContext(
