@@ -12,13 +12,16 @@ struct ColorPalette {
     
     init() {
         let colorSpace = CGColorSpaceCreateDeviceRGB()
-        self.init(
-            colorSpace: colorSpace,
-            palette: [
-                CGColor(colorSpace: colorSpace, components: [1, 1, 1])!,
-                CGColor(colorSpace: colorSpace, components: [0.5, 0.5, 0.5])!
-            ]
-        )
+        let colorComponents: [[CGFloat]] = [
+            [0.0, 0.0, 1.0, 1.0],
+            [1.0, 0.0, 0.0, 1.0]
+        ]
+        
+        let palette: [CGColor] = colorComponents.map({
+            (components) -> CGColor in
+            return CGColor(colorSpace: colorSpace, components: components)!
+        })
+        self.init(colorSpace: colorSpace, palette: palette)
     }
     
     func color(randomNumber: Int) -> CGColor {

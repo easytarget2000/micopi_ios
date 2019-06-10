@@ -45,7 +45,7 @@ class ContactImageEngine {
         let context = UIGraphicsGetCurrentContext()!
         
         let backgroundColors = [
-            colorPalette.color(randomNumber: 0),
+            colorPalette.color(randomNumber: 2),
             colorPalette.color(randomNumber: 1)
         ]
         
