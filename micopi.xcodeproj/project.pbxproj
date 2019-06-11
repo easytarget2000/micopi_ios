@@ -205,20 +205,28 @@
 			path = Color;
 			sourceTree = "<group>";
 		};
-		3010CE93229DD82100CD32D4 /* Engine */ = {
+		0B97D51922B0582F00B84594 /* Foliage */ = {
 			isa = PBXGroup;
 			children = (
-				0B97D51622B0507700B84594 /* Color */,
-				3072609222AA919D003B2FC4 /* BackgroundCGDrawer.swift */,
 				0B98D82A22A9C7F0009B266B /* Calculator.swift */,
-				3010CE94229DD85200CD32D4 /* ContactImageEngine.swift */,
 				0B98D82622A9B5C2009B266B /* Foliage.swift */,
 				3072609422AA9741003B2FC4 /* FoliageGenerator.swift */,
 				0B98D82422A9B51F009B266B /* FoliageNode.swift */,
 				0B98D82C22A9C901009B266B /* FoliageNodeCGDrawer.swift */,
+			);
+			path = Foliage;
+			sourceTree = "<group>";
+		};
+		3010CE93229DD82100CD32D4 /* Engine */ = {
+			isa = PBXGroup;
+			children = (
+				3072609222AA919D003B2FC4 /* BackgroundCGDrawer.swift */,
+				3010CE94229DD85200CD32D4 /* ContactImageEngine.swift */,
 				3074EEA522ADA58E008445DD /* GradientDrawer.swift */,
 				0B98D82222A9B3F8009B266B /* InitialsDrawer.swift */,
 				0B98D82822A9B969009B266B /* RandomNumberGenerator.swift */,
+				0B97D51622B0507700B84594 /* Color */,
+				0B97D51922B0582F00B84594 /* Foliage */,
 			);
 			path = Engine;
 			sourceTree = "<group>";
