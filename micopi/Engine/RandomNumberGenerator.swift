@@ -2,6 +2,12 @@ import Foundation
 
 struct RandomNumberGenerator {
     
+    var int: Int {
+        get {
+            return i(greater: 0, smaller: Int.max)
+        }
+    }
+    
     func i(smallerThan max: Int) -> Int {
         return Int(drand48() * Double(max))
     }

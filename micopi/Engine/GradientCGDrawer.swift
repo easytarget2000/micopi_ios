@@ -1,6 +1,6 @@
 import CoreGraphics
 
-struct GradientDrawer {
+struct GradientCGDrawer {
     
     let colorSpace = CGColorSpaceCreateDeviceRGB()
     

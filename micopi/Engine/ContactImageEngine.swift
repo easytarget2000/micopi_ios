@@ -6,7 +6,8 @@ class ContactImageEngine {
     var globalDispatchQueue = DispatchQueue.global()
     var mainDispatchQueue = DispatchQueue.main
     var initialsDrawer = InitialsDrawer()
-    var colorPalette = CGColorPalette()
+    var colorPalette = ARGBColorPalette()
+    var cgColorConverter = ARGBColorCGConverter()
     fileprivate var stopped = false
     
     func drawImageForContactAsync(
@@ -48,10 +49,13 @@ class ContactImageEngine {
             colorPalette.color(randomNumber: 2),
             colorPalette.color(randomNumber: 1)
         ]
+        let cgBackgroundColors = cgColorConverter.cgColorsFromARGBColors(
+            backgroundColors
+        )
         
-        let gradientDrawer = GradientDrawer()
+        let gradientDrawer = GradientCGDrawer()
         gradientDrawer.drawColors(
-            backgroundColors,
+            cgBackgroundColors,
             inContext: context,
             size: contextSize
         )
