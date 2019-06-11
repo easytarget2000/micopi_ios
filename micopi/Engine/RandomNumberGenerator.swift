@@ -1,6 +1,4 @@
-import CoreGraphics
-
-class RandomCGNumberGenerator {
+struct RandomNumberGenerator {
     
     func i(smallerThan max: Int) -> Int {
         return Int(drand48() * Double(max))
@@ -73,22 +71,6 @@ class RandomCGNumberGenerator {
         }
         
         return Float(drand48() * Double(max - min)) + min
-    }
-    
-    func cgF(smallerThan max: CGFloat) -> CGFloat {
-        return CGFloat(drand48()) * max
-    }
-    
-    func cgF(smaller max: CGFloat) -> CGFloat {
-        return CGFloat(drand48()) * max
-    }
-    
-    func cgF(greater min: CGFloat, smaller max: CGFloat) -> CGFloat {
-        guard min < max else {
-            return min
-        }
-        
-        return CGFloat(drand48() * Double(max - min)) + min
     }
     
 }

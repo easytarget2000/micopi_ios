@@ -5,7 +5,7 @@ struct FoliageNodeCGDrawer {
     let context: CGContext
     let imageSize: CGFloat
     let maxCircleShapeSize: CGFloat
-    let randomGenerator: RandomCGNumberGenerator
+    let randomGenerator: RandomNumberGenerator
     let color1: CGColor
     let color2: CGColor
     let shape: Int
@@ -15,7 +15,7 @@ struct FoliageNodeCGDrawer {
         context: CGContext,
         imageSize: CGFloat,
         maxCircleShapeSize: CGFloat,
-        randomGenerator: RandomCGNumberGenerator = RandomCGNumberGenerator(),
+        randomGenerator: RandomNumberGenerator = RandomNumberGenerator(),
         color1: CGColor,
         color2: CGColor,
         shape: Int = 0,

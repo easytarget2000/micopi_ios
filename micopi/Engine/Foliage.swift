@@ -33,7 +33,7 @@ class Foliage {
     fileprivate var mirrored: Bool
     fileprivate var drawRects: Bool
     fileprivate var shape = 0
-    var randomGenerator: RandomCGNumberGenerator = RandomCGNumberGenerator()
+    var randomGenerator: RandomNumberGenerator = RandomNumberGenerator()
     var calculator: Calculator = Calculator()
     
     

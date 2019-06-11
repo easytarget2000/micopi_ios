@@ -4,7 +4,7 @@ struct FoliageGenerator {
     
     let context: CGContext
     let imageSize: Double
-    let randomGenerator = RandomCGNumberGenerator()
+    let randomGenerator = RandomNumberGenerator()
     let foregroundColor1: CGColor
     let foregroundColor2: CGColor
     

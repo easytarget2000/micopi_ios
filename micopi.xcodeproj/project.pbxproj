@@ -19,10 +19,12 @@
 		0B4064C92299EE1B00D2BFFF /* ContactCNConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4064C82299EE1B00D2BFFF /* ContactCNConverter.swift */; };
 		0B56545B229C1DA8000076E0 /* ContactHashWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B56545A229C1DA8000076E0 /* ContactHashWrapper.swift */; };
 		0B56545D229C20B1000076E0 /* ImagePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B56545C229C20B1000076E0 /* ImagePreviewViewController.swift */; };
+		0B97D51522B0500800B84594 /* ARGBColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B97D51422B0500800B84594 /* ARGBColor.swift */; };
+		0B97D51822B0508C00B84594 /* RandomColorGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B97D51722B0508C00B84594 /* RandomColorGenerator.swift */; };
 		0B98D82322A9B3F8009B266B /* InitialsDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B98D82222A9B3F8009B266B /* InitialsDrawer.swift */; };
 		0B98D82522A9B51F009B266B /* FoliageNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B98D82422A9B51F009B266B /* FoliageNode.swift */; };
 		0B98D82722A9B5C2009B266B /* Foliage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B98D82622A9B5C2009B266B /* Foliage.swift */; };
-		0B98D82922A9B969009B266B /* RandomCGNumberGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B98D82822A9B969009B266B /* RandomCGNumberGenerator.swift */; };
+		0B98D82922A9B969009B266B /* RandomNumberGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B98D82822A9B969009B266B /* RandomNumberGenerator.swift */; };
 		0B98D82B22A9C7F0009B266B /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B98D82A22A9C7F0009B266B /* Calculator.swift */; };
 		0B98D82D22A9C901009B266B /* FoliageNodeCGDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B98D82C22A9C901009B266B /* FoliageNodeCGDrawer.swift */; };
 		3010CE95229DD85200CD32D4 /* ContactImageEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3010CE94229DD85200CD32D4 /* ContactImageEngine.swift */; };
@@ -72,10 +74,12 @@
 		0B4064C82299EE1B00D2BFFF /* ContactCNConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCNConverter.swift; sourceTree = "<group>"; };
 		0B56545A229C1DA8000076E0 /* ContactHashWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactHashWrapper.swift; sourceTree = "<group>"; };
 		0B56545C229C20B1000076E0 /* ImagePreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreviewViewController.swift; sourceTree = "<group>"; };
+		0B97D51422B0500800B84594 /* ARGBColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARGBColor.swift; sourceTree = "<group>"; };
+		0B97D51722B0508C00B84594 /* RandomColorGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomColorGenerator.swift; sourceTree = "<group>"; };
 		0B98D82222A9B3F8009B266B /* InitialsDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialsDrawer.swift; sourceTree = "<group>"; };
 		0B98D82422A9B51F009B266B /* FoliageNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoliageNode.swift; sourceTree = "<group>"; };
 		0B98D82622A9B5C2009B266B /* Foliage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Foliage.swift; sourceTree = "<group>"; };
-		0B98D82822A9B969009B266B /* RandomCGNumberGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomCGNumberGenerator.swift; sourceTree = "<group>"; };
+		0B98D82822A9B969009B266B /* RandomNumberGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomNumberGenerator.swift; sourceTree = "<group>"; };
 		0B98D82A22A9C7F0009B266B /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
 		0B98D82C22A9C901009B266B /* FoliageNodeCGDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoliageNodeCGDrawer.swift; sourceTree = "<group>"; };
 		3010CE94229DD85200CD32D4 /* ContactImageEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactImageEngine.swift; sourceTree = "<group>"; };
@@ -191,12 +195,22 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
+		0B97D51622B0507700B84594 /* Color */ = {
+			isa = PBXGroup;
+			children = (
+				3074EEA722ADA68F008445DD /* ColorPalette.swift */,
+				0B97D51422B0500800B84594 /* ARGBColor.swift */,
+				0B97D51722B0508C00B84594 /* RandomColorGenerator.swift */,
+			);
+			path = Color;
+			sourceTree = "<group>";
+		};
 		3010CE93229DD82100CD32D4 /* Engine */ = {
 			isa = PBXGroup;
 			children = (
+				0B97D51622B0507700B84594 /* Color */,
 				3072609222AA919D003B2FC4 /* BackgroundCGDrawer.swift */,
 				0B98D82A22A9C7F0009B266B /* Calculator.swift */,
-				3074EEA722ADA68F008445DD /* ColorPalette.swift */,
 				3010CE94229DD85200CD32D4 /* ContactImageEngine.swift */,
 				0B98D82622A9B5C2009B266B /* Foliage.swift */,
 				3072609422AA9741003B2FC4 /* FoliageGenerator.swift */,
@@ -204,7 +218,7 @@
 				0B98D82C22A9C901009B266B /* FoliageNodeCGDrawer.swift */,
 				3074EEA522ADA58E008445DD /* GradientDrawer.swift */,
 				0B98D82222A9B3F8009B266B /* InitialsDrawer.swift */,
-				0B98D82822A9B969009B266B /* RandomCGNumberGenerator.swift */,
+				0B98D82822A9B969009B266B /* RandomNumberGenerator.swift */,
 			);
 			path = Engine;
 			sourceTree = "<group>";
@@ -342,9 +356,11 @@
 			files = (
 				0B98D82D22A9C901009B266B /* FoliageNodeCGDrawer.swift in Sources */,
 				30C315B2229C88EE00B36C58 /* ImagePreviewNavigationController.swift in Sources */,
+				0B97D51522B0500800B84594 /* ARGBColor.swift in Sources */,
 				0B56545B229C1DA8000076E0 /* ContactHashWrapper.swift in Sources */,
+				0B97D51822B0508C00B84594 /* RandomColorGenerator.swift in Sources */,
 				0B98D82722A9B5C2009B266B /* Foliage.swift in Sources */,
-				0B98D82922A9B969009B266B /* RandomCGNumberGenerator.swift in Sources */,
+				0B98D82922A9B969009B266B /* RandomNumberGenerator.swift in Sources */,
 				0B4064C92299EE1B00D2BFFF /* ContactCNConverter.swift in Sources */,
 				0B98D82322A9B3F8009B266B /* InitialsDrawer.swift in Sources */,
 				0B56545D229C20B1000076E0 /* ImagePreviewViewController.swift in Sources */,
