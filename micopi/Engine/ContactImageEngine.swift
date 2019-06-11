@@ -6,7 +6,7 @@ class ContactImageEngine {
     var globalDispatchQueue = DispatchQueue.global()
     var mainDispatchQueue = DispatchQueue.main
     var initialsDrawer = InitialsDrawer()
-    var colorPalette = ColorPalette()
+    var colorPalette = CGColorPalette()
     fileprivate var stopped = false
     
     func drawImageForContactAsync(

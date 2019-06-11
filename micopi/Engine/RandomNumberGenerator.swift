@@ -1,3 +1,5 @@
+import Foundation
+
 struct RandomNumberGenerator {
     
     func i(smallerThan max: Int) -> Int {

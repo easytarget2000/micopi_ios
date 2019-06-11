@@ -12,7 +12,7 @@ struct FoliageGenerator {
         let numberOfShapes = randomGenerator.i(largerThan: 2, smallerThan: 7)
         let mirrored = randomGenerator.b(withChance: 0.5)
         //        let alpha: CGFloat = (mirrored ? 0.2 : 0.1) / CGFloat(numberOfShapes)
-        let alpha = (mirrored ? 4 : 1) * randomGenerator.cgF(greater: 0.02, smaller: 0.08)
+        let alpha = (mirrored ? 4 : 1) * randomGenerator.d(greater: 0.02, smaller: 0.08)
         let mutableColor1 = randomGenerator.b(withChance: 0.2)
         let mutableColor2 = randomGenerator.b(withChance: 0.2)
         

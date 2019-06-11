@@ -198,8 +198,8 @@
 		0B97D51622B0507700B84594 /* Color */ = {
 			isa = PBXGroup;
 			children = (
-				3074EEA722ADA68F008445DD /* ColorPalette.swift */,
 				0B97D51422B0500800B84594 /* ARGBColor.swift */,
+				3074EEA722ADA68F008445DD /* ColorPalette.swift */,
 				0B97D51722B0508C00B84594 /* RandomColorGenerator.swift */,
 			);
 			path = Color;

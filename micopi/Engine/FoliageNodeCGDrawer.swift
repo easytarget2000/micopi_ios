@@ -43,8 +43,8 @@ struct FoliageNodeCGDrawer {
                 in: CGRect(
                     x: CGFloat(node.x + 1.0),
                     y: CGFloat(node.y + 1.0),
-                    width: randomGenerator.cgF(smallerThan: maxCircleShapeSize),
-                    height: randomGenerator.cgF(smallerThan: maxCircleShapeSize)
+                    width: maxCircleShapeSize,
+                    height: maxCircleShapeSize
                 )
             )
         } else {
@@ -66,8 +66,8 @@ struct FoliageNodeCGDrawer {
                     in: CGRect(
                         x: CGFloat(node.x + 1.0),
                         y: CGFloat(node.y + 1.0),
-                        width: randomGenerator.cgF(smallerThan: maxCircleShapeSize),
-                        height: randomGenerator.cgF(smallerThan: maxCircleShapeSize)
+                        width: maxCircleShapeSize,
+                        height: maxCircleShapeSize
                     )
                 )
             } else {
