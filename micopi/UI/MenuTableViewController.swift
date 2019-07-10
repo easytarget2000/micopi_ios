@@ -14,28 +14,7 @@ class MenuTableViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
     }
 
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-
-    
-    override func tableView(
-        _ tableView: UITableView,
-        cellForRowAt indexPath: IndexPath
-    ) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(
-            withIdentifier: MenuTableViewController.contactPickerCellIdentifier,
-            for: indexPath
-        )
-        
-        return populateContactPickerCell(cell)
-    }
+    // MARK: - UITableViewDelegate
 
     override func tableView(
         _ tableView: UITableView,
@@ -46,13 +25,6 @@ class MenuTableViewController: UITableViewController {
     
     // MARK: - Implementations
     
-    fileprivate func populateContactPickerCell(
-        _ cell: UITableViewCell
-    ) -> UITableViewCell {
-        cell.textLabel?.text = "Select Contact DEBUG"
-        cell.detailTextLabel?.text = "..."
-        return cell
-    }
     
     fileprivate func showContactPickerViewController() {
         performSegue(

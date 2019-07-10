@@ -11,6 +11,7 @@ class ContactPickerWrapperViewController: UIViewController {
         = "ContactPickerToBatchGeneratorSegue"
     var contactCNConverter = ContactCNConverter()
     fileprivate var showContactPickerOnAppear = true
+    fileprivate var navigateBackToMenuOnAppear = false
     
     // MARK: - UIViewController
 
@@ -20,7 +21,11 @@ class ContactPickerWrapperViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        if navigateBackToMenuOnAppear {
+            navigateBackToMenuOnAppear = false
+            showContactPickerOnAppear = false
+            navigateBackToMenu()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -40,6 +45,7 @@ class ContactPickerWrapperViewController: UIViewController {
         } else if let batchGeneratorViewController
             = segue.destination as? BatchGeneratorViewController {
             
+            
         }
     }
     
@@ -51,17 +57,15 @@ class ContactPickerWrapperViewController: UIViewController {
         present(contactPickerViewController, animated: true, completion: nil)
     }
     
-    fileprivate func close() {
-        dismiss(animated: false, completion: nil)
-    }
-    
     fileprivate func handleContactsSelection(_ cnContacts: [CNContact]) {
         if cnContacts.isEmpty {
-            close()
+            navigateBackToMenu()
         } else if cnContacts.count == 1 {
             convertAndForwardCNContact(cnContacts.first!)
+            navigateBackToMenuOnAppear = true
         } else {
             convertAndForwardCNContacts(cnContacts)
+            navigateBackToMenuOnAppear = true
         }
     }
     
@@ -81,6 +85,10 @@ class ContactPickerWrapperViewController: UIViewController {
     fileprivate func convertAndForwardCNContacts(_ cnContacts: [CNContact]) {
         let contactWrappers
             = contactCNConverter.convertCNContactsWrapped(cnContacts)
+    }
+    
+    fileprivate func navigateBackToMenu() {
+        navigationController?.popViewController(animated: true)
     }
     
 }
@@ -105,7 +113,7 @@ extension ContactPickerWrapperViewController: CNContactPickerDelegate {
         picker.dismiss(
             animated: true,
             completion: {
-                self.close()
+                self.navigateBackToMenu()
             }
         )
     }

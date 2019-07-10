@@ -13,11 +13,33 @@
         <scene sceneID="nKE-yb-TCL">
             <objects>
                 <tableViewController id="XAs-6j-zQa" customClass="MenuTableViewController" customModule="micopi" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="CRA-r3-axN">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="CRA-r3-axN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <sections/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection footerTitle="After selecting one or more contacts, you will be asked to confirm your action, before assigning new pictures." id="NCO-ly-WOO">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ContactPickerCell" textLabel="vOJ-H9-x2S" style="IBUITableViewCellStyleDefault" id="plV-A5-qmx">
+                                        <rect key="frame" x="0.0" y="35" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="plV-A5-qmx" id="Ffc-SC-HoI">
+                                            <rect key="frame" x="0.0" y="0.0" width="376" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Select Contacts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vOJ-H9-x2S">
+                                                    <rect key="frame" x="20" y="0.0" width="356" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
                         <connections>
                             <outlet property="dataSource" destination="XAs-6j-zQa" id="SOK-jy-etC"/>
                             <outlet property="delegate" destination="XAs-6j-zQa" id="Cno-Zn-YEA"/>
@@ -25,7 +47,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Menu" id="980-bE-LS7"/>
                     <connections>
-                        <segue destination="CqN-OM-16F" kind="show" id="SAs-N1-WP5"/>
+                        <segue destination="CqN-OM-16F" kind="show" identifier="MenuToContactPickerWrapperSegue" id="SAs-N1-WP5"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eRc-59-VjL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -58,7 +80,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Nhn-NZ-qig"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Contacts" id="3yx-8M-hG2"/>
+                    <navigationItem key="navigationItem" title="Contacts" id="3yx-8M-hG2">
+                        <barButtonItem key="backBarButtonItem" title="Menu" id="oo2-nl-J8l"/>
+                    </navigationItem>
                     <connections>
                         <segue destination="8aT-AV-wQL" kind="show" identifier="ContactPickerToImagePreviewSegue" id="sgF-K5-Vco"/>
                         <segue destination="Ire-wr-Jlg" kind="show" identifier="ContactPickerToBatchGeneratorSegue" id="wsk-Ep-xlx"/>
