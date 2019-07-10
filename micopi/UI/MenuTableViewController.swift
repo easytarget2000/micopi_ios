@@ -2,10 +2,13 @@ import UIKit
 
 class MenuTableViewController: UITableViewController {
 
-    fileprivate static let toContactPickerSegue
-        = "MenuToContactPickerWrapperSegue"
+    fileprivate static let toImagePreviewSegue
+        = "MenuToImagePreviewSegue"
+    fileprivate static let toBatchGeneratorSegue
+        = "MenuToBatchGeneratorSegue"
     fileprivate static let contactPickerCellIdentifier
         = "ContactPickerCell"
+    var contactPickerWrapper: ContactPickerWrapper = ContactPickerWrapper()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,11 +28,32 @@ class MenuTableViewController: UITableViewController {
     
     // MARK: - Implementations
     
-    
     fileprivate func showContactPickerViewController() {
-        performSegue(
-            withIdentifier: MenuTableViewController.toContactPickerSegue,
-            sender: nil
-        )
+        contactPickerWrapper.delegate = self
+        contactPickerWrapper.showContactPicker(sourceViewController: self)
     }
+}
+
+// MARK: - ContactPickerWrapperDelegate
+
+extension MenuTableViewController: ContactPickerWrapperDelegate {
+    
+    func contactPickerWrapperDidCancel(_ pickerWrapper: ContactPickerWrapper) {
+        
+    }
+    
+    func contactPickerWrapper(
+        _ pickerWrapper: ContactPickerWrapper,
+        didSelect contact: ContactHashWrapper
+    ) {
+        
+    }
+    
+    func contactPickerWrapper(
+        _ pickerWrapper: ContactPickerWrapper,
+        didSelect contacts: [ContactHashWrapper]
+    ) {
+        
+    }
+    
 }

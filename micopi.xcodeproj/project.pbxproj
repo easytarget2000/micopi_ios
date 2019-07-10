@@ -13,7 +13,7 @@
 		0B40649D2299E00A00D2BFFF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B40649B2299E00A00D2BFFF /* LaunchScreen.storyboard */; };
 		0B4064A82299E00A00D2BFFF /* micopiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4064A72299E00A00D2BFFF /* micopiTests.swift */; };
 		0B4064B32299E00A00D2BFFF /* micopiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4064B22299E00A00D2BFFF /* micopiUITests.swift */; };
-		0B4064C12299E28C00D2BFFF /* ContactPickerWrapperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4064C02299E28C00D2BFFF /* ContactPickerWrapperViewController.swift */; };
+		0B4064C12299E28C00D2BFFF /* ContactPickerWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4064C02299E28C00D2BFFF /* ContactPickerWrapper.swift */; };
 		0B4064C72299ED8F00D2BFFF /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4064C62299ED8F00D2BFFF /* Contact.swift */; };
 		0B4064C92299EE1B00D2BFFF /* ContactCNConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4064C82299EE1B00D2BFFF /* ContactCNConverter.swift */; };
 		0B56545B229C1DA8000076E0 /* ContactHashWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B56545A229C1DA8000076E0 /* ContactHashWrapper.swift */; };
@@ -29,6 +29,7 @@
 		0B98D82D22A9C901009B266B /* FoliageNodeCGDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B98D82C22A9C901009B266B /* FoliageNodeCGDrawer.swift */; };
 		0BED06FE22D6864400AEEB07 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BED06FD22D6864400AEEB07 /* MenuTableViewController.swift */; };
 		0BED070122D6A05500AEEB07 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0BED070022D6A05500AEEB07 /* Localizable.strings */; };
+		0BED070322D6A55900AEEB07 /* ContactPickerWrapperDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BED070222D6A55900AEEB07 /* ContactPickerWrapperDelegate.swift */; };
 		3010CE95229DD85200CD32D4 /* ContactImageEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3010CE94229DD85200CD32D4 /* ContactImageEngine.swift */; };
 		3072609322AA919D003B2FC4 /* BackgroundCGDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3072609222AA919D003B2FC4 /* BackgroundCGDrawer.swift */; };
 		3072609522AA9741003B2FC4 /* FoliageGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3072609422AA9741003B2FC4 /* FoliageGenerator.swift */; };
@@ -68,7 +69,7 @@
 		0B4064AE2299E00A00D2BFFF /* micopiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = micopiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B4064B22299E00A00D2BFFF /* micopiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = micopiUITests.swift; sourceTree = "<group>"; };
 		0B4064B42299E00A00D2BFFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0B4064C02299E28C00D2BFFF /* ContactPickerWrapperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactPickerWrapperViewController.swift; sourceTree = "<group>"; };
+		0B4064C02299E28C00D2BFFF /* ContactPickerWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactPickerWrapper.swift; sourceTree = "<group>"; };
 		0B4064C62299ED8F00D2BFFF /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		0B4064C82299EE1B00D2BFFF /* ContactCNConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCNConverter.swift; sourceTree = "<group>"; };
 		0B56545A229C1DA8000076E0 /* ContactHashWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactHashWrapper.swift; sourceTree = "<group>"; };
@@ -84,6 +85,7 @@
 		0B98D82C22A9C901009B266B /* FoliageNodeCGDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoliageNodeCGDrawer.swift; sourceTree = "<group>"; };
 		0BED06FD22D6864400AEEB07 /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		0BED070022D6A05500AEEB07 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		0BED070222D6A55900AEEB07 /* ContactPickerWrapperDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactPickerWrapperDelegate.swift; sourceTree = "<group>"; };
 		3010CE94229DD85200CD32D4 /* ContactImageEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactImageEngine.swift; sourceTree = "<group>"; };
 		3072609222AA919D003B2FC4 /* BackgroundCGDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundCGDrawer.swift; sourceTree = "<group>"; };
 		3072609422AA9741003B2FC4 /* FoliageGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoliageGenerator.swift; sourceTree = "<group>"; };
@@ -171,14 +173,15 @@
 		0B4064C22299E2A600D2BFFF /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				0BED06FF22D6A04900AEEB07 /* Strings */,
 				30C315B5229C93B400B36C58 /* BatchGeneratorViewController.swift */,
-				0B4064C02299E28C00D2BFFF /* ContactPickerWrapperViewController.swift */,
+				0B4064C02299E28C00D2BFFF /* ContactPickerWrapper.swift */,
+				0BED070222D6A55900AEEB07 /* ContactPickerWrapperDelegate.swift */,
 				0B56545C229C20B1000076E0 /* ImagePreviewViewController.swift */,
 				0BED06FD22D6864400AEEB07 /* MenuTableViewController.swift */,
 				0B4064992299E00A00D2BFFF /* Assets.xcassets */,
 				0B40649B2299E00A00D2BFFF /* LaunchScreen.storyboard */,
 				0B4064962299E00800D2BFFF /* Main.storyboard */,
+				0BED06FF22D6A04900AEEB07 /* Strings */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -392,8 +395,9 @@
 				0B4064C72299ED8F00D2BFFF /* Contact.swift in Sources */,
 				30C315B8229C96AD00B36C58 /* ContactWriter.swift in Sources */,
 				0B4064932299E00800D2BFFF /* AppDelegate.swift in Sources */,
-				0B4064C12299E28C00D2BFFF /* ContactPickerWrapperViewController.swift in Sources */,
+				0B4064C12299E28C00D2BFFF /* ContactPickerWrapper.swift in Sources */,
 				3074EEA822ADA68F008445DD /* ARGBColorPalette.swift in Sources */,
+				0BED070322D6A55900AEEB07 /* ContactPickerWrapperDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
