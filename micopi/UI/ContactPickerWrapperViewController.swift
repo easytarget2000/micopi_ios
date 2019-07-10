@@ -7,6 +7,8 @@ class ContactPickerWrapperViewController: UIViewController {
     
     fileprivate static let toImagePreviewSegue
         = "ContactPickerToImagePreviewSegue"
+    fileprivate static let toBatchGeneratorSegue
+        = "ContactPickerToBatchGeneratorSegue"
     var contactCNConverter = ContactCNConverter()
     fileprivate var showContactPickerOnAppear = true
     
@@ -31,10 +33,13 @@ class ContactPickerWrapperViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let imagePreviewViewController
-            = segue.destination as? ImagePreviewNavigationController {
+            = segue.destination as? ImagePreviewViewController {
             
             let contactWrapper = sender as! ContactHashWrapper
             imagePreviewViewController.contactWrapper = contactWrapper
+        } else if let batchGeneratorViewController
+            = segue.destination as? BatchGeneratorViewController {
+            
         }
     }
     

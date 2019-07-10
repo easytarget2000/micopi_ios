@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0B4064932299E00800D2BFFF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4064922299E00800D2BFFF /* AppDelegate.swift */; };
-		0B4064952299E00800D2BFFF /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4064942299E00800D2BFFF /* MenuViewController.swift */; };
 		0B4064982299E00800D2BFFF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B4064962299E00800D2BFFF /* Main.storyboard */; };
 		0B40649A2299E00A00D2BFFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B4064992299E00A00D2BFFF /* Assets.xcassets */; };
 		0B40649D2299E00A00D2BFFF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B40649B2299E00A00D2BFFF /* LaunchScreen.storyboard */; };
@@ -28,13 +27,12 @@
 		0B98D82922A9B969009B266B /* RandomNumberGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B98D82822A9B969009B266B /* RandomNumberGenerator.swift */; };
 		0B98D82B22A9C7F0009B266B /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B98D82A22A9C7F0009B266B /* Calculator.swift */; };
 		0B98D82D22A9C901009B266B /* FoliageNodeCGDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B98D82C22A9C901009B266B /* FoliageNodeCGDrawer.swift */; };
+		0BED06FE22D6864400AEEB07 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BED06FD22D6864400AEEB07 /* MenuTableViewController.swift */; };
 		3010CE95229DD85200CD32D4 /* ContactImageEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3010CE94229DD85200CD32D4 /* ContactImageEngine.swift */; };
 		3072609322AA919D003B2FC4 /* BackgroundCGDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3072609222AA919D003B2FC4 /* BackgroundCGDrawer.swift */; };
 		3072609522AA9741003B2FC4 /* FoliageGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3072609422AA9741003B2FC4 /* FoliageGenerator.swift */; };
 		3074EEA622ADA58E008445DD /* GradientCGDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3074EEA522ADA58E008445DD /* GradientCGDrawer.swift */; };
 		3074EEA822ADA68F008445DD /* ARGBColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3074EEA722ADA68F008445DD /* ARGBColorPalette.swift */; };
-		30C315B2229C88EE00B36C58 /* ImagePreviewNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C315B1229C88EE00B36C58 /* ImagePreviewNavigationController.swift */; };
-		30C315B4229C93A200B36C58 /* BatchGeneratorNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C315B3229C93A200B36C58 /* BatchGeneratorNavigationController.swift */; };
 		30C315B6229C93B400B36C58 /* BatchGeneratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C315B5229C93B400B36C58 /* BatchGeneratorViewController.swift */; };
 		30C315B8229C96AD00B36C58 /* ContactWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C315B7229C96AD00B36C58 /* ContactWriter.swift */; };
 /* End PBXBuildFile section */
@@ -59,7 +57,6 @@
 /* Begin PBXFileReference section */
 		0B40648F2299E00800D2BFFF /* micopi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = micopi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B4064922299E00800D2BFFF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0B4064942299E00800D2BFFF /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		0B4064972299E00800D2BFFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0B4064992299E00A00D2BFFF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0B40649C2299E00A00D2BFFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -84,13 +81,12 @@
 		0B98D82822A9B969009B266B /* RandomNumberGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomNumberGenerator.swift; sourceTree = "<group>"; };
 		0B98D82A22A9C7F0009B266B /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
 		0B98D82C22A9C901009B266B /* FoliageNodeCGDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoliageNodeCGDrawer.swift; sourceTree = "<group>"; };
+		0BED06FD22D6864400AEEB07 /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		3010CE94229DD85200CD32D4 /* ContactImageEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactImageEngine.swift; sourceTree = "<group>"; };
 		3072609222AA919D003B2FC4 /* BackgroundCGDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundCGDrawer.swift; sourceTree = "<group>"; };
 		3072609422AA9741003B2FC4 /* FoliageGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoliageGenerator.swift; sourceTree = "<group>"; };
 		3074EEA522ADA58E008445DD /* GradientCGDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientCGDrawer.swift; sourceTree = "<group>"; };
 		3074EEA722ADA68F008445DD /* ARGBColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARGBColorPalette.swift; sourceTree = "<group>"; };
-		30C315B1229C88EE00B36C58 /* ImagePreviewNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePreviewNavigationController.swift; sourceTree = "<group>"; };
-		30C315B3229C93A200B36C58 /* BatchGeneratorNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatchGeneratorNavigationController.swift; sourceTree = "<group>"; };
 		30C315B5229C93B400B36C58 /* BatchGeneratorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatchGeneratorViewController.swift; sourceTree = "<group>"; };
 		30C315B7229C96AD00B36C58 /* ContactWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactWriter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -173,12 +169,10 @@
 		0B4064C22299E2A600D2BFFF /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				30C315B3229C93A200B36C58 /* BatchGeneratorNavigationController.swift */,
 				30C315B5229C93B400B36C58 /* BatchGeneratorViewController.swift */,
 				0B4064C02299E28C00D2BFFF /* ContactPickerWrapperViewController.swift */,
-				30C315B1229C88EE00B36C58 /* ImagePreviewNavigationController.swift */,
 				0B56545C229C20B1000076E0 /* ImagePreviewViewController.swift */,
-				0B4064942299E00800D2BFFF /* MenuViewController.swift */,
+				0BED06FD22D6864400AEEB07 /* MenuTableViewController.swift */,
 				0B4064992299E00A00D2BFFF /* Assets.xcassets */,
 				0B40649B2299E00A00D2BFFF /* LaunchScreen.storyboard */,
 				0B4064962299E00800D2BFFF /* Main.storyboard */,
@@ -366,7 +360,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B98D82D22A9C901009B266B /* FoliageNodeCGDrawer.swift in Sources */,
-				30C315B2229C88EE00B36C58 /* ImagePreviewNavigationController.swift in Sources */,
 				0B97D51522B0500800B84594 /* ARGBColor.swift in Sources */,
 				0B56545B229C1DA8000076E0 /* ContactHashWrapper.swift in Sources */,
 				0B97D51822B0508C00B84594 /* RandomColorGenerator.swift in Sources */,
@@ -381,12 +374,11 @@
 				3072609322AA919D003B2FC4 /* BackgroundCGDrawer.swift in Sources */,
 				3072609522AA9741003B2FC4 /* FoliageGenerator.swift in Sources */,
 				3010CE95229DD85200CD32D4 /* ContactImageEngine.swift in Sources */,
-				30C315B4229C93A200B36C58 /* BatchGeneratorNavigationController.swift in Sources */,
+				0BED06FE22D6864400AEEB07 /* MenuTableViewController.swift in Sources */,
 				3074EEA622ADA58E008445DD /* GradientCGDrawer.swift in Sources */,
 				30C315B6229C93B400B36C58 /* BatchGeneratorViewController.swift in Sources */,
 				0B4064C72299ED8F00D2BFFF /* Contact.swift in Sources */,
 				30C315B8229C96AD00B36C58 /* ContactWriter.swift in Sources */,
-				0B4064952299E00800D2BFFF /* MenuViewController.swift in Sources */,
 				0B4064932299E00800D2BFFF /* AppDelegate.swift in Sources */,
 				0B4064C12299E28C00D2BFFF /* ContactPickerWrapperViewController.swift in Sources */,
 				3074EEA822ADA68F008445DD /* ARGBColorPalette.swift in Sources */,

@@ -1,101 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ioi-g4-wdG">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Menu View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Menu-->
+        <scene sceneID="nKE-yb-TCL">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MenuViewController" customModule="micopi" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <tableViewController id="XAs-6j-zQa" customClass="MenuTableViewController" customModule="micopi" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="CRA-r3-axN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aPM-eq-qRh">
-                                <rect key="frame" x="104.5" y="429" width="205" height="48"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="Select Contacts">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <segue destination="CqN-OM-16F" kind="show" id="iND-l5-YJL"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" name="SolidColor"/>
-                        <constraints>
-                            <constraint firstItem="aPM-eq-qRh" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="6vg-nx-1UV"/>
-                            <constraint firstItem="aPM-eq-qRh" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Ti9-Jy-5GY"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="XAs-6j-zQa" id="SOK-jy-etC"/>
+                            <outlet property="delegate" destination="XAs-6j-zQa" id="Cno-Zn-YEA"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Menu" id="980-bE-LS7"/>
+                    <connections>
+                        <segue destination="CqN-OM-16F" kind="show" id="SAs-N1-WP5"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eRc-59-VjL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-268" y="21"/>
+            <point key="canvasLocation" x="-794" y="-14"/>
         </scene>
-        <!--Image Preview Navigation Controller-->
-        <scene sceneID="puV-lp-Xy7">
+        <!--Navigation Controller-->
+        <scene sceneID="Vez-wV-38x">
             <objects>
-                <navigationController id="Xke-WE-7Se" customClass="ImagePreviewNavigationController" customModule="micopi" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="l64-t9-ghs">
+                <navigationController id="Ioi-g4-wdG" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Jbk-vb-V8W">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" name="SolidColor"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </textAttributes>
                     </navigationBar>
                     <connections>
-                        <segue destination="8aT-AV-wQL" kind="relationship" relationship="rootViewController" id="iFh-xO-vuc"/>
+                        <segue destination="XAs-6j-zQa" kind="relationship" relationship="rootViewController" id="kaN-yC-1jo"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dZV-Ih-aJS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EH5-ZZ-43r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1429" y="-405"/>
+            <point key="canvasLocation" x="-1687" y="-14"/>
         </scene>
-        <!--Contact Picker Wrapper View Controller-->
+        <!--Contacts-->
         <scene sceneID="zWg-6G-YcA">
             <objects>
                 <viewController id="CqN-OM-16F" customClass="ContactPickerWrapperViewController" customModule="micopi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YjH-Si-hZm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" name="SolidColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Nhn-NZ-qig"/>
                     </view>
-                    <navigationItem key="navigationItem" id="3yx-8M-hG2"/>
+                    <navigationItem key="navigationItem" title="Contacts" id="3yx-8M-hG2"/>
                     <connections>
-                        <segue destination="Xke-WE-7Se" kind="show" identifier="ContactPickerToImagePreviewSegue" id="sFB-Jt-ylE"/>
-                        <segue destination="u3u-dY-2O7" kind="show" identifier="ContactPickerToBatchGeneratorSegue" id="HL5-9B-XIg"/>
+                        <segue destination="8aT-AV-wQL" kind="show" identifier="ContactPickerToImagePreviewSegue" id="sgF-K5-Vco"/>
+                        <segue destination="Ire-wr-Jlg" kind="show" identifier="ContactPickerToBatchGeneratorSegue" id="wsk-Ep-xlx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fAp-eE-Am3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="513" y="21"/>
-        </scene>
-        <!--Batch Generator Navigation Controller-->
-        <scene sceneID="aBa-Wx-Xvn">
-            <objects>
-                <navigationController id="u3u-dY-2O7" customClass="BatchGeneratorNavigationController" customModule="micopi" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cdd-Sf-T6x">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="Ire-wr-Jlg" kind="relationship" relationship="rootViewController" id="wPz-C4-G4r"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4EZ-Qv-loG" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1429" y="394"/>
+            <point key="canvasLocation" x="142" y="-14"/>
         </scene>
         <!--Batch Generator Navigation Controller-->
         <scene sceneID="YyQ-MW-7qi">
@@ -111,7 +82,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gxi-bm-vEZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2261" y="394"/>
+            <point key="canvasLocation" x="1074" y="492"/>
         </scene>
         <!--Preview-->
         <scene sceneID="jV8-Df-4xv">
@@ -174,12 +145,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S7I-lh-tyE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2261" y="-405"/>
+            <point key="canvasLocation" x="1074" y="-295"/>
         </scene>
     </scenes>
-    <resources>
-        <namedColor name="SolidColor">
-            <color red="0.45098039215686275" green="0.9882352941176471" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-    </resources>
 </document>
