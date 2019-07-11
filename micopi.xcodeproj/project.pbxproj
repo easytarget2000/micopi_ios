@@ -173,14 +173,12 @@
 		0B4064C22299E2A600D2BFFF /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				30C315B5229C93B400B36C58 /* BatchGeneratorViewController.swift */,
 				0B4064C02299E28C00D2BFFF /* ContactPickerWrapper.swift */,
 				0BED070222D6A55900AEEB07 /* ContactPickerWrapperDelegate.swift */,
-				0B56545C229C20B1000076E0 /* ImagePreviewViewController.swift */,
-				0BED06FD22D6864400AEEB07 /* MenuTableViewController.swift */,
 				0B4064992299E00A00D2BFFF /* Assets.xcassets */,
 				0BED070422D77A0F00AEEB07 /* Storyboards */,
 				0BED06FF22D6A04900AEEB07 /* Strings */,
+				0BED070522D77A5700AEEB07 /* ViewController */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -234,6 +232,16 @@
 				0B4064962299E00800D2BFFF /* Main.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		0BED070522D77A5700AEEB07 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				30C315B5229C93B400B36C58 /* BatchGeneratorViewController.swift */,
+				0B56545C229C20B1000076E0 /* ImagePreviewViewController.swift */,
+				0BED06FD22D6864400AEEB07 /* MenuTableViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		3010CE93229DD82100CD32D4 /* Engine */ = {
