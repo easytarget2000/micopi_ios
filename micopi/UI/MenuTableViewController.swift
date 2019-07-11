@@ -9,12 +9,17 @@ class MenuTableViewController: UITableViewController {
     fileprivate static let contactPickerCellIdentifier
         = "ContactPickerCell"
     var contactPickerWrapper: ContactPickerWrapper = ContactPickerWrapper()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let imagePreviewViewController
+            = segue.destination as? ImagePreviewViewController {
+            
+            let contactWrapper = sender as! ContactHashWrapper
+            imagePreviewViewController.contactWrapper = contactWrapper
+        } else if let batchGeneratorViewController
+            = segue.destination as? BatchGeneratorViewController {
+            
+        }
     }
 
     // MARK: - UITableViewDelegate
@@ -26,11 +31,30 @@ class MenuTableViewController: UITableViewController {
         showContactPickerViewController()
     }
     
+    
     // MARK: - Implementations
     
     fileprivate func showContactPickerViewController() {
         contactPickerWrapper.delegate = self
         contactPickerWrapper.showContactPicker(sourceViewController: self)
+    }
+    
+    fileprivate func showImagePreviewViewController(
+        contactWrapper: ContactHashWrapper
+    ) {
+        performSegue(
+            withIdentifier: MenuTableViewController.toImagePreviewSegue,
+            sender: contactWrapper
+        )
+    }
+    
+    fileprivate func showBatchGeneratorViewController(
+        contactWrappers: [ContactHashWrapper]
+    ) {
+        performSegue(
+            withIdentifier: MenuTableViewController.toBatchGeneratorSegue,
+            sender: contactWrappers
+        )
     }
 }
 
@@ -44,16 +68,16 @@ extension MenuTableViewController: ContactPickerWrapperDelegate {
     
     func contactPickerWrapper(
         _ pickerWrapper: ContactPickerWrapper,
-        didSelect contact: ContactHashWrapper
+        didSelect contactWrapper: ContactHashWrapper
     ) {
-        
+        showImagePreviewViewController(contactWrapper: contactWrapper)
     }
     
     func contactPickerWrapper(
         _ pickerWrapper: ContactPickerWrapper,
-        didSelect contacts: [ContactHashWrapper]
+        didSelect contactWrappers: [ContactHashWrapper]
     ) {
-        
+        showBatchGeneratorViewController(contactWrappers: contactWrappers)
     }
     
 }

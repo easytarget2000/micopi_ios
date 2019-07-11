@@ -179,8 +179,7 @@
 				0B56545C229C20B1000076E0 /* ImagePreviewViewController.swift */,
 				0BED06FD22D6864400AEEB07 /* MenuTableViewController.swift */,
 				0B4064992299E00A00D2BFFF /* Assets.xcassets */,
-				0B40649B2299E00A00D2BFFF /* LaunchScreen.storyboard */,
-				0B4064962299E00800D2BFFF /* Main.storyboard */,
+				0BED070422D77A0F00AEEB07 /* Storyboards */,
 				0BED06FF22D6A04900AEEB07 /* Strings */,
 			);
 			path = UI;
@@ -226,6 +225,15 @@
 				0BED070022D6A05500AEEB07 /* Localizable.strings */,
 			);
 			path = Strings;
+			sourceTree = "<group>";
+		};
+		0BED070422D77A0F00AEEB07 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				0B40649B2299E00A00D2BFFF /* LaunchScreen.storyboard */,
+				0B4064962299E00800D2BFFF /* Main.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 		3010CE93229DD82100CD32D4 /* Engine */ = {

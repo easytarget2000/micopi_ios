@@ -47,7 +47,8 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Menu" id="980-bE-LS7"/>
                     <connections>
-                        <segue destination="CqN-OM-16F" kind="show" identifier="MenuToContactPickerWrapperSegue" id="SAs-N1-WP5"/>
+                        <segue destination="8aT-AV-wQL" kind="show" identifier="MenuToImagePreviewSegue" id="2V7-LV-p32"/>
+                        <segue destination="Ire-wr-Jlg" kind="show" id="IaX-Da-NoT"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eRc-59-VjL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -70,28 +71,6 @@
             </objects>
             <point key="canvasLocation" x="-1687" y="-14"/>
         </scene>
-        <!--Contacts-->
-        <scene sceneID="zWg-6G-YcA">
-            <objects>
-                <viewController id="CqN-OM-16F" customClass="ContactPickerWrapperViewController" customModule="micopi" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="YjH-Si-hZm">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="Nhn-NZ-qig"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Contacts" id="3yx-8M-hG2">
-                        <barButtonItem key="backBarButtonItem" title="Menu" id="oo2-nl-J8l"/>
-                    </navigationItem>
-                    <connections>
-                        <segue destination="8aT-AV-wQL" kind="show" identifier="ContactPickerToImagePreviewSegue" id="sgF-K5-Vco"/>
-                        <segue destination="Ire-wr-Jlg" kind="show" identifier="ContactPickerToBatchGeneratorSegue" id="wsk-Ep-xlx"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fAp-eE-Am3" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="142" y="-14"/>
-        </scene>
         <!--Batch Generator Navigation Controller-->
         <scene sceneID="YyQ-MW-7qi">
             <objects>
@@ -106,7 +85,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gxi-bm-vEZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1074" y="492"/>
+            <point key="canvasLocation" x="225" y="463"/>
         </scene>
         <!--Preview-->
         <scene sceneID="jV8-Df-4xv">
@@ -169,7 +148,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S7I-lh-tyE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1074" y="-295"/>
+            <point key="canvasLocation" x="225" y="-352"/>
         </scene>
     </scenes>
 </document>

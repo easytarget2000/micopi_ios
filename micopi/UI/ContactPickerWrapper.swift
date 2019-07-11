@@ -8,19 +8,6 @@ class ContactPickerWrapper: NSObject {
     var contactCNConverter = ContactCNConverter()
     weak var delegate: ContactPickerWrapperDelegate?
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if let imagePreviewViewController
-//            = segue.destination as? ImagePreviewViewController {
-//
-//            let contactWrapper = sender as! ContactHashWrapper
-//            imagePreviewViewController.contactWrapper = contactWrapper
-//        } else if let batchGeneratorViewController
-//            = segue.destination as? BatchGeneratorViewController {
-//
-//
-//        }
-//    }
-    
     // MARK: Implementations
     
     func showContactPicker(sourceViewController: UIViewController) {
