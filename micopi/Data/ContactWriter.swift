@@ -1,6 +1,6 @@
 import UIKit.UIImage
 
-struct ContactWriter {
+class ContactWriter: NSObject {
     
     func assignImage(_ image: UIImage, toContact contact: Contact) {
         

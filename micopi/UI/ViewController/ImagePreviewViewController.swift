@@ -2,22 +2,15 @@ import UIKit
 
 class ImagePreviewViewController: UIViewController {
     
+    // MARK: - Values
+    
     var contactWrapper: ContactHashWrapper!
-    var contactImageDrawer: ContactImageEngine = ContactImageEngine()
-    var contactWriter: ContactWriter = ContactWriter()
-    fileprivate var contact: Contact! {
-        get {
-            return contactWrapper.contact
-        }
-    }
-    fileprivate var generatedImage: UIImage? {
-        didSet {
-            previewImageView.image = generatedImage
-        }
-    }
+    
+    // MARK: IB
 
+    @IBOutlet var viewModel: ContactHashWrapperViewModel!
     @IBOutlet weak var previewImageView: UIImageView!
-    @IBOutlet weak var contactFullNameLabel: UILabel!
+    @IBOutlet weak var contactDisplayNameLabel: UILabel!
     @IBAction func assignButtonTouched(_ sender: Any) {
         assignImageToContact()
     }
@@ -28,41 +21,29 @@ class ImagePreviewViewController: UIViewController {
         generateNextImage()
     }
     
+    // MARK: - View Controller Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         populateContactViews()
-        generateImage()
     }
+    
+    // MARK: - Implementations
 
     fileprivate func populateContactViews() {
-        contactFullNameLabel.text = contact.fullName
+        viewModel.populateDisplayNameLabel(contactDisplayNameLabel)
+        viewModel.generateImage(targetView: previewImageView)
     }
     
     fileprivate func assignImageToContact() {
-        guard let generatedImage = generatedImage else {
-            return
-        }
-        
-        contactWriter.assignImage(generatedImage, toContact: contact)
+        viewModel.assignImageToContact()
     }
     
     fileprivate func generatePreviousImage() {
-        contactWrapper.decreaseModifier()
-        generateImage()
+        viewModel.generatePreviousImage(targetView: previewImageView)
     }
     
     fileprivate func generateNextImage() {
-        contactWrapper.increaseModifier()
-        generateImage()
-    }
-    
-    fileprivate func generateImage() {
-        contactImageDrawer.drawImageForContactAsync(
-            contactWrapper: contactWrapper,
-            completionHandler: {
-                    (generatedImage) in
-                    self.generatedImage = generatedImage
-                }
-        )
+        viewModel.generatePreviousImage(targetView: previewImageView)
     }
 }

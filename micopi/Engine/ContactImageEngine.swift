@@ -1,6 +1,6 @@
 import UIKit.UIImage
 
-class ContactImageEngine {
+class ContactImageEngine: NSObject {
     
     static let defaultImageSize = 1600.0
     var globalDispatchQueue = DispatchQueue.global()
