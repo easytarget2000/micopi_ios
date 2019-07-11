@@ -39,7 +39,7 @@ class ContactHashWrapperViewModel: NSObject {
     }
     
     fileprivate func generateImage() {
-        contactImageDrawer.drawImageForContactAsync(
+        contactImageDrawer?.drawImageForContactAsync(
             contactWrapper: contactWrapper,
             completionHandler: {
                 (generatedImage) in

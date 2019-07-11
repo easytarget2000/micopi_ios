@@ -113,6 +113,28 @@ class micopiTests: XCTestCase {
         
         XCTAssert(round1Int1 != round2Int1)
     }
+    
+    func testThat_ContactHashWrapperViewModelModifiesHash() {
+        let contact = Contact(
+            identifier: "",
+            fullName: "",
+            mainEmailAddress: nil,
+            mainPhoneNumber: nil
+        )
+        let contactWrapper = ContactHashWrapper(contact: contact)
+        let hash1 = contactWrapper.hashValue
+        
+        let viewModel = ContactHashWrapperViewModel()
+        viewModel.contactWrapper = contactWrapper
+        
+        viewModel.generateNextImage()
+        let hash2 = contactWrapper.hashValue
+        viewModel.generatePreviousImage()
+        let hash3 = contactWrapper.hashValue
+        
+        XCTAssert(hash1 == hash3)
+        XCTAssert(hash1 != hash2)
+    }
 
     func testPerformanceExample() {
         // This is an example of a performance test case.
