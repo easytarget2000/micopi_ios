@@ -41,7 +41,7 @@ class ContactImageEngine: NSObject {
         imageSize: Double = ContactImageEngine.defaultImageSize
     ) -> UIImage {
         stopped = false
-        setup(contactWrapper: contactWrapper)
+        initValues(contactWrapper: contactWrapper)
         
         let cgImageSize = CGFloat(imageSize)
         let contextSize = CGSize(width: cgImageSize, height: cgImageSize)
@@ -73,7 +73,7 @@ class ContactImageEngine: NSObject {
         return generatedImage
     }
     
-    func setup(contactWrapper: ContactHashWrapper) {
+    func initValues(contactWrapper: ContactHashWrapper) {
 //        randomNumberGenerator
         randomColorGenerator.randomNumberGenerator = randomNumberGenerator
         colorPalette.setColorsRandomly(

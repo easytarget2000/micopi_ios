@@ -2,6 +2,16 @@ import Foundation
 
 class RandomNumberGenerator: NSObject {
     
+    var startPoint: Int {
+        didSet {
+            srand48(startPoint)
+        }
+    }
+    
+    init(startPoint: Int = 0) {
+        self.startPoint = startPoint
+    }
+    
     var int: Int {
         get {
             return i(greater: 0, smaller: Int.max)

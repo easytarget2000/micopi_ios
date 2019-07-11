@@ -70,23 +70,48 @@ class micopiTests: XCTestCase {
         let colorIndex4 = 2
         let colorIndex5 = 0
         
-        let colorSpace = CGColorSpaceCreateDeviceRGB()
         let colors = [
-            CGColor(colorSpace: colorSpace, components: [1, 1, 1])!,
-            CGColor(colorSpace: colorSpace, components: [0.5, 0.5, 0.5])!
+            ARGBColor(a: 1.0, r: 1.0, g: 0.5, b: 0.5),
+            ARGBColor(a: 0.9, r: 1.0, g: 0.0, b: 0.0)
         ]
-        let colorPalette = ColorPalette(
-            colorSpace: colorSpace,
-            palette: colors
-        )
+        let colorPalette = ARGBColorPalette(colors: colors)
         let _ = colorPalette.color(randomNumber: colorIndex1)
         let _ = colorPalette.color(randomNumber: colorIndex2)
         let color3 = colorPalette.color(randomNumber: colorIndex3)
         let color4 = colorPalette.color(randomNumber: colorIndex4)
         let _ = colorPalette.color(randomNumber: colorIndex5)
         
-        XCTAssert(color3 == colorPalette.palette[1])
-        XCTAssert(color4 == colorPalette.palette[0])
+        XCTAssert(color3 == colorPalette.colors[1])
+        XCTAssert(color4 == colorPalette.colors[0])
+    }
+    
+    func testThat_RandomNumberGeneratorReturnsSameValues() {
+        let hash1 = 1000
+        let randomNumberGenerator = RandomNumberGenerator()
+        randomNumberGenerator.startPoint = hash1
+        
+        let round1Int1 = randomNumberGenerator.int
+        let round1Int2 = randomNumberGenerator.int
+        let round1ExpectedInt1 = 8975601842448793600
+        let round1ExpectedInt2 = 3139324314117734400
+        
+        XCTAssert(round1Int1 == round1ExpectedInt1)
+        XCTAssert(round1Int2 == round1ExpectedInt2)
+        XCTAssert(round1Int1 != round1Int2)
+        
+        let hash2 = 2000
+        randomNumberGenerator.startPoint = hash2
+        
+        let round2Int1 = randomNumberGenerator.int
+        let round2Int2 = randomNumberGenerator.int
+        let round2ExpectedInt1 = 7152221116709240832
+        let round2ExpectedInt2 = 8585395707903213568
+        
+        XCTAssert(round2Int1 == round2ExpectedInt1)
+        XCTAssert(round2Int2 == round2ExpectedInt2)
+        XCTAssert(round2ExpectedInt1 != round2ExpectedInt2)
+        
+        XCTAssert(round1Int1 != round2Int1)
     }
 
     func testPerformanceExample() {

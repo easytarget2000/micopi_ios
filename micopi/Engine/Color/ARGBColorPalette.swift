@@ -3,6 +3,10 @@ import CoreGraphics.CGColor
 class ARGBColorPalette: NSObject {
     
     var colors: [ARGBColor]!
+        
+    init(colors: [ARGBColor]) {
+        self.colors = colors
+    }
     
     func setColorsRandomly(randomColorGenerator: RandomColorGenerator) {
         colors = [
