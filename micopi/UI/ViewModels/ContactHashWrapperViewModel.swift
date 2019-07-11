@@ -34,7 +34,7 @@ class ContactHashWrapperViewModel: NSObject {
     }
     
     fileprivate func initValues() {
-        displayName.value = contactWrapper.contact.fullName
+        displayName.value = buildDisplayName()
         generateImage()
     }
     
@@ -46,5 +46,41 @@ class ContactHashWrapperViewModel: NSObject {
                 self.generatedImage.value = generatedImage
             }
         )
+    }
+    
+    fileprivate func buildDisplayName() -> String {
+        var fullName = ""
+        fullName = ContactHashWrapperViewModel.appendWord(
+            contactWrapper.contact.givenName,
+            toString: fullName
+        )
+        if let nickname = contactWrapper.contact.nickname, !nickname.isEmpty {
+            fullName = ContactHashWrapperViewModel.appendWord(
+                "\"\(nickname)\"",
+                toString: fullName
+            )
+        }
+        fullName = ContactHashWrapperViewModel.appendWord(
+            contactWrapper.contact.familyName,
+            toString: fullName
+        )
+        return fullName
+    }
+    
+    fileprivate static func appendWord(
+        _ word: String?,
+        toString string: String
+    ) -> String {
+        var newString = string
+        
+        guard let word = word, !word.isEmpty else {
+            return newString
+        }
+        
+        if !newString.isEmpty {
+            newString += " "
+        }
+        newString += word
+        return newString
     }
 }

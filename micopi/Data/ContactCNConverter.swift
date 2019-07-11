@@ -18,51 +18,17 @@ struct ContactCNConverter {
     }
     
     func convertCNContact(_ cnContact: CNContact) -> Contact {
-        let fullName = ContactCNConverter.combineName(
-            givenName: cnContact.givenName,
-            nickname: cnContact.nickname,
-            familyName: cnContact.familyName
-        )
-        
         let firstEmailAddress = cnContact.emailAddresses.first?.value as String?
         let firstPhoneNumber = cnContact.phoneNumbers.first?.value.description
         
         return Contact(
             identifier: cnContact.identifier,
-            fullName: fullName,
+            givenName: cnContact.givenName,
+            familyName: cnContact.familyName,
+            nickname: cnContact.nickname,
             mainEmailAddress: firstEmailAddress,
             mainPhoneNumber: firstPhoneNumber
         )
     }
     
-    static func combineName(
-        givenName: String?,
-        nickname: String? = nil,
-        familyName: String? = nil
-    ) -> String {
-        var fullName = ""
-        fullName = appendWord(givenName, toString: fullName)
-        if let nickname = nickname, !nickname.isEmpty {
-            fullName = appendWord("\"\(nickname)\"", toString: fullName)
-        }
-        fullName = ContactCNConverter.appendWord(familyName, toString: fullName)
-        return fullName
-    }
-    
-    fileprivate static func appendWord(
-        _ word: String?,
-        toString string: String
-    ) -> String {
-        var newString = string
-        
-        guard let word = word, !word.isEmpty else {
-            return newString
-        }
-        
-        if !newString.isEmpty {
-            newString += " "
-        }
-        newString += word
-        return newString
-    }
 }

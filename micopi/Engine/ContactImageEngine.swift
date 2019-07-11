@@ -60,7 +60,7 @@ class ContactImageEngine: NSObject {
             size: contextSize
         )
         
-        let displayedInitials = "ABC"
+        let displayedInitials = contactWrapper.contact.initials
         initialsDrawer.drawInitialsInImageContext(
             displayedInitials,
             imageSize: cgImageSize
