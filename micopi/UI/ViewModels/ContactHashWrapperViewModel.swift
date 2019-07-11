@@ -2,49 +2,49 @@ import UIKit
 
 class ContactHashWrapperViewModel: NSObject {
     
-    var contactWrapper: ContactHashWrapper!
-    @IBOutlet var contactImageDrawer: ContactImageEngine!
-    @IBOutlet var contactWriter: ContactWriter!
-    var displayName: String {
-        get {
-            return contactWrapper.contact.fullName
+    var contactWrapper: ContactHashWrapper! {
+        didSet {
+            initValues()
         }
     }
-    fileprivate(set) var generatedImage: UIImage?
-
-    func populateDisplayNameLabel(_ targetView: UILabel) {
-        targetView.text = displayName
-    }
+    @IBOutlet var contactImageDrawer: ContactImageEngine!
+    @IBOutlet var contactWriter: ContactWriter!
+    var displayName: Dynamic<String> = Dynamic("")
+    fileprivate(set) var generatedImage: Dynamic<UIImage?> = Dynamic(nil)
     
-    func generateImage(targetView: UIImageView) {
-        contactImageDrawer.drawImageForContactAsync(
-            contactWrapper: contactWrapper,
-            completionHandler: {
-                (generatedImage) in
-                self.generatedImage = generatedImage
-                targetView.image = self.generatedImage
-            }
-        )
-    }
-    
-    func generatePreviousImage(targetView: UIImageView) {
+    func generatePreviousImage() {
         contactWrapper.decreaseModifier()
-        generateImage(targetView: targetView)
+        generateImage()
     }
     
-    func generateNextImage(targetView: UIImageView) {
+    func generateNextImage() {
         contactWrapper.increaseModifier()
-        generateImage(targetView: targetView)
+        generateImage()
     }
     
     func assignImageToContact() {
-        guard let generatedImage = generatedImage else {
+        guard let generatedImage = generatedImage.value ?? nil else {
             return
         }
         
         contactWriter.assignImage(
             generatedImage,
             toContact: contactWrapper.contact
+        )
+    }
+    
+    fileprivate func initValues() {
+        displayName.value = contactWrapper.contact.fullName
+        generateImage()
+    }
+    
+    fileprivate func generateImage() {
+        contactImageDrawer.drawImageForContactAsync(
+            contactWrapper: contactWrapper,
+            completionHandler: {
+                (generatedImage) in
+                self.generatedImage.value = generatedImage
+            }
         )
     }
 }

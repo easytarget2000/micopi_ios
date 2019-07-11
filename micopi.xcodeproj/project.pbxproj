@@ -31,6 +31,7 @@
 		0BED070122D6A05500AEEB07 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0BED070022D6A05500AEEB07 /* Localizable.strings */; };
 		0BED070322D6A55900AEEB07 /* ContactPickerWrapperDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BED070222D6A55900AEEB07 /* ContactPickerWrapperDelegate.swift */; };
 		0BED070822D77AC600AEEB07 /* ContactHashWrapperViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BED070722D77AC600AEEB07 /* ContactHashWrapperViewModel.swift */; };
+		0BED070A22D79A8300AEEB07 /* Dynamic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BED070922D79A8300AEEB07 /* Dynamic.swift */; };
 		3010CE95229DD85200CD32D4 /* ContactImageEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3010CE94229DD85200CD32D4 /* ContactImageEngine.swift */; };
 		3072609322AA919D003B2FC4 /* BackgroundCGDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3072609222AA919D003B2FC4 /* BackgroundCGDrawer.swift */; };
 		3072609522AA9741003B2FC4 /* FoliageGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3072609422AA9741003B2FC4 /* FoliageGenerator.swift */; };
@@ -88,6 +89,7 @@
 		0BED070022D6A05500AEEB07 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		0BED070222D6A55900AEEB07 /* ContactPickerWrapperDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactPickerWrapperDelegate.swift; sourceTree = "<group>"; };
 		0BED070722D77AC600AEEB07 /* ContactHashWrapperViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactHashWrapperViewModel.swift; sourceTree = "<group>"; };
+		0BED070922D79A8300AEEB07 /* Dynamic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dynamic.swift; sourceTree = "<group>"; };
 		3010CE94229DD85200CD32D4 /* ContactImageEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactImageEngine.swift; sourceTree = "<group>"; };
 		3072609222AA919D003B2FC4 /* BackgroundCGDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundCGDrawer.swift; sourceTree = "<group>"; };
 		3072609422AA9741003B2FC4 /* FoliageGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoliageGenerator.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 				0BED06FF22D6A04900AEEB07 /* Strings */,
 				0BED070522D77A5700AEEB07 /* ViewController */,
 				0BED070622D77A9500AEEB07 /* ViewModels */,
+				0BED070922D79A8300AEEB07 /* Dynamic.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -414,6 +417,7 @@
 				0B56545D229C20B1000076E0 /* ImagePreviewViewController.swift in Sources */,
 				0B98D82B22A9C7F0009B266B /* Calculator.swift in Sources */,
 				0B98D82522A9B51F009B266B /* FoliageNode.swift in Sources */,
+				0BED070A22D79A8300AEEB07 /* Dynamic.swift in Sources */,
 				3072609322AA919D003B2FC4 /* BackgroundCGDrawer.swift in Sources */,
 				3072609522AA9741003B2FC4 /* FoliageGenerator.swift in Sources */,
 				3010CE95229DD85200CD32D4 /* ContactImageEngine.swift in Sources */,

@@ -144,9 +144,18 @@
                     <connections>
                         <outlet property="contactDisplayNameLabel" destination="TmU-J9-eaq" id="trj-Du-FAD"/>
                         <outlet property="previewImageView" destination="1Oq-Of-fZj" id="aes-Qs-c6K"/>
+                        <outlet property="viewModel" destination="bG5-Ri-b9x" id="sgx-vj-Roj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S7I-lh-tyE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="bG5-Ri-b9x" customClass="ContactHashWrapperViewModel" customModule="micopi" customModuleProvider="target">
+                    <connections>
+                        <outlet property="contactImageDrawer" destination="NAw-QN-l2q" id="RLS-5g-T2O"/>
+                        <outlet property="contactWriter" destination="gla-d3-4pn" id="UZl-BP-BGS"/>
+                    </connections>
+                </customObject>
+                <customObject id="NAw-QN-l2q" customClass="ContactImageEngine" customModule="micopi" customModuleProvider="target"/>
+                <customObject id="gla-d3-4pn" customClass="ContactWriter" customModule="micopi" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="225" y="-352"/>
         </scene>

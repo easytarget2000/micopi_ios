@@ -25,14 +25,22 @@ class ImagePreviewViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        populateContactViews()
+        setupViewModel()
     }
     
     // MARK: - Implementations
-
-    fileprivate func populateContactViews() {
-        viewModel.populateDisplayNameLabel(contactDisplayNameLabel)
-        viewModel.generateImage(targetView: previewImageView)
+    
+    fileprivate func setupViewModel() {
+        viewModel.displayName.bind = {
+            [unowned self] in
+            self.contactDisplayNameLabel.text = $0
+        }
+        viewModel.generatedImage.bind = {
+            [unowned self] in
+            self.previewImageView.image = $0
+        }
+        
+        viewModel.contactWrapper = contactWrapper
     }
     
     fileprivate func assignImageToContact() {
@@ -40,10 +48,10 @@ class ImagePreviewViewController: UIViewController {
     }
     
     fileprivate func generatePreviousImage() {
-        viewModel.generatePreviousImage(targetView: previewImageView)
+        viewModel.generatePreviousImage()
     }
     
     fileprivate func generateNextImage() {
-        viewModel.generatePreviousImage(targetView: previewImageView)
+        viewModel.generatePreviousImage()
     }
 }
