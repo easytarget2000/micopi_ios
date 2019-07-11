@@ -1,8 +1,8 @@
 import CoreGraphics
 
-struct ARGBColorCGConverter {
+class ARGBColorCGConverter: NSObject {
     
-    let argbColorSpace = CGColorSpaceCreateDeviceRGB()
+    var argbColorSpace = CGColorSpaceCreateDeviceRGB()
     
     func cgColorFromARGBColor(_ argbColor: ARGBColor) -> CGColor {
         let components = cgColorComponentsFromARGBColor(argbColor)

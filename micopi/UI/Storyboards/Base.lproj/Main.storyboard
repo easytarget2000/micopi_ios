@@ -63,6 +63,9 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wiv-Ru-1jg">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="XAs-6j-zQa" kind="relationship" relationship="rootViewController" id="kaN-yC-1jo"/>
                     </connections>
@@ -109,7 +112,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="TmU-J9-eaq" firstAttribute="top" secondItem="1Oq-Of-fZj" secondAttribute="bottom" constant="28" id="3Y7-Gl-5OT"/>
                             <constraint firstItem="1Oq-Of-fZj" firstAttribute="top" secondItem="2ha-fz-Vd3" secondAttribute="top" id="cIq-7t-c4G"/>
@@ -123,13 +126,13 @@
                     <toolbarItems>
                         <barButtonItem title="Previous Image" id="xbM-AW-6b8" userLabel="PreviousImageButton">
                             <connections>
-                                <action selector="previousImageButtonTouched:" destination="8aT-AV-wQL" id="7X3-RN-WIB"/>
+                                <action selector="previousImageButtonTouched:" destination="8aT-AV-wQL" id="z64-QD-bHG"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="cJT-kR-yqK"/>
                         <barButtonItem title="Next Image" id="DdC-vM-Vek" userLabel="NextImageButton">
                             <connections>
-                                <action selector="nextImageButtonTouched:" destination="8aT-AV-wQL" id="kOt-DZ-fVs"/>
+                                <action selector="nextImageButtonTouched:" destination="8aT-AV-wQL" id="Dqb-Rc-VRQ"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
@@ -154,8 +157,26 @@
                         <outlet property="contactWriter" destination="gla-d3-4pn" id="UZl-BP-BGS"/>
                     </connections>
                 </customObject>
-                <customObject id="NAw-QN-l2q" customClass="ContactImageEngine" customModule="micopi" customModuleProvider="target"/>
+                <customObject id="NAw-QN-l2q" customClass="ContactImageEngine" customModule="micopi" customModuleProvider="target">
+                    <connections>
+                        <outlet property="colorPalette" destination="LVW-qu-nyD" id="DjI-Go-K5b"/>
+                        <outlet property="gradientDrawer" destination="ZKI-kH-yco" id="5mH-Zt-tbm"/>
+                        <outlet property="initialsDrawer" destination="yp3-jG-kEB" id="wry-Ng-paa"/>
+                        <outlet property="randomColorGenerator" destination="qwd-Ke-OAE" id="pk6-ua-M1X"/>
+                        <outlet property="randomNumberGenerator" destination="Nae-32-fLF" id="vAa-Z8-lAV"/>
+                    </connections>
+                </customObject>
                 <customObject id="gla-d3-4pn" customClass="ContactWriter" customModule="micopi" customModuleProvider="target"/>
+                <customObject id="Nae-32-fLF" userLabel="RandomNumberGenerator" customClass="RandomNumberGenerator" customModule="micopi" customModuleProvider="target"/>
+                <customObject id="qwd-Ke-OAE" customClass="RandomColorGenerator" customModule="micopi" customModuleProvider="target"/>
+                <customObject id="LVW-qu-nyD" customClass="ARGBColorPalette" customModule="micopi" customModuleProvider="target"/>
+                <customObject id="ZKI-kH-yco" customClass="GradientCGDrawer" customModule="micopi" customModuleProvider="target">
+                    <connections>
+                        <outlet property="cgColorConverter" destination="ohQ-NF-SbX" id="fBn-RG-C0u"/>
+                    </connections>
+                </customObject>
+                <customObject id="yp3-jG-kEB" customClass="InitialsDrawer" customModule="micopi" customModuleProvider="target"/>
+                <customObject id="ohQ-NF-SbX" customClass="ARGBColorCGConverter" customModule="micopi" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="225" y="-352"/>
         </scene>

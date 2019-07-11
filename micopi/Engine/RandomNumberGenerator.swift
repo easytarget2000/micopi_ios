@@ -1,6 +1,6 @@
 import Foundation
 
-struct RandomNumberGenerator {
+class RandomNumberGenerator: NSObject {
     
     var int: Int {
         get {

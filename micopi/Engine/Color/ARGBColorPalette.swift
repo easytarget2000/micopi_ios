@@ -1,23 +1,17 @@
 import CoreGraphics.CGColor
 
-struct ARGBColorPalette {
+class ARGBColorPalette: NSObject {
     
-    let colors: [ARGBColor]
+    var colors: [ARGBColor]!
     
-    init(colors: [ARGBColor]) {
-        self.colors = colors
-    }
-    
-    init(randomColorGenerator: RandomColorGenerator = RandomColorGenerator()) {
-        let colors: [ARGBColor] = [
+    func setColorsRandomly(randomColorGenerator: RandomColorGenerator) {
+        colors = [
             randomColorGenerator.nextARGBColor(),
             randomColorGenerator.nextARGBColor(),
             randomColorGenerator.nextARGBColor(),
             randomColorGenerator.nextARGBColor(),
             randomColorGenerator.nextARGBColor(),
         ]
-        
-        self.init(colors: colors)
     }
     
     func color(

@@ -1,12 +1,8 @@
-struct RandomColorGenerator {
+import Foundation.NSObject
+
+class RandomColorGenerator: NSObject {
     
-    let randomNumberGenerator: RandomNumberGenerator
-    
-    init(
-        randomNumberGenerator: RandomNumberGenerator = RandomNumberGenerator()
-    ) {
-        self.randomNumberGenerator = randomNumberGenerator
-    }
+    var randomNumberGenerator: RandomNumberGenerator!
     
     func nextARGBColor(alpha: Double = 1) -> ARGBColor {
         let red = nextColorValue()

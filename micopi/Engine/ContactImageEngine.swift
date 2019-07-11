@@ -5,9 +5,11 @@ class ContactImageEngine: NSObject {
     static let defaultImageSize = 1600.0
     var globalDispatchQueue = DispatchQueue.global()
     var mainDispatchQueue = DispatchQueue.main
-    var initialsDrawer = InitialsDrawer()
-    var colorPalette = ARGBColorPalette()
-    var cgColorConverter = ARGBColorCGConverter()
+    @IBOutlet var randomNumberGenerator: RandomNumberGenerator!
+    @IBOutlet var randomColorGenerator: RandomColorGenerator!
+    @IBOutlet var colorPalette: ARGBColorPalette!
+    @IBOutlet var gradientDrawer: GradientCGDrawer!
+    @IBOutlet var initialsDrawer: InitialsDrawer!
     fileprivate var stopped = false
     
     func drawImageForContactAsync(
@@ -39,6 +41,8 @@ class ContactImageEngine: NSObject {
         imageSize: Double = ContactImageEngine.defaultImageSize
     ) -> UIImage {
         stopped = false
+        setup(contactWrapper: contactWrapper)
+        
         let cgImageSize = CGFloat(imageSize)
         let contextSize = CGSize(width: cgImageSize, height: cgImageSize)
     
@@ -46,16 +50,12 @@ class ContactImageEngine: NSObject {
         let context = UIGraphicsGetCurrentContext()!
         
         let backgroundColors = [
-            colorPalette.color(randomNumber: 2),
-            colorPalette.color(randomNumber: 1)
+            colorPalette.color(randomNumber: randomNumberGenerator.int),
+            colorPalette.color(randomNumber: randomNumberGenerator.int)
         ]
-        let cgBackgroundColors = cgColorConverter.cgColorsFromARGBColors(
-            backgroundColors
-        )
         
-        let gradientDrawer = GradientCGDrawer()
         gradientDrawer.drawColors(
-            cgBackgroundColors,
+            backgroundColors,
             inContext: context,
             size: contextSize
         )
@@ -73,5 +73,12 @@ class ContactImageEngine: NSObject {
         return generatedImage
     }
     
+    func setup(contactWrapper: ContactHashWrapper) {
+//        randomNumberGenerator
+        randomColorGenerator.randomNumberGenerator = randomNumberGenerator
+        colorPalette.setColorsRandomly(
+            randomColorGenerator: randomColorGenerator
+        )
+    }
     
 }

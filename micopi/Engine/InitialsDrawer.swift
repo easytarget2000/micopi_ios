@@ -1,7 +1,7 @@
 import CoreGraphics
 import UIKit.UIFont
 
-struct InitialsDrawer {
+class InitialsDrawer: NSObject {
     
     var initialsFont = UIFont(name: "HelveticaNeue-Light", size: 600)!
     var initialsFontSizeFactorBase = CGFloat(0.66)

@@ -28,6 +28,16 @@ class ImagePreviewViewController: UIViewController {
         setupViewModel()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        showBottomBar()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        hideBottomBar()
+    }
+    
     // MARK: - Implementations
     
     fileprivate func setupViewModel() {
@@ -41,6 +51,14 @@ class ImagePreviewViewController: UIViewController {
         }
         
         viewModel.contactWrapper = contactWrapper
+    }
+    
+    fileprivate func showBottomBar() {
+        navigationController?.isToolbarHidden = false
+    }
+    
+    fileprivate func hideBottomBar() {
+        navigationController?.isToolbarHidden = true
     }
     
     fileprivate func assignImageToContact() {
