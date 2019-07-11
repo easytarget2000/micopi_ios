@@ -258,15 +258,23 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		3010CE93229DD82100CD32D4 /* Engine */ = {
+		0BED070B22D7C9E000AEEB07 /* CommonDrawers */ = {
 			isa = PBXGroup;
 			children = (
 				3072609222AA919D003B2FC4 /* BackgroundCGDrawer.swift */,
-				3010CE94229DD85200CD32D4 /* ContactImageEngine.swift */,
 				3074EEA522ADA58E008445DD /* GradientCGDrawer.swift */,
 				0B98D82222A9B3F8009B266B /* InitialsDrawer.swift */,
+			);
+			path = CommonDrawers;
+			sourceTree = "<group>";
+		};
+		3010CE93229DD82100CD32D4 /* Engine */ = {
+			isa = PBXGroup;
+			children = (
+				3010CE94229DD85200CD32D4 /* ContactImageEngine.swift */,
 				0B98D82822A9B969009B266B /* RandomNumberGenerator.swift */,
 				0B97D51622B0507700B84594 /* Color */,
+				0BED070B22D7C9E000AEEB07 /* CommonDrawers */,
 				0B97D51922B0582F00B84594 /* Foliage */,
 			);
 			path = Engine;
