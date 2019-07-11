@@ -179,6 +179,7 @@
 				0BED070422D77A0F00AEEB07 /* Storyboards */,
 				0BED06FF22D6A04900AEEB07 /* Strings */,
 				0BED070522D77A5700AEEB07 /* ViewController */,
+				0BED070622D77A9500AEEB07 /* ViewModels */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -242,6 +243,13 @@
 				0BED06FD22D6864400AEEB07 /* MenuTableViewController.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		0BED070622D77A9500AEEB07 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		3010CE93229DD82100CD32D4 /* Engine */ = {
