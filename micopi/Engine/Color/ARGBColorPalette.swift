@@ -3,6 +3,8 @@ import CoreGraphics.CGColor
 class ARGBColorPalette: NSObject {
     
     var colors: [ARGBColor]!
+    
+    override init() {}
         
     init(colors: [ARGBColor]) {
         self.colors = colors

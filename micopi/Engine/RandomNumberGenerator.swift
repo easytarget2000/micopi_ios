@@ -8,7 +8,11 @@ class RandomNumberGenerator: NSObject {
         }
     }
     
-    init(startPoint: Int = 0) {
+    override init() {
+        startPoint = 0
+    }
+    
+    init(startPoint: Int) {
         self.startPoint = startPoint
     }
     
