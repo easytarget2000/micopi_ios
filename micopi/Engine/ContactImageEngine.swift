@@ -74,7 +74,8 @@ class ContactImageEngine: NSObject {
     }
     
     func initValues(contactWrapper: ContactHashWrapper) {
-//        randomNumberGenerator
+        let hashValue = contactWrapper.hashable.hashValue
+        randomNumberGenerator.startPoint = hashValue
         randomColorGenerator.randomNumberGenerator = randomNumberGenerator
         colorPalette.setColorsRandomly(
             randomColorGenerator: randomColorGenerator

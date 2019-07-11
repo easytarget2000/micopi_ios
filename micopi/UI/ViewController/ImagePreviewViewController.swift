@@ -70,6 +70,6 @@ class ImagePreviewViewController: UIViewController {
     }
     
     fileprivate func generateNextImage() {
-        viewModel.generatePreviousImage()
+        viewModel.generateNextImage()
     }
 }
