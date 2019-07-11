@@ -1,42 +1,47 @@
 import CoreGraphics
 
-struct FoliageNodeCGDrawer {
+class FoliageNodeCGDrawer: NSObject {
     
-    let context: CGContext
-    let imageSize: CGFloat
-    let maxCircleShapeSize: CGFloat
-    let randomGenerator: RandomNumberGenerator
-    let color1: CGColor
-    let color2: CGColor
-    let shape: Int
-    let mirrored: Bool
+    var context: CGContext! {
+        didSet {
+            if let color1 = color1 {
+                context.setStrokeColor(color1)
+            }
+            context.setLineWidth(lineWidth)
+        }
+    }
+    var imageSize = CGFloat(0)
+    var maxCircleShapeSize = CGFloat(0)
+    var color1: CGColor! {
+        didSet {
+            context.setStrokeColor(color1)
+        }
+    }
+    var color2: CGColor!
+    var shape: Int = 0
+    var mirrored: Bool = false
+    var lineWidth = CGFloat(1) {
+        didSet {
+            context.setLineWidth(lineWidth)
+        }
+    }
+    @IBOutlet var randomGenerator: RandomNumberGenerator!
     
-    init(
+    func setup(
         context: CGContext,
         imageSize: CGFloat,
         maxCircleShapeSize: CGFloat,
-        randomGenerator: RandomNumberGenerator = RandomNumberGenerator(),
         color1: CGColor,
-        color2: CGColor,
-        shape: Int = 0,
-        lineWidth: CGFloat = 1.0,
-        mirrored: Bool = false
+        color2: CGColor
     ) {
         self.context = context
         self.imageSize = imageSize
         self.maxCircleShapeSize = maxCircleShapeSize
-        self.randomGenerator = randomGenerator
         self.color1 = color1
         self.color2 = color2
-        self.shape = shape
-        self.mirrored = mirrored
-        
-        context.setStrokeColor(color1)
-        context.setLineWidth(lineWidth)
     }
     
     func drawNode(_ node: FoliageNode, nextNode: FoliageNode) {
-        
         if shape == 1 {
             context.setStrokeColor(color2)
             context.strokeEllipse(

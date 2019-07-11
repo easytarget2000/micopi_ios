@@ -3,27 +3,50 @@ import UIKit.UIImage
 class ContactImageEngine: NSObject {
     
     static let defaultImageSize = 1600.0
+    var contactWrapper: ContactHashWrapper! {
+        didSet {
+            let hashValue = contactWrapper.hashValue
+            randomNumberGenerator.startPoint = hashValue
+            randomColorGenerator.randomNumberGenerator = randomNumberGenerator
+            colorPalette.setColorsRandomly(
+                randomColorGenerator: randomColorGenerator
+            )
+        }
+    }
+    var imageSize: Double = ContactImageEngine.defaultImageSize
+    var cgImageSize: CGSize {
+        get {
+            return CGSize(width: CGFloat(imageSize), height: CGFloat(imageSize))
+        }
+    }
     var globalDispatchQueue = DispatchQueue.global()
     var mainDispatchQueue = DispatchQueue.main
+    var backgroundColors: [ARGBColor] {
+        get {
+            return [
+                ARGBColor.white,
+                ARGBColor.white
+//                colorPalette.color(randomNumber: randomNumberGenerator.int),
+//                colorPalette.color(randomNumber: randomNumberGenerator.int)
+            ]
+        }
+    }
     @IBOutlet var randomNumberGenerator: RandomNumberGenerator!
     @IBOutlet var randomColorGenerator: RandomColorGenerator!
     @IBOutlet var colorPalette: ARGBColorPalette!
+    @IBOutlet var colorConverter: ARGBColorCGConverter!
     @IBOutlet var gradientDrawer: GradientCGDrawer!
     @IBOutlet var initialsDrawer: InitialsDrawer!
+    @IBOutlet var foliageGenerator: FoliageCGGenerator!
     fileprivate var stopped = false
     
-    func drawImageForContactAsync(
-        contactWrapper: ContactHashWrapper,
-        imageSize: Double = ContactImageEngine.defaultImageSize,
+    func drawImageAsync(
         completionHandler: @escaping (UIImage) -> ()
     ) {
         globalDispatchQueue.async {
             // Background thread
             
-            let generatedImage = self.drawImageForContact(
-                contactWrapper: contactWrapper,
-                imageSize: imageSize
-            )
+            let generatedImage = self.generateAndDraw()
             
             self.mainDispatchQueue.async(execute: {
                     completionHandler(generatedImage)
@@ -36,36 +59,19 @@ class ContactImageEngine: NSObject {
         stopped = true
     }
     
-    func drawImageForContact(
-        contactWrapper: ContactHashWrapper,
-        imageSize: Double = ContactImageEngine.defaultImageSize
-    ) -> UIImage {
+    func generateAndDraw() -> UIImage {
         stopped = false
-        initValues(contactWrapper: contactWrapper)
         
-        let cgImageSize = CGFloat(imageSize)
-        let contextSize = CGSize(width: cgImageSize, height: cgImageSize)
-    
-        UIGraphicsBeginImageContext(contextSize)
+        UIGraphicsBeginImageContext(cgImageSize)
         let context = UIGraphicsGetCurrentContext()!
         
-        let backgroundColors = [
-            colorPalette.color(randomNumber: randomNumberGenerator.int),
-            colorPalette.color(randomNumber: randomNumberGenerator.int)
-        ]
-        
-        gradientDrawer.drawColors(
-            backgroundColors,
-            inContext: context,
-            size: contextSize
+        drawBackgroundInContext(context)
+        generateFoliageInContext(
+            context,
+            color1: ARGBColor(a: 1.0, r: 1.0, g: 0.0, b: 0.0),
+            color2: ARGBColor(a: 1.0, r: 1.0, g: 0.0, b: 0.0)
         )
-        
-        let displayedInitials = contactWrapper.contact.initials
-        initialsDrawer.drawInitialsInImageContext(
-            displayedInitials,
-            imageSize: cgImageSize
-        )
-        
+//        drawInitialsInContext(context)
         
         let generatedImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
@@ -73,13 +79,35 @@ class ContactImageEngine: NSObject {
         return generatedImage
     }
     
-    func initValues(contactWrapper: ContactHashWrapper) {
-        let hashValue = contactWrapper.hashable.hashValue
-        randomNumberGenerator.startPoint = hashValue
-        randomColorGenerator.randomNumberGenerator = randomNumberGenerator
-        colorPalette.setColorsRandomly(
-            randomColorGenerator: randomColorGenerator
+    fileprivate func drawBackgroundInContext(
+        _ context: CGContext
+    ) {
+        let cgBackgroundColors = colorConverter.cgColorsFromARGBColors(
+            backgroundColors
+        )
+        gradientDrawer.drawColors(
+            cgBackgroundColors,
+            inContext: context,
+            size: cgImageSize
         )
     }
     
+    fileprivate func drawInitialsInContext(_ context: CGContext
+    ) {
+        let initials = contactWrapper.contact.initials
+//        initialsDrawer.drawInitialsInImageContext(initials)
+    }
+    
+    fileprivate func generateFoliageInContext(
+        _ context: CGContext,
+        color1: ARGBColor,
+        color2: ARGBColor
+    ) {
+        foliageGenerator.setup(
+            imageSize: imageSize,
+            color1: color1,
+            color2: color2
+        )
+        foliageGenerator.drawAndUpdate(context: context)
+    }
 }

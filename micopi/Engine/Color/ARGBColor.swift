@@ -1,5 +1,8 @@
 struct ARGBColor: Equatable {
     
+    static let white = ARGBColor(a: 1.0, r: 1.0, g: 1.0, b: 1.0)
+    static let black = ARGBColor(a: 1.0, r: 0.0, g: 0.0, b: 0.0)
+    
     let a: Double
     let r: Double
     let g: Double

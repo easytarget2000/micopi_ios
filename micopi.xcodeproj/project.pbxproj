@@ -34,7 +34,7 @@
 		0BED070A22D79A8300AEEB07 /* Dynamic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BED070922D79A8300AEEB07 /* Dynamic.swift */; };
 		3010CE95229DD85200CD32D4 /* ContactImageEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3010CE94229DD85200CD32D4 /* ContactImageEngine.swift */; };
 		3072609322AA919D003B2FC4 /* BackgroundCGDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3072609222AA919D003B2FC4 /* BackgroundCGDrawer.swift */; };
-		3072609522AA9741003B2FC4 /* FoliageGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3072609422AA9741003B2FC4 /* FoliageGenerator.swift */; };
+		3072609522AA9741003B2FC4 /* FoliageCGGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3072609422AA9741003B2FC4 /* FoliageCGGenerator.swift */; };
 		3074EEA622ADA58E008445DD /* GradientCGDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3074EEA522ADA58E008445DD /* GradientCGDrawer.swift */; };
 		3074EEA822ADA68F008445DD /* ARGBColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3074EEA722ADA68F008445DD /* ARGBColorPalette.swift */; };
 		30C315B6229C93B400B36C58 /* BatchGeneratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C315B5229C93B400B36C58 /* BatchGeneratorViewController.swift */; };
@@ -92,7 +92,7 @@
 		0BED070922D79A8300AEEB07 /* Dynamic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dynamic.swift; sourceTree = "<group>"; };
 		3010CE94229DD85200CD32D4 /* ContactImageEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactImageEngine.swift; sourceTree = "<group>"; };
 		3072609222AA919D003B2FC4 /* BackgroundCGDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundCGDrawer.swift; sourceTree = "<group>"; };
-		3072609422AA9741003B2FC4 /* FoliageGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoliageGenerator.swift; sourceTree = "<group>"; };
+		3072609422AA9741003B2FC4 /* FoliageCGGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoliageCGGenerator.swift; sourceTree = "<group>"; };
 		3074EEA522ADA58E008445DD /* GradientCGDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientCGDrawer.swift; sourceTree = "<group>"; };
 		3074EEA722ADA68F008445DD /* ARGBColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARGBColorPalette.swift; sourceTree = "<group>"; };
 		30C315B5229C93B400B36C58 /* BatchGeneratorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatchGeneratorViewController.swift; sourceTree = "<group>"; };
@@ -216,7 +216,7 @@
 			children = (
 				0B98D82A22A9C7F0009B266B /* Calculator.swift */,
 				0B98D82622A9B5C2009B266B /* Foliage.swift */,
-				3072609422AA9741003B2FC4 /* FoliageGenerator.swift */,
+				3072609422AA9741003B2FC4 /* FoliageCGGenerator.swift */,
 				0B98D82422A9B51F009B266B /* FoliageNode.swift */,
 				0B98D82C22A9C901009B266B /* FoliageNodeCGDrawer.swift */,
 			);
@@ -427,7 +427,7 @@
 				0B98D82522A9B51F009B266B /* FoliageNode.swift in Sources */,
 				0BED070A22D79A8300AEEB07 /* Dynamic.swift in Sources */,
 				3072609322AA919D003B2FC4 /* BackgroundCGDrawer.swift in Sources */,
-				3072609522AA9741003B2FC4 /* FoliageGenerator.swift in Sources */,
+				3072609522AA9741003B2FC4 /* FoliageCGGenerator.swift in Sources */,
 				3010CE95229DD85200CD32D4 /* ContactImageEngine.swift in Sources */,
 				0BED06FE22D6864400AEEB07 /* MenuTableViewController.swift in Sources */,
 				3074EEA622ADA58E008445DD /* GradientCGDrawer.swift in Sources */,

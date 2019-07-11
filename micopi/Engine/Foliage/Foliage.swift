@@ -1,8 +1,8 @@
 import CoreGraphics
 
-class Foliage {
+class Foliage: NSObject {
     
-    fileprivate var firstNode: FoliageNode!
+    fileprivate(set) var firstNode = FoliageNode(x: 0.0, y: 0.0)
     fileprivate var age = 0
     fileprivate var maxAge = 50
     fileprivate var maxNewNodes = 20
@@ -50,9 +50,12 @@ class Foliage {
         )
         density = numberOfInitialNodes
             / randomGenerator.i(largerThan: 4, smallerThan: 8)
-        
+    }
+    
+    func initNodes(imageSize: Double) {
         let shapeCenterX = imageSize / 2
         let shapeCenterY = imageSize / 2
+        
         initNodes(
             inCircleAtX: shapeCenterX,
             atY: shapeCenterY,
@@ -60,7 +63,11 @@ class Foliage {
         )
     }
     
-    fileprivate func initNodes(inCircleAtX x: Double, atY y: Double, imageSize: Double) {
+    func initNodes(
+        inCircleAtX x: Double,
+        atY y: Double,
+        imageSize: Double
+    ) {
         let initialRadius = randomGenerator.d(
             greater: imageSize * 0.02,
             smaller: imageSize * 0.07
@@ -186,7 +193,7 @@ class Foliage {
         //        let path = UIBezierPath()
         //        path.move(to: firstNode.point())
         
-        var currentNode = firstNode!
+        var currentNode = firstNode
         var numberOfNewNodes = 0
         repeat {
             nodeCounter += 1
