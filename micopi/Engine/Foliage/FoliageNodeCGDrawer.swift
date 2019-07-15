@@ -42,27 +42,27 @@ class FoliageNodeCGDrawer: NSObject {
     }
     
     func drawNode(_ node: FoliageNode, nextNode: FoliageNode) {
-        if shape == 1 {
+//        if shape == 1 {
             context.setStrokeColor(color2)
             context.strokeEllipse(
                 in: CGRect(
                     x: CGFloat(node.x + 1.0),
                     y: CGFloat(node.y + 1.0),
-                    width: maxCircleShapeSize,
-                    height: maxCircleShapeSize
+                    width: 20, //maxCircleShapeSize,
+                    height: 20 //maxCircleShapeSize
                 )
             )
-        } else {
-            context.setFillColor(color2)
-            context.fill(
-                CGRect(
-                    x: CGFloat(node.x + 1.0),
-                    y: CGFloat(node.y + 1.0),
-                    width: 1,
-                    height: 1
-                )
-            )
-        }
+//        } else {
+//            context.setFillColor(CGColor(colorSpace: CGColorSpace.sRGB, components: )
+//            context.fill(
+//                CGRect(
+//                    x: 50.0, //CGFloat(node.x + 1.0),
+//                    y: 50.0, //CGFloat(node.y + 1.0),
+//                    width: 100,
+//                    height: 100
+//                )
+//            )
+//        }
         
         if mirrored {
             if shape == 1 {

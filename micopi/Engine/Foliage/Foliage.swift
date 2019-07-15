@@ -50,9 +50,12 @@ class Foliage: NSObject {
         )
         density = numberOfInitialNodes
             / randomGenerator.i(largerThan: 4, smallerThan: 8)
+        
+        super.init()
+        initNodes(imageSize: imageSize)
     }
     
-    func initNodes(imageSize: Double) {
+    fileprivate func initNodes(imageSize: Double) {
         let shapeCenterX = imageSize / 2
         let shapeCenterY = imageSize / 2
         
@@ -63,7 +66,7 @@ class Foliage: NSObject {
         )
     }
     
-    func initNodes(
+    fileprivate func initNodes(
         inCircleAtX x: Double,
         atY y: Double,
         imageSize: Double
@@ -75,7 +78,8 @@ class Foliage: NSObject {
         
         let slimnessFactor = randomGenerator.d(greater: 0.01, smaller: 2)
         
-        var lastNode: FoliageNode!
+        var previousNode: FoliageNode!
+        var firstNodeIsSet = false
         for i in 0 ..< numberOfInitialNodes {
             
             let angleOfNode = calculator.distributedAngleOnCircle(
@@ -87,19 +91,20 @@ class Foliage: NSObject {
             let nodeY = y + (sin(angleOfNode) * initialRadius) + jitterValue()
             let node = FoliageNode(x: nodeX, y: nodeY)
             
-            if firstNode == nil {
+            if !firstNodeIsSet {
                 firstNode = node
-                lastNode = node
+                previousNode = node
+                firstNodeIsSet = true
             } else if i == numberOfInitialNodes - 1 {
                 preferredNeighborDistance = calculator.distanceBetween(
                     node1: node,
-                    node2: lastNode
+                    node2: previousNode
                 )
-                lastNode.nextNode = node
+                previousNode.nextNode = node
                 node.nextNode = firstNode
             } else {
-                lastNode.nextNode = node
-                lastNode = node
+                previousNode.nextNode = node
+                previousNode = node
             }
             
         }

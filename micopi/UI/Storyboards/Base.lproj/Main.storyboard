@@ -177,6 +177,7 @@
                 <customObject id="ohQ-NF-SbX" userLabel="ARGBColorCGConverter" customClass="ARGBColorCGConverter" customModule="micopi" customModuleProvider="target"/>
                 <customObject id="vhn-Tm-SXb" userLabel="FoliageGenerator" customClass="FoliageCGGenerator" customModule="micopi" customModuleProvider="target">
                     <connections>
+                        <outlet property="colorConverter" destination="ohQ-NF-SbX" id="qgW-XM-uRV"/>
                         <outlet property="nodeDrawer" destination="QqQ-8N-i9V" id="ewL-tf-K8c"/>
                         <outlet property="randomNumberGenerator" destination="Nae-32-fLF" id="RyF-GC-R2x"/>
                     </connections>

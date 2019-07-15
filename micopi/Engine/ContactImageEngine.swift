@@ -24,8 +24,8 @@ class ContactImageEngine: NSObject {
     var backgroundColors: [ARGBColor] {
         get {
             return [
-                ARGBColor.white,
-                ARGBColor.white
+                .white,
+                .white
 //                colorPalette.color(randomNumber: randomNumberGenerator.int),
 //                colorPalette.color(randomNumber: randomNumberGenerator.int)
             ]
@@ -68,8 +68,8 @@ class ContactImageEngine: NSObject {
         drawBackgroundInContext(context)
         generateFoliageInContext(
             context,
-            color1: ARGBColor(a: 1.0, r: 1.0, g: 0.0, b: 0.0),
-            color2: ARGBColor(a: 1.0, r: 1.0, g: 0.0, b: 0.0)
+            color1: ARGBColor.black,
+            color2: ARGBColor.black
         )
 //        drawInitialsInContext(context)
         
@@ -103,6 +103,15 @@ class ContactImageEngine: NSObject {
         color1: ARGBColor,
         color2: ARGBColor
     ) {
+//        context.setStrokeColor(colorConverter.cgColorFromARGBColor(color1))
+//        context.strokeEllipse(
+//            in: CGRect(
+//                x: CGFloat(200),
+//                y: CGFloat(200),
+//                width: 100, //maxCircleShapeSize,
+//                height: 100 //maxCircleShapeSize
+//            )
+//        )
         foliageGenerator.setup(
             imageSize: imageSize,
             color1: color1,

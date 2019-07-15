@@ -6,7 +6,18 @@ class FoliageCGGenerator: NSObject {
     var imageSize = Double(0)
     var color1 = ARGBColor(a: 0.0, r: 0.0, g: 0.0, b: 0.0)
     var color2 = ARGBColor(a: 0.0, r: 0.0, g: 0.0, b: 0.0)
+    fileprivate var cgColor1: CGColor {
+        get {
+            return colorConverter.cgColorFromARGBColor(color1)
+        }
+    }
+    fileprivate var cgColor2: CGColor {
+        get {
+            return colorConverter.cgColorFromARGBColor(color2)
+        }
+    }
     @IBOutlet var nodeDrawer: FoliageNodeCGDrawer!
+    @IBOutlet var colorConverter: ARGBColorCGConverter!
     @IBOutlet var randomNumberGenerator: RandomNumberGenerator!
     
     func setup(
@@ -65,6 +76,7 @@ class FoliageCGGenerator: NSObject {
             
             foliages.append(foliage)
         }
+        
     }
     
     func drawAndUpdate(context: CGContext) {
@@ -77,13 +89,19 @@ class FoliageCGGenerator: NSObject {
         _ foliage: Foliage,
         context: CGContext
     ) {
-        nodeDrawer.context = context
+        nodeDrawer.setup(
+            context: context,
+            imageSize: CGFloat(imageSize),
+            maxCircleShapeSize: 16.0,
+            color1: cgColor1,
+            color2: cgColor2
+        )
         
         let firstNode = foliage.firstNode
         var currentNode = firstNode
         repeat {
             
-            guard let nextNode = currentNode.nextNode else {
+            guard let nextNode = currentNode.nextNode else { // CONTINUE HERE
                 break
             }
             

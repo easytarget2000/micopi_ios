@@ -13,10 +13,10 @@ class ARGBColorCGConverter: NSObject {
         _ argbColor: ARGBColor
     ) -> [CGFloat] {
         return [
-            CGFloat(argbColor.a),
             CGFloat(argbColor.r),
             CGFloat(argbColor.g),
             CGFloat(argbColor.b),
+            CGFloat(argbColor.a)
         ]
     }
     
