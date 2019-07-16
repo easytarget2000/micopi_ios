@@ -103,20 +103,11 @@ class ContactImageEngine: NSObject {
         color1: ARGBColor,
         color2: ARGBColor
     ) {
-//        context.setStrokeColor(colorConverter.cgColorFromARGBColor(color1))
-//        context.strokeEllipse(
-//            in: CGRect(
-//                x: CGFloat(200),
-//                y: CGFloat(200),
-//                width: 100, //maxCircleShapeSize,
-//                height: 100 //maxCircleShapeSize
-//            )
-//        )
         foliageGenerator.setup(
             imageSize: imageSize,
             color1: color1,
             color2: color2
         )
-        foliageGenerator.drawAndUpdate(context: context)
+        foliageGenerator.drawAndUpdate(context: context, numOfRounds: 64)
     }
 }

@@ -42,7 +42,7 @@ class FoliageNodeCGDrawer: NSObject {
     }
     
     func drawNode(_ node: FoliageNode, nextNode: FoliageNode) {
-//        if shape == 1 {
+        if shape == 1 {
             context.setStrokeColor(color2)
             context.strokeEllipse(
                 in: CGRect(
@@ -52,18 +52,18 @@ class FoliageNodeCGDrawer: NSObject {
                     height: 20 //maxCircleShapeSize
                 )
             )
-//        } else {
-//            context.setFillColor(CGColor(colorSpace: CGColorSpace.sRGB, components: )
-//            context.fill(
-//                CGRect(
-//                    x: 50.0, //CGFloat(node.x + 1.0),
-//                    y: 50.0, //CGFloat(node.y + 1.0),
-//                    width: 100,
-//                    height: 100
-//                )
-//            )
-//        }
-        
+        } else {
+            context.setFillColor(color1)
+            context.fill(
+                CGRect(
+                    x: CGFloat(node.x + 1.0),
+                    y: CGFloat(node.y + 1.0),
+                    width: 1,
+                    height: 1
+                )
+            )
+        }
+    
         if mirrored {
             if shape == 1 {
                 context.setStrokeColor(color2)
@@ -92,10 +92,10 @@ class FoliageNodeCGDrawer: NSObject {
             context.move(to: point)
         }
         
-//        if !mirrored {
-//            context.addLine(to: nextNode.point())
-//            context.closePath()
-//            context.drawPath(using: CGPathDrawingMode.stroke)
-//        }
+    //        if !mirrored {
+    //            context.addLine(to: nextNode.point())
+    //            context.closePath()
+    //            context.drawPath(using: CGPathDrawingMode.stroke)
+    //        }
     }
 }

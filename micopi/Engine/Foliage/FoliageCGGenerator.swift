@@ -29,7 +29,7 @@ class FoliageCGGenerator: NSObject {
         self.color1 = color1
         self.color2 = color2
         
-        let numberOfShapes = randomNumberGenerator.i(largerThan: 2, smallerThan: 7)
+        let numberOfShapes = 1 //randomNumberGenerator.i(largerThan: 2, smallerThan: 7)
         let mirrored = randomNumberGenerator.b(withChance: 0.5)
         
         let center = imageSize / 2
@@ -79,9 +79,11 @@ class FoliageCGGenerator: NSObject {
         
     }
     
-    func drawAndUpdate(context: CGContext) {
-        for foliage in foliages {
-            drawAndUpdateFoliage(foliage, context: context)
+    func drawAndUpdate(context: CGContext, numOfRounds: Int = 1) {
+        for _ in 0 ..< numOfRounds {
+            for foliage in foliages {
+                drawAndUpdateFoliage(foliage, context: context)
+            }
         }
     }
     
@@ -97,17 +99,6 @@ class FoliageCGGenerator: NSObject {
             color2: cgColor2
         )
         
-        let firstNode = foliage.firstNode
-        var currentNode = firstNode
-        repeat {
-            
-            guard let nextNode = currentNode.nextNode else { // CONTINUE HERE
-                break
-            }
-            
-            nodeDrawer.drawNode(currentNode, nextNode: nextNode)
-
-            currentNode = nextNode
-        } while currentNode !== firstNode
+        let isAlive = foliage.updateAndDraw(nodeDrawer: nodeDrawer)
     }
 }
