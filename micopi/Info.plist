@@ -41,5 +41,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSContactsUsageDescription</key>
+	<string>New images are only assigned to selected contacts. We recommend creating a backup of your phonebook.</string>
 </dict>
 </plist>
