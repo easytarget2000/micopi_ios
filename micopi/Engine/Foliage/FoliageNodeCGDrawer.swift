@@ -2,66 +2,63 @@ import CoreGraphics
 
 class FoliageNodeCGDrawer: NSObject {
     
-    weak var context: CGContext! {
-        didSet {
-            context?.setLineWidth(lineWidth)
-        }
-    }
-    var imageSize = CGFloat(0)
-    var maxCircleShapeSize = CGFloat(0)
-    var mirrored: Bool = false
-    var lineWidth = CGFloat(1) {
-        didSet {
-            context.setLineWidth(lineWidth)
-        }
-    }
+    weak var context: CGContext!
     @IBOutlet var colorConverter: ARGBColorCGConverter!
     
-    func setup(
-        context: CGContext,
-        imageSize: CGFloat,
-        maxCircleShapeSize: CGFloat
+    func startLine(
+        firstNode: FoliageNode,
+        gray: Double = 1.0,
+        alpha: Double = 0.9
     ) {
-        self.context = context
-        self.imageSize = imageSize
-        self.maxCircleShapeSize = maxCircleShapeSize
+        context.setLineWidth(1)
+        context.setStrokeColor(gray: CGFloat(gray), alpha: CGFloat(alpha))
+        context.move(to: FoliageNodeCGDrawer.pointFromNode(firstNode))
     }
     
-    func drawNode(_ node: FoliageNode, nextNode: FoliageNode, inContext context: CGContext) {
-//        let color = node.color
-        self.context.setLineWidth(2)
-//        context.setFillColor(color)
-//        context.setStrokeColor(color)
-//        context.str
-        self.context.setFillColor(gray: 1.0, alpha: 0.5)
-        self.context.fill(
-            CGRect(
-                x: CGFloat(node.positionVector.x),
-                y: CGFloat(node.positionVector.y),
-                width: 1.0,
-                height: 1.0
-            )
-        )
+    func addNodeToLine(node: FoliageNode) {
+        context.addLine(to: FoliageNodeCGDrawer.pointFromNode(node))
+    }
     
-        if mirrored {
-            self.context.fill(
-                CGRect(
-                    x: imageSize - CGFloat(node.positionVector.x),
-                    y: CGFloat(node.positionVector.y),
-                    width: 4.0,
-                    height: 4.0
-                )
-            )
-        } else {
+    func closeAndDrawLine() {
+        context.strokePath()
+    }
+    
+    
+//    func drawNode(_ node: FoliageNode, nextNode: FoliageNode, inContext context: CGContext) {
+
+//        context.move(to: FoliageNodeCGDrawer.pointFromNode(node))
+        //        self.context.fill(
+//            CGRect(
+//                x: CGFloat(node.positionVector.x),
+//                y: CGFloat(node.positionVector.y),
+//                width: 1.0,
+//                height: 1.0
+//            )
+//        )
+    
+//        if mirrored {
+//            self.context.fill(
+//                CGRect(
+//                    x: imageSize - CGFloat(node.positionVector.x),
+//                    y: CGFloat(node.positionVector.y),
+//                    width: 4.0,
+//                    height: 4.0
+//                )
+//            )
+//        } else {
 //            context.beginPath()
 //            let point = CGPoint(x: CGFloat(node.x), y: CGFloat(node.y))
 //            context.move(to: point)
-        }
+//        }
         
     //        if !mirrored {
     //            context.addLine(to: nextNode.point())
     //            context.closePath()
     //            context.drawPath(using: CGPathDrawingMode.stroke)
     //        }
+//    }
+    
+    fileprivate static func pointFromNode(_ node: FoliageNode) -> CGPoint {
+        return CGPoint(x: node.positionVector.x, y: node.positionVector.y)
     }
 }

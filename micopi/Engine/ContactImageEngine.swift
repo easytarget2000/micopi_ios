@@ -21,14 +21,6 @@ class ContactImageEngine: NSObject {
     }
     var globalDispatchQueue = DispatchQueue.global()
     var mainDispatchQueue = DispatchQueue.main
-    var backgroundColors: [ARGBColor] {
-        get {
-            return [
-                .white,
-                colorPalette.color(randomNumber: randomNumberGenerator.int)
-            ]
-        }
-    }
     @IBOutlet var randomNumberGenerator: RandomNumberGenerator!
     @IBOutlet var randomColorGenerator: RandomColorGenerator!
     @IBOutlet var colorPalette: ARGBColorPalette!
@@ -78,9 +70,10 @@ class ContactImageEngine: NSObject {
         _ context: CGContext
     ) {
         backgroundDrawer.setup(context: context, imageSize: CGFloat(imageSize))
-        let backgroundColor = colorPalette.color(
-            randomNumberGenerator: randomNumberGenerator
-        )
+        let backgroundColor = ARGBColor.black
+//        let backgroundColor = colorPalette.color(
+//            randomNumberGenerator: randomNumberGenerator
+//        )
         backgroundDrawer.fillWithColor(backgroundColor)
         backgroundDrawer.context = nil
     }

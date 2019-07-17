@@ -40,6 +40,10 @@ class ContactHashWrapperViewModel: NSObject {
     }
     
     fileprivate func generateImage() {
+        guard !(isGenerating.value ?? false) else {
+            return
+        }
+        
         guard let contactImageDrawer = contactImageDrawer else {
             return
         }

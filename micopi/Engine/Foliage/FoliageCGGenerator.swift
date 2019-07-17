@@ -90,13 +90,8 @@ class FoliageCGGenerator: NSObject {
         _ foliage: Foliage,
         context: CGContext
     ) {
-        nodeDrawer.setup(
-            context: context,
-            imageSize: CGFloat(imageSize),
-            maxCircleShapeSize: 16.0
-        )
-        
-        let isAlive = foliage.updateAndDraw(nodeDrawer: nodeDrawer, context: context)
+        nodeDrawer.context = context
+        let isAlive = foliage.updateAndDraw(nodeDrawer: nodeDrawer)
         nodeDrawer.context = nil
     }
 }

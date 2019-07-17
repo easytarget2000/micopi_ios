@@ -14,6 +14,8 @@ class Foliage {
     var nodeDensity: Int
     var stopped = false
     var addNodes = false
+    var lineGray = 1.0
+    var lineAlpha = 1.0
     var randomNumberGenerator: RandomNumberGenerator = RandomNumberGenerator()
     var jitter: Double {
         get {
@@ -114,29 +116,34 @@ class Foliage {
         self.stopped = true
     }
     
-    func updateAndDraw(
-        nodeDrawer: FoliageNodeCGDrawer,
-        context: CGContext
-    ) -> Bool {
+    func updateAndDraw(nodeDrawer: FoliageNodeCGDrawer) -> Bool {
         age += 1
         guard age < maxAge else {
             return false
         }
         
-        var currentNode = firstNode!
+        var currentNode: FoliageNode!
         var nodeCounter = 0
-
+        lineGray = randomNumberGenerator.d(greater: 0.0, smaller: 1.0)
+        
         repeat {
-            guard let nextNode = currentNode.next else {
+            
+            if let currentNode = currentNode {
+                nodeDrawer.addNodeToLine(node: currentNode)
+            } else {
+                currentNode = firstNode
+                nodeDrawer.startLine(
+                    firstNode: firstNode,
+                    gray: lineGray,
+                    alpha: lineAlpha
+                )
+            }
+            
+            guard let nextNode = currentNode?.next else {
                 return true
             }
 
             currentNode.update()
-            nodeDrawer.drawNode(
-                currentNode,
-                nextNode: nextNode,
-                inContext: context
-            )
             
             if addNodes,
                 nodeAddCounter < maxNumOfNodesAddedPerRound,
@@ -150,6 +157,7 @@ class Foliage {
             nodeCounter += 1
         } while (!stopped && currentNode !== firstNode)
         
+        nodeDrawer.closeAndDrawLine()
         return true
     }
     
