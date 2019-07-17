@@ -8,15 +8,13 @@ class ContactImageEngine: NSObject {
             let hashValue = contactWrapper.hashValue
             randomNumberGenerator.startPoint = hashValue
             randomColorGenerator.randomNumberGenerator = randomNumberGenerator
-            colorPalette.setColorsRandomly(
-                randomColorGenerator: randomColorGenerator
+            backgroundColor = colorPalette.color(
+                randomNumberGenerator: randomNumberGenerator
             )
         }
     }
-    let backgroundColor = ARGBColor.black
-    //        let backgroundColor = colorPalette.color(
-    //            randomNumberGenerator: randomNumberGenerator
-    //        )
+    var backgroundColor: ARGBColor!
+    var initialsAlpha = 0.7
     var imageSize: Double = ContactImageEngine.defaultImageSize
     var cgImageSize: CGSize {
         get {
@@ -81,7 +79,7 @@ class ContactImageEngine: NSObject {
     fileprivate func drawInitialsInContext(_ context: CGContext
     ) {
         let initials = contactWrapper.contact.initials
-        let initialsColor = backgroundColor.colorWithAlpha(0.5)
+        let initialsColor = backgroundColor.colorWithAlpha(initialsAlpha)
         initialsDrawer.drawInitialsInImageContext(
             initials,
             color: initialsColor,
