@@ -8,14 +8,14 @@ class Foliage {
     var age = 0
     let maxAge = 1024 * 32
     var totalNodeCounter = 0
-    var maxNumOfNodesAddedPerRound = 4
+    var maxNumOfNodesAddedPerRound = 2 // 4
     var maxNumOfTotalNodes = 256
     var nodeAddCounter = 0
     var nodeDensity: Int
     var stopped = false
     var addNodes = false
     var lineGray = 1.0
-    var lineAlpha = 1.0
+    var lineAlpha = 0.2
     var randomNumberGenerator: RandomNumberGenerator = RandomNumberGenerator()
     var jitter: Double {
         get {
@@ -124,7 +124,7 @@ class Foliage {
         
         var currentNode: FoliageNode!
         var nodeCounter = 0
-        lineGray = randomNumberGenerator.d(greater: 0.0, smaller: 1.0)
+        adjustColor()
         
         repeat {
             
@@ -158,10 +158,24 @@ class Foliage {
         } while (!stopped && currentNode !== firstNode)
         
         nodeDrawer.closeAndDrawLine()
+        nodeAddCounter = 0
         return true
     }
     
-    func addNodeNextTo(node: FoliageNode) {
+    fileprivate func adjustColor() {
+        let maxColorStep = 0.05
+        lineGray += randomNumberGenerator.d(
+            greater: -maxColorStep,
+            smaller: maxColorStep
+        )
+        if lineGray < 0 {
+            lineGray = 0
+        } else if lineGray > 1 {
+            lineGray = 1
+        }
+    }
+    
+    fileprivate func addNodeNextTo(node: FoliageNode) {
         guard let oldNeighbour = node.next else {
             return
         }

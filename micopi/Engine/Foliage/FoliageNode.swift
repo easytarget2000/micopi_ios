@@ -6,9 +6,9 @@ class FoliageNode {
     let neighbourGravity: Double
     let preferredNeighbourDistance: Double
     let maxPushDistance: Double
-    let pushForceRatio = 0.005
+    let pushForceRatio = 0.01
     let radiusRatio = 1.0 / 256.0
-    let neighbourGravityRatio = 1.0 / 1.1
+    let neighbourGravityRatio = 1.0 / 1.4
     let preferredNeighbourDistanceRatio = 0.1
     var next: FoliageNode?
     var randomNumberGenerator: RandomNumberGenerator = RandomNumberGenerator()

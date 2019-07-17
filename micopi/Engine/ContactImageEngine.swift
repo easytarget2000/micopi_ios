@@ -13,6 +13,10 @@ class ContactImageEngine: NSObject {
             )
         }
     }
+    let backgroundColor = ARGBColor.black
+    //        let backgroundColor = colorPalette.color(
+    //            randomNumberGenerator: randomNumberGenerator
+    //        )
     var imageSize: Double = ContactImageEngine.defaultImageSize
     var cgImageSize: CGSize {
         get {
@@ -58,7 +62,7 @@ class ContactImageEngine: NSObject {
         
         drawBackgroundInContext(context)
         simulateAndDrawFoliageInContext(context)
-//        drawInitialsInContext(context)
+        drawInitialsInContext(context)
         
         let generatedImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
@@ -70,10 +74,6 @@ class ContactImageEngine: NSObject {
         _ context: CGContext
     ) {
         backgroundDrawer.setup(context: context, imageSize: CGFloat(imageSize))
-        let backgroundColor = ARGBColor.black
-//        let backgroundColor = colorPalette.color(
-//            randomNumberGenerator: randomNumberGenerator
-//        )
         backgroundDrawer.fillWithColor(backgroundColor)
         backgroundDrawer.context = nil
     }
@@ -81,8 +81,10 @@ class ContactImageEngine: NSObject {
     fileprivate func drawInitialsInContext(_ context: CGContext
     ) {
         let initials = contactWrapper.contact.initials
+        let initialsColor = backgroundColor.colorWithAlpha(0.5)
         initialsDrawer.drawInitialsInImageContext(
             initials,
+            color: initialsColor,
             imageSize: CGFloat(imageSize)
         )
     }

@@ -5,9 +5,12 @@ class InitialsUIDrawer: NSObject {
     
     var initialsFont = UIFont(name: "HelveticaNeue-Light", size: 600)!
     var initialsFontSizeFactorBase = CGFloat(0.66)
-    var initialsTextColor = UIColor.white
     
-    func drawInitialsInImageContext(_ initials: String, imageSize: CGFloat) {
+    func drawInitialsInImageContext(
+        _ initials: String,
+        color: ARGBColor,
+        imageSize: CGFloat
+    ) {
         guard !initials.isEmpty else {
             return
         }
@@ -19,9 +22,16 @@ class InitialsUIDrawer: NSObject {
         let fontSize = imageSize * fontSizeFactor
         let resizedInitialsFont = initialsFont.withSize(fontSize)
         
+        let uiColor = UIColor(
+            red: CGFloat(color.r),
+            green: CGFloat(color.g),
+            blue: CGFloat(color.b),
+            alpha: CGFloat(color.a)
+        )
+        
         let fontAttributes = [
             NSAttributedString.Key.font : resizedInitialsFont,
-            NSAttributedString.Key.foregroundColor : initialsTextColor
+            NSAttributedString.Key.foregroundColor : uiColor
         ]
         
         let stringSize = initials.size(withAttributes: fontAttributes)

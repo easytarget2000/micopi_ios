@@ -17,4 +17,8 @@ struct ARGBColor: Equatable {
             && lhs.g == rhs.g
             && lhs.b == rhs.b
     }
+    
+    func colorWithAlpha(_ alpha: Double) -> ARGBColor {
+        return ARGBColor(a: alpha, r: self.r, g: self.g, b: self.b)
+    }
 }
