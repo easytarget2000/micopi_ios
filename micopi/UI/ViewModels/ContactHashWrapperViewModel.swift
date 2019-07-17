@@ -23,12 +23,12 @@ class ContactHashWrapperViewModel: NSObject {
         generateImage()
     }
     
-    func assignImageToContact() {
+    func assignImageToContact() -> Bool {
         guard let generatedImage = generatedImage.value ?? nil else {
-            return
+            return false
         }
         
-        contactWriter.assignImage(
+        return contactWriter.assignImage(
             generatedImage,
             toContact: contactWrapper.cnContact
         )

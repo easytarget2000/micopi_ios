@@ -2,13 +2,14 @@ import UIKit
 
 class ImagePreviewViewController: UIViewController {
     
-    // MARK: - Values
+    // MARK: - Properties
     
     var contactWrapper: ContactHashWrapper!
     
     // MARK: IB
 
     @IBOutlet var viewModel: ContactHashWrapperViewModel!
+    @IBOutlet var assignConfirmationViewModel: ImageAssignConfirmationViewModel!
     @IBOutlet weak var previewImageView: UIImageView!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var contactDisplayNameLabel: UILabel!
@@ -70,7 +71,12 @@ class ImagePreviewViewController: UIViewController {
     }
     
     fileprivate func assignImageToContact() {
-        viewModel.assignImageToContact()
+        let didAssign = viewModel.assignImageToContact()
+        let confirmationAlert = assignConfirmationViewModel.alertForContact(
+            contact: contactWrapper?.contact,
+            success: didAssign
+        )
+        present(confirmationAlert, animated: true, completion: nil)
     }
     
     fileprivate func generatePreviousImage() {

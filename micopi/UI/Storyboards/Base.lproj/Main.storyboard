@@ -150,6 +150,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="activityIndicatorView" destination="dLr-jU-x44" id="MvQ-Gr-Ncs"/>
+                        <outlet property="assignConfirmationViewModel" destination="oOB-fl-bBo" id="TDq-BF-4Dj"/>
                         <outlet property="contactDisplayNameLabel" destination="TmU-J9-eaq" id="trj-Du-FAD"/>
                         <outlet property="previewImageView" destination="1Oq-Of-fZj" id="aes-Qs-c6K"/>
                         <outlet property="viewModel" destination="bG5-Ri-b9x" id="sgx-vj-Roj"/>
@@ -198,6 +199,7 @@
                         <outlet property="colorConverter" destination="ohQ-NF-SbX" id="FJX-5q-5bX"/>
                     </connections>
                 </customObject>
+                <customObject id="oOB-fl-bBo" customClass="ImageAssignConfirmationViewModel" customModule="micopi" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="225" y="-352"/>
         </scene>
