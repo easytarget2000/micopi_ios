@@ -30,7 +30,7 @@ class ContactHashWrapperViewModel: NSObject {
         
         contactWriter.assignImage(
             generatedImage,
-            toContact: contactWrapper.contact
+            toContact: contactWrapper.cnContact
         )
     }
     

@@ -14,7 +14,7 @@ struct ContactCNConverter {
     
     func convertCNContactWrapped(_ cnContact: CNContact) -> ContactHashWrapper {
         let contact = convertCNContact(cnContact)
-        return ContactHashWrapper(contact: contact)
+        return ContactHashWrapper(contact: contact, cnContact: cnContact)
     }
     
     func convertCNContact(_ cnContact: CNContact) -> Contact {
