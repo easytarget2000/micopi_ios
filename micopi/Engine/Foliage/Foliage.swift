@@ -2,11 +2,15 @@ import CoreGraphics
 
 class Foliage: NSObject {
     
-    fileprivate(set) var firstNode = FoliageNode(x: 0.0, y: 0.0)
+    fileprivate var firstNode = FoliageNode(
+        x: 0.0,
+        y: 0.0,
+        color: ARGBColor.black
+    )
     fileprivate var age = 0
-    fileprivate var maxAge = 50
-    fileprivate var maxNewNodes = 20
-    fileprivate var pushForce = Double(8)
+    fileprivate var maxAge = 128
+    fileprivate var maxNewNodes = 32
+    fileprivate var pushForce = Double(32)
     fileprivate var stopped = false
     fileprivate var nodeSize: Double {
         didSet {
@@ -19,7 +23,7 @@ class Foliage: NSObject {
             neighborGravity = nodeRadius / 2
         }
     }
-    fileprivate var neighborGravity: Double = 0.0
+    fileprivate var neighborGravity: Double = 16.0
     fileprivate var preferredNeighborDistance: Double = 1 {
         didSet {
             preferredNeighborDistanceHalf = preferredNeighborDistance / 2.0
@@ -32,14 +36,24 @@ class Foliage: NSObject {
     fileprivate var jitter: Double
     fileprivate var mirrored: Bool
     fileprivate var drawRects: Bool
-    fileprivate var shape = 0
+    fileprivate let colorPalette: ARGBColorPalette
+    fileprivate var nextColor: ARGBColor {
+        get {
+            return colorPalette.color(randomNumberGenerator: randomGenerator)
+        }
+    }
     var randomGenerator: RandomNumberGenerator = RandomNumberGenerator()
     var calculator: Calculator = Calculator()
     
     
-    init(imageSize: Double, mirroredMode: Bool) {
+    init(
+        imageSize: Double,
+        colorPalette: ARGBColorPalette,
+        mirroredMode: Bool
+    ) {
         self.mirrored = mirroredMode
         self.drawRects = !mirroredMode && false
+        self.colorPalette = colorPalette
         
         nodeSize = imageSize / 300
         maxPushDistance = imageSize * 0.2
@@ -89,14 +103,14 @@ class Foliage: NSObject {
             
             let nodeX = x + (slimnessFactor * cos(angleOfNode) * initialRadius) + jitterValue()
             let nodeY = y + (sin(angleOfNode) * initialRadius) + jitterValue()
-            let node = FoliageNode(x: nodeX, y: nodeY)
+            let node = FoliageNode(x: nodeX, y: nodeY, color: nextColor)
             
             if !firstNodeIsSet {
                 firstNode = node
                 previousNode = node
                 firstNodeIsSet = true
             } else if i == numberOfInitialNodes - 1 {
-                preferredNeighborDistance = calculator.distanceBetween(
+                preferredNeighborDistance = 2.0 * calculator.distanceBetween(
                     node1: node,
                     node2: previousNode
                 )
@@ -189,7 +203,10 @@ class Foliage: NSObject {
 //        }
 //    }
     
-    func updateAndDraw(nodeDrawer: FoliageNodeCGDrawer) -> Bool {
+    func updateAndDraw(
+        nodeDrawer: FoliageNodeCGDrawer,
+        context: CGContext
+    ) -> Bool {
         age += 1
         stopped = false
         
@@ -203,7 +220,7 @@ class Foliage: NSObject {
         repeat {
             nodeCounter += 1
             
-            nodeDrawer.drawNode(currentNode, nextNode: currentNode.nextNode!)
+            nodeDrawer.drawNode(currentNode, nextNode: currentNode.nextNode!, inContext: context)
             
             if numberOfNewNodes < maxNewNodes && nodeCounter % density == 0 {
                 addNodeNextTo(node1: currentNode)
@@ -229,7 +246,7 @@ class Foliage: NSObject {
         
         let node2X = (node1.x + node3.x) * 0.5
         let node2Y = (node1.y + node3.y) * 0.5
-        let node2 = FoliageNode(x: node2X, y: node2Y)
+        let node2 = FoliageNode(x: node2X, y: node2Y, color: nextColor)
         
         node1.nextNode = node2
         node2.nextNode = node3

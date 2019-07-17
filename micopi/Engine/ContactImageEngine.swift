@@ -25,9 +25,7 @@ class ContactImageEngine: NSObject {
         get {
             return [
                 .white,
-                .white
-//                colorPalette.color(randomNumber: randomNumberGenerator.int),
-//                colorPalette.color(randomNumber: randomNumberGenerator.int)
+                colorPalette.color(randomNumber: randomNumberGenerator.int)
             ]
         }
     }
@@ -35,6 +33,7 @@ class ContactImageEngine: NSObject {
     @IBOutlet var randomColorGenerator: RandomColorGenerator!
     @IBOutlet var colorPalette: ARGBColorPalette!
     @IBOutlet var colorConverter: ARGBColorCGConverter!
+    @IBOutlet var backgroundDrawer: BackgroundCGDrawer!
     @IBOutlet var gradientDrawer: GradientCGDrawer!
     @IBOutlet var initialsDrawer: InitialsDrawer!
     @IBOutlet var foliageGenerator: FoliageCGGenerator!
@@ -66,11 +65,7 @@ class ContactImageEngine: NSObject {
         let context = UIGraphicsGetCurrentContext()!
         
         drawBackgroundInContext(context)
-        generateFoliageInContext(
-            context,
-            color1: ARGBColor.black,
-            color2: ARGBColor.black
-        )
+        simulateAndDrawFoliageInContext(context)
 //        drawInitialsInContext(context)
         
         let generatedImage = UIGraphicsGetImageFromCurrentImageContext()!
@@ -82,14 +77,11 @@ class ContactImageEngine: NSObject {
     fileprivate func drawBackgroundInContext(
         _ context: CGContext
     ) {
-        let cgBackgroundColors = colorConverter.cgColorsFromARGBColors(
-            backgroundColors
+        backgroundDrawer.setup(context: context, imageSize: CGFloat(imageSize))
+        let backgroundColor = colorPalette.color(
+            randomNumberGenerator: randomNumberGenerator
         )
-        gradientDrawer.drawColors(
-            cgBackgroundColors,
-            inContext: context,
-            size: cgImageSize
-        )
+        backgroundDrawer.fillWithColor(backgroundColor)
     }
     
     fileprivate func drawInitialsInContext(_ context: CGContext
@@ -98,16 +90,8 @@ class ContactImageEngine: NSObject {
 //        initialsDrawer.drawInitialsInImageContext(initials)
     }
     
-    fileprivate func generateFoliageInContext(
-        _ context: CGContext,
-        color1: ARGBColor,
-        color2: ARGBColor
-    ) {
-        foliageGenerator.setup(
-            imageSize: imageSize,
-            color1: color1,
-            color2: color2
-        )
-        foliageGenerator.drawAndUpdate(context: context, numOfRounds: 64)
+    fileprivate func simulateAndDrawFoliageInContext(_ context: CGContext) {
+        foliageGenerator.setup(imageSize: imageSize, colorPalette: colorPalette)
+        foliageGenerator.drawCompletely(context: context)
     }
 }

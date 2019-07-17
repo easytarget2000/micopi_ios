@@ -10,6 +10,7 @@ class ImagePreviewViewController: UIViewController {
 
     @IBOutlet var viewModel: ContactHashWrapperViewModel!
     @IBOutlet weak var previewImageView: UIImageView!
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var contactDisplayNameLabel: UILabel!
     @IBAction func assignButtonTouched(_ sender: Any) {
         assignImageToContact()
@@ -49,7 +50,14 @@ class ImagePreviewViewController: UIViewController {
             [unowned self] in
             self.previewImageView.image = $0
         }
-        
+        viewModel.isGenerating.bind = {
+            [unowned self] in
+            if $0 {
+                self.activityIndicatorView.startAnimating()
+            } else {
+                self.activityIndicatorView.stopAnimating()
+            }
+        }
         viewModel.contactWrapper = contactWrapper
     }
     

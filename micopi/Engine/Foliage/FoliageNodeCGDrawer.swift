@@ -2,94 +2,65 @@ import CoreGraphics
 
 class FoliageNodeCGDrawer: NSObject {
     
-    var context: CGContext! {
-        didSet {
-            if let color1 = color1 {
-                context.setStrokeColor(color1)
-            }
-            context.setLineWidth(lineWidth)
-        }
-    }
+//    weak var context: CGContext! {
+//        didSet {
+//            context?.setLineWidth(lineWidth)
+//        }
+//    }
     var imageSize = CGFloat(0)
     var maxCircleShapeSize = CGFloat(0)
-    var color1: CGColor! {
-        didSet {
-            context.setStrokeColor(color1)
-        }
-    }
-    var color2: CGColor!
-    var shape: Int = 0
-    var mirrored: Bool = false
-    var lineWidth = CGFloat(1) {
-        didSet {
-            context.setLineWidth(lineWidth)
-        }
-    }
-    @IBOutlet var randomGenerator: RandomNumberGenerator!
+    var mirrored: Bool = true
+//    var lineWidth = CGFloat(1) {
+//        didSet {
+//            context.setLineWidth(lineWidth)
+//        }
+//    }
+    @IBOutlet var colorConverter: ARGBColorCGConverter!
     
     func setup(
         context: CGContext,
         imageSize: CGFloat,
-        maxCircleShapeSize: CGFloat,
-        color1: CGColor,
-        color2: CGColor
+        maxCircleShapeSize: CGFloat
     ) {
-        self.context = context
+//        self.context = context
         self.imageSize = imageSize
         self.maxCircleShapeSize = maxCircleShapeSize
-        self.color1 = color1
-        self.color2 = color2
     }
     
-    func drawNode(_ node: FoliageNode, nextNode: FoliageNode) {
-        if shape == 1 {
-            context.setStrokeColor(color2)
-            context.strokeEllipse(
-                in: CGRect(
-                    x: CGFloat(node.x + 1.0),
-                    y: CGFloat(node.y + 1.0),
-                    width: 20, //maxCircleShapeSize,
-                    height: 20 //maxCircleShapeSize
-                )
+    func drawNode(_ node: FoliageNode, nextNode: FoliageNode, inContext context: CGContext) {
+        let color = node.color
+        context.setLineWidth(2)
+//        context.setFillColor(color)
+        context.setFillColor(
+            red: CGFloat(color.r),
+            green: CGFloat(color.g),
+            blue: CGFloat(color.b),
+            alpha: 0.9
+        )
+//        context.setStrokeColor(color)
+//        context.str
+        context.fill(
+            CGRect(
+                x: CGFloat(node.x),
+                y: CGFloat(node.y),
+                width: 4.0,
+                height: 4.0
             )
-        } else {
-            context.setFillColor(color1)
-            context.fill(
-                CGRect(
-                    x: CGFloat(node.x + 1.0),
-                    y: CGFloat(node.y + 1.0),
-                    width: 1,
-                    height: 1
-                )
-            )
-        }
+        )
     
         if mirrored {
-            if shape == 1 {
-                context.setStrokeColor(color2)
-                context.strokeEllipse(
-                    in: CGRect(
-                        x: CGFloat(node.x + 1.0),
-                        y: CGFloat(node.y + 1.0),
-                        width: maxCircleShapeSize,
-                        height: maxCircleShapeSize
-                    )
+            context.fill(
+                CGRect(
+                    x: imageSize - CGFloat(node.x),
+                    y: CGFloat(node.y),
+                    width: 4.0,
+                    height: 4.0
                 )
-            } else {
-                context.setFillColor(color1)
-                context.fill(
-                    CGRect(
-                        x: imageSize - CGFloat(node.x),
-                        y: CGFloat(node.y),
-                        width: 1,
-                        height: 1
-                    )
-                )
-            }
+            )
         } else {
-            context.beginPath()
-            let point = CGPoint(x: CGFloat(node.x), y: CGFloat(node.y))
-            context.move(to: point)
+//            context.beginPath()
+//            let point = CGPoint(x: CGFloat(node.x), y: CGFloat(node.y))
+//            context.move(to: point)
         }
         
     //        if !mirrored {

@@ -4,30 +4,16 @@ class FoliageCGGenerator: NSObject {
     
     var foliages = [Foliage]()
     var imageSize = Double(0)
-    var color1 = ARGBColor(a: 0.0, r: 0.0, g: 0.0, b: 0.0)
-    var color2 = ARGBColor(a: 0.0, r: 0.0, g: 0.0, b: 0.0)
-    fileprivate var cgColor1: CGColor {
-        get {
-            return colorConverter.cgColorFromARGBColor(color1)
-        }
-    }
-    fileprivate var cgColor2: CGColor {
-        get {
-            return colorConverter.cgColorFromARGBColor(color2)
-        }
-    }
+    var color = ARGBColor(a: 0.0, r: 0.0, g: 0.0, b: 0.0)
     @IBOutlet var nodeDrawer: FoliageNodeCGDrawer!
     @IBOutlet var colorConverter: ARGBColorCGConverter!
     @IBOutlet var randomNumberGenerator: RandomNumberGenerator!
     
     func setup(
         imageSize: Double,
-        color1: ARGBColor,
-        color2: ARGBColor
+        colorPalette: ARGBColorPalette
     ) {
         self.imageSize = imageSize
-        self.color1 = color1
-        self.color2 = color2
         
         let numberOfShapes = 1 //randomNumberGenerator.i(largerThan: 2, smallerThan: 7)
         let mirrored = randomNumberGenerator.b(withChance: 0.5)
@@ -39,7 +25,11 @@ class FoliageCGGenerator: NSObject {
         foliages = []
         for i in 0 ..< numberOfShapes {
             
-            let foliage = Foliage(imageSize: imageSize, mirroredMode: mirrored)
+            let foliage = Foliage(
+                imageSize: imageSize,
+                colorPalette: colorPalette,
+                mirroredMode: mirrored
+            )
             //            let foliageX: Float
             //            let foliageY: Float
             //            if i < 4 {
@@ -79,6 +69,11 @@ class FoliageCGGenerator: NSObject {
         
     }
     
+    func drawCompletely(context: CGContext) {
+        let numOfRounds = 64
+        drawAndUpdate(context: context, numOfRounds: numOfRounds)
+    }
+    
     func drawAndUpdate(context: CGContext, numOfRounds: Int = 1) {
         for _ in 0 ..< numOfRounds {
             for foliage in foliages {
@@ -94,11 +89,10 @@ class FoliageCGGenerator: NSObject {
         nodeDrawer.setup(
             context: context,
             imageSize: CGFloat(imageSize),
-            maxCircleShapeSize: 16.0,
-            color1: cgColor1,
-            color2: cgColor2
+            maxCircleShapeSize: 16.0
         )
         
-        let isAlive = foliage.updateAndDraw(nodeDrawer: nodeDrawer)
+        let isAlive = foliage.updateAndDraw(nodeDrawer: nodeDrawer, context: context)
+//        nodeDrawer.context = nil
     }
 }

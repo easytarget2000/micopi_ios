@@ -10,6 +10,7 @@ class ContactHashWrapperViewModel: NSObject {
     @IBOutlet var contactImageDrawer: ContactImageEngine!
     @IBOutlet var contactWriter: ContactWriter!
     var displayName: Dynamic<String> = Dynamic("")
+    var isGenerating: Dynamic<Bool> = Dynamic(false)
     fileprivate(set) var generatedImage: Dynamic<UIImage?> = Dynamic(nil)
     
     func generatePreviousImage() {
@@ -43,11 +44,15 @@ class ContactHashWrapperViewModel: NSObject {
             return
         }
         
+        isGenerating.value = true
+//        generatedImage.value = nil
+        
         contactImageDrawer.contactWrapper = contactWrapper
         contactImageDrawer.drawImageAsync(
             completionHandler: {
                 (generatedImage) in
                 self.generatedImage.value = generatedImage
+                self.isGenerating.value = false
             }
         )
     }
