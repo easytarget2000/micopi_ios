@@ -2,19 +2,19 @@ import CoreGraphics
 
 class FoliageNodeCGDrawer: NSObject {
     
-//    weak var context: CGContext! {
-//        didSet {
-//            context?.setLineWidth(lineWidth)
-//        }
-//    }
+    weak var context: CGContext! {
+        didSet {
+            context?.setLineWidth(lineWidth)
+        }
+    }
     var imageSize = CGFloat(0)
     var maxCircleShapeSize = CGFloat(0)
-    var mirrored: Bool = true
-//    var lineWidth = CGFloat(1) {
-//        didSet {
-//            context.setLineWidth(lineWidth)
-//        }
-//    }
+    var mirrored: Bool = false
+    var lineWidth = CGFloat(1) {
+        didSet {
+            context.setLineWidth(lineWidth)
+        }
+    }
     @IBOutlet var colorConverter: ARGBColorCGConverter!
     
     func setup(
@@ -22,16 +22,16 @@ class FoliageNodeCGDrawer: NSObject {
         imageSize: CGFloat,
         maxCircleShapeSize: CGFloat
     ) {
-//        self.context = context
+        self.context = context
         self.imageSize = imageSize
         self.maxCircleShapeSize = maxCircleShapeSize
     }
     
     func drawNode(_ node: FoliageNode, nextNode: FoliageNode, inContext context: CGContext) {
         let color = node.color
-        context.setLineWidth(2)
+        self.context.setLineWidth(2)
 //        context.setFillColor(color)
-        context.setFillColor(
+        self.context.setFillColor(
             red: CGFloat(color.r),
             green: CGFloat(color.g),
             blue: CGFloat(color.b),
@@ -39,7 +39,7 @@ class FoliageNodeCGDrawer: NSObject {
         )
 //        context.setStrokeColor(color)
 //        context.str
-        context.fill(
+        self.context.fill(
             CGRect(
                 x: CGFloat(node.x),
                 y: CGFloat(node.y),
@@ -49,7 +49,7 @@ class FoliageNodeCGDrawer: NSObject {
         )
     
         if mirrored {
-            context.fill(
+            self.context.fill(
                 CGRect(
                     x: imageSize - CGFloat(node.x),
                     y: CGFloat(node.y),

@@ -15,7 +15,7 @@ class FoliageCGGenerator: NSObject {
     ) {
         self.imageSize = imageSize
         
-        let numberOfShapes = 1 //randomNumberGenerator.i(largerThan: 2, smallerThan: 7)
+        let numberOfShapes = randomNumberGenerator.i(largerThan: 2, smallerThan: 3)
         let mirrored = randomNumberGenerator.b(withChance: 0.5)
         
         let center = imageSize / 2
@@ -93,6 +93,6 @@ class FoliageCGGenerator: NSObject {
         )
         
         let isAlive = foliage.updateAndDraw(nodeDrawer: nodeDrawer, context: context)
-//        nodeDrawer.context = nil
+        nodeDrawer.context = nil
     }
 }

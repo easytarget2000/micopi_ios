@@ -35,7 +35,7 @@ class ContactImageEngine: NSObject {
     @IBOutlet var colorConverter: ARGBColorCGConverter!
     @IBOutlet var backgroundDrawer: BackgroundCGDrawer!
     @IBOutlet var gradientDrawer: GradientCGDrawer!
-    @IBOutlet var initialsDrawer: InitialsDrawer!
+    @IBOutlet var initialsDrawer: InitialsUIDrawer!
     @IBOutlet var foliageGenerator: FoliageCGGenerator!
     fileprivate var stopped = false
     
@@ -82,12 +82,16 @@ class ContactImageEngine: NSObject {
             randomNumberGenerator: randomNumberGenerator
         )
         backgroundDrawer.fillWithColor(backgroundColor)
+        backgroundDrawer.context = nil
     }
     
     fileprivate func drawInitialsInContext(_ context: CGContext
     ) {
         let initials = contactWrapper.contact.initials
-//        initialsDrawer.drawInitialsInImageContext(initials)
+        initialsDrawer.drawInitialsInImageContext(
+            initials,
+            imageSize: CGFloat(imageSize)
+        )
     }
     
     fileprivate func simulateAndDrawFoliageInContext(_ context: CGContext) {

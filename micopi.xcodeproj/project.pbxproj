@@ -21,7 +21,7 @@
 		0B97D51522B0500800B84594 /* ARGBColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B97D51422B0500800B84594 /* ARGBColor.swift */; };
 		0B97D51822B0508C00B84594 /* RandomColorGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B97D51722B0508C00B84594 /* RandomColorGenerator.swift */; };
 		0B97D51B22B05A7100B84594 /* ARGBColorCGConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B97D51A22B05A7100B84594 /* ARGBColorCGConverter.swift */; };
-		0B98D82322A9B3F8009B266B /* InitialsDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B98D82222A9B3F8009B266B /* InitialsDrawer.swift */; };
+		0B98D82322A9B3F8009B266B /* InitialsUIDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B98D82222A9B3F8009B266B /* InitialsUIDrawer.swift */; };
 		0B98D82522A9B51F009B266B /* FoliageNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B98D82422A9B51F009B266B /* FoliageNode.swift */; };
 		0B98D82722A9B5C2009B266B /* Foliage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B98D82622A9B5C2009B266B /* Foliage.swift */; };
 		0B98D82922A9B969009B266B /* RandomNumberGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B98D82822A9B969009B266B /* RandomNumberGenerator.swift */; };
@@ -79,7 +79,7 @@
 		0B97D51422B0500800B84594 /* ARGBColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARGBColor.swift; sourceTree = "<group>"; };
 		0B97D51722B0508C00B84594 /* RandomColorGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomColorGenerator.swift; sourceTree = "<group>"; };
 		0B97D51A22B05A7100B84594 /* ARGBColorCGConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARGBColorCGConverter.swift; sourceTree = "<group>"; };
-		0B98D82222A9B3F8009B266B /* InitialsDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialsDrawer.swift; sourceTree = "<group>"; };
+		0B98D82222A9B3F8009B266B /* InitialsUIDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialsUIDrawer.swift; sourceTree = "<group>"; };
 		0B98D82422A9B51F009B266B /* FoliageNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoliageNode.swift; sourceTree = "<group>"; };
 		0B98D82622A9B5C2009B266B /* Foliage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Foliage.swift; sourceTree = "<group>"; };
 		0B98D82822A9B969009B266B /* RandomNumberGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomNumberGenerator.swift; sourceTree = "<group>"; };
@@ -263,7 +263,7 @@
 			children = (
 				3072609222AA919D003B2FC4 /* BackgroundCGDrawer.swift */,
 				3074EEA522ADA58E008445DD /* GradientCGDrawer.swift */,
-				0B98D82222A9B3F8009B266B /* InitialsDrawer.swift */,
+				0B98D82222A9B3F8009B266B /* InitialsUIDrawer.swift */,
 			);
 			path = CommonDrawers;
 			sourceTree = "<group>";
@@ -420,7 +420,7 @@
 				0B98D82922A9B969009B266B /* RandomNumberGenerator.swift in Sources */,
 				0B97D51B22B05A7100B84594 /* ARGBColorCGConverter.swift in Sources */,
 				0B4064C92299EE1B00D2BFFF /* ContactCNConverter.swift in Sources */,
-				0B98D82322A9B3F8009B266B /* InitialsDrawer.swift in Sources */,
+				0B98D82322A9B3F8009B266B /* InitialsUIDrawer.swift in Sources */,
 				0BED070822D77AC600AEEB07 /* ContactHashWrapperViewModel.swift in Sources */,
 				0B56545D229C20B1000076E0 /* ImagePreviewViewController.swift in Sources */,
 				0B98D82B22A9C7F0009B266B /* Calculator.swift in Sources */,

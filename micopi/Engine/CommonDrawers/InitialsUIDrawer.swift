@@ -1,11 +1,11 @@
 import CoreGraphics
 import UIKit.UIFont
 
-class InitialsDrawer: NSObject {
+class InitialsUIDrawer: NSObject {
     
     var initialsFont = UIFont(name: "HelveticaNeue-Light", size: 600)!
     var initialsFontSizeFactorBase = CGFloat(0.66)
-    var initialsTextColor = UIColor.black//UIColor.white
+    var initialsTextColor = UIColor.white
     
     func drawInitialsInImageContext(_ initials: String, imageSize: CGFloat) {
         guard !initials.isEmpty else {

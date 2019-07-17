@@ -185,7 +185,7 @@
                     </connections>
                 </customObject>
                 <customObject id="ZKI-kH-yco" userLabel="GradientDrawer" customClass="GradientCGDrawer" customModule="micopi" customModuleProvider="target"/>
-                <customObject id="yp3-jG-kEB" userLabel="InitialsDrawer" customClass="InitialsDrawer" customModule="micopi" customModuleProvider="target"/>
+                <customObject id="yp3-jG-kEB" userLabel="InitialsDrawer" customClass="InitialsUIDrawer" customModule="micopi" customModuleProvider="target"/>
                 <customObject id="ohQ-NF-SbX" userLabel="ARGBColorCGConverter" customClass="ARGBColorCGConverter" customModule="micopi" customModuleProvider="target"/>
                 <customObject id="vhn-Tm-SXb" userLabel="FoliageGenerator" customClass="FoliageCGGenerator" customModule="micopi" customModuleProvider="target">
                     <connections>

@@ -8,7 +8,7 @@ class Foliage: NSObject {
         color: ARGBColor.black
     )
     fileprivate var age = 0
-    fileprivate var maxAge = 128
+    fileprivate var maxAge = 256
     fileprivate var maxNewNodes = 32
     fileprivate var pushForce = Double(32)
     fileprivate var stopped = false
@@ -123,85 +123,6 @@ class Foliage: NSObject {
             
         }
     }
-    
-//    func start(inPolygonAroundX x: Double, y: Double) {
-//        let size = randomGenerator.d(greater: imageSize * 0.01, smaller: imageSize * 0.07)
-//
-//        let numberOfEdges = randomGenerator.i(greater: 3, smaller: 8)
-//        //        let numberOfEdges = 4
-//        let numberOfEdgesF = Double(numberOfEdges)
-//        let nodesPerEdge = numberOfInitialNodes / numberOfEdges
-//        let nodesPerEdgeF = Double(nodesPerEdge)
-//
-//        let angleOffset = randomGenerator.d(smaller: piTwo)
-//
-//        var lastNode: Node!
-//        for i in 0 ..< numberOfInitialNodes {
-//
-//            let edge = i / nodesPerEdge
-//            let edgeF = Double(edge)
-//            let angleOfEdge1 = angleOffset + (piTwo * edgeF / numberOfEdgesF)
-//            let angleOfEdge2 = angleOffset + (piTwo * (edgeF + 1) / numberOfEdgesF)
-//
-//            let edge1X = x + (size * cosf(angleOfEdge1))
-//            let edge1Y = y + (size * sinf(angleOfEdge1))
-//
-//            let edge2X = x + (size * cosf(angleOfEdge2))
-//            let edge2Y = y + (size * sinf(angleOfEdge2))
-//
-//            //            print("Edge 1: \(edge1X), \(edge1Y)")
-//            //            print("Edge 2: \(edge2X), \(edge2Y)")
-//
-//            let angleBetweenEdges = Foliage.angle(
-//                betweenX1: edge1X,
-//                y1: edge1Y,
-//                x2: edge2X,
-//                y2: edge2Y
-//            )
-//            let nodeRelativeToEdge1 = (Double(i) - (edgeF * nodesPerEdgeF)) / nodesPerEdgeF
-//
-//            //            print("i: \(i), edge: \(edge), angleBetweenEdges: \(angleBetweenEdges), nodeRelTo1: \(nodeRelativeToEdge1)")
-//
-//            //            final double edge = i / nodesPerEdge;
-//            //            final double angleOfEdge1 = polygonAngle + (TWO_PI * edge / numberOfEdges);
-//            //            final double angleOfEdge2 = polygonAngle + (TWO_PI * (edge + 1) / numberOfEdges);
-//            //
-//            //            final double edge1X = x + (size * Math.cos(angleOfEdge1));
-//            //            final double edge1Y = y + (size * Math.sin(angleOfEdge1));
-//            //
-//            //            final double edge2X = x + (size * Math.cos(angleOfEdge2));
-//            //            final double edge2Y = y + (size * Math.sin(angleOfEdge2));
-//            //
-//            //            //            Log.d(TAG, "Edge 1: " + edge1X + ", " + edge1Y);
-//            //            //            Log.d(TAG, "Edge 2: " + edge2X + ", " + edge2Y);
-//            //
-//            //            final double angleBetweenEdges = angle(edge1X, edge1Y, edge2X, edge2Y);
-//            //            final double nodeRelativeToEdge1 = (i  - (edge * (double) nodesPerEdge)) / (double) nodesPerEdge;
-//            //            //            Log.d(TAG, "i: " + i + ", edge: " + edge + ", angleBetweenEdges: " + angleBetweenEdges + ", nodeRelativeToEdge1: " + nodeRelativeToEdge1);
-//            //
-//            //            final Node node = new Node();
-//            //            node.mX = edge1X + (Math.cos(angleBetweenEdges) * nodeRelativeToEdge1 * size);
-//            //            node.mY = edge1Y + (Math.sin(angleBetweenEdges) * nodeRelativeToEdge1 * size);
-//
-//            let node = Node(
-//                x: edge1X + (cosf(angleBetweenEdges) * nodeRelativeToEdge1 * size),
-//                y: edge1Y + (sinf(angleBetweenEdges) * nodeRelativeToEdge1 * size)
-//            )
-//
-//            if firstNode == nil {
-//                firstNode = node
-//                lastNode = node
-//            } else if i == numberOfInitialNodes - 1 {
-//                self.preferredNeighborDistance = node.distance(toOtherNode: lastNode)
-//                lastNode.next = node
-//                node.next = firstNode
-//            } else {
-//                lastNode.next = node
-//                lastNode = node
-//            }
-//
-//        }
-//    }
     
     func updateAndDraw(
         nodeDrawer: FoliageNodeCGDrawer,
