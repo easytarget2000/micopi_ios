@@ -25,8 +25,8 @@
 		0B98D82522A9B51F009B266B /* FoliageNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B98D82422A9B51F009B266B /* FoliageNode.swift */; };
 		0B98D82722A9B5C2009B266B /* Foliage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B98D82622A9B5C2009B266B /* Foliage.swift */; };
 		0B98D82922A9B969009B266B /* RandomNumberGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B98D82822A9B969009B266B /* RandomNumberGenerator.swift */; };
-		0B98D82B22A9C7F0009B266B /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B98D82A22A9C7F0009B266B /* Calculator.swift */; };
 		0B98D82D22A9C901009B266B /* FoliageNodeCGDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B98D82C22A9C901009B266B /* FoliageNodeCGDrawer.swift */; };
+		0BA0394022DF5B7C00D7C7A3 /* Vector2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA0393F22DF5B7C00D7C7A3 /* Vector2.swift */; };
 		0BED06FE22D6864400AEEB07 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BED06FD22D6864400AEEB07 /* MenuTableViewController.swift */; };
 		0BED070122D6A05500AEEB07 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0BED070022D6A05500AEEB07 /* Localizable.strings */; };
 		0BED070322D6A55900AEEB07 /* ContactPickerWrapperDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BED070222D6A55900AEEB07 /* ContactPickerWrapperDelegate.swift */; };
@@ -83,8 +83,8 @@
 		0B98D82422A9B51F009B266B /* FoliageNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoliageNode.swift; sourceTree = "<group>"; };
 		0B98D82622A9B5C2009B266B /* Foliage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Foliage.swift; sourceTree = "<group>"; };
 		0B98D82822A9B969009B266B /* RandomNumberGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomNumberGenerator.swift; sourceTree = "<group>"; };
-		0B98D82A22A9C7F0009B266B /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
 		0B98D82C22A9C901009B266B /* FoliageNodeCGDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoliageNodeCGDrawer.swift; sourceTree = "<group>"; };
+		0BA0393F22DF5B7C00D7C7A3 /* Vector2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vector2.swift; sourceTree = "<group>"; };
 		0BED06FD22D6864400AEEB07 /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		0BED070022D6A05500AEEB07 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		0BED070222D6A55900AEEB07 /* ContactPickerWrapperDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactPickerWrapperDelegate.swift; sourceTree = "<group>"; };
@@ -214,11 +214,11 @@
 		0B97D51922B0582F00B84594 /* Foliage */ = {
 			isa = PBXGroup;
 			children = (
-				0B98D82A22A9C7F0009B266B /* Calculator.swift */,
 				0B98D82622A9B5C2009B266B /* Foliage.swift */,
 				3072609422AA9741003B2FC4 /* FoliageCGGenerator.swift */,
 				0B98D82422A9B51F009B266B /* FoliageNode.swift */,
 				0B98D82C22A9C901009B266B /* FoliageNodeCGDrawer.swift */,
+				0BA0393F22DF5B7C00D7C7A3 /* Vector2.swift */,
 			);
 			path = Foliage;
 			sourceTree = "<group>";
@@ -423,7 +423,6 @@
 				0B98D82322A9B3F8009B266B /* InitialsUIDrawer.swift in Sources */,
 				0BED070822D77AC600AEEB07 /* ContactHashWrapperViewModel.swift in Sources */,
 				0B56545D229C20B1000076E0 /* ImagePreviewViewController.swift in Sources */,
-				0B98D82B22A9C7F0009B266B /* Calculator.swift in Sources */,
 				0B98D82522A9B51F009B266B /* FoliageNode.swift in Sources */,
 				0BED070A22D79A8300AEEB07 /* Dynamic.swift in Sources */,
 				3072609322AA919D003B2FC4 /* BackgroundCGDrawer.swift in Sources */,
@@ -437,6 +436,7 @@
 				0B4064932299E00800D2BFFF /* AppDelegate.swift in Sources */,
 				0B4064C12299E28C00D2BFFF /* ContactPickerWrapper.swift in Sources */,
 				3074EEA822ADA68F008445DD /* ARGBColorPalette.swift in Sources */,
+				0BA0394022DF5B7C00D7C7A3 /* Vector2.swift in Sources */,
 				0BED070322D6A55900AEEB07 /* ContactPickerWrapperDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
