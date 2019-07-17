@@ -34,15 +34,15 @@ class ContactImageEngine: NSObject {
     fileprivate var stopped = false
     
     func drawImageAsync(
-        completionHandler: @escaping (UIImage) -> ()
+        completionHandler: @escaping (UIImage, Bool) -> ()
     ) {
         globalDispatchQueue.async {
             // Background thread
             
-            let generatedImage = self.generateAndDraw()
+            let (generatedImage, completed) = self.generateAndDraw()
             
             self.mainDispatchQueue.async(execute: {
-                    completionHandler(generatedImage)
+                    completionHandler(generatedImage, completed)
                 }
             )
         }
@@ -52,7 +52,7 @@ class ContactImageEngine: NSObject {
         stopped = true
     }
     
-    func generateAndDraw() -> UIImage {
+    func generateAndDraw() -> (UIImage, Bool) {
         stopped = false
         
         UIGraphicsBeginImageContext(cgImageSize)
@@ -65,7 +65,7 @@ class ContactImageEngine: NSObject {
         let generatedImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
-        return generatedImage
+        return (generatedImage, true)
     }
     
     fileprivate func drawBackgroundInContext(

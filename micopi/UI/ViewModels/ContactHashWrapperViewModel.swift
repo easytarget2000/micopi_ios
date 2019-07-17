@@ -54,9 +54,9 @@ class ContactHashWrapperViewModel: NSObject {
         contactImageDrawer.contactWrapper = contactWrapper
         contactImageDrawer.drawImageAsync(
             completionHandler: {
-                (generatedImage) in
+                (generatedImage, completed) in
                 self.generatedImage.value = generatedImage
-                self.isGenerating.value = false
+                self.isGenerating.value = !completed
             }
         )
     }
