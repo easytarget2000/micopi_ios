@@ -25,10 +25,14 @@ class FoliageCGGenerator: NSObject {
         foliages = []
         for i in 0 ..< numberOfShapes {
             
+            let minRadius = imageSize / 32.0
             let foliage = Foliage(
-                imageSize: imageSize,
-                colorPalette: colorPalette,
-                mirroredMode: mirrored
+                worldSize: imageSize,
+                numOfInitialNodes: 64,
+                maxJitter: imageSize / 128.0,
+                startX: center,
+                startY: center,
+                radius: imageSize / 16.0
             )
             //            let foliageX: Float
             //            let foliageY: Float
@@ -70,7 +74,7 @@ class FoliageCGGenerator: NSObject {
     }
     
     func drawCompletely(context: CGContext) {
-        let numOfRounds = 64
+        let numOfRounds = 512
         drawAndUpdate(context: context, numOfRounds: numOfRounds)
     }
     

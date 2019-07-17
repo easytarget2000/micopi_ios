@@ -28,31 +28,26 @@ class FoliageNodeCGDrawer: NSObject {
     }
     
     func drawNode(_ node: FoliageNode, nextNode: FoliageNode, inContext context: CGContext) {
-        let color = node.color
+//        let color = node.color
         self.context.setLineWidth(2)
 //        context.setFillColor(color)
-        self.context.setFillColor(
-            red: CGFloat(color.r),
-            green: CGFloat(color.g),
-            blue: CGFloat(color.b),
-            alpha: 0.9
-        )
 //        context.setStrokeColor(color)
 //        context.str
+        self.context.setFillColor(gray: 1.0, alpha: 0.5)
         self.context.fill(
             CGRect(
-                x: CGFloat(node.x),
-                y: CGFloat(node.y),
-                width: 4.0,
-                height: 4.0
+                x: CGFloat(node.positionVector.x),
+                y: CGFloat(node.positionVector.y),
+                width: 1.0,
+                height: 1.0
             )
         )
     
         if mirrored {
             self.context.fill(
                 CGRect(
-                    x: imageSize - CGFloat(node.x),
-                    y: CGFloat(node.y),
+                    x: imageSize - CGFloat(node.positionVector.x),
+                    y: CGFloat(node.positionVector.y),
                     width: 4.0,
                     height: 4.0
                 )
