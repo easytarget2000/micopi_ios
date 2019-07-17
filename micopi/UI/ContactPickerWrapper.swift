@@ -69,7 +69,7 @@ extension ContactPickerWrapper: CNContactPickerDelegate {
         picker.dismiss(
             animated: true,
             completion: {
-                self.handleContactsSelection(contacts)
+                self.handleContactsSelection([contact])
             }
         )
     }
