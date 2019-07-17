@@ -10,10 +10,14 @@ class ARGBColorPalette: NSObject {
         self.colors = colors
     }
     
+    func setDarkColors() {
+        colors = [
+            ARGBColor(hex: 0xFFFFFF)
+        ]
+    }
+    
     func setColorsRandomly(randomColorGenerator: RandomColorGenerator) {
         colors = [
-//            ARGBColor.red,
-//            ARGBColor.blue
             randomColorGenerator.nextARGBColor(),
             randomColorGenerator.nextARGBColor(),
             randomColorGenerator.nextARGBColor(),
@@ -30,7 +34,6 @@ class ARGBColorPalette: NSObject {
     func color(
         randomNumberGenerator: RandomNumberGenerator = RandomNumberGenerator()
     ) -> ARGBColor {
-//        return ARGBColor.red
         return color(randomNumber: randomNumberGenerator.int)
     }
     

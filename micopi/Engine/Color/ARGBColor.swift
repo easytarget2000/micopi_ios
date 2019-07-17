@@ -11,11 +11,34 @@ struct ARGBColor: Equatable {
     let g: Double
     let b: Double
     
+    init(a: Double, r: Double, g: Double, b: Double) {
+        self.a = a
+        self.r = r
+        self.g = g
+        self.b = b
+    }
+    
+    init(hex: Int) {
+        let intA = (hex >> 24) & 0xFF
+        let intR = (hex >> 16) & 0xFF
+        let intG = (hex >> 8) & 0xFF
+        let intB = hex & 0xFF
+        
+        a = ARGBColor.intToRelativeValue(intA)
+        r = ARGBColor.intToRelativeValue(intR)
+        g = ARGBColor.intToRelativeValue(intG)
+        b = ARGBColor.intToRelativeValue(intB)
+    }
+    
     static func == (lhs: ARGBColor, rhs: ARGBColor) -> Bool {
         return lhs.a == rhs.a
             && lhs.r == rhs.r
             && lhs.g == rhs.g
             && lhs.b == rhs.b
+    }
+    
+    static func intToRelativeValue(_ int: Int) -> Double {
+        return Double(int) / Double(0xFF)
     }
     
     func colorWithAlpha(_ alpha: Double) -> ARGBColor {
