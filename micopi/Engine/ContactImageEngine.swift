@@ -33,18 +33,11 @@ class ContactImageEngine: NSObject {
     @IBOutlet var foliageGenerator: FoliageCGGenerator!
     fileprivate var stopped = false
     
-    func drawImageAsync(
-        completionHandler: @escaping (UIImage, Bool) -> ()
-    ) {
+    func drawImageAsync(callback: @escaping (UIImage, Bool) -> ()) {
         globalDispatchQueue.async {
             // Background thread
             
-            let (generatedImage, completed) = self.generateAndDraw()
-            
-            self.mainDispatchQueue.async(execute: {
-                    completionHandler(generatedImage, completed)
-                }
-            )
+            self.generateAndDraw(callback: callback)
         }
     }
     
@@ -52,20 +45,33 @@ class ContactImageEngine: NSObject {
         stopped = true
     }
     
-    func generateAndDraw() -> (UIImage, Bool) {
+    // TODO: Typealias
+    // TODO: Store weak reference?
+    
+    func generateAndDraw(callback: @escaping (UIImage, Bool) -> ()) {
         stopped = false
         
         UIGraphicsBeginImageContext(cgImageSize)
         let context = UIGraphicsGetCurrentContext()!
         
         drawBackgroundInContext(context)
-        simulateAndDrawFoliageInContext(context)
+        simulateAndDrawFoliageInContext(context, callback: callback)
         drawInitialsInContext(context)
         
-        let generatedImage = UIGraphicsGetImageFromCurrentImageContext()!
+        getImageAndCallback(callback, completed: true)
         UIGraphicsEndImageContext()
-        
-        return (generatedImage, true)
+    }
+    
+    fileprivate func getImageAndCallback(
+        _ callback: @escaping (UIImage, Bool) -> (),
+        completed: Bool = false
+    ) {
+        let generatedImage = UIGraphicsGetImageFromCurrentImageContext()!
+        mainDispatchQueue.async(
+            execute: {
+                callback(generatedImage, completed)
+            }
+        )
     }
     
     fileprivate func drawBackgroundInContext(
@@ -76,8 +82,7 @@ class ContactImageEngine: NSObject {
         backgroundDrawer.context = nil
     }
     
-    fileprivate func drawInitialsInContext(_ context: CGContext
-    ) {
+    fileprivate func drawInitialsInContext(_ context: CGContext) {
         let initials = contactWrapper.contact.initials
         let initialsColor = backgroundColor.colorWithAlpha(initialsAlpha)
         initialsDrawer.drawInitialsInImageContext(
@@ -87,8 +92,18 @@ class ContactImageEngine: NSObject {
         )
     }
     
-    fileprivate func simulateAndDrawFoliageInContext(_ context: CGContext) {
+    fileprivate func simulateAndDrawFoliageInContext(
+        _ context: CGContext,
+        callback: @escaping (UIImage, Bool) -> ()
+    ) {
         foliageGenerator.setup(imageSize: imageSize, colorPalette: colorPalette)
-        foliageGenerator.drawCompletely(context: context)
+        let numOfRoundsPerCallback = 8
+        let numOfTotalRounds = 512
+        for roundsCounter in 0 ..< numOfTotalRounds {
+            foliageGenerator.drawAndUpdate(context: context, numOfRounds: 1)
+            if roundsCounter % numOfRoundsPerCallback == 0 {
+                getImageAndCallback(callback, completed: false)
+            }
+        }
     }
 }
