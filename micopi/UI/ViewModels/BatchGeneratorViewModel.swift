@@ -31,6 +31,7 @@ class BatchGeneratorViewModel: NSObject {
         } else {
             generateImages()
         }
+        setButtonTitle()
     }
     
     fileprivate func setStatusMessage() {
@@ -80,8 +81,7 @@ class BatchGeneratorViewModel: NSObject {
                     return
                 }
                 
-                self.isGenerating.value = false
-                self.currentlyProcessedContact = nil
+                self.handleCompletion()
             }
         )
         
@@ -130,5 +130,11 @@ class BatchGeneratorViewModel: NSObject {
             processedContacts.append(contactWrapper.contact)
         }
         setStatusMessage()
+    }
+    
+    fileprivate func handleCompletion() {
+        isGenerating.value = false
+        currentlyProcessedContact = nil
+        setButtonTitle()
     }
 }

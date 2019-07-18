@@ -7,7 +7,7 @@
 
 "batch_start_message"           = "Selected Contacts:";
 "batch_name_default_format"     = "\n• %@";
-"batch_name_processing_format"  = "\n• %@ (Processing...)";
+"batch_name_processing_format"  = "\n• %@ (processing...)";
 "batch_name_completed_format"   = "\n• %@ ✅";
 "batch_start_button"            = "Assign New Images";
-"batch_stop_button"             = "Stop image creation";
+"batch_stop_button"             = "Stop Image Creation";
