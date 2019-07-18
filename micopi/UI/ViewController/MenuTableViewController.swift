@@ -18,7 +18,8 @@ class MenuTableViewController: UITableViewController {
             imagePreviewViewController.contactWrapper = contactWrapper
         } else if let batchGeneratorViewController
             = segue.destination as? BatchGeneratorViewController {
-            
+            let contactWrappers = sender as! [ContactHashWrapper]
+            batchGeneratorViewController.contactWrappers = contactWrappers
         }
     }
 

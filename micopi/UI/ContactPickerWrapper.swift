@@ -64,27 +64,15 @@ extension ContactPickerWrapper: CNContactPickerDelegate {
     
     func contactPicker(
         _ picker: CNContactPickerViewController,
-        didSelect contact: CNContact
+        didSelect contacts: [CNContact]
     ) {
         picker.dismiss(
             animated: true,
             completion: {
-                self.handleContactsSelection([contact])
+                self.handleContactsSelection(contacts)
             }
         )
     }
-    
-//    func contactPicker(
-//        _ picker: CNContactPickerViewController,
-//        didSelect contacts: [CNContact]
-//    ) {
-//        picker.dismiss(
-//            animated: true,
-//            completion: {
-//                self.handleContactsSelection(contacts)
-//            }
-//        )
-//    }
     
     func contactPickerDidCancel(_ picker: CNContactPickerViewController) {
         picker.dismiss(
