@@ -1,6 +1,6 @@
 import UIKit
 
-class ImagePreviewViewController: UIViewController {
+class ImagePreviewViewController: UITableViewController {
     
     // MARK: - Properties
     

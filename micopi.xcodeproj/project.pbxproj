@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B00DE7222E0E26300C26288 /* BatchGeneratorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B00DE7122E0E26300C26288 /* BatchGeneratorViewModel.swift */; };
 		0B4064932299E00800D2BFFF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4064922299E00800D2BFFF /* AppDelegate.swift */; };
 		0B4064982299E00800D2BFFF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B4064962299E00800D2BFFF /* Main.storyboard */; };
 		0B40649A2299E00A00D2BFFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B4064992299E00A00D2BFFF /* Assets.xcassets */; };
@@ -60,6 +61,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B00DE7122E0E26300C26288 /* BatchGeneratorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatchGeneratorViewModel.swift; sourceTree = "<group>"; };
 		0B40648F2299E00800D2BFFF /* micopi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = micopi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B4064922299E00800D2BFFF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0B4064972299E00800D2BFFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 		0BED070622D77A9500AEEB07 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				0B00DE7122E0E26300C26288 /* BatchGeneratorViewModel.swift */,
 				0BED070722D77AC600AEEB07 /* ContactHashWrapperViewModel.swift */,
 				0BA0394122DFD65600D7C7A3 /* ImageAssignConfirmationViewModel.swift */,
 			);
@@ -436,6 +439,7 @@
 				3074EEA622ADA58E008445DD /* GradientCGDrawer.swift in Sources */,
 				30C315B6229C93B400B36C58 /* BatchGeneratorViewController.swift in Sources */,
 				0B4064C72299ED8F00D2BFFF /* Contact.swift in Sources */,
+				0B00DE7222E0E26300C26288 /* BatchGeneratorViewModel.swift in Sources */,
 				30C315B8229C96AD00B36C58 /* ContactWriter.swift in Sources */,
 				0B4064932299E00800D2BFFF /* AppDelegate.swift in Sources */,
 				0B4064C12299E28C00D2BFFF /* ContactPickerWrapper.swift in Sources */,
