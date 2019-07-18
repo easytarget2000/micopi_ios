@@ -44,19 +44,19 @@ class ImagePreviewViewController: UIViewController {
     
     fileprivate func setupViewModel() {
         viewModel.displayName.bind = {
-            [unowned self] in
-            self.contactDisplayNameLabel.text = $0
+            [weak self] in
+            self?.contactDisplayNameLabel.text = $0
         }
         viewModel.generatedImage.bind = {
-            [unowned self] in
-            self.previewImageView.image = $0
+            [weak self] in
+            self?.previewImageView?.image = $0
         }
         viewModel.isGenerating.bind = {
-            [unowned self] in
+            [weak self] in
             if $0 {
-                self.activityIndicatorView.startAnimating()
+                self?.activityIndicatorView?.startAnimating()
             } else {
-                self.activityIndicatorView.stopAnimating()
+                self?.activityIndicatorView?.stopAnimating()
             }
         }
         viewModel.contactWrapper = contactWrapper

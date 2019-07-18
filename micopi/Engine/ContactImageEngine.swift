@@ -14,7 +14,7 @@ class ContactImageEngine: NSObject {
         }
     }
     var backgroundColor: ARGBColor!
-    var initialsAlpha = 0.7
+    var initialsAlpha = 0.8
     var imageSize: Double = ContactImageEngine.defaultImageSize
     var cgImageSize: CGSize {
         get {
