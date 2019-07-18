@@ -1,5 +1,6 @@
 "ok_button" = "OK";
 
+"assign_confirmation_title"                     = "Completed";
 "assign_confirmation_message_format"            = "%@ has a new contact image.";
 "assign_multiple_confirmation_message_format"   = "%@ entries have a new contact image.";
 "assign_error_message"                          = "There was an error assigning this image. Please check the app permissions.";

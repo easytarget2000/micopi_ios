@@ -8,9 +8,10 @@ class ImageAssignConfirmationViewModel: NSObject {
         contact: Contact?,
         success: Bool
     )  -> UIAlertController {
+        let title = titleForContact(contact: contact, success: success)
         let message = messageForContact(contact: contact, success: success)
         let alert = UIAlertController(
-            title: nil,
+            title: title,
             message: message,
             preferredStyle: .alert
         )
@@ -21,6 +22,17 @@ class ImageAssignConfirmationViewModel: NSObject {
         )
         alert.addAction(okAction)
         return alert
+    }
+    
+    func titleForContact(contact: Contact?, success: Bool) -> String? {
+        if success {
+            return NSLocalizedString(
+                "assign_confirmation_title",
+                comment: "Done"
+            )
+        } else {
+            return nil
+        }
     }
     
     func messageForContact(contact: Contact?, success: Bool) -> String {
