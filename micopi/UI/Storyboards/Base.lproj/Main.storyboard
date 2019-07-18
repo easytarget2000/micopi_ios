@@ -5,7 +5,6 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -55,10 +54,10 @@
             </objects>
             <point key="canvasLocation" x="-794" y="-14"/>
         </scene>
-        <!--Batch Generator View Controller-->
+        <!--Multiple Contacts-->
         <scene sceneID="zz2-t9-YH4">
             <objects>
-                <tableViewController id="WL8-rH-lSK" customClass="BatchGeneratorViewController" customModule="micopi" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Multiple Contacts" id="WL8-rH-lSK" customClass="BatchGeneratorViewController" customModule="micopi" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Njg-XT-puT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -119,67 +118,9 @@
             <point key="canvasLocation" x="-1687" y="-14"/>
         </scene>
         <!--Preview-->
-        <scene sceneID="jV8-Df-4xv">
-            <objects>
-                <viewController id="8aT-AV-wQL" customClass="ImagePreviewViewController" customModule="micopi" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="1m8-MY-9Tl">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="John Appleseed" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TmU-J9-eaq" userLabel="ContactFullNameLabel">
-                                <rect key="frame" x="40" y="530" width="334" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="dLr-jU-x44">
-                                <rect key="frame" x="197" y="285" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </activityIndicatorView>
-                        </subviews>
-                        <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="TmU-J9-eaq" firstAttribute="leading" secondItem="2ha-fz-Vd3" secondAttribute="leading" constant="40" id="gvc-im-ihr"/>
-                            <constraint firstItem="2ha-fz-Vd3" firstAttribute="trailing" secondItem="TmU-J9-eaq" secondAttribute="trailing" constant="40" id="lF6-Fw-1sj"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="2ha-fz-Vd3"/>
-                    </view>
-                    <toolbarItems>
-                        <barButtonItem title="Previous Image" id="xbM-AW-6b8" userLabel="PreviousImageButton">
-                            <connections>
-                                <action selector="previousImageButtonTouched:" destination="8aT-AV-wQL" id="z64-QD-bHG"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="cJT-kR-yqK"/>
-                        <barButtonItem title="Next Image" id="DdC-vM-Vek" userLabel="NextImageButton">
-                            <connections>
-                                <action selector="nextImageButtonTouched:" destination="8aT-AV-wQL" id="Dqb-Rc-VRQ"/>
-                            </connections>
-                        </barButtonItem>
-                    </toolbarItems>
-                    <navigationItem key="navigationItem" title="Preview" largeTitleDisplayMode="never" id="Ddw-XJ-tW2">
-                        <barButtonItem key="rightBarButtonItem" title="Assign" id="PIR-04-zbz" userLabel="AssignImageButton">
-                            <connections>
-                                <action selector="assignButtonTouched:" destination="8aT-AV-wQL" id="kkk-kT-max"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="activityIndicatorView" destination="dLr-jU-x44" id="MvQ-Gr-Ncs"/>
-                        <outlet property="assignConfirmationViewModel" destination="oOB-fl-bBo" id="TDq-BF-4Dj"/>
-                        <outlet property="contactDisplayNameLabel" destination="TmU-J9-eaq" id="trj-Du-FAD"/>
-                        <outlet property="previewImageView" destination="1Oq-Of-fZj" id="aes-Qs-c6K"/>
-                        <outlet property="viewModel" destination="bG5-Ri-b9x" id="sgx-vj-Roj"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="S7I-lh-tyE" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-326" y="-490"/>
-        </scene>
-        <!--Image Preview View Controller-->
         <scene sceneID="8qa-8e-ckC">
             <objects>
-                <tableViewController id="FhW-iz-Hgd" customClass="ImagePreviewViewController" customModule="micopi" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Preview" id="FhW-iz-Hgd" customClass="ImagePreviewViewController" customModule="micopi" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="eW0-cO-seg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -201,13 +142,18 @@
                                                         <constraint firstAttribute="width" secondItem="1Oq-Of-fZj" secondAttribute="height" multiplier="1:1" id="qwD-rZ-xN1"/>
                                                     </constraints>
                                                 </imageView>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="BHR-d5-uea">
+                                                    <rect key="frame" x="197" y="197.5" width="20" height="20"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="1Oq-Of-fZj" firstAttribute="top" secondItem="azC-oj-kZs" secondAttribute="top" id="6ve-gE-sbj"/>
+                                                <constraint firstItem="BHR-d5-uea" firstAttribute="centerX" secondItem="1Oq-Of-fZj" secondAttribute="centerX" id="LT9-Hh-kpy"/>
                                                 <constraint firstAttribute="trailing" secondItem="1Oq-Of-fZj" secondAttribute="trailing" id="PJX-as-M3g"/>
                                                 <constraint firstItem="1Oq-Of-fZj" firstAttribute="width" secondItem="azC-oj-kZs" secondAttribute="width" id="Rve-IM-OWr"/>
                                                 <constraint firstItem="1Oq-Of-fZj" firstAttribute="leading" secondItem="azC-oj-kZs" secondAttribute="leading" id="V7h-l8-XQ9"/>
                                                 <constraint firstAttribute="bottom" secondItem="1Oq-Of-fZj" secondAttribute="bottom" id="W7D-cT-oIJ"/>
+                                                <constraint firstItem="BHR-d5-uea" firstAttribute="centerY" secondItem="1Oq-Of-fZj" secondAttribute="centerY" id="noo-FO-3Yc"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -278,6 +224,12 @@
                             <outlet property="delegate" destination="FhW-iz-Hgd" id="Qha-Bz-HnK"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="activityIndicatorView" destination="BHR-d5-uea" id="MPl-cQ-FFL"/>
+                        <outlet property="assignConfirmationViewModel" destination="oOB-fl-bBo" id="tfm-LX-MMV"/>
+                        <outlet property="previewImageView" destination="1Oq-Of-fZj" id="0Td-KT-RMs"/>
+                        <outlet property="viewModel" destination="bG5-Ri-b9x" id="rib-WQ-aaP"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1OE-YU-6n3" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <customObject id="bG5-Ri-b9x" customClass="ContactHashWrapperViewModel" customModule="micopi" customModuleProvider="target">

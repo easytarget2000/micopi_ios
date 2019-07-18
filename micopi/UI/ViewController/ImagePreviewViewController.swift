@@ -4,6 +4,12 @@ class ImagePreviewViewController: UITableViewController {
     
     // MARK: - Properties
     
+    fileprivate static let imageSectionIndex = 0
+    fileprivate static let saveActionSectionIndex = 1
+    fileprivate static let imageSettingsSectionIndex = 2
+    fileprivate static let assignActionRowIndex = 0
+    fileprivate static let nextImageActionRowIndex = 0
+    fileprivate static let previousImageActionRowIndex = 1
     var contactWrapper: ContactHashWrapper!
     
     // MARK: IB
@@ -12,16 +18,6 @@ class ImagePreviewViewController: UITableViewController {
     @IBOutlet var assignConfirmationViewModel: ImageAssignConfirmationViewModel!
     @IBOutlet weak var previewImageView: UIImageView!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
-    @IBOutlet weak var contactDisplayNameLabel: UILabel!
-    @IBAction func assignButtonTouched(_ sender: Any) {
-        assignImageToContact()
-    }
-    @IBAction func previousImageButtonTouched(_ sender: Any) {
-        generatePreviousImage()
-    }
-    @IBAction func nextImageButtonTouched(_ sender: Any) {
-        generateNextImage()
-    }
     
     // MARK: - View Controller Lifecycle
     
@@ -35,7 +31,8 @@ class ImagePreviewViewController: UITableViewController {
     fileprivate func setupViewModel() {
         viewModel.displayName.bind = {
             [weak self] in
-            self?.contactDisplayNameLabel.text = $0
+            $0
+            self?.tableView?.reloadData()
         }
         viewModel.generatedImage.bind = {
             [weak self] in
@@ -67,5 +64,48 @@ class ImagePreviewViewController: UITableViewController {
     
     fileprivate func generateNextImage() {
         viewModel.generateNextImage()
+    }
+}
+
+// MARK: - UITableViewDataSource
+
+extension ImagePreviewViewController {
+    
+    override func tableView(
+        _ tableView: UITableView,
+        titleForFooterInSection section: Int
+    ) -> String? {
+        guard section == ImagePreviewViewController.imageSectionIndex else {
+            return nil
+        }
+        
+        return viewModel.displayName.value
+    }
+}
+
+// MARK: - UITableViewDelegate
+
+extension ImagePreviewViewController {
+    
+    override func tableView(
+        _ tableView: UITableView,
+        didSelectRowAt indexPath: IndexPath
+    ) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        switch indexPath.section {
+        case ImagePreviewViewController.saveActionSectionIndex:
+            assignImageToContact()
+        case ImagePreviewViewController.imageSettingsSectionIndex:
+            switch indexPath.row {
+            case ImagePreviewViewController.nextImageActionRowIndex:
+                generateNextImage()
+            case ImagePreviewViewController.previousImageActionRowIndex:
+                generatePreviousImage()
+            default:
+                break
+            }
+        default:
+            break
+        }
     }
 }
