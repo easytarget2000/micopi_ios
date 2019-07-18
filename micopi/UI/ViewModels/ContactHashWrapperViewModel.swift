@@ -8,7 +8,7 @@ class ContactHashWrapperViewModel: NSObject {
         }
     }
     @IBOutlet var contactViewModel: ContactViewModel!
-    @IBOutlet var contactImageDrawer: ContactImageEngine!
+    @IBOutlet var imageEngine: ContactImageEngine!
     @IBOutlet var contactWriter: ContactWriter!
     var isGenerating: Dynamic<Bool> = Dynamic(false)
     var displayName: Dynamic<String> = Dynamic("")
@@ -47,17 +47,17 @@ class ContactHashWrapperViewModel: NSObject {
             return
         }
         
-        guard let contactImageDrawer = contactImageDrawer else {
+        guard let contactImageDrawer = imageEngine else {
             return
         }
         
         isGenerating.value = true
 //        generatedImage.value = nil
         
-        contactImageDrawer.contactWrapper = contactWrapper
-        contactImageDrawer.drawImageAsync(
+        contactImageDrawer.contactWrappers = [contactWrapper]
+        contactImageDrawer.generateAndDrawAsync(
             callback: {
-                (generatedImage, completed) in
+                (_, generatedImage, completed, _) in
                 self.generatedImage.value = generatedImage
                 self.isGenerating.value = !completed
             }

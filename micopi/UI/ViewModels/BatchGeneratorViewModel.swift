@@ -1,4 +1,4 @@
-import Foundation
+import UIKit.UIImage
 
 class BatchGeneratorViewModel: NSObject {
     
@@ -10,17 +10,27 @@ class BatchGeneratorViewModel: NSObject {
     var statusMessage = Dynamic("")
     var buttonTitle = Dynamic("")
     var isGenerating = Dynamic(false)
-    var currentlyProcessedContact: Contact?
-    var processedContacts: [Contact]?
+    var currentlyProcessedContact: Contact? {
+        didSet {
+            self.setStatusMessage()
+        }
+    }
+    var processedContacts = [Contact]()
     @IBOutlet var contactViewModel: ContactViewModel!
-
+    @IBOutlet var imageEngine: ContactImageEngine!
+    @IBOutlet var contactWriter: ContactWriter!
+    
     func initValues() {
         setStatusMessage()
         setButtonTitle()
     }
     
     func handleButtonTouch() {
-        
+        if isGenerating.value ?? false {
+            stopGeneratingImages()
+        } else {
+            generateImages()
+        }
     }
     
     fileprivate func setStatusMessage() {
@@ -51,6 +61,37 @@ class BatchGeneratorViewModel: NSObject {
         self.buttonTitle.value = buttonTitle
     }
     
+    fileprivate func generateImages() {
+        isGenerating.value = true
+        
+        processedContacts = []
+        imageEngine.contactWrappers = contactWrappers
+        imageEngine.generateAndDrawAsync(
+            callback: {
+                (contactWrapper, generatedImage, completed, completedLast) in
+                self.currentlyProcessedContact = contactWrapper.contact
+                
+                guard completed else {
+                    return
+                }
+                self.assignImage(generatedImage, toContact: contactWrapper)
+                
+                guard completedLast else {
+                    return
+                }
+                
+                self.isGenerating.value = false
+                self.currentlyProcessedContact = nil
+            }
+        )
+        
+    }
+    
+    fileprivate func stopGeneratingImages() {
+        imageEngine.stop()
+        currentlyProcessedContact = nil
+    }
+    
     fileprivate func lineForContact(
         _ contact: Contact
     ) -> String {
@@ -60,7 +101,7 @@ class BatchGeneratorViewModel: NSObject {
                 "batch_name_processing_format",
                 comment: "\n%@ (processing)"
             )
-        } else if processedContacts?.contains(contact) ?? false {
+        } else if processedContacts.contains(contact) {
             lineFormat = NSLocalizedString(
                 "batch_name_completed_format",
                 comment: "\n%@ (done)"
@@ -74,5 +115,20 @@ class BatchGeneratorViewModel: NSObject {
         
         let contactDisplayName = contactViewModel.displayName(contact: contact)
         return String(format: lineFormat, contactDisplayName)
+    }
+    
+    fileprivate func assignImage(
+        _ image: UIImage,
+        toContact contactWrapper: ContactHashWrapper
+    ) {
+        let didAssign = contactWriter.assignImage(
+            image,
+            toContact: contactWrapper.cnContact
+        )
+        
+        if didAssign {
+            processedContacts.append(contactWrapper.contact)
+        }
+        setStatusMessage()
     }
 }

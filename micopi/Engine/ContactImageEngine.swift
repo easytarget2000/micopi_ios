@@ -1,18 +1,12 @@
 import UIKit.UIImage
 
+typealias ContactImageEngineCallback
+    = (ContactHashWrapper, UIImage, Bool, Bool) -> ()
+
 class ContactImageEngine: NSObject {
     
     static let defaultImageSize = 1600.0
-    var contactWrapper: ContactHashWrapper! {
-        didSet {
-            let hashValue = contactWrapper.hashValue
-            randomNumberGenerator.startPoint = hashValue
-            randomColorGenerator.randomNumberGenerator = randomNumberGenerator
-            backgroundColor = colorPalette.color(
-                randomNumberGenerator: randomNumberGenerator
-            )
-        }
-    }
+    var contactWrappers: [ContactHashWrapper]!
     var backgroundColor: ARGBColor!
     var initialsAlpha = 0.8
     var imageSize: Double = ContactImageEngine.defaultImageSize
@@ -33,11 +27,16 @@ class ContactImageEngine: NSObject {
     @IBOutlet var foliageGenerator: FoliageCGGenerator!
     fileprivate var stopped = false
     
-    func drawImageAsync(callback: @escaping (UIImage, Bool) -> ()) {
+    func generateAndDrawAsync(callback: @escaping ContactImageEngineCallback) {
+        stopped = false
         globalDispatchQueue.async {
             // Background thread
-            
-            self.generateAndDraw(callback: callback)
+            for contactWrapper in self.contactWrappers {
+                self.generateAndDraw(
+                    contactWrapper: contactWrapper,
+                    callback: callback
+                )
+            }
         }
     }
     
@@ -45,31 +44,64 @@ class ContactImageEngine: NSObject {
         stopped = true
     }
     
-    // TODO: Typealias
     // TODO: Store weak reference?
     
-    func generateAndDraw(callback: @escaping (UIImage, Bool) -> ()) {
-        stopped = false
+    func generateAndDraw(
+        contactWrapper: ContactHashWrapper,
+        callback: @escaping ContactImageEngineCallback
+    ) {
+        guard !stopped else {
+            return
+        }
+        
+        let hashValue = contactWrapper.hashValue
+        randomNumberGenerator.startPoint = hashValue
+        randomColorGenerator.randomNumberGenerator = randomNumberGenerator
+        backgroundColor = colorPalette.color(
+            randomNumberGenerator: randomNumberGenerator
+        )
         
         UIGraphicsBeginImageContext(cgImageSize)
         let context = UIGraphicsGetCurrentContext()!
         
         drawBackgroundInContext(context)
-        simulateAndDrawFoliageInContext(context, callback: callback)
-        drawInitialsInContext(context)
+        simulateAndDrawFoliageForContact(
+            contactWrapper,
+            inContext: context,
+            callback: callback
+        )
         
-        getImageAndCallback(callback, completed: true)
+        guard !stopped else {
+            UIGraphicsEndImageContext()
+            return
+        }
+        
+        drawInitialsOfContact(contactWrapper.contact, inContext: context)
+        
+        getImageAndCallback(
+            callback,
+            contactWrapper: contactWrapper,
+            completed: true
+        )
         UIGraphicsEndImageContext()
     }
     
     fileprivate func getImageAndCallback(
-        _ callback: @escaping (UIImage, Bool) -> (),
+        _ callback: @escaping ContactImageEngineCallback,
+        contactWrapper: ContactHashWrapper,
         completed: Bool = false
     ) {
         let generatedImage = UIGraphicsGetImageFromCurrentImageContext()!
+        
+        let completedLast = completed && contactWrappers.last == contactWrapper
         mainDispatchQueue.async(
             execute: {
-                callback(generatedImage, completed)
+                callback(
+                    contactWrapper,
+                    generatedImage,
+                    completed,
+                    completedLast
+                )
             }
         )
     }
@@ -82,8 +114,11 @@ class ContactImageEngine: NSObject {
         backgroundDrawer.context = nil
     }
     
-    fileprivate func drawInitialsInContext(_ context: CGContext) {
-        let initials = contactWrapper.contact.initials
+    fileprivate func drawInitialsOfContact(
+        _ contact: Contact,
+        inContext context: CGContext
+    ) {
+        let initials = contact.initials
         let initialsColor = backgroundColor.colorWithAlpha(initialsAlpha)
         initialsDrawer.drawInitialsInImageContext(
             initials,
@@ -92,9 +127,10 @@ class ContactImageEngine: NSObject {
         )
     }
     
-    fileprivate func simulateAndDrawFoliageInContext(
-        _ context: CGContext,
-        callback: @escaping (UIImage, Bool) -> ()
+    fileprivate func simulateAndDrawFoliageForContact(
+        _ contactWrapper: ContactHashWrapper,
+        inContext context: CGContext,
+        callback: @escaping ContactImageEngineCallback
     ) {
         foliageGenerator.setup(imageSize: imageSize, colorPalette: colorPalette)
         let numOfRoundsPerCallback = 8
@@ -102,7 +138,11 @@ class ContactImageEngine: NSObject {
         for roundsCounter in 0 ..< numOfTotalRounds {
             foliageGenerator.drawAndUpdate(context: context, numOfRounds: 1)
             if roundsCounter % numOfRoundsPerCallback == 0 {
-                getImageAndCallback(callback, completed: false)
+                getImageAndCallback(
+                    callback,
+                    contactWrapper: contactWrapper,
+                    completed: false
+                )
             }
         }
     }

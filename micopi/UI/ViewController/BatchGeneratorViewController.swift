@@ -47,7 +47,8 @@ extension BatchGeneratorViewController {
         _ tableView: UITableView,
         titleForHeaderInSection section: Int
     ) -> String? {
-        return nil //viewModel.statusMessage.value
+        return nil
+//        return viewModel.statusMessage.value
     }
 }
 

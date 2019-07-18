@@ -120,11 +120,13 @@
                 <customObject id="TPH-Gb-WnW" customClass="BatchGeneratorViewModel" customModule="micopi" customModuleProvider="target">
                     <connections>
                         <outlet property="contactViewModel" destination="wjs-IJ-Qpf" id="UxV-pj-RHM"/>
+                        <outlet property="contactWriter" destination="OyH-Ke-wcx" id="fYn-XC-lKq"/>
+                        <outlet property="imageEngine" destination="qPk-eY-RQz" id="6RY-ug-nrU"/>
                     </connections>
                 </customObject>
                 <customObject id="qPk-eY-RQz" userLabel="ContactImageEngine" customClass="ContactImageEngine" customModule="micopi" customModuleProvider="target">
                     <connections>
-                        <outlet property="backgroundDrawer" destination="ner-Xd-oxR" id="w1Q-J9-w7a"/>
+                        <outlet property="backgroundDrawer" destination="ner-Xd-oxR" id="hhW-sH-W7q"/>
                         <outlet property="colorConverter" destination="LSC-eu-QQD" id="OYM-qe-1qr"/>
                         <outlet property="colorPalette" destination="H6z-2J-8qa" id="UQD-YY-9eL"/>
                         <outlet property="foliageGenerator" destination="PXb-6o-g1Z" id="Ju5-lJ-6aE"/>
@@ -134,6 +136,7 @@
                         <outlet property="randomNumberGenerator" destination="JKL-4y-5M4" id="gV6-yh-A0D"/>
                     </connections>
                 </customObject>
+                <customObject id="OyH-Ke-wcx" userLabel="ContactWriter" customClass="ContactWriter" customModule="micopi" customModuleProvider="target"/>
                 <customObject id="ner-Xd-oxR" userLabel="BackgroundDrawer" customClass="BackgroundCGDrawer" customModule="micopi" customModuleProvider="target">
                     <connections>
                         <outlet property="colorConverter" destination="LSC-eu-QQD" id="yt7-52-Sp5"/>
@@ -158,7 +161,6 @@
                 <customObject id="v4v-z0-tx8" userLabel="RandomColorGenerator" customClass="RandomColorGenerator" customModule="micopi" customModuleProvider="target"/>
                 <customObject id="kq3-Ug-er4" userLabel="InitialsDrawer" customClass="InitialsUIDrawer" customModule="micopi" customModuleProvider="target"/>
                 <customObject id="H6z-2J-8qa" userLabel="ColorPalette" customClass="ARGBColorPalette" customModule="micopi" customModuleProvider="target"/>
-                <customObject id="OyH-Ke-wcx" userLabel="ContactWriter" customClass="ContactWriter" customModule="micopi" customModuleProvider="target"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L9N-e9-E2s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="225" y="386"/>
@@ -300,9 +302,9 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1OE-YU-6n3" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <customObject id="bG5-Ri-b9x" customClass="ContactHashWrapperViewModel" customModule="micopi" customModuleProvider="target">
                     <connections>
-                        <outlet property="contactImageDrawer" destination="NAw-QN-l2q" id="RLS-5g-T2O"/>
                         <outlet property="contactViewModel" destination="ZA0-Oc-Yh2" id="X1q-U2-Ufk"/>
                         <outlet property="contactWriter" destination="gla-d3-4pn" id="UZl-BP-BGS"/>
+                        <outlet property="imageEngine" destination="NAw-QN-l2q" id="RLS-5g-T2O"/>
                     </connections>
                 </customObject>
                 <customObject id="gla-d3-4pn" userLabel="ContactWriter" customClass="ContactWriter" customModule="micopi" customModuleProvider="target"/>
