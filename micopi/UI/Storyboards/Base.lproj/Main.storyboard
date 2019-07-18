@@ -47,8 +47,8 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Menu" id="980-bE-LS7"/>
                     <connections>
-                        <segue destination="8aT-AV-wQL" kind="show" identifier="MenuToImagePreviewSegue" id="2V7-LV-p32"/>
                         <segue destination="WL8-rH-lSK" kind="show" identifier="MenuToBatchGeneratorSegue" id="aZh-E5-5sS"/>
+                        <segue destination="FhW-iz-Hgd" kind="show" identifier="MenuToImagePreviewSegue" id="uhO-AF-UhQ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eRc-59-VjL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -173,51 +173,8 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S7I-lh-tyE" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="bG5-Ri-b9x" customClass="ContactHashWrapperViewModel" customModule="micopi" customModuleProvider="target">
-                    <connections>
-                        <outlet property="contactImageDrawer" destination="NAw-QN-l2q" id="RLS-5g-T2O"/>
-                        <outlet property="contactWriter" destination="gla-d3-4pn" id="UZl-BP-BGS"/>
-                    </connections>
-                </customObject>
-                <customObject id="NAw-QN-l2q" userLabel="ContactImageEngine" customClass="ContactImageEngine" customModule="micopi" customModuleProvider="target">
-                    <connections>
-                        <outlet property="backgroundDrawer" destination="MiQ-wW-zW1" id="Xxr-XX-FET"/>
-                        <outlet property="colorConverter" destination="ohQ-NF-SbX" id="oge-Wh-yZg"/>
-                        <outlet property="colorPalette" destination="LVW-qu-nyD" id="DjI-Go-K5b"/>
-                        <outlet property="foliageGenerator" destination="vhn-Tm-SXb" id="20x-Qt-vLR"/>
-                        <outlet property="gradientDrawer" destination="ZKI-kH-yco" id="5mH-Zt-tbm"/>
-                        <outlet property="initialsDrawer" destination="yp3-jG-kEB" id="wry-Ng-paa"/>
-                        <outlet property="randomColorGenerator" destination="qwd-Ke-OAE" id="pk6-ua-M1X"/>
-                        <outlet property="randomNumberGenerator" destination="Nae-32-fLF" id="vAa-Z8-lAV"/>
-                    </connections>
-                </customObject>
-                <customObject id="gla-d3-4pn" userLabel="ContactWriter" customClass="ContactWriter" customModule="micopi" customModuleProvider="target"/>
-                <customObject id="Nae-32-fLF" userLabel="RandomNumberGenerator" customClass="RandomNumberGenerator" customModule="micopi" customModuleProvider="target"/>
-                <customObject id="qwd-Ke-OAE" userLabel="RandomColorGenerator" customClass="RandomColorGenerator" customModule="micopi" customModuleProvider="target"/>
-                <customObject id="LVW-qu-nyD" userLabel="ColorPalette" customClass="ARGBColorPalette" customModule="micopi" customModuleProvider="target"/>
-                <customObject id="MiQ-wW-zW1" userLabel="BackgroundDrawer" customClass="BackgroundCGDrawer" customModule="micopi" customModuleProvider="target">
-                    <connections>
-                        <outlet property="colorConverter" destination="ohQ-NF-SbX" id="pig-Vr-y8U"/>
-                    </connections>
-                </customObject>
-                <customObject id="ZKI-kH-yco" userLabel="GradientDrawer" customClass="GradientCGDrawer" customModule="micopi" customModuleProvider="target"/>
-                <customObject id="yp3-jG-kEB" userLabel="InitialsDrawer" customClass="InitialsUIDrawer" customModule="micopi" customModuleProvider="target"/>
-                <customObject id="ohQ-NF-SbX" userLabel="ARGBColorCGConverter" customClass="ARGBColorCGConverter" customModule="micopi" customModuleProvider="target"/>
-                <customObject id="vhn-Tm-SXb" userLabel="FoliageGenerator" customClass="FoliageCGGenerator" customModule="micopi" customModuleProvider="target">
-                    <connections>
-                        <outlet property="colorConverter" destination="ohQ-NF-SbX" id="qgW-XM-uRV"/>
-                        <outlet property="nodeDrawer" destination="QqQ-8N-i9V" id="ewL-tf-K8c"/>
-                        <outlet property="randomNumberGenerator" destination="Nae-32-fLF" id="RyF-GC-R2x"/>
-                    </connections>
-                </customObject>
-                <customObject id="QqQ-8N-i9V" userLabel="FoliageNodeDrawer" customClass="FoliageNodeCGDrawer" customModule="micopi" customModuleProvider="target">
-                    <connections>
-                        <outlet property="colorConverter" destination="ohQ-NF-SbX" id="FJX-5q-5bX"/>
-                    </connections>
-                </customObject>
-                <customObject id="oOB-fl-bBo" customClass="ImageAssignConfirmationViewModel" customModule="micopi" customModuleProvider="target"/>
             </objects>
-            <point key="canvasLocation" x="225" y="-352"/>
+            <point key="canvasLocation" x="-326" y="-490"/>
         </scene>
         <!--Image Preview View Controller-->
         <scene sceneID="8qa-8e-ckC">
@@ -233,12 +190,12 @@
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="381" id="vq9-J5-cb1">
                                         <rect key="frame" x="0.0" y="35" width="414" height="381"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vq9-J5-cb1" id="azC-oj-kZs">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vq9-J5-cb1" id="azC-oj-kZs">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="380.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Oq-Of-fZj" userLabel="PreviewImageView">
-                                                    <rect key="frame" x="0.0" y="419" width="414" height="414"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1Oq-Of-fZj" userLabel="PreviewImageView">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="414.5"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="1Oq-Of-fZj" secondAttribute="height" multiplier="1:1" id="qwD-rZ-xN1"/>
@@ -248,6 +205,7 @@
                                             <constraints>
                                                 <constraint firstItem="1Oq-Of-fZj" firstAttribute="top" secondItem="azC-oj-kZs" secondAttribute="top" id="6ve-gE-sbj"/>
                                                 <constraint firstAttribute="trailing" secondItem="1Oq-Of-fZj" secondAttribute="trailing" id="PJX-as-M3g"/>
+                                                <constraint firstItem="1Oq-Of-fZj" firstAttribute="width" secondItem="azC-oj-kZs" secondAttribute="width" id="Rve-IM-OWr"/>
                                                 <constraint firstItem="1Oq-Of-fZj" firstAttribute="leading" secondItem="azC-oj-kZs" secondAttribute="leading" id="V7h-l8-XQ9"/>
                                                 <constraint firstAttribute="bottom" secondItem="1Oq-Of-fZj" secondAttribute="bottom" id="W7D-cT-oIJ"/>
                                             </constraints>
@@ -322,8 +280,51 @@
                     </tableView>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1OE-YU-6n3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="bG5-Ri-b9x" customClass="ContactHashWrapperViewModel" customModule="micopi" customModuleProvider="target">
+                    <connections>
+                        <outlet property="contactImageDrawer" destination="NAw-QN-l2q" id="RLS-5g-T2O"/>
+                        <outlet property="contactWriter" destination="gla-d3-4pn" id="UZl-BP-BGS"/>
+                    </connections>
+                </customObject>
+                <customObject id="NAw-QN-l2q" userLabel="ContactImageEngine" customClass="ContactImageEngine" customModule="micopi" customModuleProvider="target">
+                    <connections>
+                        <outlet property="backgroundDrawer" destination="MiQ-wW-zW1" id="Xxr-XX-FET"/>
+                        <outlet property="colorConverter" destination="ohQ-NF-SbX" id="oge-Wh-yZg"/>
+                        <outlet property="colorPalette" destination="LVW-qu-nyD" id="DjI-Go-K5b"/>
+                        <outlet property="foliageGenerator" destination="vhn-Tm-SXb" id="20x-Qt-vLR"/>
+                        <outlet property="gradientDrawer" destination="ZKI-kH-yco" id="5mH-Zt-tbm"/>
+                        <outlet property="initialsDrawer" destination="yp3-jG-kEB" id="wry-Ng-paa"/>
+                        <outlet property="randomColorGenerator" destination="qwd-Ke-OAE" id="pk6-ua-M1X"/>
+                        <outlet property="randomNumberGenerator" destination="Nae-32-fLF" id="vAa-Z8-lAV"/>
+                    </connections>
+                </customObject>
+                <customObject id="gla-d3-4pn" userLabel="ContactWriter" customClass="ContactWriter" customModule="micopi" customModuleProvider="target"/>
+                <customObject id="Nae-32-fLF" userLabel="RandomNumberGenerator" customClass="RandomNumberGenerator" customModule="micopi" customModuleProvider="target"/>
+                <customObject id="qwd-Ke-OAE" userLabel="RandomColorGenerator" customClass="RandomColorGenerator" customModule="micopi" customModuleProvider="target"/>
+                <customObject id="LVW-qu-nyD" userLabel="ColorPalette" customClass="ARGBColorPalette" customModule="micopi" customModuleProvider="target"/>
+                <customObject id="MiQ-wW-zW1" userLabel="BackgroundDrawer" customClass="BackgroundCGDrawer" customModule="micopi" customModuleProvider="target">
+                    <connections>
+                        <outlet property="colorConverter" destination="ohQ-NF-SbX" id="pig-Vr-y8U"/>
+                    </connections>
+                </customObject>
+                <customObject id="ZKI-kH-yco" userLabel="GradientDrawer" customClass="GradientCGDrawer" customModule="micopi" customModuleProvider="target"/>
+                <customObject id="yp3-jG-kEB" userLabel="InitialsDrawer" customClass="InitialsUIDrawer" customModule="micopi" customModuleProvider="target"/>
+                <customObject id="ohQ-NF-SbX" userLabel="ARGBColorCGConverter" customClass="ARGBColorCGConverter" customModule="micopi" customModuleProvider="target"/>
+                <customObject id="vhn-Tm-SXb" userLabel="FoliageGenerator" customClass="FoliageCGGenerator" customModule="micopi" customModuleProvider="target">
+                    <connections>
+                        <outlet property="colorConverter" destination="ohQ-NF-SbX" id="qgW-XM-uRV"/>
+                        <outlet property="nodeDrawer" destination="QqQ-8N-i9V" id="ewL-tf-K8c"/>
+                        <outlet property="randomNumberGenerator" destination="Nae-32-fLF" id="RyF-GC-R2x"/>
+                    </connections>
+                </customObject>
+                <customObject id="QqQ-8N-i9V" userLabel="FoliageNodeDrawer" customClass="FoliageNodeCGDrawer" customModule="micopi" customModuleProvider="target">
+                    <connections>
+                        <outlet property="colorConverter" destination="ohQ-NF-SbX" id="FJX-5q-5bX"/>
+                    </connections>
+                </customObject>
+                <customObject id="oOB-fl-bBo" customClass="ImageAssignConfirmationViewModel" customModule="micopi" customModuleProvider="target"/>
             </objects>
-            <point key="canvasLocation" x="953.62318840579712" y="-352.23214285714283"/>
+            <point key="canvasLocation" x="225" y="-348"/>
         </scene>
     </scenes>
 </document>
