@@ -31,7 +31,7 @@ class ImagePreviewViewController: UITableViewController {
     fileprivate func setupViewModel() {
         viewModel.displayName.bind = {
             [weak self] in
-            $0
+            let _ = $0
             self?.tableView?.reloadData()
         }
         viewModel.generatedImage.bind = {

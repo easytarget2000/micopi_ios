@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0B00DE7222E0E26300C26288 /* BatchGeneratorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B00DE7122E0E26300C26288 /* BatchGeneratorViewModel.swift */; };
+		0B00DE7422E119A800C26288 /* ContactViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B00DE7322E119A800C26288 /* ContactViewModel.swift */; };
 		0B4064932299E00800D2BFFF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4064922299E00800D2BFFF /* AppDelegate.swift */; };
 		0B4064982299E00800D2BFFF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B4064962299E00800D2BFFF /* Main.storyboard */; };
 		0B40649A2299E00A00D2BFFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B4064992299E00A00D2BFFF /* Assets.xcassets */; };
@@ -62,6 +63,7 @@
 
 /* Begin PBXFileReference section */
 		0B00DE7122E0E26300C26288 /* BatchGeneratorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatchGeneratorViewModel.swift; sourceTree = "<group>"; };
+		0B00DE7322E119A800C26288 /* ContactViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewModel.swift; sourceTree = "<group>"; };
 		0B40648F2299E00800D2BFFF /* micopi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = micopi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B4064922299E00800D2BFFF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0B4064972299E00800D2BFFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 			children = (
 				0B00DE7122E0E26300C26288 /* BatchGeneratorViewModel.swift */,
 				0BED070722D77AC600AEEB07 /* ContactHashWrapperViewModel.swift */,
+				0B00DE7322E119A800C26288 /* ContactViewModel.swift */,
 				0BA0394122DFD65600D7C7A3 /* ImageAssignConfirmationViewModel.swift */,
 			);
 			path = ViewModels;
@@ -418,6 +421,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B00DE7422E119A800C26288 /* ContactViewModel.swift in Sources */,
 				0B98D82D22A9C901009B266B /* FoliageNodeCGDrawer.swift in Sources */,
 				0B97D51522B0500800B84594 /* ARGBColor.swift in Sources */,
 				0BA0394222DFD65600D7C7A3 /* ImageAssignConfirmationViewModel.swift in Sources */,

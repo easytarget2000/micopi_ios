@@ -7,10 +7,11 @@ class ContactHashWrapperViewModel: NSObject {
             initValues()
         }
     }
+    @IBOutlet var contactViewModel: ContactViewModel!
     @IBOutlet var contactImageDrawer: ContactImageEngine!
     @IBOutlet var contactWriter: ContactWriter!
-    var displayName: Dynamic<String> = Dynamic("")
     var isGenerating: Dynamic<Bool> = Dynamic(false)
+    var displayName: Dynamic<String> = Dynamic("")
     fileprivate(set) var generatedImage: Dynamic<UIImage?> = Dynamic(nil)
     
     func generatePreviousImage() {
@@ -35,7 +36,9 @@ class ContactHashWrapperViewModel: NSObject {
     }
     
     fileprivate func initValues() {
-        displayName.value = buildDisplayName()
+        displayName.value = contactViewModel.displayName(
+            contact: contactWrapper.contact
+        )
         generateImage()
     }
     
@@ -61,39 +64,4 @@ class ContactHashWrapperViewModel: NSObject {
         )
     }
     
-    fileprivate func buildDisplayName() -> String {
-        var fullName = ""
-        fullName = ContactHashWrapperViewModel.appendWord(
-            contactWrapper.contact.givenName,
-            toString: fullName
-        )
-        if let nickname = contactWrapper.contact.nickname, !nickname.isEmpty {
-            fullName = ContactHashWrapperViewModel.appendWord(
-                "\"\(nickname)\"",
-                toString: fullName
-            )
-        }
-        fullName = ContactHashWrapperViewModel.appendWord(
-            contactWrapper.contact.familyName,
-            toString: fullName
-        )
-        return fullName
-    }
-    
-    fileprivate static func appendWord(
-        _ word: String?,
-        toString string: String
-    ) -> String {
-        var newString = string
-        
-        guard let word = word, !word.isEmpty else {
-            return newString
-        }
-        
-        if !newString.isEmpty {
-            newString += " "
-        }
-        newString += word
-        return newString
-    }
 }

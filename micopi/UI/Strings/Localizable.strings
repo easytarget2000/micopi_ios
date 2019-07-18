@@ -5,6 +5,9 @@
 "assign_multiple_confirmation_message_format"   = "%@ entries have a new contact image.";
 "assign_error_message"                          = "There was an error assigning this image. Please check the app permissions.";
 
-"batch_start_message"   = "Selected contacts:";
-"batch_start_button"    = "Assign New Images";
-"batch_stop_button"     = "Stop image creation";
+"batch_start_message"           = "Selected Contacts:";
+"batch_name_default_format"     = "\n• %@";
+"batch_name_processing_format"  = "\n• %@ (Processing...)";
+"batch_name_completed_format"   = "\n• %@ ✅";
+"batch_start_button"            = "Assign New Images";
+"batch_stop_button"             = "Stop image creation";

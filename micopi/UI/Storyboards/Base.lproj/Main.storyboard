@@ -65,24 +65,42 @@
                         <sections>
                             <tableViewSection id="4Oa-Y6-dBl">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="on7-rd-Ret">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="BHY-vQ-gXO" style="IBUITableViewCellStyleDefault" id="on7-rd-Ret">
                                         <rect key="frame" x="0.0" y="35" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="on7-rd-Ret" id="btV-b8-mAs">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="No contacts selected." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BHY-vQ-gXO">
+                                                    <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection id="Dmn-Z4-0TV">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="gMr-ax-72m">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="aUb-wf-YKA" style="IBUITableViewCellStyleDefault" id="gMr-ax-72m">
                                         <rect key="frame" x="0.0" y="115" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gMr-ax-72m" id="ItS-2C-hZm">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Assign Images" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aUb-wf-YKA">
+                                                    <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -93,7 +111,54 @@
                             <outlet property="delegate" destination="WL8-rH-lSK" id="CHA-gb-Dtu"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="buttonCellLabel" destination="aUb-wf-YKA" id="veD-xU-XGI"/>
+                        <outlet property="statusMessageLabel" destination="BHY-vQ-gXO" id="ZRg-NM-ojg"/>
+                        <outlet property="viewModel" destination="TPH-Gb-WnW" id="gez-9R-tho"/>
+                    </connections>
                 </tableViewController>
+                <customObject id="TPH-Gb-WnW" customClass="BatchGeneratorViewModel" customModule="micopi" customModuleProvider="target">
+                    <connections>
+                        <outlet property="contactViewModel" destination="wjs-IJ-Qpf" id="UxV-pj-RHM"/>
+                    </connections>
+                </customObject>
+                <customObject id="qPk-eY-RQz" userLabel="ContactImageEngine" customClass="ContactImageEngine" customModule="micopi" customModuleProvider="target">
+                    <connections>
+                        <outlet property="backgroundDrawer" destination="ner-Xd-oxR" id="w1Q-J9-w7a"/>
+                        <outlet property="colorConverter" destination="LSC-eu-QQD" id="OYM-qe-1qr"/>
+                        <outlet property="colorPalette" destination="H6z-2J-8qa" id="UQD-YY-9eL"/>
+                        <outlet property="foliageGenerator" destination="PXb-6o-g1Z" id="Ju5-lJ-6aE"/>
+                        <outlet property="gradientDrawer" destination="bkX-SR-hJT" id="dsd-xA-3PP"/>
+                        <outlet property="initialsDrawer" destination="kq3-Ug-er4" id="8KN-ZQ-vEF"/>
+                        <outlet property="randomColorGenerator" destination="v4v-z0-tx8" id="azr-SB-OGD"/>
+                        <outlet property="randomNumberGenerator" destination="JKL-4y-5M4" id="gV6-yh-A0D"/>
+                    </connections>
+                </customObject>
+                <customObject id="ner-Xd-oxR" userLabel="BackgroundDrawer" customClass="BackgroundCGDrawer" customModule="micopi" customModuleProvider="target">
+                    <connections>
+                        <outlet property="colorConverter" destination="LSC-eu-QQD" id="yt7-52-Sp5"/>
+                    </connections>
+                </customObject>
+                <customObject id="LSC-eu-QQD" userLabel="ARGBColorCGConverter" customClass="ARGBColorCGConverter" customModule="micopi" customModuleProvider="target"/>
+                <customObject id="wjs-IJ-Qpf" customClass="ContactViewModel" customModule="micopi" customModuleProvider="target"/>
+                <customObject id="JKL-4y-5M4" userLabel="RandomNumberGenerator" customClass="RandomNumberGenerator" customModule="micopi" customModuleProvider="target"/>
+                <customObject id="bkX-SR-hJT" userLabel="GradientDrawer" customClass="GradientCGDrawer" customModule="micopi" customModuleProvider="target"/>
+                <customObject id="PXb-6o-g1Z" userLabel="FoliageGenerator" customClass="FoliageCGGenerator" customModule="micopi" customModuleProvider="target">
+                    <connections>
+                        <outlet property="colorConverter" destination="LSC-eu-QQD" id="b3u-7Z-aRW"/>
+                        <outlet property="nodeDrawer" destination="EvG-id-gKN" id="03h-vC-Oiz"/>
+                        <outlet property="randomNumberGenerator" destination="JKL-4y-5M4" id="7VU-Dj-DwM"/>
+                    </connections>
+                </customObject>
+                <customObject id="EvG-id-gKN" userLabel="FoliageNodeDrawer" customClass="FoliageNodeCGDrawer" customModule="micopi" customModuleProvider="target">
+                    <connections>
+                        <outlet property="colorConverter" destination="LSC-eu-QQD" id="AiJ-3p-zwZ"/>
+                    </connections>
+                </customObject>
+                <customObject id="v4v-z0-tx8" userLabel="RandomColorGenerator" customClass="RandomColorGenerator" customModule="micopi" customModuleProvider="target"/>
+                <customObject id="kq3-Ug-er4" userLabel="InitialsDrawer" customClass="InitialsUIDrawer" customModule="micopi" customModuleProvider="target"/>
+                <customObject id="H6z-2J-8qa" userLabel="ColorPalette" customClass="ARGBColorPalette" customModule="micopi" customModuleProvider="target"/>
+                <customObject id="OyH-Ke-wcx" userLabel="ContactWriter" customClass="ContactWriter" customModule="micopi" customModuleProvider="target"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L9N-e9-E2s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="225" y="386"/>
@@ -236,9 +301,12 @@
                 <customObject id="bG5-Ri-b9x" customClass="ContactHashWrapperViewModel" customModule="micopi" customModuleProvider="target">
                     <connections>
                         <outlet property="contactImageDrawer" destination="NAw-QN-l2q" id="RLS-5g-T2O"/>
+                        <outlet property="contactViewModel" destination="ZA0-Oc-Yh2" id="X1q-U2-Ufk"/>
                         <outlet property="contactWriter" destination="gla-d3-4pn" id="UZl-BP-BGS"/>
                     </connections>
                 </customObject>
+                <customObject id="gla-d3-4pn" userLabel="ContactWriter" customClass="ContactWriter" customModule="micopi" customModuleProvider="target"/>
+                <customObject id="ZA0-Oc-Yh2" customClass="ContactViewModel" customModule="micopi" customModuleProvider="target"/>
                 <customObject id="NAw-QN-l2q" userLabel="ContactImageEngine" customClass="ContactImageEngine" customModule="micopi" customModuleProvider="target">
                     <connections>
                         <outlet property="backgroundDrawer" destination="MiQ-wW-zW1" id="Xxr-XX-FET"/>
@@ -251,7 +319,6 @@
                         <outlet property="randomNumberGenerator" destination="Nae-32-fLF" id="vAa-Z8-lAV"/>
                     </connections>
                 </customObject>
-                <customObject id="gla-d3-4pn" userLabel="ContactWriter" customClass="ContactWriter" customModule="micopi" customModuleProvider="target"/>
                 <customObject id="Nae-32-fLF" userLabel="RandomNumberGenerator" customClass="RandomNumberGenerator" customModule="micopi" customModuleProvider="target"/>
                 <customObject id="qwd-Ke-OAE" userLabel="RandomColorGenerator" customClass="RandomColorGenerator" customModule="micopi" customModuleProvider="target"/>
                 <customObject id="LVW-qu-nyD" userLabel="ColorPalette" customClass="ARGBColorPalette" customModule="micopi" customModuleProvider="target"/>
