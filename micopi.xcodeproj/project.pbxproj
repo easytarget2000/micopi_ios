@@ -64,7 +64,7 @@
 /* Begin PBXFileReference section */
 		0B00DE7122E0E26300C26288 /* BatchGeneratorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatchGeneratorViewModel.swift; sourceTree = "<group>"; };
 		0B00DE7322E119A800C26288 /* ContactViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewModel.swift; sourceTree = "<group>"; };
-		0B40648F2299E00800D2BFFF /* micopi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = micopi.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0B40648F2299E00800D2BFFF /* Micopi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Micopi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B4064922299E00800D2BFFF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0B4064972299E00800D2BFFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0B4064992299E00A00D2BFFF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -143,7 +143,7 @@
 		0B4064902299E00800D2BFFF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0B40648F2299E00800D2BFFF /* micopi.app */,
+				0B40648F2299E00800D2BFFF /* Micopi.app */,
 				0B4064A32299E00A00D2BFFF /* micopiTests.xctest */,
 				0B4064AE2299E00A00D2BFFF /* micopiUITests.xctest */,
 			);
@@ -292,9 +292,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0B40648E2299E00800D2BFFF /* micopi */ = {
+		0B40648E2299E00800D2BFFF /* Micopi */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0B4064B72299E00A00D2BFFF /* Build configuration list for PBXNativeTarget "micopi" */;
+			buildConfigurationList = 0B4064B72299E00A00D2BFFF /* Build configuration list for PBXNativeTarget "Micopi" */;
 			buildPhases = (
 				0B40648B2299E00800D2BFFF /* Sources */,
 				0B40648C2299E00800D2BFFF /* Frameworks */,
@@ -304,9 +304,9 @@
 			);
 			dependencies = (
 			);
-			name = micopi;
+			name = Micopi;
 			productName = micopi;
-			productReference = 0B40648F2299E00800D2BFFF /* micopi.app */;
+			productReference = 0B40648F2299E00800D2BFFF /* Micopi.app */;
 			productType = "com.apple.product-type.application";
 		};
 		0B4064A22299E00A00D2BFFF /* micopiTests */ = {
@@ -381,7 +381,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0B40648E2299E00800D2BFFF /* micopi */,
+				0B40648E2299E00800D2BFFF /* Micopi */,
 				0B4064A22299E00A00D2BFFF /* micopiTests */,
 				0B4064AD2299E00A00D2BFFF /* micopiUITests */,
 			);
@@ -474,12 +474,12 @@
 /* Begin PBXTargetDependency section */
 		0B4064A52299E00A00D2BFFF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 0B40648E2299E00800D2BFFF /* micopi */;
+			target = 0B40648E2299E00800D2BFFF /* Micopi */;
 			targetProxy = 0B4064A42299E00A00D2BFFF /* PBXContainerItemProxy */;
 		};
 		0B4064B02299E00A00D2BFFF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 0B40648E2299E00800D2BFFF /* micopi */;
+			target = 0B40648E2299E00800D2BFFF /* Micopi */;
 			targetProxy = 0B4064AF2299E00A00D2BFFF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -750,7 +750,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0B4064B72299E00A00D2BFFF /* Build configuration list for PBXNativeTarget "micopi" */ = {
+		0B4064B72299E00A00D2BFFF /* Build configuration list for PBXNativeTarget "Micopi" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0B4064B82299E00A00D2BFFF /* Debug */,
