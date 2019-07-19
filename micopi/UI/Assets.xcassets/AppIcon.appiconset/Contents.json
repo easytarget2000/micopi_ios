@@ -21,9 +21,8 @@
       "scale" : "3x"
     },
     {
-      "size" : "40x40",
       "idiom" : "iphone",
-      "filename" : "MicopiAppIcon40pt@2x.png",
+      "size" : "40x40",
       "scale" : "2x"
     },
     {
@@ -33,9 +32,8 @@
       "scale" : "3x"
     },
     {
-      "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "MicopiAppIcon60pt@2x.png",
+      "size" : "60x60",
       "scale" : "2x"
     },
     {

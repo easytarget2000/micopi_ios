@@ -1,10 +1,8 @@
-//import UIKit.UIBezierPath
 import CoreGraphics
 
 class FoliageNodeCGDrawer: NSObject {
     
     weak var context: CGContext!
-//    fileprivate var path = UIBezierPath()
     @IBOutlet var colorConverter: ARGBColorCGConverter!
     
     func startLine(
@@ -15,19 +13,13 @@ class FoliageNodeCGDrawer: NSObject {
         context.setLineWidth(2)
         context.setStrokeColor(gray: CGFloat(gray), alpha: CGFloat(alpha))
         context.move(to: FoliageNodeCGDrawer.pointFromNode(firstNode))
-//        path.move(to: FoliageNodeCGDrawer.pointFromNode(firstNode))
-//        let color = UIColor(white: CGFloat(gray), alpha: CGFloat(alpha))
-//        color.setStroke()
     }
     
     func addNodeToLine(node: FoliageNode) {
         context.addLine(to: FoliageNodeCGDrawer.pointFromNode(node))
-//        path.addLine(to: FoliageNodeCGDrawer.pointFromNode(node))
     }
     
     func closeAndDrawLine() {
-//        path.close()
-//        path.stroke()
         context.strokePath()
     }
     

@@ -9,7 +9,7 @@ class FoliageNode {
     let pushForceRatio = 0.01
     let radiusRatio = 1.0 / 256.0
     let neighbourGravityRatio = 1.0 / 1.4
-    let preferredNeighbourDistanceRatio = 0.1
+    let preferredNeighbourDistanceRatio = 0.5
     var next: FoliageNode?
     var randomNumberGenerator: RandomNumberGenerator = RandomNumberGenerator()
     var jitter: Double {
