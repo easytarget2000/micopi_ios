@@ -1,5 +1,7 @@
 import UIKit
 
+typealias AlertCallback = (UIAlertController) -> ()
+
 class ContactHashWrapperViewModel: NSObject {
     
     var contactWrapper: ContactHashWrapper! {
@@ -10,6 +12,7 @@ class ContactHashWrapperViewModel: NSObject {
     @IBOutlet var contactViewModel: ContactViewModel!
     @IBOutlet var imageEngine: ContactImageEngine!
     @IBOutlet var contactWriter: ContactWriter!
+    @IBOutlet var storageCommunicator: PhotoStorageCommunicator!
     var isGenerating: Dynamic<Bool> = Dynamic(false)
     var displayName: Dynamic<String> = Dynamic("")
     fileprivate(set) var generatedImage: Dynamic<UIImage?> = Dynamic(nil)
@@ -25,13 +28,32 @@ class ContactHashWrapperViewModel: NSObject {
     }
     
     func assignImageToContact() -> Bool {
-        guard let generatedImage = generatedImage.value ?? nil else {
+        guard !(isGenerating.value ?? false),
+            let generatedImage = generatedImage.value ?? nil else {
             return false
         }
         
         return contactWriter.assignImage(
             generatedImage,
             toContact: contactWrapper.cnContact
+        )
+    }
+    
+    func saveImageToStorage(callback: @escaping AlertCallback) {
+        guard !(isGenerating.value ?? false),
+            let generatedImage = generatedImage.value ?? nil else {
+                return
+        }
+        
+        storageCommunicator.saveImage(
+            generatedImage,
+            callback: {
+                (errorMessage) in
+                self.handleStorageCallback(
+                    errorMessage: errorMessage,
+                    callback: callback
+                )
+            }
         )
     }
     
@@ -61,7 +83,6 @@ class ContactHashWrapperViewModel: NSObject {
         }
         
         isGenerating.value = true
-//        generatedImage.value = nil
         
         contactImageDrawer.contactWrappers = [contactWrapper]
         contactImageDrawer.generateAndDrawAsync(
@@ -71,6 +92,46 @@ class ContactHashWrapperViewModel: NSObject {
                 self.isGenerating.value = !completed
             }
         )
+    }
+    
+    fileprivate func handleStorageCallback(
+        errorMessage: String?,
+        callback: @escaping AlertCallback
+    ) {
+        let alertTitle: String?
+        let alertMessage: String
+        let okButtonTitle = NSLocalizedString(
+            "ok_button",
+            comment: "OK"
+        )
+        
+        if let errorMessage = errorMessage {
+            alertTitle = nil
+            alertMessage = errorMessage
+        } else {
+            alertTitle = NSLocalizedString(
+                "assign_confirmation_title",
+                comment: "Done"
+            )
+            alertMessage = NSLocalizedString(
+                "save_confirmation_message",
+                comment: "Done saving to Photos."
+            )
+        }
+        
+        let alert = UIAlertController(
+            title: alertTitle,
+            message: alertMessage,
+            preferredStyle: .alert
+        )
+        let alertAction = UIAlertAction(
+            title: okButtonTitle,
+            style: .cancel,
+            handler: nil
+        )
+        alert.addAction(alertAction)
+        
+        callback(alert)
     }
     
 }

@@ -30,6 +30,7 @@
 		0B98D82D22A9C901009B266B /* FoliageNodeCGDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B98D82C22A9C901009B266B /* FoliageNodeCGDrawer.swift */; };
 		0BA0394022DF5B7C00D7C7A3 /* Vector2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA0393F22DF5B7C00D7C7A3 /* Vector2.swift */; };
 		0BA0394222DFD65600D7C7A3 /* ImageAssignConfirmationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA0394122DFD65600D7C7A3 /* ImageAssignConfirmationViewModel.swift */; };
+		0BCB61BB22E2198C00F09110 /* PhotoStorageCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCB61BA22E2198C00F09110 /* PhotoStorageCommunicator.swift */; };
 		0BED06FE22D6864400AEEB07 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BED06FD22D6864400AEEB07 /* MenuTableViewController.swift */; };
 		0BED070122D6A05500AEEB07 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0BED070022D6A05500AEEB07 /* Localizable.strings */; };
 		0BED070322D6A55900AEEB07 /* ContactPickerWrapperDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BED070222D6A55900AEEB07 /* ContactPickerWrapperDelegate.swift */; };
@@ -91,6 +92,7 @@
 		0B98D82C22A9C901009B266B /* FoliageNodeCGDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoliageNodeCGDrawer.swift; sourceTree = "<group>"; };
 		0BA0393F22DF5B7C00D7C7A3 /* Vector2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vector2.swift; sourceTree = "<group>"; };
 		0BA0394122DFD65600D7C7A3 /* ImageAssignConfirmationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAssignConfirmationViewModel.swift; sourceTree = "<group>"; };
+		0BCB61BA22E2198C00F09110 /* PhotoStorageCommunicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoStorageCommunicator.swift; sourceTree = "<group>"; };
 		0BED06FD22D6864400AEEB07 /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		0BED070022D6A05500AEEB07 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		0BED070222D6A55900AEEB07 /* ContactPickerWrapperDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactPickerWrapperDelegate.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 			children = (
 				0B40649E2299E00A00D2BFFF /* Info.plist */,
 				0B4064922299E00800D2BFFF /* AppDelegate.swift */,
+				0BCB61B922E2196C00F09110 /* Device */,
 				0B4064C52299ED3A00D2BFFF /* Data */,
 				3010CE93229DD82100CD32D4 /* Engine */,
 				0B4064C22299E2A600D2BFFF /* UI */,
@@ -201,7 +204,6 @@
 				0B4064C62299ED8F00D2BFFF /* Contact.swift */,
 				0B4064C82299EE1B00D2BFFF /* ContactCNConverter.swift */,
 				0B56545A229C1DA8000076E0 /* ContactHashWrapper.swift */,
-				30C315B7229C96AD00B36C58 /* ContactWriter.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -227,6 +229,15 @@
 				0BA0393F22DF5B7C00D7C7A3 /* Vector2.swift */,
 			);
 			path = Foliage;
+			sourceTree = "<group>";
+		};
+		0BCB61B922E2196C00F09110 /* Device */ = {
+			isa = PBXGroup;
+			children = (
+				30C315B7229C96AD00B36C58 /* ContactWriter.swift */,
+				0BCB61BA22E2198C00F09110 /* PhotoStorageCommunicator.swift */,
+			);
+			path = Device;
 			sourceTree = "<group>";
 		};
 		0BED06FF22D6A04900AEEB07 /* Strings */ = {
@@ -448,6 +459,7 @@
 				0B4064932299E00800D2BFFF /* AppDelegate.swift in Sources */,
 				0B4064C12299E28C00D2BFFF /* ContactPickerWrapper.swift in Sources */,
 				3074EEA822ADA68F008445DD /* ARGBColorPalette.swift in Sources */,
+				0BCB61BB22E2198C00F09110 /* PhotoStorageCommunicator.swift in Sources */,
 				0BA0394022DF5B7C00D7C7A3 /* Vector2.swift in Sources */,
 				0BED070322D6A55900AEEB07 /* ContactPickerWrapperDelegate.swift in Sources */,
 			);

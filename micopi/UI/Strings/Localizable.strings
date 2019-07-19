@@ -7,6 +7,8 @@
 "assign_multiple_confirmation_message_format"   = "%@ entries have a new contact image.";
 "assign_error_message"                          = "There was an error assigning this image. Please check the app permissions.";
 
+"save_confirmation_message" = "The picture has been saved to your Photo Library.";
+
 "batch_start_message"           = "Selected Contacts:";
 "batch_start_message_appendix"  = "Entries with an exclamation mark already have a picture.\nThese images will be overwritten!";
 "batch_name_default_format"     = "\n• %@";

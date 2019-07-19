@@ -38,11 +38,12 @@ class BatchGeneratorViewModel: NSObject {
     }
     
     fileprivate func setStatusMessage() {
-        var statusMessage = NSLocalizedString(
-            "batch_start_message",
-            comment: "Selected"
-        )
-        statusMessage += "\n"
+        var statusMessage = ""
+//        NSLocalizedString(
+//            "batch_start_message",
+//            comment: "Selected"
+//        )
+//        statusMessage += "\n"
         for contactWrapper in contactWrappers {
             statusMessage += lineForContact(contactWrapper.contact)
         }

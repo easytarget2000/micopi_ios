@@ -8,6 +8,7 @@ class ImagePreviewViewController: UITableViewController {
     fileprivate static let saveActionSectionIndex = 1
     fileprivate static let imageSettingsSectionIndex = 2
     fileprivate static let assignActionRowIndex = 0
+    fileprivate static let saveActionRowIndex = 1
     fileprivate static let nextImageActionRowIndex = 0
     fileprivate static let previousImageActionRowIndex = 1
     var contactWrapper: ContactHashWrapper!
@@ -65,6 +66,13 @@ class ImagePreviewViewController: UITableViewController {
     fileprivate func generateNextImage() {
         viewModel.generateNextImage()
     }
+    
+    fileprivate func saveImageToStorage() {
+        viewModel.saveImageToStorage(callback: {
+            (alert) in
+            self.present(alert, animated: true, completion: nil)
+        })
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -94,7 +102,14 @@ extension ImagePreviewViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         switch indexPath.section {
         case ImagePreviewViewController.saveActionSectionIndex:
-            assignImageToContact()
+            switch indexPath.row {
+            case ImagePreviewViewController.assignActionRowIndex:
+                assignImageToContact()
+            case ImagePreviewViewController.saveActionRowIndex:
+                saveImageToStorage()
+            default:
+                break
+            }
         case ImagePreviewViewController.imageSettingsSectionIndex:
             switch indexPath.row {
             case ImagePreviewViewController.nextImageActionRowIndex:
