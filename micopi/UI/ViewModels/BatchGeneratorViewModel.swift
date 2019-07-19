@@ -3,7 +3,7 @@ import UIKit.UIImage
 class BatchGeneratorViewModel: NSObject {
     
     static let startButtonColor = UIColor(named: "PositiveButton")!
-    static let stopButtonColor = UIColor(named: "NegativeButton")!
+    static let stopButtonColor = UIColor.red//(named: "NegativeButton")!
     var contactWrappers: [ContactHashWrapper]! {
         didSet {
             setStatusAndButtonProperties()
