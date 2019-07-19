@@ -46,6 +46,18 @@ class BatchGeneratorViewModel: NSObject {
         for contactWrapper in contactWrappers {
             statusMessage += lineForContact(contactWrapper.contact)
         }
+        
+        let contactWithImageExists = contactWrappers.contains(where: {
+            (contactWrapper) -> Bool in
+            return contactWrapper.contact.hasPicture
+        })
+        if contactWithImageExists {
+            let appendix = NSLocalizedString(
+                "batch_start_message_appendix",
+                comment: "Exclamation mark explanation and overwrite warning."
+            )
+            statusMessage += "\n\n\(appendix)"
+        }
         self.statusMessage.value = statusMessage
     }
     
@@ -116,7 +128,14 @@ class BatchGeneratorViewModel: NSObject {
             )
         }
         
-        let contactDisplayName = contactViewModel.displayName(contact: contact)
+        var contactDisplayName = contactViewModel.displayName(contact: contact)
+        if contact.hasPicture {
+            let hasImageAppendix = NSLocalizedString(
+                "batch_image_warning_appendix",
+                comment: "Exclamation mark"
+            )
+            contactDisplayName += " \(hasImageAppendix)"
+        }
         return String(format: lineFormat, contactDisplayName)
     }
     

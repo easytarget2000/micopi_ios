@@ -6,6 +6,7 @@ struct Contact: Equatable {
     let nickname: String?
     let mainEmailAddress: String?
     let mainPhoneNumber: String?
+    let hasPicture: Bool
     
     static func == (lhs: Contact, rhs: Contact) -> Bool {
         return lhs.identifier == rhs.identifier

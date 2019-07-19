@@ -36,9 +36,18 @@ class ContactHashWrapperViewModel: NSObject {
     }
     
     fileprivate func initValues() {
-        displayName.value = contactViewModel.displayName(
+        var displayName = contactViewModel.displayName(
             contact: contactWrapper.contact
         )
+        if contactWrapper.contact.hasPicture {
+            let hasPictureMessage = NSLocalizedString(
+                "preview_contact_has_picture_message",
+                comment: "Contact has image warning"
+            )
+            displayName += "\n\(hasPictureMessage)"
+        }
+        
+        self.displayName.value = displayName
         generateImage()
     }
     

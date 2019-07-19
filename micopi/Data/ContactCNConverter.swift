@@ -20,6 +20,7 @@ struct ContactCNConverter {
     func convertCNContact(_ cnContact: CNContact) -> Contact {
         let firstEmailAddress = cnContact.emailAddresses.first?.value as String?
         let firstPhoneNumber = cnContact.phoneNumbers.first?.value.description
+        let hasPicture = cnContact.imageDataAvailable
         
         return Contact(
             identifier: cnContact.identifier,
@@ -27,7 +28,8 @@ struct ContactCNConverter {
             familyName: cnContact.familyName,
             nickname: cnContact.nickname,
             mainEmailAddress: firstEmailAddress,
-            mainPhoneNumber: firstPhoneNumber
+            mainPhoneNumber: firstPhoneNumber,
+            hasPicture: hasPicture
         )
     }
     

@@ -1,13 +1,17 @@
 "ok_button" = "OK";
 
+"preview_contact_has_picture_message"   = "A picture has already been assigned to this contact.";
+
 "assign_confirmation_title"                     = "Completed";
 "assign_confirmation_message_format"            = "%@ has a new contact image.";
 "assign_multiple_confirmation_message_format"   = "%@ entries have a new contact image.";
 "assign_error_message"                          = "There was an error assigning this image. Please check the app permissions.";
 
 "batch_start_message"           = "Selected Contacts:";
+"batch_start_message_appendix"  = "Entries with an exclamation mark already have a picture.\nThese images will be overwritten!";
 "batch_name_default_format"     = "\n• %@";
-"batch_name_processing_format"  = "\n• %@ (processing...)";
+"batch_name_processing_format"  = "\n• %@ 💭";
 "batch_name_completed_format"   = "\n• %@ ✅";
+"batch_image_warning_appendix"  = "⚠️";
 "batch_start_button"            = "Assign New Images";
 "batch_stop_button"             = "Stop Image Creation";
