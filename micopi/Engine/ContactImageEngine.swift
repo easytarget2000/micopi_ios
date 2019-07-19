@@ -1,7 +1,7 @@
 import UIKit.UIImage
 
 typealias ContactImageEngineCallback
-    = (ContactHashWrapper, UIImage, Bool, Bool) -> ()
+    = (ContactHashWrapper?, UIImage?, Bool, Bool) -> ()
 
 class ContactImageEngine: NSObject {
     
@@ -51,6 +51,7 @@ class ContactImageEngine: NSObject {
         callback: @escaping ContactImageEngineCallback
     ) {
         guard !stopped else {
+            getImageAndCallback(callback, contactWrapper: contactWrapper)
             return
         }
         
@@ -70,12 +71,7 @@ class ContactImageEngine: NSObject {
             inContext: context,
             callback: callback
         )
-        
-        guard !stopped else {
-            UIGraphicsEndImageContext()
-            return
-        }
-        
+
         drawInitialsOfContact(contactWrapper.contact, inContext: context)
         
         getImageAndCallback(
@@ -91,16 +87,16 @@ class ContactImageEngine: NSObject {
         contactWrapper: ContactHashWrapper,
         completed: Bool = false
     ) {
-        let generatedImage = UIGraphicsGetImageFromCurrentImageContext()!
+        let generatedImage = UIGraphicsGetImageFromCurrentImageContext()
         
         let completedLast = completed && contactWrappers.last == contactWrapper
         mainDispatchQueue.async(
             execute: {
                 callback(
-                    contactWrapper,
-                    generatedImage,
+                    self.stopped ? nil : contactWrapper,
+                    self.stopped ? nil : generatedImage,
                     completed,
-                    completedLast
+                    self.stopped || completedLast
                 )
             }
         )
@@ -137,12 +133,16 @@ class ContactImageEngine: NSObject {
         let numOfTotalRounds = 512
         for roundsCounter in 0 ..< numOfTotalRounds {
             foliageGenerator.drawAndUpdate(context: context, numOfRounds: 1)
-            if roundsCounter % numOfRoundsPerCallback == 0 {
+            if roundsCounter % numOfRoundsPerCallback == 0 || stopped {
                 getImageAndCallback(
                     callback,
                     contactWrapper: contactWrapper,
                     completed: false
                 )
+            }
+            
+            if stopped {
+                break
             }
         }
     }

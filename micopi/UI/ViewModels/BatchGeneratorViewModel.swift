@@ -2,17 +2,20 @@ import UIKit.UIImage
 
 class BatchGeneratorViewModel: NSObject {
     
+    static let startButtonColor = UIColor(named: "PositiveButton")!
+    static let stopButtonColor = UIColor(named: "NegativeButton")!
     var contactWrappers: [ContactHashWrapper]! {
         didSet {
-            initValues()
+            setStatusAndButtonProperties()
         }
     }
     var statusMessage = Dynamic("")
     var buttonTitle = Dynamic("")
+    var buttonColor = Dynamic(BatchGeneratorViewModel.startButtonColor)
     var isGenerating = Dynamic(false)
     var currentlyProcessedContact: Contact? {
         didSet {
-            self.setStatusMessage()
+            self.setStatusAndButtonProperties()
         }
     }
     var processedContacts = [Contact]()
@@ -20,9 +23,9 @@ class BatchGeneratorViewModel: NSObject {
     @IBOutlet var imageEngine: ContactImageEngine!
     @IBOutlet var contactWriter: ContactWriter!
     
-    func initValues() {
+    func setStatusAndButtonProperties() {
         setStatusMessage()
-        setButtonTitle()
+        setButtonProperties()
     }
     
     func handleButtonTouch() {
@@ -31,7 +34,7 @@ class BatchGeneratorViewModel: NSObject {
         } else {
             generateImages()
         }
-        setButtonTitle()
+        setButtonProperties()
     }
     
     fileprivate func setStatusMessage() {
@@ -46,20 +49,24 @@ class BatchGeneratorViewModel: NSObject {
         self.statusMessage.value = statusMessage
     }
     
-    fileprivate func setButtonTitle() {
+    fileprivate func setButtonProperties() {
         let buttonTitle: String
+        let buttonColor: UIColor
         if isGenerating.value ?? false {
             buttonTitle = NSLocalizedString(
                 "batch_stop_button",
                 comment: "Stop Process"
             )
+            buttonColor = BatchGeneratorViewModel.stopButtonColor
         } else {
             buttonTitle = NSLocalizedString(
                 "batch_start_button",
                 comment: "Start Process"
             )
+            buttonColor = BatchGeneratorViewModel.startButtonColor
         }
         self.buttonTitle.value = buttonTitle
+        self.buttonColor.value = buttonColor
     }
     
     fileprivate func generateImages() {
@@ -70,18 +77,12 @@ class BatchGeneratorViewModel: NSObject {
         imageEngine.generateAndDrawAsync(
             callback: {
                 (contactWrapper, generatedImage, completed, completedLast) in
-                self.currentlyProcessedContact = contactWrapper.contact
-                
-                guard completed else {
-                    return
-                }
-                self.assignImage(generatedImage, toContact: contactWrapper)
-                
-                guard completedLast else {
-                    return
-                }
-                
-                self.handleCompletion()
+                self.handleCallback(
+                    contactWrapper,
+                    generatedImage,
+                    completed,
+                    completedLast
+                )
             }
         )
         
@@ -90,6 +91,8 @@ class BatchGeneratorViewModel: NSObject {
     fileprivate func stopGeneratingImages() {
         imageEngine.stop()
         currentlyProcessedContact = nil
+        isGenerating.value = false
+        setStatusAndButtonProperties()
     }
     
     fileprivate func lineForContact(
@@ -132,9 +135,27 @@ class BatchGeneratorViewModel: NSObject {
         setStatusMessage()
     }
     
-    fileprivate func handleCompletion() {
-        isGenerating.value = false
-        currentlyProcessedContact = nil
-        setButtonTitle()
+    fileprivate func handleCallback(
+        _ contactWrapper: ContactHashWrapper?,
+        _ generatedImage: UIImage?,
+        _ completed: Bool,
+        _ completedLast: Bool
+    ) {
+        if completedLast {
+            isGenerating.value = false
+            currentlyProcessedContact = nil
+            setStatusAndButtonProperties()
+        } else {
+            currentlyProcessedContact = contactWrapper!.contact
+        }
+        
+        guard completed,
+            let generatedImage = generatedImage,
+            let contactWrapper = contactWrapper
+        else {
+            return
+        }
+        
+        assignImage(generatedImage, toContact: contactWrapper)
     }
 }

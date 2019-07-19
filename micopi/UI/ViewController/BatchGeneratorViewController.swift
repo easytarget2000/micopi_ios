@@ -31,6 +31,10 @@ class BatchGeneratorViewController: UITableViewController {
             [weak self] in
             self?.buttonCellLabel?.text = $0
         }
+        viewModel.buttonColor.bind = {
+            [weak self] in
+            self?.buttonCellLabel?.textColor = $0
+        }
         viewModel.contactWrappers = contactWrappers
     }
     
