@@ -5,7 +5,7 @@ typealias ContactImageEngineCallback
 
 class ContactImageEngine: NSObject {
     
-    static let defaultImageSize = 1600.0
+    static let defaultImageSize = 800.0
     var contactWrappers: [ContactHashWrapper]!
     var backgroundColor: ARGBColor!
     var initialsAlpha = 0.85
@@ -23,6 +23,7 @@ class ContactImageEngine: NSObject {
     @IBOutlet var colorConverter: ARGBColorCGConverter!
     @IBOutlet var backgroundDrawer: BackgroundCGDrawer!
     @IBOutlet var gradientDrawer: GradientCGDrawer!
+    @IBOutlet var blurDrawer: BlurCGDrawer!
     @IBOutlet var initialsDrawer: InitialsUIDrawer!
     @IBOutlet var foliageGenerator: FoliageCGGenerator!
     fileprivate var stopped = false
@@ -71,6 +72,7 @@ class ContactImageEngine: NSObject {
             inContext: context,
             callback: callback
         )
+        applyBlurEffectInContext(context, callback: callback)
         drawInitialsOfContact(contactWrapper.contact, inContext: context)
         
         getImageAndCallback(
@@ -143,6 +145,20 @@ class ContactImageEngine: NSObject {
             if stopped {
                 break
             }
+        }
+    }
+    
+    fileprivate func applyBlurEffectInContext(
+        _ context: CGContext,
+        contactWrapper: ContactHashWrapper,
+        callback: @escaping ContactImageEngineCallback
+    ) {
+        let numOfBlurRounds = 4
+        let blurRadius = 3
+        for _ in 0 ..< numOfBlurRounds {
+            let image = UIGraphicsGetImageFromCurrentImageContext()!
+            blurDrawer.applyBlurEffectToImage(image, inContext: context)
+            getImageAndCallback(callback, contactWrapper: contactWrapper, completed: false)
         }
     }
 }
