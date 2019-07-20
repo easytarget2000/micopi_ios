@@ -8,7 +8,7 @@ class ContactImageEngine: NSObject {
     static let defaultImageSize = 1600.0
     var contactWrappers: [ContactHashWrapper]!
     var backgroundColor: ARGBColor!
-    var initialsAlpha = 0.8
+    var initialsAlpha = 1.0
     var imageSize: Double = ContactImageEngine.defaultImageSize
     var cgImageSize: CGSize {
         get {
@@ -71,7 +71,6 @@ class ContactImageEngine: NSObject {
             inContext: context,
             callback: callback
         )
-
         drawInitialsOfContact(contactWrapper.contact, inContext: context)
         
         getImageAndCallback(
