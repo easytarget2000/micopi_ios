@@ -15,6 +15,9 @@ class ContactImageEngine: NSObject {
             return CGSize(width: CGFloat(imageSize), height: CGFloat(imageSize))
         }
     }
+    var numOfFoliageRounds = 360
+    var blurRadius = 16.0
+    var numOfBlurRounds = 1
     var globalDispatchQueue = DispatchQueue.global()
     var mainDispatchQueue = DispatchQueue.main
     @IBOutlet var randomNumberGenerator: RandomNumberGenerator!
@@ -72,7 +75,11 @@ class ContactImageEngine: NSObject {
             inContext: context,
             callback: callback
         )
-        applyBlurEffectInContext(context, callback: callback)
+        applyBlurEffectInContext(
+            context,
+            contactWrapper: contactWrapper,
+            callback: callback
+        )
         drawInitialsOfContact(contactWrapper.contact, inContext: context)
         
         getImageAndCallback(
@@ -131,8 +138,7 @@ class ContactImageEngine: NSObject {
     ) {
         foliageGenerator.setup(imageSize: imageSize, colorPalette: colorPalette)
         let numOfRoundsPerCallback = 8
-        let numOfTotalRounds = 512
-        for roundsCounter in 0 ..< numOfTotalRounds {
+        for roundsCounter in 0 ..< numOfFoliageRounds {
             foliageGenerator.drawAndUpdate(context: context, numOfRounds: 1)
             if roundsCounter % numOfRoundsPerCallback == 0 || stopped {
                 getImageAndCallback(
@@ -153,8 +159,7 @@ class ContactImageEngine: NSObject {
         contactWrapper: ContactHashWrapper,
         callback: @escaping ContactImageEngineCallback
     ) {
-        let numOfBlurRounds = 4
-        let blurRadius = 3
+        blurDrawer.setup(radius: blurRadius)
         for _ in 0 ..< numOfBlurRounds {
             let image = UIGraphicsGetImageFromCurrentImageContext()!
             blurDrawer.applyBlurEffectToImage(image, inContext: context)

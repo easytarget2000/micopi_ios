@@ -2,22 +2,32 @@ import UIKit.UIImage
 
 class BlurCGDrawer: NSObject {
     var ciContext = CIContext(options: nil)
+    var currentFilter = CIFilter(name: "CIGaussianBlur")!
+    var cropFilter = CIFilter(name: "CICrop")!
     
-    func applyBlurEffectToImage(_ image: UIImage, inContext: context) {
+    func setup(radius: Double) {
+        currentFilter.setValue(radius, forKey: kCIInputRadiusKey)
+    }
+
+    func applyBlurEffectToImage(
+        _ image: UIImage,
+        inContext context: CGContext
+    ) {
+        let ciInputImage = CIImage(image: image)!
+        currentFilter.setValue(ciInputImage, forKey: kCIInputImageKey)
         
-        let image = UIGraphicsGetImageFromCurrentImageContext()!
-        let currentFilter = CIFilter(name: "CIGaussianBlur")
-        let beginImage = CIImage(image: image)!
-        currentFilter!.setValue(beginImage, forKey: kCIInputImageKey)
-        currentFilter!.setValue(3   , forKey: kCIInputRadiusKey)
+        cropFilter.setValue(
+            currentFilter.outputImage,
+            forKey: kCIInputImageKey
+        )
+        let cropVector = CIVector(cgRect: ciInputImage.extent)
+        cropFilter.setValue(cropVector, forKey: "inputRectangle")
         
-        let cropFilter = CIFilter(name: "CICrop")
-        cropFilter!.setValue(currentFilter!.outputImage, forKey: kCIInputImageKey)
-        cropFilter!.setValue(CIVector(cgRect: beginImage.extent), forKey: "inputRectangle")
-        
-        let output = cropFilter!.outputImage
-        let cgimg = ciContext.createCGImage(output!, from: output!.extent)
-        //        let processedImage = UIImage(cgImage: cgimg)
-        context.draw(cgimg!, in: beginImage.extent)
+        let ciOutputImage = cropFilter.outputImage
+        let cgOutputImage = ciContext.createCGImage(
+            ciOutputImage!,
+            from: ciOutputImage!.extent
+        )
+        context.draw(cgOutputImage!, in: ciInputImage.extent)
     }
 }

@@ -356,6 +356,7 @@
                 <customObject id="NAw-QN-l2q" userLabel="ContactImageEngine" customClass="ContactImageEngine" customModule="Micopi" customModuleProvider="target">
                     <connections>
                         <outlet property="backgroundDrawer" destination="MiQ-wW-zW1" id="Xxr-XX-FET"/>
+                        <outlet property="blurDrawer" destination="pdh-aS-uxE" id="VKD-Po-pb2"/>
                         <outlet property="colorConverter" destination="ohQ-NF-SbX" id="oge-Wh-yZg"/>
                         <outlet property="colorPalette" destination="LVW-qu-nyD" id="DjI-Go-K5b"/>
                         <outlet property="foliageGenerator" destination="vhn-Tm-SXb" id="20x-Qt-vLR"/>
@@ -390,6 +391,7 @@
                 </customObject>
                 <customObject id="oOB-fl-bBo" customClass="ImageAssignConfirmationViewModel" customModule="Micopi" customModuleProvider="target"/>
                 <customObject id="vpJ-X0-oeg" customClass="PhotoStorageCommunicator" customModule="Micopi" customModuleProvider="target"/>
+                <customObject id="pdh-aS-uxE" customClass="BlurCGDrawer" customModule="Micopi" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="225" y="-348"/>
         </scene>
