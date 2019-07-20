@@ -18,6 +18,14 @@ struct ARGBColor: Equatable {
         self.b = b
     }
     
+    init (alpha: Double, white: Double) {
+        let cappedWhite = (white < 0.0 ? 0.0 : white) > 1.0 ? 1.0 : white
+        self.a = alpha
+        r = cappedWhite
+        g = cappedWhite
+        b = cappedWhite
+    }
+    
     init(hex: Int) {
         let intA = (hex >> 24) & 0xFF
         let intR = (hex >> 16) & 0xFF

@@ -39,12 +39,10 @@ class BatchGeneratorViewModel: NSObject {
     
     fileprivate func setStatusMessage() {
         var statusMessage = ""
-//        NSLocalizedString(
-//            "batch_start_message",
-//            comment: "Selected"
-//        )
-//        statusMessage += "\n"
         for contactWrapper in contactWrappers {
+            if !statusMessage.isEmpty {
+                statusMessage += "\n"
+            }
             statusMessage += lineForContact(contactWrapper.contact)
         }
         
@@ -115,17 +113,17 @@ class BatchGeneratorViewModel: NSObject {
         if contact == currentlyProcessedContact {
             lineFormat = NSLocalizedString(
                 "batch_name_processing_format",
-                comment: "\n%@ (processing)"
+                comment: "%@ (processing)"
             )
         } else if processedContacts.contains(contact) {
             lineFormat = NSLocalizedString(
                 "batch_name_completed_format",
-                comment: "\n%@ (done)"
+                comment: "%@ (done)"
             )
         } else {
             lineFormat = NSLocalizedString(
                 "batch_name_default_format",
-                comment: "\n%@"
+                comment: "%@"
             )
         }
         

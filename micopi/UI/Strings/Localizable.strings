@@ -11,9 +11,9 @@
 
 "batch_start_message"           = "Selected Contacts:";
 "batch_start_message_appendix"  = "Entries with an exclamation mark already have a picture.\nThese images will be overwritten!";
-"batch_name_default_format"     = "\n• %@";
-"batch_name_processing_format"  = "\n• %@ 💭";
-"batch_name_completed_format"   = "\n• %@ ✅";
+"batch_name_default_format"     = "• %@";
+"batch_name_processing_format"  = "• %@ 💭";
+"batch_name_completed_format"   = "• %@ ✅";
 "batch_image_warning_appendix"  = "⚠️";
 "batch_start_button"            = "Assign New Images";
 "batch_stop_button"             = "Stop Image Creation";

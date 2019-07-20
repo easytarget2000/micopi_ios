@@ -3,8 +3,9 @@ import UIKit.UIFont
 
 class InitialsUIDrawer: NSObject {
     
-    var initialsFont = UIFont(name: "ArialRoundedMTBold", size: 512)!
-    var initialsFontSizeFactorBase = CGFloat(0.55)
+    static let appleInitialsFontName = "ArialRoundedMTBold"
+    var initialsFont = UIFont(name: "HelveticaNeue", size: 512)!
+    var initialsFontSizeFactorBase = CGFloat(0.66)
     
     func drawInitialsInImageContext(
         _ initials: String,
