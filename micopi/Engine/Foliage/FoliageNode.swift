@@ -32,12 +32,12 @@ class FoliageNode {
         maxPushDistance = worldSize
     }
     
-    func update() {
+    func update(invertMovement: Bool = false) {
         positionVector = positionVector + Vector2(x: jitter, y: jitter)
-        updateAcceleration()
+        updateAcceleration(invertMovement: invertMovement)
     }
     
-    func updateAcceleration() {
+    func updateAcceleration(invertMovement: Bool = false) {
         var otherNode = next!
         
         var force = 0.0
@@ -78,6 +78,10 @@ class FoliageNode {
                 } else {
                     force -= (self.pushForce / distance);
                 }
+            }
+            
+            if invertMovement {
+                force *= -1
             }
             
             accelerationVector = accelerationVector

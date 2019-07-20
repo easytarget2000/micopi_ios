@@ -163,7 +163,11 @@ class ContactImageEngine: NSObject {
         for _ in 0 ..< numOfBlurRounds {
             let image = UIGraphicsGetImageFromCurrentImageContext()!
             blurDrawer.applyBlurEffectToImage(image, inContext: context)
-            getImageAndCallback(callback, contactWrapper: contactWrapper, completed: false)
+            getImageAndCallback(
+                callback,
+                contactWrapper: contactWrapper,
+                completed: false
+            )
         }
     }
 }

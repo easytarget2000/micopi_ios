@@ -94,29 +94,14 @@ class Foliage {
         totalNodeCounter += 1
     }
     
-//    func drawIfAlive(color: ARGBColor, numOfRounds: Int = 1, drawOutline = true) {
-//        if (age += 1 > maxAge) {
-//            return false
-//        }
-//
-//        noFill()
-//        stroke(color_)
-//        strokeWeight(1.0)
-//
-//        self.nodeAddCounter = 0
-//
-//        for (var i = 0 i < numOfRounds i++) {
-//            self.drawAndUpdateNodes(drawOutline)
-//        }
-//
-//        return true
-//    }
-    
     func stop() {
         self.stopped = true
     }
     
-    func updateAndDraw(nodeDrawer: FoliageNodeCGDrawer) -> Bool {
+    func updateAndDraw(
+        nodeDrawer: FoliageNodeCGDrawer,
+        invertMovement: Bool = false
+    ) -> Bool {
         age += 1
         guard age < maxAge else {
             return false
@@ -143,7 +128,7 @@ class Foliage {
                 return true
             }
 
-            currentNode.update()
+            currentNode.update(invertMovement: invertMovement)
             
             if addNodes,
                 nodeAddCounter < maxNumOfNodesAddedPerRound,

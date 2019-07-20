@@ -5,6 +5,7 @@ class FoliageCGGenerator: NSObject {
     var foliages = [Foliage]()
     var imageSize = Double(0)
     var color = ARGBColor(a: 0.0, r: 0.0, g: 0.0, b: 0.0)
+    var invertNodeMovement = false
     @IBOutlet var nodeDrawer: FoliageNodeCGDrawer!
     @IBOutlet var colorConverter: ARGBColorCGConverter!
     @IBOutlet var randomNumberGenerator: RandomNumberGenerator!
@@ -52,7 +53,10 @@ class FoliageCGGenerator: NSObject {
         context: CGContext
     ) {
         nodeDrawer.context = context
-        let isAlive = foliage.updateAndDraw(nodeDrawer: nodeDrawer)
+        let isAlive = foliage.updateAndDraw(
+            nodeDrawer: nodeDrawer,
+            invertMovement: invertNodeMovement
+        )
         nodeDrawer.context = nil
     }
 }
