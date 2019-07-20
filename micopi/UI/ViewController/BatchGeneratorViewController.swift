@@ -1,4 +1,4 @@
-import UIKit
+import StoreKit
 
 class BatchGeneratorViewController: UITableViewController {
     
@@ -6,7 +6,9 @@ class BatchGeneratorViewController: UITableViewController {
     
     fileprivate static let statusMessageSectionIndex = 0
     fileprivate static let buttonSectionIndex = 1
+    fileprivate static let numOfActivitiesToRatingAlert = 3
     var contactWrappers: [ContactHashWrapper]!
+    fileprivate var activityCounter = 0
     @IBOutlet var viewModel: BatchGeneratorViewModel!
     @IBOutlet weak var statusMessageLabel: UILabel!
     @IBOutlet weak var buttonCellLabel: UILabel!
@@ -40,6 +42,18 @@ class BatchGeneratorViewController: UITableViewController {
     
     fileprivate func handleButtonTouch() {
         viewModel.handleButtonTouch()
+    }
+    
+    fileprivate func increaseActivityCounter() {
+        activityCounter += 1
+        if activityCounter
+            >= BatchGeneratorViewController.numOfActivitiesToRatingAlert {
+            requestStoreReview()
+        }
+    }
+    
+    fileprivate func requestStoreReview() {
+        SKStoreReviewController.requestReview()
     }
 }
 

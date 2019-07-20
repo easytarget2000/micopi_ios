@@ -1,4 +1,4 @@
-import UIKit
+import StoreKit
 
 class ImagePreviewViewController: UITableViewController {
     
@@ -11,7 +11,9 @@ class ImagePreviewViewController: UITableViewController {
     fileprivate static let saveActionRowIndex = 1
     fileprivate static let nextImageActionRowIndex = 0
     fileprivate static let previousImageActionRowIndex = 1
+    fileprivate static let numOfActivitiesToRatingAlert = 3
     var contactWrapper: ContactHashWrapper!
+    fileprivate var activityCounter = 0
     
     // MARK: IB
 
@@ -56,7 +58,12 @@ class ImagePreviewViewController: UITableViewController {
             contact: contactWrapper?.contact,
             success: didAssign
         )
-        present(confirmationAlert, animated: true, completion: nil)
+        present(
+            confirmationAlert,
+            animated: true,
+            completion: {
+                self.increaseActivityCounter()
+        })
     }
     
     fileprivate func generatePreviousImage() {
@@ -70,7 +77,13 @@ class ImagePreviewViewController: UITableViewController {
     fileprivate func saveImageToStorage() {
         viewModel.saveImageToStorage(callback: {
             (alert) in
-            self.present(alert, animated: true, completion: nil)
+            self.present(
+                alert,
+                animated: true,
+                completion: {
+                    self.increaseActivityCounter()
+                }
+            )
         })
     }
 }
@@ -122,5 +135,17 @@ extension ImagePreviewViewController {
         default:
             break
         }
+    }
+    
+    fileprivate func increaseActivityCounter() {
+        activityCounter += 1
+        if activityCounter
+            >= ImagePreviewViewController.numOfActivitiesToRatingAlert {
+            requestStoreReview()
+        }
+    }
+    
+    fileprivate func requestStoreReview() {
+        SKStoreReviewController.requestReview()
     }
 }

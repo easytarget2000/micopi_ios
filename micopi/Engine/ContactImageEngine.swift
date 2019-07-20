@@ -17,7 +17,7 @@ class ContactImageEngine: NSObject {
     }
     var numOfFoliageRounds = 360
     var blurRadius = 16.0
-    var numOfBlurRounds = 1
+    var numOfBlurRounds = 0
     var globalDispatchQueue = DispatchQueue.global()
     var mainDispatchQueue = DispatchQueue.main
     @IBOutlet var randomNumberGenerator: RandomNumberGenerator!
