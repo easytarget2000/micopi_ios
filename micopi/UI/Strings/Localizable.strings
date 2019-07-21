@@ -1,6 +1,6 @@
 "ok_button" = "OK";
 
-"preview_contact_has_picture_message"   = "A picture has already been assigned to this contact.";
+"preview_contact_has_picture_message"   = "⚠️ A picture has already been assigned to this contact.";
 
 "assign_confirmation_title"                     = "Completed";
 "assign_confirmation_message_format"            = "%@ has a new contact image.";
