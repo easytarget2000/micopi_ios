@@ -18,6 +18,16 @@ class ARGBColorPalette: NSObject {
         ARGBColor(hex: 0xFF64908A),
         ARGBColor(hex: 0xFFE8CAA4),
         ARGBColor(hex: 0xFFCC2A41),
+        ARGBColor(hex: 0xFFA8A7A7),
+        ARGBColor(hex: 0xFFCC527A),
+        ARGBColor(hex: 0xFFE8175D),
+        ARGBColor(hex: 0xFF474747),
+        ARGBColor(hex: 0xFF363636),
+        ARGBColor(hex: 0xFF904C76),
+        ARGBColor(hex: 0xFFDE2D89),
+        ARGBColor(hex: 0xFFEA4F72),
+        ARGBColor(hex: 0xFFF4B182),
+        ARGBColor(hex: 0xFFA55B4D)
     ]
     var colors = ARGBColorPalette.defaultPalette
     
@@ -32,8 +42,7 @@ class ARGBColorPalette: NSObject {
             randomColorGenerator.nextARGBColor(),
             randomColorGenerator.nextARGBColor(),
             randomColorGenerator.nextARGBColor(),
-            randomColorGenerator.nextARGBColor(),
-            randomColorGenerator.nextARGBColor(),
+            randomColorGenerator.nextARGBColor(),E8175D            randomColorGenerator.nextARGBColor(),
             randomColorGenerator.nextARGBColor(),
             randomColorGenerator.nextARGBColor(),
             randomColorGenerator.nextARGBColor(),

@@ -284,9 +284,9 @@
 			isa = PBXGroup;
 			children = (
 				3072609222AA919D003B2FC4 /* BackgroundCGDrawer.swift */,
+				30B4349D22E3347C002E87B1 /* BlurCGDrawer.swift */,
 				3074EEA522ADA58E008445DD /* GradientCGDrawer.swift */,
 				0B98D82222A9B3F8009B266B /* InitialsUIDrawer.swift */,
-				30B4349D22E3347C002E87B1 /* BlurCGDrawer.swift */,
 			);
 			path = CommonDrawers;
 			sourceTree = "<group>";
