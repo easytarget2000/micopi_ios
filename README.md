@@ -10,7 +10,9 @@ Don't worry, your information is not saved in Micopi, used for other purposes or
 
 Please note, applying an image to a person cannot be undone. Micopi has been thoroughly tested but we recommend making a backup of your most precious contacts and pictures, just in case.
 
-[![Download on the App Store](https://developer.apple.com/app-store/marketing/guidelines/images/badge-example-alternate_2x.png)](https://apps.apple.com/app/micopi/id1087113109)
+<a href="https://apps.apple.com/app/micopi/id1087113109">
+  <img src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-example-alternate_2x.png" alt="Download on the App Store" width="160px"/>
+ </a>
 
 [Apple App Store Page](https://apps.apple.com/app/micopi/id1087113109)
 
