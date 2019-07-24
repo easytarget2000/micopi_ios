@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -126,6 +127,7 @@
                 <customObject id="qPk-eY-RQz" userLabel="ContactImageEngine" customClass="ContactImageEngine" customModule="Micopi" customModuleProvider="target">
                     <connections>
                         <outlet property="backgroundDrawer" destination="ner-Xd-oxR" id="hhW-sH-W7q"/>
+                        <outlet property="blurDrawer" destination="1aT-am-Vpl" id="PpK-PB-j5J"/>
                         <outlet property="colorConverter" destination="LSC-eu-QQD" id="OYM-qe-1qr"/>
                         <outlet property="colorPalette" destination="H6z-2J-8qa" id="UQD-YY-9eL"/>
                         <outlet property="foliageGenerator" destination="PXb-6o-g1Z" id="Ju5-lJ-6aE"/>
@@ -160,6 +162,7 @@
                 <customObject id="v4v-z0-tx8" userLabel="RandomColorGenerator" customClass="RandomColorGenerator" customModule="Micopi" customModuleProvider="target"/>
                 <customObject id="kq3-Ug-er4" userLabel="InitialsDrawer" customClass="InitialsUIDrawer" customModule="Micopi" customModuleProvider="target"/>
                 <customObject id="H6z-2J-8qa" userLabel="ColorPalette" customClass="ARGBColorPalette" customModule="Micopi" customModuleProvider="target"/>
+                <customObject id="1aT-am-Vpl" userLabel="Blur Drawer" customClass="BlurCGDrawer" customModule="Micopi" customModuleProvider="target"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L9N-e9-E2s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="225" y="386"/>
